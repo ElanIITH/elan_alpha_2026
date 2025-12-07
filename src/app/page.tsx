@@ -7,8 +7,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="w-screen h-screen">
-      <div className="background-layers">
+    <div className="w-full min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen">
+      <div className="background-layers-1 min-h-screen snap-start snap-always">
         <div className="w-full h-full relative">
           <div className="w-[55vw] h-[10vw] absolute top-[76vh] left-[2vw]">
             <Image
@@ -48,6 +48,28 @@ export default function Home() {
                 className="object-contain"
               />
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="background-layers-2 min-h-screen text-white snap-start snap-always">
+        <div className="relative w-full min-h-screen flex flex-col justify-center items-center gap-[3vh]">
+          <div className="w-[45vw] h-[25vw] relative">
+            <Image
+              src="/images/last_ronin.svg"
+              alt="separator"
+              fill
+              className="object-contain"
+            />
+          </div>
+          <div className="text-[1.4vw] w-[40vw] h-auto uppercase text-justify">
+            Beneath the blood-red moon rises a lone warrior, the final spark of
+            a legendary era. The drums of fate thunder through forgotten
+            temples, awakening the spirit of honor, courage, and unbreakable
+            will. His blade is more than steel. it's a promise carved in battle.
+            Every step pushes back the darkness, every strike writes history. A
+            samurai's legacy ignites once more, where loyalty becomes fire,
+            destiny becomes war, and legends return to reclaim the night.
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={bemore.variable}>
       <body className="antialiased">
-        <Navbar />
+        <Navbar variant="grey" />
         {children}
       </body>
     </html>
