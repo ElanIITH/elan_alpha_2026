@@ -11,17 +11,45 @@ type NavbarProps = {
 export default function Navbar({ variant = "red" }: NavbarProps) {
   const pathname = usePathname();
 
-  // dynamic separator image based on variant
   const smallSpark = `/images/left_spark_small_${variant}.svg`;
   const bigSpark = `/images/left_spark_big_${variant}.svg`;
+
+  const activeColor = variant === "red" ? "#AE0021" : "#404040";
+  const hoverColor = activeColor;
+
+  const navItemClass = (path: string) => {
+    const isActive = pathname === path;
+    return `transition-colors duration-200 ${isActive ? "" : ""}`;
+  };
+
+  const navItemStyle = (path: string) => {
+    const isActive = pathname === path;
+    return {
+      color: isActive ? activeColor : "inherit",
+    };
+  };
+
+  const handleHover = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.style.color = hoverColor;
+  };
+
+  const handleHoverOut = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    path: string
+  ) => {
+    if (pathname !== path) {
+      e.currentTarget.style.color = "inherit";
+    }
+  };
 
   return (
     <div className="fixed z-100 top-0 left-0 right-0 bg-transparent w-screen h-auto flex justify-center items-center gap-8 text-[1.5vw] text-white">
       <Link
         href="/workshop"
-        className={`hover:text-[#AE0021] transition-colors ${
-          pathname === "/workshop" ? "text-[#AE0021]" : ""
-        }`}
+        className={navItemClass("/workshop")}
+        style={navItemStyle("/workshop")}
+        onMouseEnter={handleHover}
+        onMouseLeave={(e) => handleHoverOut(e, "/workshop")}
       >
         WORKSHOP
       </Link>
@@ -40,9 +68,10 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
       <Link
         href="/competitions"
-        className={`hover:text-[#AE0021] transition-colors ${
-          pathname === "/competitions" ? "text-[#AE0021]" : ""
-        }`}
+        className={navItemClass("/competitions")}
+        style={navItemStyle("/competitions")}
+        onMouseEnter={handleHover}
+        onMouseLeave={(e) => handleHoverOut(e, "/competitions")}
       >
         COMPETITIONS
       </Link>
@@ -85,9 +114,10 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
       <Link
         href="/accomodation"
-        className={`hover:text-[#AE0021] transition-colors ${
-          pathname === "/accomodation" ? "text-[#AE0021]" : ""
-        }`}
+        className={navItemClass("/accomodation")}
+        style={navItemStyle("/accomodation")}
+        onMouseEnter={handleHover}
+        onMouseLeave={(e) => handleHoverOut(e, "/accomodation")}
       >
         ACCOMODATION
       </Link>
@@ -106,9 +136,10 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
       <Link
         href="/contact"
-        className={`hover:text-[#AE0021] transition-colors ${
-          pathname === "/contact" ? "text-[#AE0021]" : ""
-        }`}
+        className={navItemClass("/contact")}
+        style={navItemStyle("/contact")}
+        onMouseEnter={handleHover}
+        onMouseLeave={(e) => handleHoverOut(e, "/contact")}
       >
         CONTACT US
       </Link>
