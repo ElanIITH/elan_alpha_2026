@@ -7,3 +7,11 @@ body {
 .flip-horizontal {
   transform: scaleX(-1);
 }
+
+.background-layers {
+  min-height: 100vh;
+  width: 100%;
+
+  background: url("/images/home_bg.png") right center / contain no-repeat,
+    url("/images/front_page.jpg") center / 100vw auto no-repeat;
+}
