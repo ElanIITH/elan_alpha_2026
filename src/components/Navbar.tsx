@@ -19,8 +19,8 @@ export default function Navbar() {
       </Link>
 
       <div className="flex flex-col">
-        <div className=" w-[2.5vw] h-[0.5vw]"></div>
-        <div className="w-[2.5vw] h-[2.5vw] relative ">
+        <div className=" w-[2vw] h-[0.3vw]"></div>
+        <div className="w-[2vw] h-[2vw] relative ">
           <Image
             src="/images/left_spark_small_red.svg"
             alt="separator"
@@ -85,8 +85,8 @@ export default function Navbar() {
       </Link>
 
       <div className="flex flex-col">
-        <div className=" w-[2.5vw] h-[0.5vw]"></div>
-        <div className="w-[2.5vw] h-[2.5vw] relative ">
+        <div className=" w-[2vw] h-[0.3vw]"></div>
+        <div className="w-[2vw] h-[2vw] relative ">
           <Image
             src="/images/left_spark_small_red.svg"
             alt="separator"
