@@ -8,7 +8,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <div className="fixed top-0 left-0 right-0 bg-transparent w-screen h-auto flex justify-center items-center gap-8 text-[1.5vw] text-white font-light">
+    <div className="fixed top-0 left-0 right-0 bg-transparent w-screen h-auto flex justify-center items-center gap-8 text-[1.5vw] text-white">
       <Link
         href="/workshop"
         className={`hover:text-[#AE0021] transition-colors ${
@@ -104,6 +104,17 @@ export default function Navbar() {
       >
         CONTACT US
       </Link>
+
+      <div className="w-[2vw] h-[2vw] absolute right-[5vw]">
+        <button className="cursor-pointer">
+          <Image
+            src="/images/menu_white.svg"
+            alt="menu"
+            fill
+            className="object-contain"
+          />
+        </button>
+      </div>
     </div>
   );
 }
