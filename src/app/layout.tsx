@@ -9,6 +9,12 @@ const bemore = localFont({
   display: "swap",
 });
 
+const noxaGothic = localFont({
+  src: "./fonts/noxa_gothic.ttf",
+  variable: "--font-noxa-gothic",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Elan&nVision",
   description:
@@ -24,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={bemore.variable}>
+    <html lang="en" className={`${bemore.variable} ${noxaGothic.variable}`}>
       <body className="antialiased">
         <Navbar variant="red" />
         {children}
