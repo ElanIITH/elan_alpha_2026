@@ -116,7 +116,10 @@ export default function Home() {
       </div>
 
       {/* contact us page */}
-      <div className="background-layers-3 min-h-screen text-white snap-start snap-always">
+      <div
+        id="contact"
+        className="background-layers-3 min-h-screen text-white snap-start snap-always"
+      >
         <div className="relative w-full min-h-screen flex flex-col justify-center items-center gap-[3vh]">
           <div className="flex flex-col gap-[1vh]">
             <div className="uppercase text-[2.5vw] flex justify-center items-center">
