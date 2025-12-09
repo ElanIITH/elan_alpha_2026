@@ -105,9 +105,9 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
       </div>
 
       <Link
-        href="/contact"
+        href="#contact"
         className={`hover:text-[#AE0021] transition-colors ${
-          pathname === "/contact" ? "text-[#AE0021]" : ""
+          pathname === "/#contact" ? "text-[#AE0021]" : ""
         }`}
       >
         CONTACT US
