@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type NavbarProps = {
   variant?: "red" | "grey";
@@ -10,6 +11,24 @@ type NavbarProps = {
 
 export default function Navbar({ variant = "red" }: NavbarProps) {
   const pathname = usePathname();
+  const [isContactVisible, setIsContactVisible] = useState(false);
+
+  useEffect(() => {
+    const contactSection = document.getElementById("contact");
+    if (!contactSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsContactVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+
+    observer.observe(contactSection);
+    return () => observer.disconnect();
+  }, [pathname]);
 
   const smallSpark = `/images/left_spark_small_${variant}.svg`;
   const bigSpark = `/images/left_spark_big_${variant}.svg`;
@@ -18,12 +37,16 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
   const hoverColor = activeColor;
 
   const navItemClass = (path: string) => {
-    const isActive = pathname === path;
+    const isActive =
+      (path === "/#contact" && isContactVisible) ||
+      (pathname === path && path !== "/");
     return `transition-colors duration-200 ${isActive ? "" : ""}`;
   };
 
   const navItemStyle = (path: string) => {
-    const isActive = pathname === path;
+    const isActive =
+      (path === "/#contact" && isContactVisible) ||
+      (pathname === path && path !== "/");
     return {
       color: isActive ? activeColor : "inherit",
     };
@@ -37,8 +60,23 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
     e: React.MouseEvent<HTMLAnchorElement>,
     path: string
   ) => {
-    if (pathname !== path) {
+    const isActive =
+      (path === "/#contact" && isContactVisible) ||
+      (pathname === path && path !== "/");
+    if (!isActive) {
       e.currentTarget.style.color = "inherit";
+    }
+  };
+
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (pathname === "/") {
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      window.location.href = "/#contact";
     }
   };
 
@@ -135,11 +173,12 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
       </div>
 
       <Link
-        href="/contact"
-        className={navItemClass("/contact")}
-        style={navItemStyle("/contact")}
+        href="/#contact"
+        className={navItemClass("/#contact")}
+        style={navItemStyle("/#contact")}
         onMouseEnter={handleHover}
-        onMouseLeave={(e) => handleHoverOut(e, "/contact")}
+        onMouseLeave={(e) => handleHoverOut(e, "/#contact")}
+        onClick={handleContactClick}
       >
         CONTACT US
       </Link>
