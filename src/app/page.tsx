@@ -177,7 +177,11 @@ export default function Home() {
         id="contact"
         className="background-layers-3 min-h-screen text-white snap-start snap-always"
       >
-        <div className="relative w-full min-h-screen flex flex-col justify-center items-center gap-[3vh]">
+        <div
+          className={`relative w-full min-h-screen flex flex-col justify-center items-center gap-[3vh] transition-all duration-1000 delay-400 ${
+            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <div className="flex flex-col gap-[1vh]">
             <div className="uppercase text-[2.5vw] flex justify-center items-center">
               Contact Us
