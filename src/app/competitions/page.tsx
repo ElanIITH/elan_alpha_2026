@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronUp, ChevronDown } from "lucide-react";
@@ -9,6 +9,11 @@ export default function Competitions() {
   const [filter, setFilter] = useState("ALL");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const competitions = [
     {
@@ -436,7 +441,11 @@ export default function Competitions() {
   };
 
   return (
-    <div className="h-screen w-full relative overflow-hidden">
+    <div
+      className={`h-screen w-full relative overflow-hidden transition-opacity duration-1000 ${
+        mounted ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <div className="fixed inset-0 -z-10">
         <Image
           src="/images/black_bg.jpg"
@@ -448,7 +457,11 @@ export default function Competitions() {
       </div>
 
       <div className="relative z-10 text-white h-full flex flex-col justify-center px-[5vw]">
-        <div className="flex justify-between items-center mt-[20vh] mb-[4vh] pl-[4vw] pr-[2vw]">
+        <div
+          className={`flex justify-between items-center mt-[20vh] mb-[4vh] pl-[4vw] pr-[2vw] transition-all duration-1000 delay-300 ${
+            mounted ? "translate-y-0 opacity-100" : "-translate-y-8 opacity-0"
+          }`}
+        >
           <div className="noxa-gothic text-[5vw] uppercase tracking-wide">
             Competitions
           </div>
@@ -484,7 +497,11 @@ export default function Competitions() {
         </div>
 
         <div className="relative flex items-start justify-center gap-[3vw] px-[2vw] flex-1 overflow-hidden">
-          <div className="flex items-center gap-[5vw] w-full max-w-[90vw] pl-[2vw]">
+          <div
+            className={`flex items-center gap-[5vw] w-full max-w-[90vw] pl-[2vw] transition-all duration-1000 delay-500 ${
+              mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
+          >
             <div className="relative w-[30vw] h-[50vh] shrink-0 overflow-hidden">
               <div
                 className={`flex flex-col gap-[2vh] ${
