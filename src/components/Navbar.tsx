@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Menu from "./Menu";
 
 type NavbarProps = {
   variant?: "red" | "grey";
@@ -13,6 +14,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
   const pathname = usePathname();
   const [isContactVisible, setIsContactVisible] = useState(false);
   const [currentVariant, setCurrentVariant] = useState<"red" | "grey">(variant);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleVariantChange = (e: CustomEvent<"red" | "grey">) => {
@@ -201,7 +203,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
       </Link>
 
       <div className="w-[2vw] h-[2vw] absolute right-[5vw]">
-        <button className="cursor-pointer">
+        <button className="cursor-pointer" onClick={() => setIsMenuOpen(true)}>
           <Image
             src="/images/menu_white.svg"
             alt="menu"
@@ -210,6 +212,8 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
           />
         </button>
       </div>
+
+      <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </div>
   );
 }
