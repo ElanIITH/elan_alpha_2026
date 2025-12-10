@@ -6,6 +6,18 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Accommodation() {
 
+    useEffect(() => {
+        // Change navbar to grey variant when this page loads
+        const event = new CustomEvent("navbarVariantChange", { detail: "grey" });
+        window.dispatchEvent(event);
+
+        // Reset to red when leaving the page
+        return () => {
+            const resetEvent = new CustomEvent("navbarVariantChange", { detail: "red" });
+            window.dispatchEvent(resetEvent);
+        };
+    }, []);
+
     const FAQs = [
         {
             question: "How will I know if my accommodation is confirmed?",
@@ -49,7 +61,7 @@ export default function Accommodation() {
                 <div className="h-screen w-full flex items-start justify-center pt-[14vh]">
                     <div id="accommodation-top-left" className="w-[55vw] tracking-wide flex flex-col pl-[0.75vh] justify-evenly text-white uppercase gap-[0.75vh]">
                         <div id="accomodation-top-left-para1" className="flex flex-col">
-                            <p className="text-[4vw] tracking-[0.06em] noxa-gothic">ACCOMODATION</p>
+                            <p className="text-[4vw] tracking-[0.06em] noxa-gothic">ACCOMMODATION</p>
                             <p className="text-[1.1vw]/5.5">We are delighted to announce that the fest is scheduled to take place from January 9th to January 11th. Designed as a comprehensive three-day celebration, the event promises a vibrant array of activities. To ensure an optimal and seamless experience, we highly recommend securing accommodation directly within the IIT Hyderabad campus. By residing on-site, you will have the unique opportunity to fully immerse yourself in the festivities and enjoy unparalleled convenience throughout the duration of the event.</p>
                         </div>
                         <div id="accomodation-top-left-para2" className="flex flex-col">
@@ -78,7 +90,7 @@ export default function Accommodation() {
                                 >
                                     {/* Text */}
                                     <span className="text-[2.5vw] tracking-wider uppercase drop-shadow-md">
-                                        Avail Accomodation
+                                        Avail Accommodation
                                     </span>
                                 </div>
                             </button>
