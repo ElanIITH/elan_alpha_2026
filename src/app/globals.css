@@ -67,3 +67,10 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.background-layers-4 {
+  background-image: url("/images/Merchandise_Page.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
