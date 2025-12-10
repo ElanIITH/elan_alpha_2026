@@ -1,11 +1,48 @@
-export const metadata = {
-  title: "Elan&nVision | Home",
-};
+"use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+
+    const sections = [
+      document.querySelector(".background-layers-1"),
+      document.querySelector(".background-layers-2"),
+      document.querySelector(".background-layers-3"),
+    ];
+
+    const observers = sections.map((section, index) => {
+      if (!section) return null;
+
+      const variant = index === 1 ? "grey" : "red"; // 0: red, 1: grey, 2: red
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            window.dispatchEvent(
+              new CustomEvent("navbarVariantChange", { detail: variant })
+            );
+          }
+        },
+        {
+          threshold: 0.5,
+        }
+      );
+
+      observer.observe(section);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach((observer) => observer?.disconnect());
+    };
+  }, []);
+
   const contactData = [
     {
       name: "SAI CHARAN AJARAPU",
@@ -49,8 +86,16 @@ export default function Home() {
     <div className="w-full min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen">
       {/* front page */}
       <div className="background-layers-1 min-h-screen snap-start snap-always">
-        <div className="w-full h-full relative">
-          <div className="w-[55vw] h-[10vw] absolute top-[76vh] left-[2vw]">
+        <div
+          className={`w-full h-full relative transition-all duration-1000 ${
+            mounted ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <div
+            className={`w-[55vw] h-[10vw] absolute top-[76vh] left-[2vw] transition-all duration-1000 delay-300 ${
+              mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
+          >
             <Image
               src="/images/elan_home_title.svg"
               alt="elan title"
@@ -58,7 +103,11 @@ export default function Home() {
               className="object-contain"
             />
           </div>
-          <div className="pl-[2vw] w-[42vw] h-auto absolute top-[45vh] left-[2vw] text-white flex flex-col items-end">
+          <div
+            className={`pl-[2vw] w-[42vw] h-auto absolute top-[45vh] left-[2vw] text-white flex flex-col items-end transition-all duration-1000 delay-500 ${
+              mounted ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+            }`}
+          >
             <Link href={"#"}>
               <div className="text-[3.5vw] hover:text-[#AE0021] transition-colors">
                 REGISTER NOW
@@ -73,7 +122,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="w-auto h-auto absolute top-[64vh] right-0 text-white flex justify-end">
+          <div
+            className={`w-auto h-auto absolute top-[64vh] right-0 text-white flex justify-end transition-all duration-1000 delay-700 ${
+              mounted ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
+            }`}
+          >
             <div className="flex flex-col justify-end">
               <div className="text-[5.5vw] text-right">JAN 9-11</div>
               <div className="uppercase text-[1.4vw] tracking-wide">
@@ -94,7 +147,11 @@ export default function Home() {
 
       {/* theme reveal page */}
       <div className="background-layers-2 min-h-screen text-white snap-start snap-always">
-        <div className="relative w-full min-h-screen flex flex-col justify-center items-center gap-[3vh]">
+        <div
+          className={`relative w-full min-h-screen flex flex-col justify-center items-center gap-[3vh] transition-all duration-1000 delay-200 ${
+            mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
+        >
           <div className="w-[45vw] h-[25vw] relative">
             <Image
               src="/images/last_ronin.svg"
@@ -120,8 +177,12 @@ export default function Home() {
         id="contact"
         className="background-layers-3 min-h-screen text-white snap-start snap-always"
       >
-        <div className="relative w-full min-h-screen flex flex-col justify-center items-center gap-[3vh]">
-          <div className="flex flex-col">
+        <div
+          className={`relative w-full min-h-screen flex flex-col justify-center items-center gap-[3vh] transition-all duration-1000 delay-400 ${
+            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="flex flex-col gap-[1vh]">
             <div className="uppercase text-[2.5vw] flex justify-center items-center">
               Contact Us
             </div>
