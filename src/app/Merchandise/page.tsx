@@ -74,7 +74,7 @@ export default function Merchandise() {
                </Link>
 
                {/* Shirts Grid on Right Side */}
-               <div className="w-[28vw] h-auto absolute top-[10vh] right-[2vw] grid grid-cols-2 gap-[0.8vw]">
+               <div className="w-[40vw]  absolute top-[14vh] right-[5vw] grid grid-cols-2 gap-x-[0vw] gap-y-[2vw]">
                  {shirts.map((shirt) => (
                    <button
                      key={shirt.id}
@@ -89,11 +89,12 @@ export default function Merchandise() {
                        fill
                        className="object-contain"
                      />
-                     
+                     <div className="absolute bottom-[8.5vw] right-[3vw] text-white text-[1.5vw] uppercase ">
+                       BUY
+                     </div>
                    </button>
                  ))}
                </div>
-
          </div>
      </div>
     </div>
