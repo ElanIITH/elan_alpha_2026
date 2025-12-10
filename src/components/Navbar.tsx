@@ -12,6 +12,23 @@ type NavbarProps = {
 export default function Navbar({ variant = "red" }: NavbarProps) {
   const pathname = usePathname();
   const [isContactVisible, setIsContactVisible] = useState(false);
+  const [currentVariant, setCurrentVariant] = useState<"red" | "grey">(variant);
+
+  useEffect(() => {
+    const handleVariantChange = (e: CustomEvent<"red" | "grey">) => {
+      setCurrentVariant(e.detail);
+    };
+
+    window.addEventListener(
+      "navbarVariantChange",
+      handleVariantChange as EventListener
+    );
+    return () =>
+      window.removeEventListener(
+        "navbarVariantChange",
+        handleVariantChange as EventListener
+      );
+  }, []);
 
   useEffect(() => {
     const contactSection = document.getElementById("contact");
@@ -30,10 +47,10 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
     return () => observer.disconnect();
   }, [pathname]);
 
-  const smallSpark = `/images/left_spark_small_${variant}.svg`;
-  const bigSpark = `/images/left_spark_big_${variant}.svg`;
+  const smallSpark = `/images/left_spark_small_${currentVariant}.svg`;
+  const bigSpark = `/images/left_spark_big_${currentVariant}.svg`;
 
-  const activeColor = variant === "red" ? "#AE0021" : "#404040";
+  const activeColor = currentVariant === "red" ? "#AE0021" : "#404040";
   const hoverColor = activeColor;
 
   const navItemClass = (path: string) => {

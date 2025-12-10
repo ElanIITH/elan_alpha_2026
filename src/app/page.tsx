@@ -1,11 +1,44 @@
-export const metadata = {
-  title: "Elan&nVision | Home",
-};
+"use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
+  useEffect(() => {
+    const sections = [
+      document.querySelector(".background-layers-1"),
+      document.querySelector(".background-layers-2"),
+      document.querySelector(".background-layers-3"),
+    ];
+
+    const observers = sections.map((section, index) => {
+      if (!section) return null;
+
+      const variant = index === 1 ? "grey" : "red"; // 0: red, 1: grey, 2: red
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            window.dispatchEvent(
+              new CustomEvent("navbarVariantChange", { detail: variant })
+            );
+          }
+        },
+        {
+          threshold: 0.5,
+        }
+      );
+
+      observer.observe(section);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach((observer) => observer?.disconnect());
+    };
+  }, []);
+
   const contactData = [
     {
       name: "SAI CHARAN AJARAPU",
