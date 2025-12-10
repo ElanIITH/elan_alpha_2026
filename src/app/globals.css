@@ -74,3 +74,27 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.background-layers-6 {
+  background-image: url("/images/home_bg_texture.jpg");
+  background-size: 120%;
+  background-position: 50% 30%;
+  background-repeat: no-repeat;
+}
+
+.background-layers-5 {
+  background-image: url("/images/home_bg_texture.jpg");
+  background-size: 120%;
+  background-position: 50% 30%;
+  background-repeat: no-repeat;
+  transform: scaleY(-1);
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
