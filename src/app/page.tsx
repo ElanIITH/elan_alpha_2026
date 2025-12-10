@@ -249,7 +249,9 @@ export default function Home() {
           </div>
           <div className="flex justify-center items-center gap-[2vw] w-[30vw] h-[3vw] absolute bottom-[2vh]">
             <a
-              href="#"
+              href="https://www.facebook.com/elannvision.iithyderabad/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:opacity-70 transition-opacity"
               style={{ color: "#6E0216" }}
             >
@@ -263,7 +265,9 @@ export default function Home() {
             </a>
 
             <a
-              href="#"
+              href="https://www.instagram.com/elan_nvision.iith"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:opacity-70 transition-opacity"
               style={{ color: "#6E0216" }}
             >
@@ -281,7 +285,9 @@ export default function Home() {
             </a>
 
             <a
-              href="#"
+              href="https://www.youtube.com/@Elan_nVisionIITHyderabad"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:opacity-70 transition-opacity"
               style={{ color: "#6E0216" }}
             >
@@ -295,7 +301,9 @@ export default function Home() {
             </a>
 
             <a
-              href="#"
+              href="https://x.com/elan_nvision"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:opacity-70 transition-opacity"
               style={{ color: "#6E0216" }}
             >
@@ -309,7 +317,9 @@ export default function Home() {
             </a>
 
             <a
-              href="#"
+              href="https://www.linkedin.com/company/elan-nvision-iith/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:opacity-70 transition-opacity"
               style={{ color: "#6E0216" }}
             >
