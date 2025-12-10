@@ -8,6 +8,7 @@ import { ChevronUp, ChevronDown } from "lucide-react";
 export default function Competitions() {
   const [filter, setFilter] = useState("ALL");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
   const competitions = [
     {
@@ -407,18 +408,26 @@ export default function Competitions() {
       ? competitions
       : competitions.filter((comp) => comp.category === filter);
 
-  const currentCompetition = filteredCompetitions[currentIndex];
+  const totalItems = filteredCompetitions.length;
+  const normalizedIndex =
+    ((currentIndex % totalItems) + totalItems) % totalItems;
+  const currentCompetition = filteredCompetitions[normalizedIndex];
 
   const handlePrevious = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? filteredCompetitions.length - 1 : prev - 1
-    );
+    setCurrentIndex((prev) => prev - 1);
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) =>
-      prev === filteredCompetitions.length - 1 ? 0 : prev + 1
-    );
+    setCurrentIndex((prev) => prev + 1);
+  };
+
+  const handleTransitionEnd = () => {
+    // When we reach the boundaries, instantly reset to middle section
+    if (currentIndex <= -totalItems || currentIndex >= totalItems * 2) {
+      setIsTransitioning(false);
+      setCurrentIndex(normalizedIndex);
+      setTimeout(() => setIsTransitioning(true), 50);
+    }
   };
 
   const handleFilterChange = (newFilter: string) => {
@@ -474,15 +483,49 @@ export default function Competitions() {
           </div>
         </div>
 
-        <div className="relative flex items-start justify-center gap-[3vw] px-[2vw] flex-1">
+        <div className="relative flex items-start justify-center gap-[3vw] px-[2vw] flex-1 overflow-hidden">
           <div className="flex items-center gap-[5vw] w-full max-w-[90vw] pl-[2vw]">
-            <div className="relative w-[30vw] h-[50vh] shrink-0">
-              <Image
-                src={currentCompetition.image}
-                alt={currentCompetition.title}
-                fill
-                className="object-cover rounded-lg"
-              />
+            <div className="relative w-[30vw] h-[50vh] shrink-0 overflow-hidden">
+              <div
+                className={`flex flex-col gap-[2vh] ${
+                  isTransitioning
+                    ? "transition-transform duration-500 ease-out"
+                    : ""
+                }`}
+                style={{
+                  transform: `translateY(-${
+                    (currentIndex + totalItems) * 52
+                  }vh)`,
+                }}
+                onTransitionEnd={handleTransitionEnd}
+              >
+                {[
+                  ...filteredCompetitions,
+                  ...filteredCompetitions,
+                  ...filteredCompetitions,
+                ].map((competition, index) => {
+                  const arrayIndex = Math.floor(index / totalItems);
+                  const itemIndex = index % totalItems;
+                  const adjustedCurrentIndex = currentIndex + totalItems;
+                  const isActive = index === adjustedCurrentIndex;
+
+                  return (
+                    <div
+                      key={`${competition.id}-${arrayIndex}-${itemIndex}`}
+                      className={`relative w-[30vw] h-[50vh] shrink-0 transition-opacity duration-500 ${
+                        isActive ? "opacity-100" : "opacity-30"
+                      }`}
+                    >
+                      <Image
+                        src={competition.image}
+                        alt={competition.title}
+                        fill
+                        className="object-cover rounded-lg"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
             <div className="flex flex-col gap-[3vh] items-center justify-center">
@@ -496,7 +539,7 @@ export default function Competitions() {
 
               <div className="text-center text-[1.4vw] tracking-wide uppercase">
                 <span className="text-[#6E0216]">
-                  {currentIndex + 1} / {filteredCompetitions.length}
+                  {normalizedIndex + 1} / {totalItems}
                 </span>
               </div>
 
