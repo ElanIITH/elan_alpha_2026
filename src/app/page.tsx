@@ -121,12 +121,12 @@ export default function Home() {
         className="background-layers-3 min-h-screen text-white snap-start snap-always"
       >
         <div className="relative w-full min-h-screen flex flex-col justify-center items-center gap-[3vh]">
-          <div className="flex flex-col gap-[1vh]">
+          <div className="flex flex-col">
             <div className="uppercase text-[2.5vw] flex justify-center items-center">
               Contact Us
             </div>
             <div className="">
-              <div className="flex justify-center items-center uppercase text-[1.3vw] text-[#6E0216]">
+              <div className="flex justify-center items-center uppercase text-[1.3vw] mt-[-1vh] mb-[-1vh] text-[#6E0216]">
                 Reach us
               </div>
               <div className="grid grid-cols-3 grid-rows-2 place-items-center">
@@ -144,7 +144,7 @@ export default function Home() {
               </div>
             </div>
             <div className="">
-              <div className="flex justify-center items-center uppercase text-[1.3vw] text-[#6E0216]">
+              <div className="flex justify-center items-center uppercase text-[1.3vw] mb-[-2vh] text-[#6E0216]">
                 For business related queries
               </div>
               <div className="flex justify-center items-center gap-[0.8vw]">
@@ -178,7 +178,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="w-[40vw] h-[10vw] absolute bottom-[7vh]">
+          <div className="w-[40vw] h-[9vw] absolute bottom-[6vh]">
             <Image
               src="/images/elan_home_title.svg"
               alt="elan title"
