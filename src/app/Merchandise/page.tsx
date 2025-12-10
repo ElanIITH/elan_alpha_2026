@@ -27,7 +27,7 @@ export default function Merchandise() {
                    className="object-contain"
                  />
                </div>
-                <div className="w-[55vw] h-[10vw] absolute top-[26vh] left-[0vw] translate-x-[-24vw]">
+                <div className="w-[55vw] h-[10vw] absolute top-[26vh] left-0 translate-x-[-24vw]">
                  <Image
                    src="/images/merchandisever.svg"
                    alt="separator"

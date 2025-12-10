@@ -176,7 +176,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         onMouseEnter={handleHover}
         onMouseLeave={(e) => handleHoverOut(e, "/accomodation")}
       >
-        ACCOMODATION
+        ACCOMMODATION
       </Link>
 
       <div className="flex flex-col">
