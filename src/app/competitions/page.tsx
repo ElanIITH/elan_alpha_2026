@@ -20,8 +20,7 @@ export default function Competitions() {
       id: 1,
       title: "ENIGMA CTF",
       category: "TECH",
-      image:
-        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
+      image: "/techy_comp/CTF.jpg",
       prize: "₹20,000",
       contact: "Gouresh Dusa - +919833646382",
       deadline: "December 20, 2025",
@@ -35,8 +34,7 @@ export default function Competitions() {
       id: 2,
       title: "GAME JAM",
       category: "TECH",
-      image:
-        "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=600&fit=crop",
+      image: "/techy_comp/GameJam.jpg",
       prize: "₹20,000",
       contact: "Himangshu Sarma - +918638887938",
       deadline: "December 25, 2025",
@@ -50,8 +48,7 @@ export default function Competitions() {
       id: 3,
       title: "DRONE RACING",
       category: "TECH",
-      image:
-        "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&h=600&fit=crop",
+      image: "/techy_comp/DroneRacing.jpeg",
       prize: "₹50,000",
       contact: "Sai Akhila - +919346210594",
       deadline: "December 25, 2025",
@@ -65,8 +62,7 @@ export default function Competitions() {
       id: 4,
       title: "MAZE EXPLORER",
       category: "TECH",
-      image:
-        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop",
+      image: "/techy_comp/MazeExplorer.png",
       prize: "₹50,000",
       contact: "Sai Akhila - +919346210594",
       deadline: "December 20, 2025",
@@ -80,8 +76,7 @@ export default function Competitions() {
       id: 5,
       title: "ROBO SOCCER",
       category: "TECH",
-      image:
-        "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=600&fit=crop",
+      image: "/techy_comp/RoboSocceer.jpg",
       prize: "₹50,000",
       contact: "Bhavana Kasula - +917386632132",
       deadline: "December 25, 2025",
@@ -95,8 +90,7 @@ export default function Competitions() {
       id: 6,
       title: "BLOCKCHAIN HACKATHON",
       category: "TECH",
-      image:
-        "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&h=600&fit=crop",
+      image: "/techy_comp/BlockChain.png",
       prize: "₹20,000",
       contact: "Shiva Chethan - +919482156304",
       deadline: "December 25, 2025",
@@ -110,8 +104,7 @@ export default function Competitions() {
       id: 7,
       title: "INNOV-AI-TION",
       category: "TECH",
-      image:
-        "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
+      image: "/techy_comp/GenAi.png",
       prize: "₹50,000",
       contact: "Gouresh Dusa - +919833646382",
       deadline: "December 20, 2025",
@@ -125,8 +118,7 @@ export default function Competitions() {
       id: 8,
       title: "DEV DUEL",
       category: "TECH",
-      image:
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop",
+      image: "/techy_comp/DevHackathon.png",
       prize: "₹40,000",
       contact: "Himangshu Sarma - +918638887938",
       deadline: "December 20, 2025",
@@ -140,8 +132,7 @@ export default function Competitions() {
       id: 9,
       title: "ASTRO PHOTOGRAPHY",
       category: "TECH",
-      image:
-        "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=800&h=600&fit=crop",
+      image: "/techy_comp/AstroPhotography.webp",
       prize: "₹10,000",
       contact: "Bhavana Kasula - +917386632132",
       deadline: "December 25, 2025",
@@ -155,8 +146,7 @@ export default function Competitions() {
       id: 10,
       title: "BGMI",
       category: "TECH",
-      image:
-        "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=600&fit=crop",
+      image: "/techy_comp/BGMI.jpeg",
       prize: "₹30,000",
       contact: "Pavankumar Dalve - +918180974182",
       deadline: "December 25, 2025",
@@ -170,8 +160,7 @@ export default function Competitions() {
       id: 11,
       title: "WAVEFORM WARS",
       category: "TECH",
-      image:
-        "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=600&fit=crop",
+      image: "/techy_comp/SignalProcessing.jpg",
       prize: "₹15,000",
       contact: "Karthikay Chandana - +919901194321",
       deadline: "December 20, 2025",
@@ -185,8 +174,7 @@ export default function Competitions() {
       id: 12,
       title: "SIMULATION RUSH",
       category: "TECH",
-      image:
-        "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop",
+      image: "/techy_comp/PhysicsSimulation.jpg",
       prize: "₹10,000",
       contact: "Kalyani Cheguri - +919618578009",
       deadline: "December 25, 2025",
@@ -200,8 +188,7 @@ export default function Competitions() {
       id: 13,
       title: "REAL CRICKET",
       category: "TECH",
-      image:
-        "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&h=600&fit=crop",
+      image: "/techy_comp/RealCricketNew.png",
       prize: "₹20,000",
       contact: "Pavankumar Dalve - +918180974812",
       deadline: "December 25, 2025",
@@ -215,8 +202,7 @@ export default function Competitions() {
       id: 14,
       title: "NRITYANJALI",
       category: "CULTURAL",
-      image:
-        "https://images.unsplash.com/photo-1599140849279-1014532882fe?w=800&h=600&fit=crop",
+      image: "/culti_comp/Nrityanjali.JPG",
       prize: "₹30,000",
       contact: "Sai Akhila - +919346210594",
       deadline: "December 25, 2025",
@@ -230,8 +216,7 @@ export default function Competitions() {
       id: 15,
       title: "VIVID MOTION",
       category: "CULTURAL",
-      image:
-        "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=800&h=600&fit=crop",
+      image: "/culti_comp/Breakfree Solo.jpg",
       prize: "₹20,000",
       contact: "Kalyani Cheguri - +919618578009",
       deadline: "December 25, 2025",
@@ -245,8 +230,7 @@ export default function Competitions() {
       id: 16,
       title: "BREAKFREE",
       category: "CULTURAL",
-      image:
-        "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=800&h=600&fit=crop",
+      image: "/culti_comp/Breakfree Group.jpg",
       prize: "₹45,000",
       contact: "Gouresh Dusa - +919833646382",
       deadline: "December 25, 2025",
@@ -260,8 +244,7 @@ export default function Competitions() {
       id: 17,
       title: "CLAY MOSAIC",
       category: "CULTURAL",
-      image:
-        "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&h=600&fit=crop",
+      image: "/culti_comp/Clay Art.jpeg",
       prize: "₹10,000",
       contact: "Sai Akhila - +919346210594",
       deadline: "December 25, 2025",
@@ -275,8 +258,7 @@ export default function Competitions() {
       id: 18,
       title: "FILMFARE FIESTA",
       category: "CULTURAL",
-      image:
-        "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&h=600&fit=crop",
+      image: "/culti_comp/Short FIlm.jpg",
       prize: "₹30,000",
       contact: "Pavankumar Dalve - +918180974182",
       deadline: "December 25, 2025",
@@ -290,8 +272,7 @@ export default function Competitions() {
       id: 19,
       title: "BATTLE OF BANDS",
       category: "CULTURAL",
-      image:
-        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop",
+      image: "/culti_comp/BattleOfBands.jpg",
       prize: "₹50,000",
       contact: "Pavankumar Dalve - +918180974182",
       deadline: "December 25, 2025",
@@ -305,8 +286,7 @@ export default function Competitions() {
       id: 20,
       title: "CAMPUS IDOL",
       category: "CULTURAL",
-      image:
-        "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=800&h=600&fit=crop",
+      image: "/culti_comp/SoloSinging.JPG",
       prize: "₹40,000",
       contact: "Himangshu Sarma - +918638887938",
       deadline: "December 25, 2025",
@@ -320,8 +300,7 @@ export default function Competitions() {
       id: 21,
       title: "FACE PAINTING",
       category: "CULTURAL",
-      image:
-        "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=600&fit=crop",
+      image: "/culti_comp/FacePainting.jpg",
       prize: "₹10,000",
       contact: "Kalyani Cheguri - +919618578009",
       deadline: "December 25, 2025",
@@ -335,8 +314,7 @@ export default function Competitions() {
       id: 22,
       title: "CHRONICLES IN CLICKS",
       category: "CULTURAL",
-      image:
-        "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=800&h=600&fit=crop",
+      image: "/culti_comp/PhotoStory.jpeg",
       prize: "₹25,000",
       contact: "Shiva Chethan - +919482156304",
       deadline: "December 20, 2025",
@@ -350,8 +328,7 @@ export default function Competitions() {
       id: 23,
       title: "SYNC'D SOULS",
       category: "CULTURAL",
-      image:
-        "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=800&h=600&fit=crop",
+      image: "/culti_comp/Breakfree Duo.webp",
       prize: "₹35,000",
       contact: "Bhavana Kasula - +917386632132",
       deadline: "December 25, 2025",
@@ -365,8 +342,7 @@ export default function Competitions() {
       id: 24,
       title: "GLITZ & GLAMOUR",
       category: "CULTURAL",
-      image:
-        "https://images.unsplash.com/photo-1558769132-cb1aea1f1bb8?w=800&h=600&fit=crop",
+      image: "/culti_comp/Fashion Show.jpeg",
       prize: "₹50,000",
       contact: "Gouresh Dusa - +919833646382",
       deadline: "December 25, 2025",
@@ -380,8 +356,7 @@ export default function Competitions() {
       id: 25,
       title: "CURTAIN CALL",
       category: "CULTURAL",
-      image:
-        "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=800&h=600&fit=crop",
+      image: "/culti_comp/Curatain Call.webp",
       prize: "₹30,000",
       contact: "Himangshu Sarma - +918638887938",
       deadline: "December 25, 2025",
@@ -395,8 +370,7 @@ export default function Competitions() {
       id: 26,
       title: "TALES IN A FRAME",
       category: "CULTURAL",
-      image:
-        "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&h=600&fit=crop",
+      image: "/culti_comp/PhotoChallenge.webp",
       prize: "₹25,000",
       contact: "Shiva Chethan - +919482156304",
       deadline: "December 20, 2025",
@@ -537,7 +511,7 @@ export default function Competitions() {
                         src={competition.image}
                         alt={competition.title}
                         fill
-                        className="object-cover rounded-lg"
+                        className="object-cover object-center rounded-lg"
                       />
                     </div>
                   );
