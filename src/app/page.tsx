@@ -6,10 +6,43 @@ import Link from "next/link";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  const [countdown, setCountdown] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
     setMounted(true);
 
+    const targetDate = new Date("2026-01-09T00:00:00").getTime();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance > 0) {
+        setCountdown({
+          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          ),
+          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((distance % (1000 * 60)) / 1000),
+        });
+      } else {
+        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     const sections = [
       document.querySelector(".background-layers-1"),
       document.querySelector(".background-layers-2"),
@@ -129,8 +162,12 @@ export default function Home() {
           >
             <div className="flex flex-col justify-end">
               <div className="text-[5.5vw] text-right">JAN 9-11</div>
-              <div className="uppercase text-[1.4vw] tracking-wide">
-                Countdown : 20 days 23:59:59
+              <div className="flex justify-center items-center gap-[0.3vw] uppercase text-[1.4vw] tracking-wide">
+                <div className="">Countdown: </div>
+                <div className="w-[8vw] text-right">
+                  {countdown.days}d {countdown.hours}h {countdown.minutes}m{" "}
+                  {countdown.seconds}s
+                </div>
               </div>
             </div>
             <div className="w-[10vw] h-[15vw] relative mb-[1vh]">
