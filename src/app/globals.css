@@ -102,11 +102,37 @@ body {
   background-repeat: no-repeat;
 }
 
+/* Responsive adjustments for merchandise background */
+@media (max-width: 1024px) {
+  .background-layers-4 {
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+@media (max-width: 640px) {
+  .background-layers-4 {
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+.background-layers-6 {
 .background-layers-5 {
   background-image: url("/images/home_bg_texture.jpg");
   background-size: 120%;
   background-position: 50% 30%;
   background-repeat: no-repeat;
+  background-color: #000;
+}
+
+/* Responsive adjustments for accommodation background */
+@media (max-width: 1024px) {
+  .background-layers-6 {
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+  }
   transform: scaleY(-1);
 }
 
@@ -115,6 +141,17 @@ body {
   background-size: 120%;
   background-position: 50% 30%;
   background-repeat: no-repeat;
+  background-color: #000;
+  transform: scaleY(-1);
+}
+
+/* Responsive adjustments for FAQ background */
+@media (max-width: 1024px) {
+  .background-layers-5 {
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+  }
 }
 
 .scrollbar-hide {

@@ -58,7 +58,8 @@ export default function Accommodation() {
         <div className="w-full min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen">
             {/* Front Page */}
             <div className="background-layers-6 min-h-screen snap-start snap-always">
-                <div className="h-screen w-full flex items-start justify-center pt-[14vh]">
+                {/* Desktop View */}
+                <div className="hidden lg:flex h-screen w-full items-start justify-center pt-[14vh]">
                     <div id="accommodation-top-left" className="w-[55vw] tracking-wide flex flex-col pl-[0.75vh] justify-evenly text-white uppercase gap-[0.75vh]">
                         <div id="accomodation-top-left-para1" className="flex flex-col">
                             <p className="text-[4vw] tracking-[0.06em] noxa-gothic">ACCOMMODATION</p>
@@ -128,11 +129,110 @@ export default function Accommodation() {
                         </div>
                     </div>
                 </div>
+
+                {/* Mobile/Tablet View */}
+                <div className="lg:hidden w-full min-h-screen bg-black">
+                    <div className="w-full min-h-screen px-4 sm:px-6 md:px-8 py-8 sm:py-12 pt-20 sm:pt-24 pb-20">
+                        {/* Title */}
+                        <h1 className="text-white text-4xl sm:text-5xl md:text-6xl tracking-wider noxa-gothic uppercase mb-6 sm:mb-8">
+                            ACCOMMODATION
+                        </h1>
+
+                        {/* Main Description */}
+                        <div className="mb-6 sm:mb-8 md:mb-10">
+                            <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed">
+                                We are delighted to announce that the fest is scheduled to take place from January 9th to January 11th. Designed as a comprehensive three-day celebration, the event promises a vibrant array of activities. To ensure an optimal and seamless experience, we highly recommend securing accommodation directly within the IIT Hyderabad campus. By residing on-site, you will have the unique opportunity to fully immerse yourself in the festivities and enjoy unparalleled convenience throughout the duration of the event.
+                            </p>
+                        </div>
+
+                        {/* Campus Map - Mobile */}
+                        <div className="w-full relative h-[60vh] sm:h-[50vh] md:h-[55vh] mb-6 sm:mb-8 md:mb-10">
+                            <Image 
+                                src="/images/accommodation_campus_map.svg"
+                                alt="Campus Map"
+                                fill
+                                style={{ objectFit: 'contain' }}
+                            />
+                            <div className="absolute top-2 right-2 w-[15%] h-[12%] sm:w-[12%] sm:h-[10%]">        
+                                <Image 
+                                    src="/images/accommodation_map_japanese.png"
+                                    alt="Chizu(Map)" 
+                                    fill
+                                    style={{ objectFit: 'contain' }}
+                                />
+                            </div>
+                            <div className="absolute bottom-2 right-2 flex flex-col items-end gap-2">        
+                                <div className="w-20 h-20 sm:w-24 sm:h-24 relative">
+                                    <Image 
+                                        src="/images/accommodation_map_legend.png"
+                                        alt="Legend"
+                                        fill
+                                        style={{ objectFit: 'contain' }}
+                                    />
+                                </div>
+                                <div className="text-right">
+                                    <p className="text-white text-xs sm:text-sm uppercase">VIEW IN GOOGLE MAP</p>
+                                    <p className="text-white text-lg sm:text-xl md:text-2xl noxa-gothic uppercase -mt-1">IITH MAP</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Information Sections */}
+                        <div className="space-y-6 sm:space-y-8">
+                            {/* Charges */}
+                            <div className="flex flex-col">
+                                <h2 className="text-white text-2xl sm:text-3xl md:text-4xl uppercase font-semibold mb-2 sm:mb-3">
+                                    CHARGES
+                                </h2>
+                                <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed">
+                                    The workshops will take place over the weekend, so we are offering accommodation for one night at Rs. 999.00 (Check-in at 5pm Saturday, check-out at 9:30am Sunday).
+                                </p>
+                            </div>
+
+                            {/* Identification */}
+                            <div className="flex flex-col">
+                                <h2 className="text-white text-2xl sm:text-3xl md:text-4xl uppercase font-semibold mb-2 sm:mb-3">
+                                    IDENTIFICATION
+                                </h2>
+                                <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed">
+                                    You will be required to produce a valid government ID at the campus gate, failure to do so will result in denial of entry to the campus. (So please make sure to carry a government ID with you.)
+                                </p>
+                            </div>
+
+                            {/* Getting to IITH */}
+                            <div className="flex flex-col">
+                                <h2 className="text-white text-2xl sm:text-3xl md:text-4xl uppercase font-semibold mb-2 sm:mb-3">
+                                    GETTING TO IITH
+                                </h2>
+                                <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed">
+                                    The main gate lies on the road from Patancheru to Kandi. There's a bunch of large signs and boards, so you can't miss it. Refer to Google maps for the exact address. One can reach Patancheru by either bus or train. From Patancheru, one can reach the IIT main gate by either bus or auto.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Button */}
+                        <div className="w-full flex justify-center mt-8 sm:mt-10 md:mt-12">
+                            <button className="group relative inline-block focus:outline-none">
+                                <div 
+                                    className="bg-[#680C16] text-white px-8 sm:px-12 md:px-16 py-3 sm:py-4
+                                                transition-all duration-300 active:scale-95 sm:hover:scale-105
+                                                sm:hover:bg-white sm:hover:text-[#6E0216] sm:hover:font-bold
+                                                rounded-tr-lg rounded-bl-lg"
+                                >
+                                    <span className="text-lg sm:text-xl md:text-2xl tracking-wider uppercase drop-shadow-md">
+                                        Avail Accommodation
+                                    </span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             {/* Second Page */}
             <div className="background-layers-5 min-h-screen snap-start snap-always">
-                <div className="-scale-y-[1] h-screen w-full px-[3vw] pt-[14vh] pb-[4vh] flex flex-col items-start gap-[2vh]">
+                {/* Desktop FAQ */}
+                <div className="hidden lg:flex -scale-y-[1] h-screen w-full px-[3vw] pt-[14vh] pb-[4vh] flex-col items-start gap-[2vh]">
                     <p className="text-white uppercase text-[4vw] noxa-gothic">FAQ'S</p>
                     <SimpleWrapper>
                         {FAQs.map((faq, index) => (
@@ -142,6 +242,28 @@ export default function Accommodation() {
                             </div>
                         ))}
                     </SimpleWrapper>
+                </div>
+
+                {/* Mobile/Tablet FAQ */}
+                <div className="lg:hidden -scale-y-[1] w-full min-h-screen bg-black">
+                    <div className="w-full min-h-screen px-4 sm:px-6 md:px-8 py-8 sm:py-12 pt-20 sm:pt-24 pb-20">
+                        <h1 className="text-white uppercase text-4xl sm:text-5xl md:text-6xl noxa-gothic mb-6 sm:mb-8">
+                            FAQ'S
+                        </h1>
+                        
+                        <div className="space-y-6 sm:space-y-8">
+                            {FAQs.map((faq, index) => (
+                                <div key={index} className="flex flex-col space-y-2">
+                                    <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-white uppercase leading-tight">
+                                        {faq.question}
+                                    </p>
+                                    <p className="text-sm sm:text-base md:text-lg text-white uppercase leading-relaxed" 
+                                       dangerouslySetInnerHTML={{ __html: faq.answer }}>
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
 
