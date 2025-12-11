@@ -6,6 +6,9 @@ import Link from "next/link";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  const [visibleElements, setVisibleElements] = useState<Set<string>>(
+    new Set()
+  );
   const [countdown, setCountdown] = useState({
     days: 0,
     hours: 0,
@@ -15,6 +18,27 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
+
+    // Intersection Observer for scroll animations
+    const scrollObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("data-animate-id");
+            if (id) {
+              setVisibleElements((prev) => new Set(prev).add(id));
+            }
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+    );
+
+    // Observe all elements with data-animate-id
+    const timeoutId = setTimeout(() => {
+      const elements = document.querySelectorAll("[data-animate-id]");
+      elements.forEach((el) => scrollObserver.observe(el));
+    }, 100);
 
     const targetDate = new Date("2026-01-09T00:00:00").getTime();
 
@@ -39,7 +63,11 @@ export default function Home() {
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeoutId);
+      scrollObserver.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -116,9 +144,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="w-full min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen">
+    <div className="w-full min-h-screen md:snap-y md:snap-mandatory overflow-y-scroll h-screen">
       {/* front page */}
-      <div className="background-layers-1 h-[80vh] md:min-h-screen snap-start snap-always">
+      <div className="background-layers-1 h-[80vh] md:min-h-screen md:snap-start md:snap-always">
         <div
           className={`w-full h-full relative transition-all duration-1000 ${
             mounted ? "opacity-100" : "opacity-0"
@@ -212,13 +240,20 @@ export default function Home() {
       </div>
 
       {/* theme reveal page */}
-      <div className="background-layers-2 md:min-h-screen text-white snap-start snap-always">
+      <div className="background-layers-2 md:min-h-screen text-white md:snap-start md:snap-always">
         <div
           className={`relative w-full min-h-screen flex flex-col justify-start items-center pt-[13vh] md:pt-0 md:justify-center md:items-center gap-[2vh] md:gap-[3vh] transition-all duration-1000 delay-200 ${
             mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
-          <div className="w-[83vw] h-[45vw] md:w-[45vw] md:h-[25vw] relative">
+          <div
+            data-animate-id="theme-image"
+            className={`w-[83vw] h-[45vw] md:w-[45vw] md:h-[25vw] relative transition-all duration-700 ${
+              visibleElements.has("theme-image")
+                ? "opacity-100 scale-100"
+                : "opacity-0 scale-90"
+            }`}
+          >
             <Image
               src="/images/mobile_ronin.png"
               alt="separator"
@@ -232,7 +267,14 @@ export default function Home() {
               className="object-contain hidden md:block"
             />
           </div>
-          <div className="text-[5vw] w-[85vw] px-[5vw] md:text-[1.4vw] md:w-[40vw] md:px-0 h-auto uppercase text-justify">
+          <div
+            data-animate-id="theme-text"
+            className={`text-[5vw] w-[85vw] px-[5vw] md:text-[1.4vw] md:w-[40vw] md:px-0 h-auto uppercase text-justify transition-all duration-700 delay-200 ${
+              visibleElements.has("theme-text")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
             Beneath the blood-red moon rises a lone warrior, the final spark of
             a legendary era. The drums of fate thunder through forgotten
             temples, awakening the spirit of honor, courage, and unbreakable
@@ -247,7 +289,7 @@ export default function Home() {
       {/* contact us page */}
       <div
         id="contact"
-        className="background-layers-3 md:min-h-screen text-white snap-start snap-always"
+        className="background-layers-3 md:min-h-screen text-white md:snap-start md:snap-always"
       >
         <div
           className={`relative w-full min-h-screen flex flex-col items-center pt-[8vh] md:pt-0 md:justify-center md:items-center md:gap-[3vh] transition-all duration-1000 delay-400 ${
@@ -255,18 +297,38 @@ export default function Home() {
           }`}
         >
           <div className="flex flex-col gap-[2vh] md:gap-[1vh] px-[5vw] md:px-0">
-            <div className="uppercase text-[5vw] md:text-[2.5vw] flex justify-center items-center">
+            <div
+              data-animate-id="contact-title"
+              className={`uppercase text-[5vw] md:text-[2.5vw] flex justify-center items-center transition-all duration-700 ${
+                visibleElements.has("contact-title")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 -translate-y-8"
+              }`}
+            >
               Contact Us
             </div>
             <div className="">
-              <div className="flex justify-center items-center uppercase text-[4vw] md:text-[1.3vw] mt-[-1vh] md:mt-[-1vh] mb-[1vh] md:mb-[-1vh] md:text-[#6E0216]">
+              <div
+                data-animate-id="contact-reach"
+                className={`flex justify-center items-center uppercase text-[4vw] md:text-[1.3vw] mt-[-1vh] md:mt-[-1vh] mb-[1vh] md:mb-[-1vh] md:text-[#6E0216] transition-all duration-700 delay-100 ${
+                  visibleElements.has("contact-reach")
+                    ? "opacity-100 scale-100"
+                    : "opacity-0 scale-90"
+                }`}
+              >
                 Reach us
               </div>
               <div className="grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-[2vh] md:gap-0 place-items-center">
                 {contactData.map((contact, index) => (
                   <div
                     key={index}
-                    className="w-[28vh] flex flex-col text-center md:text-left uppercase text-[3.1vw] md:text-[1.1vw] tracking-wide p-[1vh] md:p-[1vh] md:w-fit"
+                    data-animate-id={`contact-card-${index}`}
+                    className={`w-[28vh] flex flex-col text-center md:text-left uppercase text-[3.1vw] md:text-[1.1vw] tracking-wide p-[1vh] md:p-[1vh] md:w-fit transition-all duration-700 ${
+                      visibleElements.has(`contact-card-${index}`)
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-8"
+                    }`}
+                    style={{ transitionDelay: `${200 + index * 100}ms` }}
                   >
                     <div>{contact.name}</div>
                     <div>{contact.position}</div>
@@ -276,7 +338,14 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="">
+            <div
+              data-animate-id="contact-business"
+              className={`transition-all duration-700 delay-700 ${
+                visibleElements.has("contact-business")
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-95"
+              }`}
+            >
               <div className="flex justify-center items-center uppercase text-[4vw] md:text-[1.3vw] mb-[1vh] md:mb-[-2vh] md:text-[#6E0216]">
                 For business related queries
               </div>
@@ -311,15 +380,35 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="w-[60vw] h-[14vw] bottom-[26vh] md:w-[40vw] md:h-[9vw] absolute md:bottom-[6vh]">
+          <div
+            data-animate-id="contact-logo"
+            className={`w-[60vw] h-[14vw] bottom-[26vh] md:w-[40vw] md:h-[9vw] absolute md:bottom-[6vh] transition-all duration-700 delay-800 ${
+              visibleElements.has("contact-logo")
+                ? "opacity-100 scale-100"
+                : "opacity-0 scale-90"
+            }`}
+          >
+            <Image
+              src="/images/mobile_title.png"
+              alt="elan title"
+              fill
+              className="object-contain md:hidden"
+            />
             <Image
               src="/images/elan_home_title.svg"
               alt="elan title"
               fill
-              className="object-contain"
+              className="object-contain hidden md:block"
             />
           </div>
-          <div className="flex justify-center items-center gap-[5vw] w-[80vw] h-[8vw] bottom-[20vh] md:gap-[2vw] md:w-[30vw] md:h-[3vw] absolute md:bottom-[2vh]">
+          <div
+            data-animate-id="contact-social"
+            className={`flex justify-center items-center gap-[5vw] w-[80vw] h-[8vw] bottom-[20vh] md:gap-[2vw] md:w-[30vw] md:h-[3vw] absolute md:bottom-[2vh] transition-all duration-700 delay-900 ${
+              visibleElements.has("contact-social")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
             <a
               href="https://www.facebook.com/elannvision.iithyderabad/"
               target="_blank"

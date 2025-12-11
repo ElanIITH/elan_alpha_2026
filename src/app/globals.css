@@ -117,7 +117,6 @@ body {
   }
 }
 
-.background-layers-6 {
 .background-layers-5 {
   background-image: url("/images/home_bg_texture.jpg");
   background-size: 120%;
@@ -129,11 +128,11 @@ body {
 /* Responsive adjustments for accommodation background */
 @media (max-width: 1024px) {
   .background-layers-6 {
+    background-image: url("/images/home_bg_texture.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: scroll;
   }
-  transform: scaleY(-1);
 }
 
 .background-layers-6 {
@@ -142,12 +141,12 @@ body {
   background-position: 50% 30%;
   background-repeat: no-repeat;
   background-color: #000;
-  transform: scaleY(-1);
 }
 
 /* Responsive adjustments for FAQ background */
 @media (max-width: 1024px) {
   .background-layers-5 {
+    background-image: url("/images/home_bg_texture.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: scroll;
