@@ -144,9 +144,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="w-full min-h-screen md:snap-y md:snap-mandatory overflow-y-scroll h-screen">
+    <div className="w-full min-h-screen overflow-y-scroll h-screen">
       {/* front page */}
-      <div className="background-layers-1 h-[80vh] md:min-h-screen md:snap-start md:snap-always">
+      <div className="background-layers-1 h-[80vh] md:min-h-screen">
         <div
           className={`w-full h-full relative transition-all duration-1000 ${
             mounted ? "opacity-100" : "opacity-0"
@@ -240,7 +240,7 @@ export default function Home() {
       </div>
 
       {/* theme reveal page */}
-      <div className="background-layers-2 md:min-h-screen text-white md:snap-start md:snap-always">
+      <div className="background-layers-2 md:min-h-screen text-white">
         <div
           className={`relative w-full min-h-screen flex flex-col justify-start items-center pt-[13vh] md:pt-0 md:justify-center md:items-center gap-[2vh] md:gap-[3vh] transition-all duration-1000 delay-200 ${
             mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
@@ -289,7 +289,7 @@ export default function Home() {
       {/* contact us page */}
       <div
         id="contact"
-        className="background-layers-3 md:min-h-screen text-white md:snap-start md:snap-always"
+        className="background-layers-3 md:min-h-screen text-white"
       >
         <div
           className={`relative w-full min-h-screen flex flex-col items-center pt-[8vh] md:pt-0 md:justify-center md:items-center md:gap-[3vh] transition-all duration-1000 delay-400 ${
