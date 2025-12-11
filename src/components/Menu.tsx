@@ -44,7 +44,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
     <>
       {/* Backdrop with blur */}
       <div
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 z-998 ${
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-700 ease-in-out z-998 ${
           isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         onClick={onClose}
@@ -52,7 +52,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
 
       {/* Menu Panel */}
       <div
-        className={`fixed top-0 right-0 h-screen w-full md:w-[35vw] z-999 transition-transform duration-500 ease-out ${
+        className={`fixed top-0 right-0 h-screen w-full md:w-[35vw] z-999 transition-transform duration-700 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
