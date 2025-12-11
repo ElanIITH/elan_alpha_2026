@@ -116,9 +116,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="w-full min-h-screen md:snap-y md:snap-mandatory overflow-y-scroll h-screen">
+    <div className="w-full min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen">
       {/* front page */}
-      <div className="background-layers-1 md:min-h-screen md:snap-start md:snap-always">
+      <div className="background-layers-1 h-[80vh] md:min-h-screen snap-start snap-always">
         <div
           className={`w-full h-full relative transition-all duration-1000 ${
             mounted ? "opacity-100" : "opacity-0"
@@ -183,7 +183,7 @@ export default function Home() {
           </div>
 
           <div
-            className={`w-auto h-auto absolute top-[60vh] right-[-1vw] md:top-[64vh] md:right-0 text-white flex justify-end transition-all duration-1000 delay-700 ${
+            className={`w-auto h-auto absolute top-[68vh] right-[-1vw] md:top-[64vh] md:right-0 text-white flex justify-end transition-all duration-1000 delay-700 ${
               mounted ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
             }`}
           >
@@ -212,21 +212,27 @@ export default function Home() {
       </div>
 
       {/* theme reveal page */}
-      <div className="background-layers-2 min-h-screen text-white md:snap-start md:snap-always">
+      <div className="background-layers-2 md:min-h-screen text-white snap-start snap-always">
         <div
-          className={`relative w-full min-h-screen flex flex-col justify-center items-center md:gap-[3vh] transition-all duration-1000 delay-200 ${
+          className={`relative w-full min-h-screen flex flex-col justify-start items-center pt-[13vh] md:pt-0 md:justify-center md:items-center gap-[2vh] md:gap-[3vh] transition-all duration-1000 delay-200 ${
             mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
-          <div className="w-[80vw] h-[45vw] md:w-[45vw] md:h-[25vw] relative">
+          <div className="w-[83vw] h-[45vw] md:w-[45vw] md:h-[25vw] relative">
+            <Image
+              src="/images/mobile_ronin.png"
+              alt="separator"
+              fill
+              className="object-contain md:hidden"
+            />
             <Image
               src="/images/last_ronin.svg"
               alt="separator"
               fill
-              className="object-contain"
+              className="object-contain hidden md:block"
             />
           </div>
-          <div className="text-[3vw] w-[85vw] px-[5vw] md:text-[1.4vw] md:w-[40vw] md:px-0 h-auto uppercase text-justify">
+          <div className="text-[5vw] w-[85vw] px-[5vw] md:text-[1.4vw] md:w-[40vw] md:px-0 h-auto uppercase text-justify">
             Beneath the blood-red moon rises a lone warrior, the final spark of
             a legendary era. The drums of fate thunder through forgotten
             temples, awakening the spirit of honor, courage, and unbreakable
@@ -241,7 +247,7 @@ export default function Home() {
       {/* contact us page */}
       <div
         id="contact"
-        className="background-layers-3 min-h-screen text-white md:snap-start md:snap-always"
+        className="background-layers-3 min-h-screen text-white snap-start snap-always"
       >
         <div
           className={`relative w-full min-h-screen flex flex-col justify-center items-center md:gap-[3vh] transition-all duration-1000 delay-400 ${
