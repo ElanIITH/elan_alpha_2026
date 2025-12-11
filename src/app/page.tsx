@@ -247,10 +247,10 @@ export default function Home() {
       {/* contact us page */}
       <div
         id="contact"
-        className="background-layers-3 min-h-screen text-white snap-start snap-always"
+        className="background-layers-3 md:min-h-screen text-white snap-start snap-always"
       >
         <div
-          className={`relative w-full min-h-screen flex flex-col justify-center items-center md:gap-[3vh] transition-all duration-1000 delay-400 ${
+          className={`relative w-full min-h-screen flex flex-col items-center pt-[8vh] md:pt-0 md:justify-center md:items-center md:gap-[3vh] transition-all duration-1000 delay-400 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
@@ -259,14 +259,14 @@ export default function Home() {
               Contact Us
             </div>
             <div className="">
-              <div className="flex justify-center items-center uppercase text-[3vw] md:text-[1.3vw] mt-[-1vh] md:mt-[-1vh] mb-[1vh] md:mb-[-1vh] text-[#6E0216]">
+              <div className="flex justify-center items-center uppercase text-[4vw] md:text-[1.3vw] mt-[-1vh] md:mt-[-1vh] mb-[1vh] md:mb-[-1vh] md:text-[#6E0216]">
                 Reach us
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-[2vh] md:gap-0 place-items-center">
+              <div className="grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-[2vh] md:gap-0 place-items-center">
                 {contactData.map((contact, index) => (
                   <div
                     key={index}
-                    className="flex flex-col text-left uppercase text-[2.8vw] md:text-[1.1vw] tracking-wide p-[1vh] md:p-[1vh] w-fit"
+                    className="w-[28vh] flex flex-col text-center md:text-left uppercase text-[3.1vw] md:text-[1.1vw] tracking-wide p-[1vh] md:p-[1vh] md:w-fit"
                   >
                     <div>{contact.name}</div>
                     <div>{contact.position}</div>
@@ -277,7 +277,7 @@ export default function Home() {
               </div>
             </div>
             <div className="">
-              <div className="flex justify-center items-center uppercase text-[3vw] md:text-[1.3vw] mb-[1vh] md:mb-[-2vh] text-[#6E0216]">
+              <div className="flex justify-center items-center uppercase text-[4vw] md:text-[1.3vw] mb-[1vh] md:mb-[-2vh] md:text-[#6E0216]">
                 For business related queries
               </div>
               <div className="flex justify-center items-center gap-[2vw] md:gap-[0.8vw]">
@@ -293,7 +293,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="text-[3.5vw] md:text-[2.5vw] uppercase">
+                <div className="text-[3.7vw] md:text-[2.5vw] uppercase">
                   elan.nvision@sa.iith.ac.in
                 </div>
 
@@ -311,7 +311,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="w-[60vw] h-[14vw] bottom-[12vh] md:w-[40vw] md:h-[9vw] absolute md:bottom-[6vh]">
+          <div className="w-[60vw] h-[14vw] bottom-[26vh] md:w-[40vw] md:h-[9vw] absolute md:bottom-[6vh]">
             <Image
               src="/images/elan_home_title.svg"
               alt="elan title"
@@ -319,7 +319,7 @@ export default function Home() {
               className="object-contain"
             />
           </div>
-          <div className="flex justify-center items-center gap-[5vw] w-[80vw] h-[8vw] bottom-[4vh] md:gap-[2vw] md:w-[30vw] md:h-[3vw] absolute md:bottom-[2vh]">
+          <div className="flex justify-center items-center gap-[5vw] w-[80vw] h-[8vw] bottom-[20vh] md:gap-[2vw] md:w-[30vw] md:h-[3vw] absolute md:bottom-[2vh]">
             <a
               href="https://www.facebook.com/elannvision.iithyderabad/"
               target="_blank"
