@@ -100,10 +100,10 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
   };
 
   return (
-    <div className="fixed z-100 top-0 left-0 right-0 bg-transparent w-screen h-auto flex justify-center items-center gap-8 text-[1.5vw] text-white">
+    <div className="backdrop-blur-sm md:backdrop-blur-none bg-transparent fixed z-100 top-0 left-0 right-0 w-screen h-auto flex justify-between items-center px-[3vw] md:justify-center md:px-0 md:py-0 md:gap-8 md:text-[1.5vw] text-white">
       <Link
         href="/workshop"
-        className={navItemClass("/workshop")}
+        className={`${navItemClass("/workshop")} hidden md:block`}
         style={navItemStyle("/workshop")}
         onMouseEnter={handleHover}
         onMouseLeave={(e) => handleHoverOut(e, "/workshop")}
@@ -111,9 +111,9 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         WORKSHOP
       </Link>
 
-      <div className="flex flex-col">
-        <div className="w-[2vw] h-[0.3vw]"></div>
-        <div className="w-[2vw] h-[2vw] relative">
+      <div className="md:flex md:flex-col hidden">
+        <div className="md:w-[2vw] md:h-[0.3vw]"></div>
+        <div className="md:w-[2vw] md:h-[2vw] relative">
           <Image
             src={smallSpark}
             alt="separator"
@@ -125,7 +125,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
       <Link
         href="/competitions"
-        className={navItemClass("/competitions")}
+        className={`${navItemClass("/competitions")} hidden md:block`}
         style={navItemStyle("/competitions")}
         onMouseEnter={handleHover}
         onMouseLeave={(e) => handleHoverOut(e, "/competitions")}
@@ -133,9 +133,9 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         COMPETITIONS
       </Link>
 
-      <div className="flex flex-col">
-        <div className="w-[3.5vw] h-[1.2vw]"></div>
-        <div className="w-[3.5vw] h-[3.5vw] relative">
+      <div className="md:flex md:flex-col hidden">
+        <div className="md:w-[3.5vw] md:h-[1.2vw]"></div>
+        <div className="md:w-[3.5vw] md:h-[3.5vw] relative">
           <Image
             src={bigSpark}
             alt="separator"
@@ -147,7 +147,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
       {/* logo */}
       <Link href="/">
-        <div className="w-[6vw] h-[6vw] relative">
+        <div className="w-[13vw] h-[13vw] md:w-[6vw] md:h-[6vw] relative">
           <Image
             src="/images/elan_logo_white.svg"
             alt="logo"
@@ -157,9 +157,9 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         </div>
       </Link>
 
-      <div className="flex flex-col">
-        <div className="w-[3.5vw] h-[1.2vw]"></div>
-        <div className="w-[3.5vw] h-[3.5vw] relative">
+      <div className="md:flex md:flex-col hidden">
+        <div className="md:w-[3.5vw] md:h-[1.2vw]"></div>
+        <div className="md:w-[3.5vw] md:h-[3.5vw] relative">
           <Image
             src={bigSpark}
             alt="separator"
@@ -171,7 +171,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
       <Link
         href="/accomodation"
-        className={navItemClass("/accomodation")}
+        className={`${navItemClass("/accomodation")} hidden md:block`}
         style={navItemStyle("/accomodation")}
         onMouseEnter={handleHover}
         onMouseLeave={(e) => handleHoverOut(e, "/accomodation")}
@@ -179,9 +179,9 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         ACCOMMODATION
       </Link>
 
-      <div className="flex flex-col">
-        <div className="w-[2vw] h-[0.3vw]"></div>
-        <div className="w-[2vw] h-[2vw] relative">
+      <div className="md:flex md:flex-col hidden">
+        <div className="md:w-[2vw] md:h-[0.3vw]"></div>
+        <div className="md:w-[2vw] md:h-[2vw] relative">
           <Image
             src={smallSpark}
             alt="separator"
@@ -193,7 +193,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
       <Link
         href="/#contact"
-        className={navItemClass("/#contact")}
+        className={`${navItemClass("/#contact")} hidden md:block`}
         style={navItemStyle("/#contact")}
         onMouseEnter={handleHover}
         onMouseLeave={(e) => handleHoverOut(e, "/#contact")}
@@ -202,8 +202,11 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         CONTACT US
       </Link>
 
-      <div className="w-[2vw] h-[2vw] absolute right-[5vw]">
-        <button className="cursor-pointer" onClick={() => setIsMenuOpen(true)}>
+      <div className="w-[5vw] h-[5vw] md:w-[2vw] md:h-[2vw] relative md:absolute md:right-[5vw]">
+        <button
+          className="cursor-pointer w-full h-full"
+          onClick={() => setIsMenuOpen(true)}
+        >
           <Image
             src="/images/menu_white.svg"
             alt="menu"

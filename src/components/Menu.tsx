@@ -44,7 +44,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
     <>
       {/* Backdrop with blur */}
       <div
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 z-998 ${
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-700 ease-in-out z-998 ${
           isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         onClick={onClose}
@@ -52,7 +52,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
 
       {/* Menu Panel */}
       <div
-        className={`fixed top-0 right-0 h-screen w-[35vw] z-999 transition-transform duration-500 ease-out ${
+        className={`fixed top-0 right-0 h-screen w-full md:w-[35vw] z-999 transition-transform duration-700 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -66,38 +66,38 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
           />
 
           {/* Menu Content */}
-          <div className="relative z-10 h-full flex flex-col text-white pt-[8vh]">
+          <div className="relative z-10 h-full flex flex-col text-white md:pt-[8vh]">
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-[4vh] left-[2vw] text-white hover:text-[#6E0216] transition-colors text-[2vw] cursor-pointer"
+              className="absolute top-[4vh] left-[5vw] md:top-[4vh] md:left-[2vw] text-white hover:text-[#6E0216] transition-colors text-[9vw] md:text-[2vw] cursor-pointer"
               aria-label="Close menu"
             >
               ✕
             </button>
 
             {/* Menu Items */}
-            <div className="noxa-gothic flex-1 flex flex-col justify-center px-[4vw] gap-[1.5vh]">
+            <div className="noxa-gothic flex-1 flex flex-col justify-center px-[10vw] gap-[2vh] md:px-[4vw] md:gap-[1.5vh] pb-[3vh] md:pb-0">
               {menuItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
                   onClick={onClose}
-                  className="text-[1.6vw] uppercase tracking-wide hover:text-[#6E0216] transition-colors duration-300"
+                  className="text-[4.5vw] md:text-[1.6vw] uppercase tracking-wide hover:text-[#6E0216] transition-colors duration-300"
                 >
                   {item.label}
                 </Link>
               ))}
 
-              <div className="h-px bg-white/30 my-[1.5vh]" />
+              <div className="h-px bg-white/30 my-[1.5vh] md:my-[1.5vh]" />
 
               {/* External Links with Logos */}
-              <div className="flex justify-center items-center gap-[2vw]">
+              <div className="flex justify-center items-center gap-[5vw] md:gap-[2vw]">
                 <a
                   href="https://nvisionx.elan.org.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative w-[8vw] h-[3vw] hover:opacity-70 transition-opacity"
+                  className="relative w-[22vw] h-[8vw] md:w-[8vw] md:h-[3vw] hover:opacity-70 transition-opacity"
                 >
                   <Image
                     src="/images/nvisionx_logo.svg"
@@ -110,7 +110,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
                   href="https://quest.elan.org.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative w-[8vw] h-[3vw] hover:opacity-70 transition-opacity"
+                  className="relative w-[22vw] h-[8vw] md:w-[8vw] md:h-[3vw] hover:opacity-70 transition-opacity"
                 >
                   <Image
                     src="/images/quest_logo.svg"
@@ -122,7 +122,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
               </div>
 
               {/* Social Links */}
-              <div className="flex justify-center items-center gap-[1.5vw] mt-[2vh]">
+              <div className="flex justify-center items-center gap-[5vw] md:gap-[1.5vw] md:mt-[2vh]">
                 <a
                   href="https://www.facebook.com/elannvision.iithyderabad/"
                   target="_blank"
@@ -131,7 +131,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
                   style={{ color: "#6E0216" }}
                 >
                   <svg
-                    style={{ width: "1.5vw", height: "1.5vw" }}
+                    className="w-[4.5vw] h-[4.5vw] md:w-[1.5vw] md:h-[1.5vw]"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >
@@ -147,7 +147,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
                   style={{ color: "#6E0216" }}
                 >
                   <svg
-                    style={{ width: "1.5vw", height: "1.5vw" }}
+                    className="w-[4.5vw] h-[4.5vw] md:w-[1.5vw] md:h-[1.5vw]"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -167,7 +167,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
                   style={{ color: "#6E0216" }}
                 >
                   <svg
-                    style={{ width: "1.5vw", height: "1.5vw" }}
+                    className="w-[4.5vw] h-[4.5vw] md:w-[1.5vw] md:h-[1.5vw]"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >
@@ -183,7 +183,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
                   style={{ color: "#6E0216" }}
                 >
                   <svg
-                    style={{ width: "1.5vw", height: "1.5vw" }}
+                    className="w-[4.5vw] h-[4.5vw] md:w-[1.5vw] md:h-[1.5vw]"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >
@@ -199,7 +199,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
                   style={{ color: "#6E0216" }}
                 >
                   <svg
-                    style={{ width: "1.5vw", height: "1.5vw" }}
+                    className="w-[4.5vw] h-[4.5vw] md:w-[1.5vw] md:h-[1.5vw]"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >

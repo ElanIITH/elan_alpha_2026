@@ -6,10 +6,43 @@ import Link from "next/link";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  const [countdown, setCountdown] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
     setMounted(true);
 
+    const targetDate = new Date("2026-01-09T00:00:00").getTime();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance > 0) {
+        setCountdown({
+          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          ),
+          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((distance % (1000 * 60)) / 1000),
+        });
+      } else {
+        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     const sections = [
       document.querySelector(".background-layers-1"),
       document.querySelector(".background-layers-2"),
@@ -85,55 +118,88 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen">
       {/* front page */}
-      <div className="background-layers-1 min-h-screen snap-start snap-always">
+      <div className="background-layers-1 h-[80vh] md:min-h-screen snap-start snap-always">
         <div
           className={`w-full h-full relative transition-all duration-1000 ${
             mounted ? "opacity-100" : "opacity-0"
           }`}
         >
           <div
-            className={`w-[55vw] h-[10vw] absolute top-[76vh] left-[2vw] transition-all duration-1000 delay-300 ${
+            className={`w-[80vw] h-[16vw] top-[8vh] left-[3vw] md:w-[55vw] md:h-[10vw] absolute md:top-[76vh] md:left-[2vw] md:translate-x-0 transition-all duration-1000 delay-300 ${
               mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
           >
             <Image
+              src="/images/mobile_title.png"
+              alt="elan title"
+              fill
+              className="object-contain md:hidden"
+            />
+            <Image
               src="/images/elan_home_title.svg"
               alt="elan title"
               fill
-              className="object-contain"
+              className="object-contain hidden md:block"
             />
           </div>
           <div
-            className={`pl-[2vw] w-[42vw] h-auto absolute top-[45vh] left-[2vw] text-white flex flex-col items-end transition-all duration-1000 delay-500 ${
+            className={`relative w-[80vw] top-[17vh] left-[3vw] px-[1vw] text-justify md:hidden text-white transition-all duration-1000 delay-400 ${
+              mounted ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <div className="text-[3.7vw] uppercase tracking-wide">
+              IIT Hyderabad's annual techno-cultural fest celebrating
+              innovation, performances, and competitions.
+            </div>
+          </div>
+          <div
+            className={`pl-[1vw] pr-[5vw] w-[90vw] top-[23vh] left-[3vw] items-start md:pl-[2vw] md:w-[42vw] h-auto absolute md:top-[45vh] md:left-[2vw] text-white flex flex-col md:items-end transition-all duration-1000 delay-500 ${
               mounted ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
             }`}
           >
             <Link href={"#"}>
-              <div className="text-[3.5vw] hover:text-[#AE0021] transition-colors">
+              <div className="flex items-center gap-[2vw] text-[9vw] md:text-center md:text-[3.5vw] hover:text-[#AE0021] transition-colors">
                 REGISTER NOW
+                <svg
+                  className="w-[6vw] h-[6vw] md:hidden"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
               </div>
             </Link>
-            <div className="text-[1.4vw] uppercase text-justify tracking-wide">
-              Elan&nVision, IIT Hyderabad's annual techno-cultural fest,
-              celebrates the stories, music, memories, and innovation that bring
-              us together. Over three vibrant days, it showcases the best of
-              student life through thrilling competitions, dynamic performances,
-              and high-energy concerts.
+            <div className="text-[5vw] text-left md:text-[1.4vw] uppercase md:text-justify tracking-wide">
+              <span className="hidden md:inline">
+                Elan&nVision, IIT Hyderabad's annual techno-cultural fest,
+                celebrates the stories, music, memories, and innovation that
+                bring us together. Over three vibrant days, it showcases the
+                best of student life through thrilling competitions, dynamic
+                performances, and high-energy concerts.
+              </span>
             </div>
           </div>
 
           <div
-            className={`w-auto h-auto absolute top-[64vh] right-0 text-white flex justify-end transition-all duration-1000 delay-700 ${
+            className={`w-auto h-auto absolute top-[68vh] right-[-1vw] md:top-[64vh] md:right-0 text-white flex justify-end transition-all duration-1000 delay-700 ${
               mounted ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
             }`}
           >
             <div className="flex flex-col justify-end">
-              <div className="text-[5.5vw] text-right">JAN 9-11</div>
-              <div className="uppercase text-[1.4vw] tracking-wide">
-                Countdown : 20 days 23:59:59
+              <div className="text-[17vw] md:text-[5.5vw] text-center">
+                JAN 9-11
+              </div>
+              <div className="flex justify-center items-center md:gap-[0.3vw] uppercase text-[4.5vw] md:text-[1.4vw] tracking-wide">
+                <div className="">Countdown: </div>
+                <div className="w-[28vw] md:w-[8vw] text-right">
+                  {countdown.days}d {countdown.hours}h {countdown.minutes}m{" "}
+                  {countdown.seconds}s
+                </div>
               </div>
             </div>
-            <div className="w-[10vw] h-[15vw] relative mb-[1vh]">
+            <div className="w-[15vw] h-[32vw] md:w-[10vw] md:h-[15vw] relative mb-[1vh] md:mb-[1vh]">
               <Image
                 src="/images/jp_ronin.svg"
                 alt="jp text"
@@ -146,21 +212,27 @@ export default function Home() {
       </div>
 
       {/* theme reveal page */}
-      <div className="background-layers-2 min-h-screen text-white snap-start snap-always">
+      <div className="background-layers-2 md:min-h-screen text-white snap-start snap-always">
         <div
-          className={`relative w-full min-h-screen flex flex-col justify-center items-center gap-[3vh] transition-all duration-1000 delay-200 ${
+          className={`relative w-full min-h-screen flex flex-col justify-start items-center pt-[13vh] md:pt-0 md:justify-center md:items-center gap-[2vh] md:gap-[3vh] transition-all duration-1000 delay-200 ${
             mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
-          <div className="w-[45vw] h-[25vw] relative">
+          <div className="w-[83vw] h-[45vw] md:w-[45vw] md:h-[25vw] relative">
+            <Image
+              src="/images/mobile_ronin.png"
+              alt="separator"
+              fill
+              className="object-contain md:hidden"
+            />
             <Image
               src="/images/last_ronin.svg"
               alt="separator"
               fill
-              className="object-contain"
+              className="object-contain hidden md:block"
             />
           </div>
-          <div className="text-[1.4vw] w-[40vw] h-auto uppercase text-justify">
+          <div className="text-[5vw] w-[85vw] px-[5vw] md:text-[1.4vw] md:w-[40vw] md:px-0 h-auto uppercase text-justify">
             Beneath the blood-red moon rises a lone warrior, the final spark of
             a legendary era. The drums of fate thunder through forgotten
             temples, awakening the spirit of honor, courage, and unbreakable
@@ -175,26 +247,26 @@ export default function Home() {
       {/* contact us page */}
       <div
         id="contact"
-        className="background-layers-3 min-h-screen text-white snap-start snap-always"
+        className="background-layers-3 md:min-h-screen text-white snap-start snap-always"
       >
         <div
-          className={`relative w-full min-h-screen flex flex-col justify-center items-center gap-[3vh] transition-all duration-1000 delay-400 ${
+          className={`relative w-full min-h-screen flex flex-col items-center pt-[8vh] md:pt-0 md:justify-center md:items-center md:gap-[3vh] transition-all duration-1000 delay-400 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="flex flex-col gap-[1vh]">
-            <div className="uppercase text-[2.5vw] flex justify-center items-center">
+          <div className="flex flex-col gap-[2vh] md:gap-[1vh] px-[5vw] md:px-0">
+            <div className="uppercase text-[5vw] md:text-[2.5vw] flex justify-center items-center">
               Contact Us
             </div>
             <div className="">
-              <div className="flex justify-center items-center uppercase text-[1.3vw] mt-[-1vh] mb-[-1vh] text-[#6E0216]">
+              <div className="flex justify-center items-center uppercase text-[4vw] md:text-[1.3vw] mt-[-1vh] md:mt-[-1vh] mb-[1vh] md:mb-[-1vh] md:text-[#6E0216]">
                 Reach us
               </div>
-              <div className="grid grid-cols-3 grid-rows-2 place-items-center">
+              <div className="grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-[2vh] md:gap-0 place-items-center">
                 {contactData.map((contact, index) => (
                   <div
                     key={index}
-                    className="flex flex-col text-left uppercase text-[1.1vw] tracking-wide p-[1vh] w-fit"
+                    className="w-[28vh] flex flex-col text-center md:text-left uppercase text-[3.1vw] md:text-[1.1vw] tracking-wide p-[1vh] md:p-[1vh] md:w-fit"
                   >
                     <div>{contact.name}</div>
                     <div>{contact.position}</div>
@@ -205,13 +277,13 @@ export default function Home() {
               </div>
             </div>
             <div className="">
-              <div className="flex justify-center items-center uppercase text-[1.3vw] mb-[-2vh] text-[#6E0216]">
+              <div className="flex justify-center items-center uppercase text-[4vw] md:text-[1.3vw] mb-[1vh] md:mb-[-2vh] md:text-[#6E0216]">
                 For business related queries
               </div>
-              <div className="flex justify-center items-center gap-[0.8vw]">
+              <div className="flex justify-center items-center gap-[2vw] md:gap-[0.8vw]">
                 <div className="flex flex-col">
-                  <div className="w-[3.5vw] h-[0.9vw]"></div>
-                  <div className="w-[3.5vw] h-[3.5vw] relative">
+                  <div className="w-[5vw] h-[1.5vw] md:w-[3.5vw] md:h-[0.9vw]"></div>
+                  <div className="w-[5vw] h-[5vw] md:w-[3.5vw] md:h-[3.5vw] relative">
                     <Image
                       src="/images/left_spark_big_red.svg"
                       alt="separator"
@@ -221,13 +293,13 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="text-[2.5vw] uppercase">
+                <div className="text-[3.7vw] md:text-[2.5vw] uppercase">
                   elan.nvision@sa.iith.ac.in
                 </div>
 
                 <div className="flex flex-col">
-                  <div className="w-[3.5vw] h-[0.9vw]"></div>
-                  <div className="w-[3.5vw] h-[3.5vw] relative">
+                  <div className="w-[5vw] h-[1.5vw] md:w-[3.5vw] md:h-[0.9vw]"></div>
+                  <div className="w-[5vw] h-[5vw] md:w-[3.5vw] md:h-[3.5vw] relative">
                     <Image
                       src="/images/left_spark_big_red.svg"
                       alt="separator"
@@ -239,7 +311,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="w-[40vw] h-[9vw] absolute bottom-[6vh]">
+          <div className="w-[60vw] h-[14vw] bottom-[26vh] md:w-[40vw] md:h-[9vw] absolute md:bottom-[6vh]">
             <Image
               src="/images/elan_home_title.svg"
               alt="elan title"
@@ -247,7 +319,7 @@ export default function Home() {
               className="object-contain"
             />
           </div>
-          <div className="flex justify-center items-center gap-[2vw] w-[30vw] h-[3vw] absolute bottom-[2vh]">
+          <div className="flex justify-center items-center gap-[5vw] w-[80vw] h-[8vw] bottom-[20vh] md:gap-[2vw] md:w-[30vw] md:h-[3vw] absolute md:bottom-[2vh]">
             <a
               href="https://www.facebook.com/elannvision.iithyderabad/"
               target="_blank"
@@ -256,7 +328,7 @@ export default function Home() {
               style={{ color: "#6E0216" }}
             >
               <svg
-                style={{ width: "2vw", height: "2vw" }}
+                className="w-[5vw] h-[5vw] md:w-[2vw] md:h-[2vw]"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
@@ -272,7 +344,7 @@ export default function Home() {
               style={{ color: "#6E0216" }}
             >
               <svg
-                style={{ width: "2vw", height: "2vw" }}
+                className="w-[5vw] h-[5vw] md:w-[2vw] md:h-[2vw]"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -292,7 +364,7 @@ export default function Home() {
               style={{ color: "#6E0216" }}
             >
               <svg
-                style={{ width: "2vw", height: "2vw" }}
+                className="w-[5vw] h-[5vw] md:w-[2vw] md:h-[2vw]"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
@@ -308,7 +380,7 @@ export default function Home() {
               style={{ color: "#6E0216" }}
             >
               <svg
-                style={{ width: "2vw", height: "2vw" }}
+                className="w-[5vw] h-[5vw] md:w-[2vw] md:h-[2vw]"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
@@ -324,7 +396,7 @@ export default function Home() {
               style={{ color: "#6E0216" }}
             >
               <svg
-                style={{ width: "2vw", height: "2vw" }}
+                className="w-[5vw] h-[5vw] md:w-[2vw] md:h-[2vw]"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
