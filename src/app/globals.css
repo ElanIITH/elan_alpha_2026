@@ -95,6 +95,16 @@ body {
   background-size: 120%;
   background-position: 50% 30%;
   background-repeat: no-repeat;
+  background-color: #000;
+}
+
+/* Responsive adjustments for accommodation background */
+@media (max-width: 1024px) {
+  .background-layers-6 {
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+  }
 }
 
 .background-layers-5 {
@@ -102,7 +112,17 @@ body {
   background-size: 120%;
   background-position: 50% 30%;
   background-repeat: no-repeat;
+  background-color: #000;
   transform: scaleY(-1);
+}
+
+/* Responsive adjustments for FAQ background */
+@media (max-width: 1024px) {
+  .background-layers-5 {
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+  }
 }
 
 .scrollbar-hide {
