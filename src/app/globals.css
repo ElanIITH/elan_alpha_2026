@@ -57,7 +57,7 @@ body {
 
 @media (max-width: 768px) {
   .background-layers-1 {
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
       url("/images/home_bg.png") center top / auto 90vh no-repeat,
       url("/images/front_page.jpg") center top / auto 90vh no-repeat;
   }

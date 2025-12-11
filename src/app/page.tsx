@@ -164,7 +164,7 @@ export default function Home() {
               className="object-contain md:hidden"
             />
             <Image
-              src="/images/elan_home_title.svg"
+              src="/images/mobile_title.png"
               alt="elan title"
               fill
               className="object-contain hidden md:block"
@@ -175,7 +175,7 @@ export default function Home() {
               mounted ? "opacity-100" : "opacity-0"
             }`}
           >
-            <div className="text-[3.7vw] uppercase tracking-wide">
+            <div className="leading-tight text-[3.7vw] uppercase tracking-wide">
               IIT Hyderabad's annual techno-cultural fest celebrating
               innovation, performances, and competitions.
             </div>
@@ -199,7 +199,7 @@ export default function Home() {
                 </svg>
               </div>
             </Link>
-            <div className="text-[5vw] text-left md:text-[1.4vw] uppercase md:text-justify tracking-wide">
+            <div className="leading-tight text-[5vw] text-left md:text-[1.4vw] uppercase md:text-justify tracking-wide">
               <span className="hidden md:inline">
                 Elan&nVision, IIT Hyderabad's annual techno-cultural fest,
                 celebrates the stories, music, memories, and innovation that
@@ -261,7 +261,7 @@ export default function Home() {
               className="object-contain md:hidden"
             />
             <Image
-              src="/images/last_ronin.svg"
+              src="/images/mobile_ronin.png"
               alt="separator"
               fill
               className="object-contain hidden md:block"
@@ -269,7 +269,7 @@ export default function Home() {
           </div>
           <div
             data-animate-id="theme-text"
-            className={`text-[5vw] w-[85vw] px-[5vw] md:text-[1.4vw] md:w-[40vw] md:px-0 h-auto uppercase text-justify transition-all duration-700 delay-200 ${
+            className={`leading-tight text-[5vw] w-[85vw] px-[5vw] md:text-[1.4vw] md:w-[40vw] md:px-0 h-auto uppercase text-justify transition-all duration-700 delay-200 ${
               visibleElements.has("theme-text")
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
@@ -318,7 +318,7 @@ export default function Home() {
               >
                 Reach us
               </div>
-              <div className="grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-[2vh] md:gap-0 place-items-center">
+              <div className="leading-tight grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-[2vh] md:gap-0 place-items-center">
                 {contactData.map((contact, index) => (
                   <div
                     key={index}
@@ -395,7 +395,7 @@ export default function Home() {
               className="object-contain md:hidden"
             />
             <Image
-              src="/images/elan_home_title.svg"
+              src="/images/mobile_title.png"
               alt="elan title"
               fill
               className="object-contain hidden md:block"
