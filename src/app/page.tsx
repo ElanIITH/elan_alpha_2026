@@ -211,12 +211,12 @@ export default function Home() {
           </div>
 
           <div
-            className={`w-auto h-auto absolute top-[68vh] right-[-1vw] md:top-[64vh] md:right-0 text-white flex justify-end transition-all duration-1000 delay-700 ${
+            className={`mr-[2.5vw] w-auto h-auto absolute top-[68vh] right-[-1vw] md:top-[64vh] md:right-0 text-white flex justify-end transition-all duration-1000 delay-700 ${
               mounted ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
             }`}
           >
             <div className="flex flex-col justify-end">
-              <div className="text-[17vw] md:text-[5.5vw] text-center">
+              <div className="leading-none text-[17vw] md:text-[5.5vw] text-center">
                 JAN 9-11
               </div>
               <div className="flex justify-center items-center md:gap-[0.3vw] uppercase text-[4.5vw] md:text-[1.4vw] tracking-wide">
@@ -227,13 +227,11 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="w-[15vw] h-[32vw] md:w-[10vw] md:h-[15vw] relative mb-[1vh] md:mb-[1vh]">
-              <Image
-                src="/images/jp_ronin.svg"
-                alt="jp text"
-                fill
-                className="object-contain"
-              />
+            <div
+              className="w-[4vh] h-[32vw] md:w-[4vw] md:h-[15vw] relative mb-[1vh] md:mb-[1vh] text-[2.8vh] md:text-[2.7vw]"
+              style={{ writingMode: "vertical-rl" }}
+            >
+              最後の浪人.
             </div>
           </div>
         </div>
