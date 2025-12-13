@@ -218,7 +218,7 @@ export default function Accommodation() {
             }`}
           >
             <Image
-              src="/images/accommodation_campus_map.svg"
+              src="/images/MAP.svg"
               alt="Campus Map"
               fill
               style={{ objectFit: "contain" }}
@@ -231,7 +231,7 @@ export default function Accommodation() {
                 style={{ objectFit: "contain" }}
               ></Image>
             </div>
-            <div className="absolute bottom-0 right-0 w-[45%] h-[35%] flex flex-col justify-evenly">
+            {/* <div className="absolute bottom-0 right-0 w-[45%] h-[35%] flex flex-col justify-evenly">
               <div className="w-[45%] h-[50%] self-end relative">
                 <Image
                   src="/images/accommodation_map_legend.png"
@@ -248,7 +248,7 @@ export default function Accommodation() {
                   IITH MAP
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -303,7 +303,7 @@ export default function Accommodation() {
               }`}
             >
               <Image
-                src="/images/accommodation_campus_map.svg"
+                src="/images/MAP.svg"
                 alt="Campus Map"
                 fill
                 style={{ objectFit: "contain" }}
@@ -316,7 +316,7 @@ export default function Accommodation() {
                   style={{ objectFit: "contain" }}
                 />
               </div>
-              <div className="absolute bottom-2 right-2 flex flex-col items-end gap-2">
+              {/* <div className="absolute bottom-2 right-2 flex flex-col items-end gap-2">
                 <div className="w-20 h-20 sm:w-24 sm:h-24 relative">
                   <Image
                     src="/images/accommodation_map_legend.png"
@@ -333,7 +333,7 @@ export default function Accommodation() {
                     IITH MAP
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Information Sections */}
