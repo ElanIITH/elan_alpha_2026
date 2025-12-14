@@ -409,14 +409,7 @@ export default function Home() {
               className="object-contain hidden md:block"
             />
           </div>
-          <div
-            data-animate-id="contact-social"
-            className={`flex justify-center items-center gap-[5vw] w-[80vw] h-[8vw] md:gap-[2vw] md:w-[30vw] md:h-[3vw] transition-all duration-700 delay-900 ${
-              visibleElements.has("contact-social")
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className="flex justify-center items-center gap-[5vw] w-[80vw] h-[8vw] md:gap-[2vw] md:w-[30vw] md:h-[3vw]">
             <a
               href="https://www.facebook.com/elannvision.iithyderabad/"
               target="_blank"

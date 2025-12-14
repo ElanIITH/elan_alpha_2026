@@ -24,14 +24,14 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
 
   const menuItems = [
     { label: "HOME", href: "/" },
-    { label: "EVENTS", href: "/events" },
+    // { label: "EVENTS", href: "/events" },
     { label: "COMPETITIONS", href: "/competitions" },
-    { label: "WORKSHOPS", href: "/workshop" },
+    // { label: "WORKSHOPS", href: "/workshop" },
     { label: "ACCOMMODATION", href: "/accomodation" },
     { label: "IITH MAP", href: "/accomodation" },
-    { label: "MERCHANDISE", href: "/merchandise" },
-    { label: "PARTNERS", href: "/partners" },
-    { label: "TEAM", href: "/team" },
+    { label: "MERCHANDISE", href: "/Merchandise" },
+    // { label: "PARTNERS", href: "/partners" },
+    // { label: "TEAM", href: "/team" },
     { label: "CONTACT US", href: "/contact" },
   ];
 
