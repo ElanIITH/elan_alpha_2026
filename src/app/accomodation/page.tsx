@@ -130,39 +130,6 @@ export default function Accommodation() {
               </p>
             </div>
             <div
-              id="accomodation-top-left-para2"
-              data-animate-id="acc-para2"
-              className={`flex flex-col transition-all duration-700 delay-100 ${
-                visibleElements.has("acc-para2")
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-            >
-              <p className="text-[2.25vw] tracking-[0.05em]">CHARGES</p>
-              <p className="text-[1.1vw]/5.5">
-                The workshops will take place over the weekend, so we are
-                offering accommodation for one night at Rs. 999.00 (Check-in at
-                5pm Saturday, check-out at 9:30am Sunday).
-              </p>
-            </div>
-            <div
-              id="accomodation-top-left-para3"
-              data-animate-id="acc-para3"
-              className={`flex flex-col transition-all duration-700 delay-200 ${
-                visibleElements.has("acc-para3")
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-            >
-              <p className="text-[2.25vw] tracking-[0.05em]">Identification</p>
-              <p className="text-[1.1vw]/5.5">
-                You will be required to produce a valid government ID at the
-                campus gate, failure to do so will result in denial of entry to
-                the campus. (So please make sure to carry a government ID with
-                you.)
-              </p>
-            </div>
-            <div
               id="accomodation-top-left-para4"
               data-animate-id="acc-para4"
               className={`flex flex-col transition-all duration-700 delay-300 ${
@@ -180,8 +147,40 @@ export default function Accommodation() {
                 main gate by either bus or auto.
               </p>
             </div>
-            <div
-              data-animate-id="acc-button"
+            <div              id="accomodation-top-left-para5"
+              data-animate-id="acc-para5"
+              className={`flex flex-col transition-all duration-700 delay-300 ${
+                visibleElements.has("acc-para5")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              <p className="text-[2.25vw] tracking-[0.05em]">GUIDELINES</p>
+              <p className="text-[1.1vw]/5.5 mb-[1vh]">
+                Check out our in-depth Accomodation and Transportation guide by clicking the respective links below:
+              </p>
+              <div className="flex flex-col gap-[0.75vh] text-[1.1vw]/5.5">
+                <a
+                  href="https://docs.google.com/document/d/1J7M43LG2v8EXs4FNRG4KhaVuMHmC1DwHDOf5b74jMDY/edit?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 hover:underline transition-all duration-300"
+                >
+                  <span>Elan & nVision 2026 Accommodation Guide</span>
+                  <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+                </a>
+                <a
+                  href="https://docs.google.com/document/d/1zq0RIVnx6413KMZ2HaP6mKqcrmB_XI8WqnKsC0F8ZRM/edit?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 hover:underline transition-all duration-300"
+                >
+                  <span>Elan & nVision 2026 Transportation Guide</span>
+                  <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+                </a>
+              </div>
+            </div>
+            <div              data-animate-id="acc-button"
               className={`w-full flex justify-center mt-[5vh] transition-all duration-700 delay-400 ${
                 visibleElements.has("acc-button")
                   ? "opacity-100 scale-100"
@@ -338,45 +337,6 @@ export default function Accommodation() {
 
             {/* Information Sections */}
             <div className="space-y-6 sm:space-y-8">
-              {/* Charges */}
-              <div
-                data-animate-id="mob-charges"
-                className={`flex flex-col transition-all duration-700 delay-300 ${
-                  visibleElements.has("mob-charges")
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 -translate-x-8"
-                }`}
-              >
-                <h2 className="text-white text-2xl sm:text-3xl md:text-4xl uppercase font-semibold mb-2 sm:mb-3">
-                  CHARGES
-                </h2>
-                <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed">
-                  The workshops will take place over the weekend, so we are
-                  offering accommodation for one night at Rs. 999.00 (Check-in
-                  at 5pm Saturday, check-out at 9:30am Sunday).
-                </p>
-              </div>
-
-              {/* Identification */}
-              <div
-                data-animate-id="mob-id"
-                className={`flex flex-col transition-all duration-700 delay-100 ${
-                  visibleElements.has("mob-id")
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 -translate-x-8"
-                }`}
-              >
-                <h2 className="text-white text-2xl sm:text-3xl md:text-4xl uppercase font-semibold mb-2 sm:mb-3">
-                  IDENTIFICATION
-                </h2>
-                <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed">
-                  You will be required to produce a valid government ID at the
-                  campus gate, failure to do so will result in denial of entry
-                  to the campus. (So please make sure to carry a government ID
-                  with you.)
-                </p>
-              </div>
-
               {/* Getting to IITH */}
               <div
                 data-animate-id="mob-getting"
@@ -396,6 +356,43 @@ export default function Accommodation() {
                   Patancheru by either bus or train. From Patancheru, one can
                   reach the IIT main gate by either bus or auto.
                 </p>
+              </div>
+
+              {/* Guidelines */}
+              <div
+                data-animate-id="mob-guidelines"
+                className={`flex flex-col transition-all duration-700 delay-300 ${
+                  visibleElements.has("mob-guidelines")
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 -translate-x-8"
+                }`}
+              >
+                <h2 className="text-white text-2xl sm:text-3xl md:text-4xl uppercase font-semibold mb-2 sm:mb-3">
+                  GUIDELINES
+                </h2>
+                <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed mb-3">
+                  Check out our in-depth Accomodation and Transportation guide by clicking the respective links below:
+                </p>
+                <div className="flex flex-col gap-3">
+                  <a
+                    href="https://docs.google.com/document/d/1J7M43LG2v8EXs4FNRG4KhaVuMHmC1DwHDOf5b74jMDY/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 text-white text-sm sm:text-base md:text-lg leading-relaxed hover:underline transition-all duration-300"
+                  >
+                    <span>Elan & nVision 2026 Accommodation Guide</span>
+                    <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+                  </a>
+                  <a
+                    href="https://docs.google.com/document/d/1zq0RIVnx6413KMZ2HaP6mKqcrmB_XI8WqnKsC0F8ZRM/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 text-white text-sm sm:text-base md:text-lg leading-relaxed hover:underline transition-all duration-300"
+                  >
+                    <span>Elan & nVision 2026 Transportation Guide</span>
+                    <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+                  </a>
+                </div>
               </div>
             </div>
 
