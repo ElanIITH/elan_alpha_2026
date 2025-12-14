@@ -77,7 +77,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
             </button>
 
             {/* Menu Items */}
-            <div className="noxa-gothic flex-1 flex flex-col justify-center px-[10vw] gap-[2vh] md:px-[4vw] md:gap-[1.5vh] pb-[3vh] md:pb-0">
+            <div className="noxa-gothic flex-1 flex flex-col justify-center px-[10vw] gap-[4vh] md:px-[4vw] md:gap-[4.5vh] pb-[3vh] md:pb-0">
               {menuItems.map((item) => (
                 <Link
                   key={item.label}
