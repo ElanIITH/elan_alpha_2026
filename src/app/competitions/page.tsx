@@ -405,16 +405,22 @@ export default function Competitions() {
     const handleScroll = () => {
       if (isScrollingRef.current) return;
 
-      const scrollTop = carousel.scrollTop;
-      const cardHeight = cardRefs.current[0]?.offsetHeight || 0;
-      if (cardHeight === 0) return;
+      const isMobile = window.innerWidth < 768;
+      const scrollPos = isMobile ? carousel.scrollLeft : carousel.scrollTop;
+      const cardSize = isMobile
+        ? cardRefs.current[0]?.offsetWidth || 0
+        : cardRefs.current[0]?.offsetHeight || 0;
+
+      if (cardSize === 0) return;
 
       const gap = 24; // 1.5rem = 24px
-      const totalCardHeight = cardHeight + gap;
-      const containerHeight = carousel.clientHeight;
-      const offset = (containerHeight - cardHeight) / 2;
+      const totalCardSize = cardSize + gap;
+      const containerSize = isMobile
+        ? carousel.clientWidth
+        : carousel.clientHeight;
+      const offset = (containerSize - cardSize) / 2;
 
-      const sectionHeight = currentCompetitions.length * totalCardHeight;
+      const sectionSize = currentCompetitions.length * totalCardSize;
 
       // Clear existing timeout
       if (scrollTimeoutRef.current) {
@@ -427,23 +433,32 @@ export default function Competitions() {
 
       // Snap to nearest card after scrolling stops
       scrollTimeoutRef.current = setTimeout(() => {
-        const adjustedScrollTop = scrollTop - offset;
-        const targetIndex = Math.round(adjustedScrollTop / totalCardHeight);
-        const snapPosition = targetIndex * totalCardHeight + offset;
+        const adjustedScrollPos = scrollPos - offset;
+        const targetIndex = Math.round(adjustedScrollPos / totalCardSize);
+        const snapPosition = targetIndex * totalCardSize + offset;
 
-        if (Math.abs(scrollTop - snapPosition) > 5) {
-          carousel.scrollTo({
-            top: snapPosition,
-            behavior: "smooth",
-          });
+        if (Math.abs(scrollPos - snapPosition) > 5) {
+          if (isMobile) {
+            carousel.scrollTo({
+              left: snapPosition,
+              behavior: "smooth",
+            });
+          } else {
+            carousel.scrollTo({
+              top: snapPosition,
+              behavior: "smooth",
+            });
+          }
         }
 
         // Update active index after snap completes
         indexUpdateTimeout = setTimeout(() => {
-          const finalScrollTop = carousel.scrollTop;
-          const finalAdjustedScrollTop = finalScrollTop - offset;
+          const finalScrollPos = isMobile
+            ? carousel.scrollLeft
+            : carousel.scrollTop;
+          const finalAdjustedScrollPos = finalScrollPos - offset;
           const newIndex =
-            Math.round(finalAdjustedScrollTop / totalCardHeight) %
+            Math.round(finalAdjustedScrollPos / totalCardSize) %
             currentCompetitions.length;
           const normalizedIndex =
             ((newIndex % currentCompetitions.length) +
@@ -456,18 +471,24 @@ export default function Competitions() {
         }, 100);
       }, 150);
 
-      // Loop to middle section when reaching top or bottom
-      if (scrollTop < sectionHeight * 0.5) {
-        // Near top - jump to middle section
+      // Loop to middle section when reaching top/bottom or left/right
+      if (scrollPos < sectionSize * 0.5) {
         isScrollingRef.current = true;
-        carousel.scrollTop = scrollTop + sectionHeight;
+        if (isMobile) {
+          carousel.scrollLeft = scrollPos + sectionSize;
+        } else {
+          carousel.scrollTop = scrollPos + sectionSize;
+        }
         setTimeout(() => {
           isScrollingRef.current = false;
         }, 50);
-      } else if (scrollTop > sectionHeight * 2.5) {
-        // Near bottom - jump to middle section
+      } else if (scrollPos > sectionSize * 2.5) {
         isScrollingRef.current = true;
-        carousel.scrollTop = scrollTop - sectionHeight;
+        if (isMobile) {
+          carousel.scrollLeft = scrollPos - sectionSize;
+        } else {
+          carousel.scrollTop = scrollPos - sectionSize;
+        }
         setTimeout(() => {
           isScrollingRef.current = false;
         }, 50);
@@ -491,25 +512,34 @@ export default function Competitions() {
     const carousel = carouselRef.current;
     if (!carousel || currentCompetitions.length === 0) return;
 
-    // Use setTimeout to ensure cards are rendered first
     const timer = setTimeout(() => {
-      const cardHeight = cardRefs.current[0]?.offsetHeight || 0;
-      if (cardHeight === 0) return;
+      const isMobile = window.innerWidth < 768;
+      const cardSize = isMobile
+        ? cardRefs.current[0]?.offsetWidth || 0
+        : cardRefs.current[0]?.offsetHeight || 0;
+
+      if (cardSize === 0) return;
 
       const gap = 24; // 1.5rem = 24px
-      const totalCardHeight = cardHeight + gap;
-      const sectionHeight = currentCompetitions.length * totalCardHeight;
+      const totalCardSize = cardSize + gap;
+      const sectionSize = currentCompetitions.length * totalCardSize;
 
       // Temporarily disable smooth scrolling
       const originalBehavior = carousel.style.scrollBehavior;
       carousel.style.scrollBehavior = "auto";
 
-      // Calculate offset to center the first card with half cards visible above/below
-      const containerHeight = carousel.clientHeight;
-      const offset = (containerHeight - cardHeight) / 2;
+      // Calculate offset to center the first card
+      const containerSize = isMobile
+        ? carousel.clientWidth
+        : carousel.clientHeight;
+      const offset = (containerSize - cardSize) / 2;
 
       // Start at the middle section with centered first card
-      carousel.scrollTop = sectionHeight + offset;
+      if (isMobile) {
+        carousel.scrollLeft = sectionSize + offset;
+      } else {
+        carousel.scrollTop = sectionSize + offset;
+      }
 
       // Restore smooth scrolling after a brief delay
       setTimeout(() => {
@@ -525,20 +555,33 @@ export default function Competitions() {
     const carousel = carouselRef.current;
     if (!carousel) return;
 
-    const cardHeight = cardRefs.current[0]?.offsetHeight || 0;
+    const isMobile = window.innerWidth < 768;
+    const cardSize = isMobile
+      ? cardRefs.current[0]?.offsetWidth || 0
+      : cardRefs.current[0]?.offsetHeight || 0;
+
     const gap = 24; // 1.5rem = 24px
-    const totalCardHeight = cardHeight + gap;
-    const containerHeight = carousel.clientHeight;
-    const offset = (containerHeight - cardHeight) / 2;
-    const sectionHeight = currentCompetitions.length * totalCardHeight;
+    const totalCardSize = cardSize + gap;
+    const containerSize = isMobile
+      ? carousel.clientWidth
+      : carousel.clientHeight;
+    const offset = (containerSize - cardSize) / 2;
+    const sectionSize = currentCompetitions.length * totalCardSize;
 
     // Always scroll to the middle section + the target index with centering offset
-    const targetScroll = sectionHeight + index * totalCardHeight + offset;
+    const targetScroll = sectionSize + index * totalCardSize + offset;
 
-    carousel.scrollTo({
-      top: targetScroll,
-      behavior: "smooth",
-    });
+    if (isMobile) {
+      carousel.scrollTo({
+        left: targetScroll,
+        behavior: "smooth",
+      });
+    } else {
+      carousel.scrollTo({
+        top: targetScroll,
+        behavior: "smooth",
+      });
+    }
 
     setActiveCompetitionIndex(index);
   };
@@ -560,320 +603,291 @@ export default function Competitions() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white py-[12vh] px-[6vw] w-full">
-      {/* Header Section */}
-      <div className="flex justify-between items-end border-b border-[#1a1a1a] pb-[3vh] mb-[5vh] mt-[4vh]">
-        <h1 className="text-[4vw] tracking-[0.06em] noxa-gothic uppercase">
-          Competitions
-        </h1>
+    <div className="background-layers-competitions min-h-screen w-full text-white py-[9vh] px-[3vw] bg-cover bg-center relative">
+      <div className="absolute inset-0 pointer-events-none z-0" />
+      <div className="relative z-10">
+        {/* Header Section */}
+        <div className="flex justify-between items-end border-b border-[#1a1a1a] pb-[3vh] mb-[1vh] mt-[4vh]">
+          <h1 className="text-[3.8vw] tracking-[0.06em] noxa-gothic uppercase">
+            Competitions
+          </h1>
 
-        {/* Category Pills */}
-        <div className="flex gap-0">
-          <button
-            onClick={() => handleCategoryChange("ALL")}
-            className={`px-6 py-2.5 text-[0.75rem] font-medium tracking-[1.5px] border-l border-[#1a1a1a] transition-all duration-250 relative uppercase ${
-              activeCategory === "ALL"
-                ? "bg-[#0f0f0f] text-white"
-                : "bg-transparent text-[#4a4a4a] hover:bg-[#0f0f0f] hover:text-[#8a8a8a]"
-            }`}
-            style={{ borderRadius: 0 }}
-          >
-            ALL
-            {activeCategory === "ALL" && (
-              <span className="absolute bottom-[-3vh] left-0 w-full h-px bg-white" />
-            )}
-          </button>
-          <button
-            onClick={() => handleCategoryChange("TECH")}
-            className={`px-6 py-2.5 text-[0.75rem] font-medium tracking-[1.5px] border-l border-[#1a1a1a] transition-all duration-250 relative uppercase ${
-              activeCategory === "TECH"
-                ? "bg-[#0f0f0f] text-white"
-                : "bg-transparent text-[#4a4a4a] hover:bg-[#0f0f0f] hover:text-[#8a8a8a]"
-            }`}
-            style={{ borderRadius: 0 }}
-          >
-            TECH
-            {activeCategory === "TECH" && (
-              <span className="absolute bottom-[-3vh] left-0 w-full h-px bg-white" />
-            )}
-          </button>
-          <button
-            onClick={() => handleCategoryChange("CULTURAL")}
-            className={`px-6 py-2.5 text-[0.75rem] font-medium tracking-[1.5px] border-l border-[#1a1a1a] transition-all duration-250 relative uppercase ${
-              activeCategory === "CULTURAL"
-                ? "bg-[#0f0f0f] text-white"
-                : "bg-transparent text-[#4a4a4a] hover:bg-[#0f0f0f] hover:text-[#8a8a8a]"
-            }`}
-            style={{ borderRadius: 0 }}
-          >
-            CULTURAL
-            {activeCategory === "CULTURAL" && (
-              <span className="absolute bottom-[-3vh] left-0 w-full h-px bg-white" />
-            )}
-          </button>
+          {/* Category Pills */}
+          <div className="flex gap-0">
+            <button
+              onClick={() => handleCategoryChange("ALL")}
+              className={`cursor-pointer px-6 py-2.5 text-[1.2rem] font-medium tracking-[1.5px] border-l border-[#1a1a1a] transition-all duration-250 relative uppercase ${
+                activeCategory === "ALL"
+                  ? "bg-[#0f0f0f] text-white"
+                  : "bg-transparent text-[#4a4a4a] hover:bg-[#0f0f0f] hover:text-[#8a8a8a]"
+              }`}
+              style={{ borderRadius: 0 }}
+            >
+              ALL
+              {activeCategory === "ALL" && (
+                <span className="absolute bottom-[-3vh] left-0 w-full h-px bg-white" />
+              )}
+            </button>
+            <button
+              onClick={() => handleCategoryChange("TECH")}
+              className={`cursor-pointer px-6 py-2.5 text-[1.2rem] font-medium tracking-[1.5px] border-l border-[#1a1a1a] transition-all duration-250 relative uppercase ${
+                activeCategory === "TECH"
+                  ? "bg-[#0f0f0f] text-white"
+                  : "bg-transparent text-[#4a4a4a] hover:bg-[#0f0f0f] hover:text-[#8a8a8a]"
+              }`}
+              style={{ borderRadius: 0 }}
+            >
+              TECH
+              {activeCategory === "TECH" && (
+                <span className="absolute bottom-[-3vh] left-0 w-full h-px bg-white" />
+              )}
+            </button>
+            <button
+              onClick={() => handleCategoryChange("CULTURAL")}
+              className={`cursor-pointer px-6 py-2.5 text-[1.2rem] font-medium tracking-[1.5px] border-l border-[#1a1a1a] transition-all duration-250 relative uppercase ${
+                activeCategory === "CULTURAL"
+                  ? "bg-[#0f0f0f] text-white"
+                  : "bg-transparent text-[#4a4a4a] hover:bg-[#0f0f0f] hover:text-[#8a8a8a]"
+              }`}
+              style={{ borderRadius: 0 }}
+            >
+              CULTURAL
+              {activeCategory === "CULTURAL" && (
+                <span className="absolute bottom-[-3vh] left-0 w-full h-px bg-white" />
+              )}
+            </button>
+          </div>
         </div>
-      </div>
 
-      {/* Main Layout */}
-      <div className="flex gap-[5vw] h-[76vh]">
-        {/* Left Side - Scrollable Card Carousel */}
-        <div className="flex gap-6 flex-[0_0_40%] relative">
-          <div
-            ref={carouselRef}
-            className="flex-1 h-full overflow-y-scroll overflow-x-hidden p-0 relative scrollbar-none"
-            style={{
-              scrollBehavior: "smooth",
-              scrollSnapType: "y mandatory",
-              WebkitOverflowScrolling: "touch",
-            }}
-          >
-            {infiniteCompetitions.map((competition, index) => {
-              const actualIndex = index % currentCompetitions.length;
-              const isActive =
-                actualIndex === activeCompetitionIndex &&
-                index >= currentCompetitions.length &&
-                index < currentCompetitions.length * 2;
+        {/* Main Layout */}
+        <div className="flex md:flex-row flex-col gap-[3.2vw] md:h-[62vh] h-auto">
+          {/* Left Side - Scrollable Card Carousel */}
+          <div className="flex md:flex-row flex-col gap-6 md:flex-[0_0_40%] w-full">
+            <div
+              ref={carouselRef}
+              className="flex-1 md:h-full h-[50vh] md:overflow-y-scroll md:overflow-x-hidden overflow-x-scroll overflow-y-hidden p-0 relative scrollbar-none flex md:flex-col flex-row"
+              style={{
+                scrollBehavior: "smooth",
+                scrollSnapType:
+                  window.innerWidth < 768 ? "x mandatory" : "y mandatory",
+                WebkitOverflowScrolling: "touch",
+              }}
+            >
+              {infiniteCompetitions.map((competition, index) => {
+                const actualIndex = index % currentCompetitions.length;
+                const isActive =
+                  actualIndex === activeCompetitionIndex &&
+                  index >= currentCompetitions.length &&
+                  index < currentCompetitions.length * 2;
 
-              return (
-                <div
-                  key={index}
-                  ref={(el) => {
-                    cardRefs.current[index] = el;
-                  }}
-                  onClick={() => scrollToCard(actualIndex)}
-                  className={`group relative w-full h-[50vh] mb-6 overflow-hidden cursor-pointer select-none transition-all duration-500 ${
-                    isActive ? "scale-[1.02]" : "scale-100 hover:scale-[1.01]"
-                  }`}
-                  style={{
-                    scrollSnapAlign: "center",
-                  }}
-                >
-                  {/* Main Card Container with Clipped Corners */}
+                return (
                   <div
-                    className={`absolute inset-0 bg-[#0a0a0a] transition-all duration-500 ${
-                      isActive ? "opacity-100" : "opacity-90"
+                    key={index}
+                    ref={(el) => {
+                      cardRefs.current[index] = el;
+                    }}
+                    onClick={() => scrollToCard(actualIndex)}
+                    className={`group relative md:w-full w-[85vw] md:h-[43vh] h-full flex-shrink-0 md:mb-6 md:mr-0 mr-6 overflow-hidden cursor-pointer select-none transition-all duration-500 ${
+                      isActive ? "scale-[1.02]" : "scale-100 hover:scale-[1.01]"
                     }`}
                     style={{
-                      clipPath:
-                        "polygon(0 0, calc(100% - 2rem) 0, 100% 2rem, 100% 100%, 2rem 100%, 0 calc(100% - 2rem))",
+                      scrollSnapAlign: "center",
                     }}
                   >
-                    {/* Image */}
-                    <Image
-                      src={competition.image}
-                      alt={competition.title}
-                      fill
-                      className="object-cover select-none transition-all duration-700"
-                      style={{
-                        filter: isActive
-                          ? "brightness(1.1) contrast(1.25) saturate(1.2)"
-                          : "brightness(0.7) contrast(1.1) saturate(0.8)",
-                        userSelect: "none",
-                      }}
-                      draggable={false}
-                      sizes="40vw"
-                    />
-
-                    {/* Gradient Overlays */}
+                    {/* Main Card Container with Clipped Corners */}
                     <div
-                      className="absolute inset-0 pointer-events-none transition-opacity duration-500"
-                      style={{
-                        background:
-                          "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.8) 100%)",
-                        opacity: isActive ? 0.7 : 0.9,
-                      }}
-                    />
-
-                    {/* Top Left Corner Accent */}
-                    <div
-                      className={`absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 transition-all duration-500 ${
-                        isActive
-                          ? "border-white opacity-100"
-                          : "border-white/30 opacity-0"
+                      className={`absolute inset-0 bg-[#0a0a0a] transition-all duration-500 ${
+                        isActive ? "opacity-100" : "opacity-90"
                       }`}
-                    />
+                      style={{
+                        clipPath:
+                          "polygon(0 0, calc(100% - 2rem) 0, 100% 2rem, 100% 100%, 2rem 100%, 0 calc(100% - 2rem))",
+                      }}
+                    >
+                      {/* Image */}
+                      <Image
+                        src={competition.image}
+                        alt={competition.title}
+                        fill
+                        className="object-cover select-none transition-all duration-700"
+                        style={{
+                          filter: isActive
+                            ? "brightness(1.1) contrast(1.25) saturate(1.2)"
+                            : "brightness(0.7) contrast(1.1) saturate(0.8)",
+                          userSelect: "none",
+                        }}
+                        draggable={false}
+                        sizes="(max-width: 768px) 85vw, 40vw"
+                      />
 
-                    {/* Bottom Right Corner Accent */}
-                    <div
-                      className={`absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 transition-all duration-500 ${
-                        isActive
-                          ? "border-white opacity-100"
-                          : "border-white/30 opacity-0"
-                      }`}
-                    />
-
-                    {/* Competition Title Overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-                      <div
-                        className={`transition-all duration-500 ${
-                          isActive
-                            ? "opacity-100 translate-y-0"
-                            : "opacity-0 translate-y-4 group-hover:opacity-80 group-hover:translate-y-0"
-                        }`}
-                      >
-                        <h3 className="text-white font-bold text-xl uppercase tracking-wider mb-1">
-                          {competition.title}
-                        </h3>
-                        <div className="flex items-center gap-3 text-sm">
-                          <span className="text-white/80 uppercase tracking-wide">
-                            {competition.category}
-                          </span>
-                          <span className="text-white/60">•</span>
-                          <span className="text-white/80 font-semibold">
-                            {competition.prize}
-                          </span>
+                      {/* Competition Title Overlay */}
+                      <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                        <div
+                          className={`transition-all duration-500 ${
+                            isActive
+                              ? "opacity-100 translate-y-0"
+                              : "opacity-0 translate-y-4 group-hover:opacity-80 group-hover:translate-y-0"
+                          }`}
+                        >
+                          <h3 className="text-white font-bold text-xl uppercase tracking-wider mb-1">
+                            {competition.title}
+                          </h3>
+                          <div className="flex items-center gap-3 text-lg">
+                            <span className="text-white/80 uppercase tracking-wide">
+                              {competition.category}
+                            </span>
+                            <span className="text-white/60">•</span>
+                            <span className="text-white/80 font-semibold">
+                              {competition.prize}
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Active Indicator Bar */}
+                    {/* Outer Glow Effect for Active Card */}
                     {isActive && (
-                      <div className="absolute top-0 left-0 w-1 h-full bg-linear-to-b from-white via-white/80 to-transparent" />
+                      <div
+                        className="absolute inset-0 -z-10 blur-xl opacity-50"
+                        style={{
+                          background:
+                            "radial-gradient(circle at center, rgba(255,255,255,0.2), transparent 70%)",
+                        }}
+                      />
                     )}
                   </div>
-
-                  {/* Outer Glow Effect for Active Card */}
-                  {isActive && (
-                    <div
-                      className="absolute inset-0 -z-10 blur-xl opacity-50"
-                      style={{
-                        background:
-                          "radial-gradient(circle at center, rgba(255,255,255,0.2), transparent 70%)",
-                      }}
-                    />
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Scroll Arrows */}
-          <div className="flex flex-col items-center justify-center gap-6">
-            <button
-              onClick={() => handleArrowClick("up")}
-              className="group w-12 h-12 flex items-center justify-center bg-linear-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-110 active:scale-95 rounded-full"
-              aria-label="Previous"
-            >
-              <span className="transition-transform duration-300 group-hover:-translate-y-0.5">
-                ↑
-              </span>
-            </button>
-            <button
-              onClick={() => handleArrowClick("down")}
-              className="group w-12 h-12 flex items-center justify-center bg-linear-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-110 active:scale-95 rounded-full"
-              aria-label="Next"
-            >
-              <span className="transition-transform duration-300 group-hover:translate-y-0.5">
-                ↓
-              </span>
-            </button>
-          </div>
-        </div>
-
-        {/* Right Side - Competition Details */}
-        <div
-          className="flex-1 flex flex-col overflow-y-auto py-8"
-          style={{
-            scrollbarWidth: "thin",
-            scrollbarColor: "#2a2a2a transparent",
-          }}
-        >
-          <div
-            key={activeCompetition?.title}
-            className="flex flex-col gap-8"
-            style={{ animation: "contentFadeIn 0.3s ease-in-out" }}
-          >
-            <h2 className="text-[5.5vw] tracking-[0.05em] uppercase mb-4">
-              {activeCompetition?.title || "Select Competition"}
-            </h2>
-
-            <div className="grid grid-cols-2 gap-6">
-              <div className="flex flex-col gap-2">
-                <div className="text-[1.5vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
-                  CONTACT / POC
-                </div>
-                <div className="text-[1vw]/5.5 tracking-wide uppercase text-white">
-                  {activeCompetition?.contact || "TBA"}
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <div className="text-[1.5vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
-                  PRIZE POOL
-                </div>
-                <div className="text-[1vw]/5.5 tracking-wide uppercase text-white">
-                  {activeCompetition?.prize || "TBA"}
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <div className="text-[1.5vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
-                  REGISTRATION DEADLINE
-                </div>
-                <div className="text-[1vw]/5.5 tracking-wide uppercase text-white">
-                  {activeCompetition?.deadline || "TBA"}
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <div className="text-[1.5vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
-                  DATES / ROUNDS
-                </div>
-                <div className="text-[1vw]/5.5 tracking-wide uppercase text-white">
-                  {activeCompetition?.date || "TBA"}
-                </div>
-              </div>
+                );
+              })}
             </div>
 
-            <div className="flex flex-col gap-3">
-              <div className="text-[1.5vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
-                DESCRIPTION
-              </div>
-              <p className="text-[1vw]/5.5 tracking-wide uppercase text-[#8a8a8a]">
-                {activeCompetition?.description ||
-                  "Choose a competition from the list to view details."}
-              </p>
-            </div>
-
-            {activeCompetition?.registerLink && (
-              <Link
-                href={activeCompetition.registerLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white text-base font-normal tracking-[0.5px] mt-6 no-underline cursor-pointer transition-all duration-300 hover:text-[#cccccc]"
+            {/* Scroll Arrows - Hidden on mobile */}
+            <div className="md:flex hidden flex-col items-center justify-center gap-6">
+              <button
+                onClick={() => handleArrowClick("up")}
+                className="group w-12 h-12 flex items-center justify-center bg-linear-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-110 active:scale-95 rounded-full"
+                aria-label="Previous"
               >
-                <span
-                  className="underline"
-                  style={{ textUnderlineOffset: "4px" }}
+                <span className="transition-transform duration-300 group-hover:-translate-y-0.5">
+                  ↑
+                </span>
+              </button>
+              <button
+                onClick={() => handleArrowClick("down")}
+                className="group w-12 h-12 flex items-center justify-center bg-linear-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-110 active:scale-95 rounded-full"
+                aria-label="Next"
+              >
+                <span className="transition-transform duration-300 group-hover:translate-y-0.5">
+                  ↓
+                </span>
+              </button>
+            </div>
+          </div>
+
+          {/* Right Side - Competition Details */}
+          <div
+            className="flex-1 flex flex-col overflow-y-auto md:py-8 py-4 w-full"
+            style={{
+              scrollbarWidth: "thin",
+              scrollbarColor: "#2a2a2a transparent",
+            }}
+          >
+            <div
+              key={activeCompetition?.title}
+              className="flex flex-col md:gap-8 gap-4"
+              style={{ animation: "contentFadeIn 0.3s ease-in-out" }}
+            >
+              <h2 className="md:text-[5.5vw] text-[8vw] tracking-[0.05em] uppercase md:mb-4 mb-2">
+                {activeCompetition?.title || "Select Competition"}
+              </h2>
+
+              <div className="grid md:grid-cols-2 grid-cols-1 md:gap-6 gap-4">
+                <div className="flex flex-col gap-2">
+                  <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
+                    CONTACT / POC
+                  </div>
+                  <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white">
+                    {activeCompetition?.contact || "TBA"}
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
+                    PRIZE POOL
+                  </div>
+                  <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white">
+                    {activeCompetition?.prize || "TBA"}
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
+                    REGISTRATION DEADLINE
+                  </div>
+                  <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white">
+                    {activeCompetition?.deadline || "TBA"}
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
+                    DATES / ROUNDS
+                  </div>
+                  <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white">
+                    {activeCompetition?.date || "TBA"}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
+                  DESCRIPTION
+                </div>
+                <p className="md:text-[1.3vw] text-[3.5vw] md:leading-[1.8] leading-[1.6] tracking-wide uppercase text-[#8a8a8a]">
+                  {activeCompetition?.description ||
+                    "Choose a competition from the list to view details."}
+                </p>
+              </div>
+
+              {activeCompetition?.registerLink && (
+                <Link
+                  href={activeCompetition.registerLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-white font-normal tracking-[0.5px] md:mt-6 mt-4 no-underline cursor-pointer transition-all duration-300 hover:text-[#cccccc] md:text-[1.3vw] text-[4vw]"
                 >
-                  Register Here
-                </span>
-                <span className="no-underline text-sm transition-transform duration-300 hover:translate-x-0.5 hover:-translate-y-0.5">
-                  ↗
-                </span>
-              </Link>
-            )}
+                  <span
+                    className="underline"
+                    style={{ textUnderlineOffset: "4px" }}
+                  >
+                    Register Here
+                  </span>
+                  <span className="no-underline text-sm transition-transform duration-300 hover:translate-x-0.5 hover:-translate-y-0.5">
+                    ↗
+                  </span>
+                </Link>
+              )}
+            </div>
           </div>
         </div>
-      </div>
 
-      <style jsx>{`
-        .scrollbar-none::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-none {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        @keyframes contentFadeIn {
-          0% {
-            opacity: 0;
+        <style jsx>{`
+          .scrollbar-none::-webkit-scrollbar {
+            display: none;
           }
-          100% {
-            opacity: 1;
+          .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
           }
-        }
-      `}</style>
+          @keyframes contentFadeIn {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+        `}</style>
+      </div>
     </div>
   );
 }
