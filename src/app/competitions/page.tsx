@@ -1,18 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronUp, ChevronDown } from "lucide-react";
 
 export default function Competitions() {
-  const [filter, setFilter] = useState("ALL");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const [activeCategory, setActiveCategory] = useState("ALL");
+  const [activeCompetitionIndex, setActiveCompetitionIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const isScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const competitions = [
     {
@@ -381,252 +379,426 @@ export default function Competitions() {
     },
   ];
 
-  const filteredCompetitions =
-    filter === "ALL"
-      ? competitions
-      : competitions.filter((comp) => comp.category === filter);
-
-  const totalItems = filteredCompetitions.length;
-  const normalizedIndex =
-    ((currentIndex % totalItems) + totalItems) % totalItems;
-  const currentCompetition = filteredCompetitions[normalizedIndex];
-
-  const handlePrevious = () => {
-    setCurrentIndex((prev) => prev - 1);
+  const categories: { [key: string]: typeof competitions } = {
+    ALL: competitions,
+    TECH: competitions.filter((comp) => comp.category === "TECH"),
+    CULTURAL: competitions.filter((comp) => comp.category === "CULTURAL"),
   };
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => prev + 1);
+  const currentCompetitions = categories[activeCategory] || competitions;
+  const activeCompetition = currentCompetitions[activeCompetitionIndex];
+
+  // Create infinite loop by tripling the array
+  const infiniteCompetitions = [
+    ...currentCompetitions,
+    ...currentCompetitions,
+    ...currentCompetitions,
+  ];
+
+  // Handle infinite scroll loop
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    let indexUpdateTimeout: NodeJS.Timeout | null = null;
+
+    const handleScroll = () => {
+      if (isScrollingRef.current) return;
+
+      const scrollTop = carousel.scrollTop;
+      const cardHeight = cardRefs.current[0]?.offsetHeight || 0;
+      if (cardHeight === 0) return;
+
+      const gap = 24; // 1.5rem = 24px
+      const totalCardHeight = cardHeight + gap;
+      const containerHeight = carousel.clientHeight;
+      const offset = (containerHeight - cardHeight) / 2;
+
+      const sectionHeight = currentCompetitions.length * totalCardHeight;
+
+      // Clear existing timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      if (indexUpdateTimeout) {
+        clearTimeout(indexUpdateTimeout);
+      }
+
+      // Snap to nearest card after scrolling stops
+      scrollTimeoutRef.current = setTimeout(() => {
+        const adjustedScrollTop = scrollTop - offset;
+        const targetIndex = Math.round(adjustedScrollTop / totalCardHeight);
+        const snapPosition = targetIndex * totalCardHeight + offset;
+
+        if (Math.abs(scrollTop - snapPosition) > 5) {
+          carousel.scrollTo({
+            top: snapPosition,
+            behavior: "smooth",
+          });
+        }
+
+        // Update active index after snap completes
+        indexUpdateTimeout = setTimeout(() => {
+          const finalScrollTop = carousel.scrollTop;
+          const finalAdjustedScrollTop = finalScrollTop - offset;
+          const newIndex =
+            Math.round(finalAdjustedScrollTop / totalCardHeight) %
+            currentCompetitions.length;
+          const normalizedIndex =
+            ((newIndex % currentCompetitions.length) +
+              currentCompetitions.length) %
+            currentCompetitions.length;
+
+          if (normalizedIndex !== activeCompetitionIndex) {
+            setActiveCompetitionIndex(normalizedIndex);
+          }
+        }, 100);
+      }, 150);
+
+      // Loop to middle section when reaching top or bottom
+      if (scrollTop < sectionHeight * 0.5) {
+        // Near top - jump to middle section
+        isScrollingRef.current = true;
+        carousel.scrollTop = scrollTop + sectionHeight;
+        setTimeout(() => {
+          isScrollingRef.current = false;
+        }, 50);
+      } else if (scrollTop > sectionHeight * 2.5) {
+        // Near bottom - jump to middle section
+        isScrollingRef.current = true;
+        carousel.scrollTop = scrollTop - sectionHeight;
+        setTimeout(() => {
+          isScrollingRef.current = false;
+        }, 50);
+      }
+    };
+
+    carousel.addEventListener("scroll", handleScroll);
+    return () => {
+      carousel.removeEventListener("scroll", handleScroll);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      if (indexUpdateTimeout) {
+        clearTimeout(indexUpdateTimeout);
+      }
+    };
+  }, [activeCompetitionIndex, currentCompetitions.length]);
+
+  // Initialize scroll position to middle section (without animation)
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel || currentCompetitions.length === 0) return;
+
+    // Use setTimeout to ensure cards are rendered first
+    const timer = setTimeout(() => {
+      const cardHeight = cardRefs.current[0]?.offsetHeight || 0;
+      if (cardHeight === 0) return;
+
+      const gap = 24; // 1.5rem = 24px
+      const totalCardHeight = cardHeight + gap;
+      const sectionHeight = currentCompetitions.length * totalCardHeight;
+
+      // Temporarily disable smooth scrolling
+      const originalBehavior = carousel.style.scrollBehavior;
+      carousel.style.scrollBehavior = "auto";
+
+      // Calculate offset to center the first card with half cards visible above/below
+      const containerHeight = carousel.clientHeight;
+      const offset = (containerHeight - cardHeight) / 2;
+
+      // Start at the middle section with centered first card
+      carousel.scrollTop = sectionHeight + offset;
+
+      // Restore smooth scrolling after a brief delay
+      setTimeout(() => {
+        carousel.style.scrollBehavior = originalBehavior;
+      }, 50);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [activeCategory, currentCompetitions.length]);
+
+  // Scroll to specific card
+  const scrollToCard = (index: number) => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const cardHeight = cardRefs.current[0]?.offsetHeight || 0;
+    const gap = 24; // 1.5rem = 24px
+    const totalCardHeight = cardHeight + gap;
+    const containerHeight = carousel.clientHeight;
+    const offset = (containerHeight - cardHeight) / 2;
+    const sectionHeight = currentCompetitions.length * totalCardHeight;
+
+    // Always scroll to the middle section + the target index with centering offset
+    const targetScroll = sectionHeight + index * totalCardHeight + offset;
+
+    carousel.scrollTo({
+      top: targetScroll,
+      behavior: "smooth",
+    });
+
+    setActiveCompetitionIndex(index);
   };
 
-  const handleFilterChange = (newFilter: string) => {
-    setFilter(newFilter);
-    setCurrentIndex(0);
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category);
+    setActiveCompetitionIndex(0);
+  };
+
+  // Handle arrow navigation with infinite loop
+  const handleArrowClick = (direction: "up" | "down") => {
+    const newIndex =
+      direction === "up"
+        ? (activeCompetitionIndex - 1 + currentCompetitions.length) %
+          currentCompetitions.length
+        : (activeCompetitionIndex + 1) % currentCompetitions.length;
+
+    scrollToCard(newIndex);
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-[#0a0a0a] text-white overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/red_bg.png"
-          alt="Background"
-          fill
-          className="object-cover opacity-30"
-          priority
-        />
+    <div className="min-h-screen bg-[#0a0a0a] text-white py-[12vh] px-[6vw] w-full">
+      {/* Header Section */}
+      <div className="flex justify-between items-end border-b border-[#1a1a1a] pb-[3vh] mb-[5vh] mt-[4vh]">
+        <h1 className="text-[4vw] tracking-[0.06em] noxa-gothic uppercase">
+          Competitions
+        </h1>
+
+        {/* Category Pills */}
+        <div className="flex gap-0">
+          <button
+            onClick={() => handleCategoryChange("ALL")}
+            className={`px-6 py-2.5 text-[0.75rem] font-medium tracking-[1.5px] border-l border-[#1a1a1a] transition-all duration-250 relative uppercase ${
+              activeCategory === "ALL"
+                ? "bg-[#0f0f0f] text-white"
+                : "bg-transparent text-[#4a4a4a] hover:bg-[#0f0f0f] hover:text-[#8a8a8a]"
+            }`}
+            style={{ borderRadius: 0 }}
+          >
+            ALL
+            {activeCategory === "ALL" && (
+              <span className="absolute bottom-[-3vh] left-0 w-full h-px bg-white" />
+            )}
+          </button>
+          <button
+            onClick={() => handleCategoryChange("TECH")}
+            className={`px-6 py-2.5 text-[0.75rem] font-medium tracking-[1.5px] border-l border-[#1a1a1a] transition-all duration-250 relative uppercase ${
+              activeCategory === "TECH"
+                ? "bg-[#0f0f0f] text-white"
+                : "bg-transparent text-[#4a4a4a] hover:bg-[#0f0f0f] hover:text-[#8a8a8a]"
+            }`}
+            style={{ borderRadius: 0 }}
+          >
+            TECH
+            {activeCategory === "TECH" && (
+              <span className="absolute bottom-[-3vh] left-0 w-full h-px bg-white" />
+            )}
+          </button>
+          <button
+            onClick={() => handleCategoryChange("CULTURAL")}
+            className={`px-6 py-2.5 text-[0.75rem] font-medium tracking-[1.5px] border-l border-[#1a1a1a] transition-all duration-250 relative uppercase ${
+              activeCategory === "CULTURAL"
+                ? "bg-[#0f0f0f] text-white"
+                : "bg-transparent text-[#4a4a4a] hover:bg-[#0f0f0f] hover:text-[#8a8a8a]"
+            }`}
+            style={{ borderRadius: 0 }}
+          >
+            CULTURAL
+            {activeCategory === "CULTURAL" && (
+              <span className="absolute bottom-[-3vh] left-0 w-full h-px bg-white" />
+            )}
+          </button>
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 min-h-screen flex flex-col">
-        {/* Header with Title and Filters */}
-        <div className="pt-[10vh] pb-[4vh] px-[4vw]">
+      {/* Main Layout */}
+      <div className="flex gap-[5vw] h-[76vh]">
+        {/* Left Side - Scrollable Card Carousel */}
+        <div className="flex gap-6 flex-[0_0_40%] relative">
           <div
-            className={`transition-all duration-1000 ${
-              mounted ? "translate-y-0 opacity-100" : "-translate-y-8 opacity-0"
-            }`}
+            ref={carouselRef}
+            className="flex-1 h-full overflow-y-scroll overflow-x-hidden p-0 relative scrollbar-none"
+            style={{
+              scrollBehavior: "smooth",
+              scrollSnapType: "y mandatory",
+              WebkitOverflowScrolling: "touch",
+            }}
           >
-            <h1 className="noxa-gothic text-[8vw] uppercase tracking-wider mb-8">
-              Competitions
-            </h1>
+            {infiniteCompetitions.map((competition, index) => {
+              const actualIndex = index % currentCompetitions.length;
+              const isActive =
+                actualIndex === activeCompetitionIndex &&
+                index >= currentCompetitions.length &&
+                index < currentCompetitions.length * 2;
+
+              return (
+                <div
+                  key={index}
+                  ref={(el) => {
+                    cardRefs.current[index] = el;
+                  }}
+                  onClick={() => scrollToCard(actualIndex)}
+                  className={`relative w-full h-[50vh] mb-6 overflow-hidden cursor-pointer select-none bg-[#0f0f0f] border border-[#1a1a1a] transition-all duration-300 ${
+                    isActive ? "border-[#3a3a3a]" : "hover:border-[#2a2a2a]"
+                  }`}
+                  style={{
+                    scrollSnapAlign: "center",
+                    borderRadius: 0,
+                    boxShadow: isActive
+                      ? "0 0 0 2px rgba(255, 255, 255, 0.1)"
+                      : "none",
+                  }}
+                >
+                  <Image
+                    src={competition.image}
+                    alt={competition.title}
+                    fill
+                    className="object-cover select-none transition-all duration-400"
+                    style={{
+                      filter: isActive
+                        ? "brightness(1) contrast(1.2) saturate(1.1)"
+                        : "brightness(0.75) contrast(1.1) saturate(0.9)",
+                      userSelect: "none",
+                    }}
+                    draggable={false}
+                    sizes="40vw"
+                  />
+                  <div
+                    className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-10"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.5) 100%)",
+                      opacity: isActive ? 0.3 : 0.6,
+                    }}
+                  />
+                </div>
+              );
+            })}
           </div>
 
-          {/* Filter Tabs */}
-          <div
-            className={`flex gap-12 text-[1.2vw] uppercase tracking-wider transition-all duration-1000 delay-300 ${
-              mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-            }`}
-          >
+          {/* Scroll Arrows */}
+          <div className="flex flex-col items-center justify-center gap-6">
             <button
-              onClick={() => handleFilterChange("ALL")}
-              className={`relative pb-2 transition-all duration-300 ${
-                filter === "ALL" ? "text-white" : "text-white/40 hover:text-white/70"
-              }`}
+              onClick={() => handleArrowClick("up")}
+              className="group w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-110 active:scale-95 rounded-full"
+              aria-label="Previous"
             >
-              ALL
-              {filter === "ALL" && (
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white" />
-              )}
+              <span className="transition-transform duration-300 group-hover:-translate-y-0.5">↑</span>
             </button>
             <button
-              onClick={() => handleFilterChange("TECH")}
-              className={`relative pb-2 transition-all duration-300 ${
-                filter === "TECH" ? "text-white" : "text-white/40 hover:text-white/70"
-              }`}
+              onClick={() => handleArrowClick("down")}
+              className="group w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-110 active:scale-95 rounded-full"
+              aria-label="Next"
             >
-              TECH
-              {filter === "TECH" && (
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white" />
-              )}
-            </button>
-            <button
-              onClick={() => handleFilterChange("CULTURAL")}
-              className={`relative pb-2 transition-all duration-300 ${
-                filter === "CULTURAL" ? "text-white" : "text-white/40 hover:text-white/70"
-              }`}
-            >
-              CULTURAL
-              {filter === "CULTURAL" && (
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white" />
-              )}
+              <span className="transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
             </button>
           </div>
         </div>
 
-        {/* Main Content - Two Column Layout */}
-        <div className="flex-1 flex px-[4vw] pb-[4vh] gap-[4vw]">
-          {/* Left Column - Stacked Cards with Navigation */}
+        {/* Right Side - Competition Details */}
+        <div
+          className="flex-1 flex flex-col overflow-y-auto py-8"
+          style={{
+            scrollbarWidth: "thin",
+            scrollbarColor: "#2a2a2a transparent",
+          }}
+        >
           <div
-            className={`flex items-center gap-[2vw] transition-all duration-1000 delay-500 ${
-              mounted ? "opacity-100" : "opacity-0"
-            }`}
+            key={activeCompetition?.title}
+            className="flex flex-col gap-8"
+            style={{ animation: "contentFadeIn 0.3s ease-in-out" }}
           >
-            {/* Stacked Cards */}
-            <div className="relative w-[28vw] h-[60vh]">
-              {[-1, 0, 1].map((offset) => {
-                const index = normalizedIndex + offset;
-                const wrappedIndex = ((index % totalItems) + totalItems) % totalItems;
-                const competition = filteredCompetitions[wrappedIndex];
-
-                if (!competition) return null;
-
-                const isActive = offset === 0;
-                const zIndex = isActive ? 30 : offset === -1 ? 20 : 10;
-                const translateY = offset * 25;
-
-                return (
-                  <div
-                    key={`card-${offset}-${wrappedIndex}`}
-                    className={`absolute left-1/2 top-1/2 -translate-x-1/2 rounded-lg overflow-hidden transition-all duration-500 ${
-                      isActive
-                        ? "w-[28vw] h-[50vh] shadow-2xl"
-                        : "w-[26vw] h-[20vh] opacity-50"
-                    }`}
-                    style={{
-                      transform: `translate(-50%, calc(-50% + ${translateY}vh))`,
-                      zIndex: zIndex,
-                    }}
-                  >
-                    <Image
-                      src={competition.image}
-                      alt={competition.title}
-                      fill
-                      className="object-cover"
-                      sizes="28vw"
-                      priority={isActive}
-                    />
-                    {!isActive && (
-                      <div className="absolute inset-0 bg-black/60" />
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Navigation Controls */}
-            <div className="flex flex-col items-center gap-[2vh]">
-              <button
-                onClick={handlePrevious}
-                className="w-12 h-12 flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-lg transition-all duration-300 group"
-                aria-label="Previous"
-              >
-                <ChevronUp size={24} className="text-white/70 group-hover:text-white" />
-              </button>
-
-              {/* Dots */}
-              <div className="flex flex-col gap-2 py-2">
-                {filteredCompetitions.map((_, idx) => (
-                  <div
-                    key={idx}
-                    className={`rounded-full transition-all duration-300 ${
-                      idx === normalizedIndex
-                        ? "bg-white w-2.5 h-2.5"
-                        : "bg-white/30 w-2 h-2"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={handleNext}
-                className="w-12 h-12 flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-lg transition-all duration-300 group"
-                aria-label="Next"
-              >
-                <ChevronDown size={24} className="text-white/70 group-hover:text-white" />
-              </button>
-            </div>
-          </div>
-
-          {/* Right Column - Competition Details */}
-          <div
-            className={`flex-1 flex flex-col justify-center transition-all duration-1000 delay-700 ${
-              mounted ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            {/* Title */}
-            <h2 className="noxa-gothic text-[4.5vw] uppercase tracking-wider mb-8 leading-none">
-              {currentCompetition.title}
+            <h2 className="text-[5.5vw] tracking-[0.05em] uppercase mb-4">
+              {activeCompetition?.title || "Select Competition"}
             </h2>
 
-            {/* Info Grid */}
-            <div className="grid grid-cols-2 gap-x-12 gap-y-6 mb-8">
-              <div>
-                <p className="text-[0.85vw] text-white/50 uppercase tracking-widest mb-2">
+            <div className="grid grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2">
+                <div className="text-[1.5vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
                   CONTACT / POC
-                </p>
-                <p className="text-[1vw] text-white">
-                  {currentCompetition.contact}
-                </p>
+                </div>
+                <div className="text-[1vw]/5.5 tracking-wide uppercase text-white">
+                  {activeCompetition?.contact || "TBA"}
+                </div>
               </div>
-              <div>
-                <p className="text-[0.85vw] text-white/50 uppercase tracking-widest mb-2">
+
+              <div className="flex flex-col gap-2">
+                <div className="text-[1.5vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
                   PRIZE POOL
-                </p>
-                <p className="text-[1.2vw] text-[#AE0021] font-semibold">
-                  {currentCompetition.prize}
-                </p>
+                </div>
+                <div className="text-[1vw]/5.5 tracking-wide uppercase text-white">
+                  {activeCompetition?.prize || "TBA"}
+                </div>
               </div>
-              <div>
-                <p className="text-[0.85vw] text-white/50 uppercase tracking-widest mb-2">
+
+              <div className="flex flex-col gap-2">
+                <div className="text-[1.5vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
                   REGISTRATION DEADLINE
-                </p>
-                <p className="text-[1vw] text-white">
-                  {currentCompetition.deadline}
-                </p>
+                </div>
+                <div className="text-[1vw]/5.5 tracking-wide uppercase text-white">
+                  {activeCompetition?.deadline || "TBA"}
+                </div>
               </div>
-              <div>
-                <p className="text-[0.85vw] text-white/50 uppercase tracking-widest mb-2">
+
+              <div className="flex flex-col gap-2">
+                <div className="text-[1.5vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
                   DATES / ROUNDS
-                </p>
-                <p className="text-[1vw] text-white">
-                  {currentCompetition.date}
-                </p>
+                </div>
+                <div className="text-[1vw]/5.5 tracking-wide uppercase text-white">
+                  {activeCompetition?.date || "TBA"}
+                </div>
               </div>
             </div>
 
-            {/* Description */}
-            <div className="mb-8">
-              <p className="text-[0.85vw] text-white/50 uppercase tracking-widest mb-3">
+            <div className="flex flex-col gap-3">
+              <div className="text-[1.5vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
                 DESCRIPTION
-              </p>
-              <p className="text-[1vw] text-white/80 leading-relaxed max-w-[90%]">
-                {currentCompetition.description}
+              </div>
+              <p className="text-[1vw]/5.5 tracking-wide uppercase text-[#8a8a8a]">
+                {activeCompetition?.description ||
+                  "Choose a competition from the list to view details."}
               </p>
             </div>
 
-            {/* Register Button */}
-            <Link
-              href={currentCompetition.registerLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button className="px-8 py-3 border-2 border-white text-white text-[0.9vw] uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
-                REGISTER HERE →
-              </button>
-            </Link>
+            {activeCompetition?.registerLink && (
+              <Link
+                href={activeCompetition.registerLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-white text-base font-normal tracking-[0.5px] mt-6 no-underline cursor-pointer transition-all duration-300 hover:text-[#cccccc]"
+              >
+                <span className="underline" style={{ textUnderlineOffset: "4px" }}>
+                  Register Here
+                </span>
+                <span className="no-underline text-sm transition-transform duration-300 hover:translate-x-0.5 hover:-translate-y-0.5">
+                  ↗
+                </span>
+              </Link>
+            )}
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .scrollbar-none::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-none {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        @keyframes contentFadeIn {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+      `}</style>
     </div>
   );
 }
