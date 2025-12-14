@@ -641,39 +641,102 @@ export default function Competitions() {
                     cardRefs.current[index] = el;
                   }}
                   onClick={() => scrollToCard(actualIndex)}
-                  className={`relative w-full h-[50vh] mb-6 overflow-hidden cursor-pointer select-none bg-[#0f0f0f] border border-[#1a1a1a] transition-all duration-300 ${
-                    isActive ? "border-[#3a3a3a]" : "hover:border-[#2a2a2a]"
+                  className={`group relative w-full h-[50vh] mb-6 overflow-hidden cursor-pointer select-none transition-all duration-500 ${
+                    isActive 
+                      ? "scale-[1.02]" 
+                      : "scale-100 hover:scale-[1.01]"
                   }`}
                   style={{
                     scrollSnapAlign: "center",
-                    borderRadius: 0,
-                    boxShadow: isActive
-                      ? "0 0 0 2px rgba(255, 255, 255, 0.1)"
-                      : "none",
                   }}
                 >
-                  <Image
-                    src={competition.image}
-                    alt={competition.title}
-                    fill
-                    className="object-cover select-none transition-all duration-400"
-                    style={{
-                      filter: isActive
-                        ? "brightness(1) contrast(1.2) saturate(1.1)"
-                        : "brightness(0.75) contrast(1.1) saturate(0.9)",
-                      userSelect: "none",
-                    }}
-                    draggable={false}
-                    sizes="40vw"
-                  />
+                  {/* Main Card Container with Clipped Corners */}
                   <div
-                    className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-10"
+                    className={`absolute inset-0 bg-[#0a0a0a] transition-all duration-500 ${
+                      isActive ? "opacity-100" : "opacity-90"
+                    }`}
                     style={{
-                      background:
-                        "linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.5) 100%)",
-                      opacity: isActive ? 0.3 : 0.6,
+                      clipPath: "polygon(0 0, calc(100% - 2rem) 0, 100% 2rem, 100% 100%, 2rem 100%, 0 calc(100% - 2rem))",
                     }}
-                  />
+                  >
+                    {/* Image */}
+                    <Image
+                      src={competition.image}
+                      alt={competition.title}
+                      fill
+                      className="object-cover select-none transition-all duration-700"
+                      style={{
+                        filter: isActive
+                          ? "brightness(1.1) contrast(1.25) saturate(1.2)"
+                          : "brightness(0.7) contrast(1.1) saturate(0.8)",
+                        userSelect: "none",
+                      }}
+                      draggable={false}
+                      sizes="40vw"
+                    />
+                    
+                    {/* Gradient Overlays */}
+                    <div
+                      className="absolute inset-0 pointer-events-none transition-opacity duration-500"
+                      style={{
+                        background: "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.8) 100%)",
+                        opacity: isActive ? 0.7 : 0.9,
+                      }}
+                    />
+                    
+                    {/* Top Left Corner Accent */}
+                    <div
+                      className={`absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 transition-all duration-500 ${
+                        isActive ? "border-white opacity-100" : "border-white/30 opacity-0"
+                      }`}
+                    />
+                    
+                    {/* Bottom Right Corner Accent */}
+                    <div
+                      className={`absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 transition-all duration-500 ${
+                        isActive ? "border-white opacity-100" : "border-white/30 opacity-0"
+                      }`}
+                    />
+                    
+                    {/* Competition Title Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                      <div
+                        className={`transition-all duration-500 ${
+                          isActive
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 translate-y-4 group-hover:opacity-80 group-hover:translate-y-0"
+                        }`}
+                      >
+                        <h3 className="text-white font-bold text-xl uppercase tracking-wider mb-1">
+                          {competition.title}
+                        </h3>
+                        <div className="flex items-center gap-3 text-sm">
+                          <span className="text-white/80 uppercase tracking-wide">
+                            {competition.category}
+                          </span>
+                          <span className="text-white/60">•</span>
+                          <span className="text-white/80 font-semibold">
+                            {competition.prize}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Active Indicator Bar */}
+                    {isActive && (
+                      <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-white via-white/80 to-transparent" />
+                    )}
+                  </div>
+                  
+                  {/* Outer Glow Effect for Active Card */}
+                  {isActive && (
+                    <div
+                      className="absolute inset-0 -z-10 blur-xl opacity-50"
+                      style={{
+                        background: "radial-gradient(circle at center, rgba(255,255,255,0.2), transparent 70%)",
+                      }}
+                    />
+                  )}
                 </div>
               );
             })}
