@@ -416,173 +416,205 @@ export default function Competitions() {
 
   return (
     <div
-      className={`h-screen w-full relative overflow-hidden transition-opacity duration-1000 ${
+      className={`h-screen w-full relative overflow-hidden transition-opacity duration-1000 bg-[#0a0a0a] ${
         mounted ? "opacity-100" : "opacity-0"
       }`}
     >
+      {/* Background with subtle texture */}
       <div className="fixed inset-0 -z-10">
-        <Image
-          src="/images/black_bg.jpg"
-          alt="background"
-          fill
-          className="object-cover"
-          priority
-        />
+        <div className="absolute inset-0 bg-[#0a0a0a]" />
+        <div className="absolute inset-0 opacity-30">
+          <Image
+            src="/images/home_bg_texture.jpg"
+            alt="background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
       </div>
 
-      <div className="relative z-10 text-white h-full flex flex-col justify-center px-[5vw]">
+      <div className="relative z-10 text-white h-full flex flex-col px-[5vw]">
+        {/* Header Section */}
         <div
-          className={`flex justify-between items-center mt-[20vh] mb-[4vh] pl-[4vw] pr-[2vw] transition-all duration-1000 delay-300 ${
+          className={`flex justify-between items-center pt-[12vh] pb-[3vh] transition-all duration-1000 delay-300 ${
             mounted ? "translate-y-0 opacity-100" : "-translate-y-8 opacity-0"
           }`}
         >
-          <div className="noxa-gothic text-[5vw] uppercase tracking-wide">
+          <div className="noxa-gothic text-[5vw] uppercase tracking-[0.05em]">
             Competitions
           </div>
 
-          <div className="flex gap-[2vw] text-[1.5vw] uppercase tracking-wide">
+          {/* Filter Tabs */}
+          <div className="flex gap-[1.5vw] text-[1.2vw] uppercase tracking-wider">
             <button
               onClick={() => handleFilterChange("ALL")}
-              className={`transition-colors cursor-pointer ${
-                filter === "ALL" ? "text-[#6E0216]" : "hover:text-[#6E0216]"
+              className={`relative pb-2 transition-all duration-300 cursor-pointer ${
+                filter === "ALL" ? "text-white" : "text-white/40 hover:text-white/70"
               }`}
             >
               ALL
+              {filter === "ALL" && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white" />
+              )}
             </button>
             <button
               onClick={() => handleFilterChange("TECH")}
-              className={`transition-colors cursor-pointer ${
-                filter === "TECH" ? "text-[#6E0216]" : "hover:text-[#6E0216]"
+              className={`relative pb-2 transition-all duration-300 cursor-pointer ${
+                filter === "TECH" ? "text-white" : "text-white/40 hover:text-white/70"
               }`}
             >
               TECH
+              {filter === "TECH" && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white" />
+              )}
             </button>
             <button
               onClick={() => handleFilterChange("CULTURAL")}
-              className={`transition-colors cursor-pointer ${
-                filter === "CULTURAL"
-                  ? "text-[#6E0216]"
-                  : "hover:text-[#6E0216]"
+              className={`relative pb-2 transition-all duration-300 cursor-pointer ${
+                filter === "CULTURAL" ? "text-white" : "text-white/40 hover:text-white/70"
               }`}
             >
               CULTURAL
+              {filter === "CULTURAL" && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white" />
+              )}
             </button>
           </div>
         </div>
 
-        <div className="relative flex items-start justify-center gap-[3vw] px-[2vw] flex-1 overflow-hidden">
+        <div className="relative flex items-center justify-center gap-[3vw] px-[2vw] flex-1 overflow-hidden">
           <div
-            className={`flex items-center gap-[5vw] w-full max-w-[90vw] pl-[2vw] transition-all duration-1000 delay-500 ${
+            className={`flex items-center gap-[3vw] w-full max-w-[95vw] transition-all duration-1000 delay-500 ${
               mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
           >
-            <div className="relative w-[30vw] h-[50vh] shrink-0 overflow-hidden">
-              <div
-                className={`flex flex-col gap-[2vh] ${
-                  isTransitioning
-                    ? "transition-transform duration-500 ease-out"
-                    : ""
-                }`}
-                style={{
-                  transform: `translateY(-${
-                    (currentIndex + totalItems) * 52
-                  }vh)`,
-                }}
-                onTransitionEnd={handleTransitionEnd}
-              >
-                {[
-                  ...filteredCompetitions,
-                  ...filteredCompetitions,
-                  ...filteredCompetitions,
-                ].map((competition, index) => {
-                  const arrayIndex = Math.floor(index / totalItems);
-                  const itemIndex = index % totalItems;
-                  const adjustedCurrentIndex = currentIndex + totalItems;
-                  const isActive = index === adjustedCurrentIndex;
+            {/* Left Side - Stacked Card Preview */}
+            <div className="relative w-[35vw] h-[65vh] shrink-0 flex items-center justify-center">
+              {/* Container for stacked cards with proper overflow */}
+              <div className="relative w-full h-[60vh] flex items-center justify-center overflow-visible">
+                {/* Render 3 cards: previous, current, next */}
+                {[-1, 0, 1].map((offset) => {
+                  const index = normalizedIndex + offset;
+                  const wrappedIndex = ((index % totalItems) + totalItems) % totalItems;
+                  const competition = filteredCompetitions[wrappedIndex];
+                  
+                  if (!competition) return null;
+
+                  const isActive = offset === 0;
+                  const zIndex = isActive ? 30 : offset === -1 ? 20 : 10;
+                  const translateY = offset * 28; // 28vh spacing between cards
 
                   return (
                     <div
-                      key={`${competition.id}-${arrayIndex}-${itemIndex}`}
-                      className={`relative w-[30vw] h-[50vh] shrink-0 transition-opacity duration-500 ${
-                        isActive ? "opacity-100" : "opacity-30"
+                      key={`card-${offset}-${wrappedIndex}`}
+                      className={`absolute left-1/2 top-1/2 -translate-x-1/2 shrink-0 rounded-xl overflow-hidden transition-all duration-500 ${
+                        isActive 
+                          ? "w-[35vw] h-[55vh] shadow-2xl" 
+                          : "w-[32vw] h-[22vh] opacity-50"
                       }`}
+                      style={{
+                        transform: `translate(-50%, calc(-50% + ${translateY}vh))`,
+                        zIndex: zIndex,
+                      }}
                     >
                       <Image
                         src={competition.image}
                         alt={competition.title}
                         fill
-                        className="object-cover object-center rounded-lg"
+                        className="object-cover"
+                        sizes="35vw"
+                        priority={isActive}
                       />
+                      {/* Gradient overlay for non-active cards */}
+                      {!isActive && (
+                        <div className="absolute inset-0 bg-black/60" />
+                      )}
                     </div>
                   );
                 })}
               </div>
             </div>
 
+            {/* Navigation Controls - Vertical */}
             <div className="flex flex-col gap-[3vh] items-center justify-center">
               <button
                 onClick={handlePrevious}
-                className="text-[#6E0216] hover:text-[#8E0216] transition-colors cursor-pointer"
+                className="w-12 h-12 flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-lg transition-all duration-300 cursor-pointer group"
                 aria-label="Previous competition"
               >
-                <ChevronUp size={60} strokeWidth={2.5} />
+                <ChevronUp size={28} strokeWidth={2.5} className="text-white/70 group-hover:text-white" />
               </button>
 
-              <div className="text-center text-[1.4vw] tracking-wide uppercase">
-                <span className="text-[#6E0216]">
-                  {normalizedIndex + 1} / {totalItems}
-                </span>
+              {/* Dot Indicator */}
+              <div className="flex flex-col gap-2 py-2">
+                {filteredCompetitions.map((_, idx) => (
+                  <div
+                    key={idx}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      idx === normalizedIndex 
+                        ? "bg-white w-2.5 h-2.5" 
+                        : "bg-white/30"
+                    }`}
+                  />
+                ))}
               </div>
 
               <button
                 onClick={handleNext}
-                className="text-[#6E0216] hover:text-[#8E0216] transition-colors cursor-pointer"
+                className="w-12 h-12 flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-lg transition-all duration-300 cursor-pointer group"
                 aria-label="Next competition"
               >
-                <ChevronDown size={60} strokeWidth={2.5} />
+                <ChevronDown size={28} strokeWidth={2.5} className="text-white/70 group-hover:text-white" />
               </button>
             </div>
 
-            <div className="flex-1 flex flex-col justify-start items-start text-left">
-              <div className="noxa-gothic w-full text-[3.3vw] uppercase text-white tracking-wide">
+            {/* Right Side - Competition Details */}
+            <div className="flex-1 flex flex-col justify-start items-start text-left max-w-[45vw]">
+              {/* Title */}
+              <div className="noxa-gothic w-full text-[4vw] uppercase text-white tracking-[0.05em] mb-6 leading-tight">
                 {currentCompetition.title}
               </div>
 
-              <div className="w-full text-[1.3vw] tracking-wide uppercase">
-                <p>
-                  <span className="text-[#6E0216]">Contact / POC:</span>{" "}
-                  {currentCompetition.contact}
-                </p>
-                <p>
-                  <span className="text-[#6E0216]">Prize Pool:</span>{" "}
-                  {currentCompetition.prize}
-                </p>
-                <p>
-                  <span className="text-[#6E0216]">Registration Deadline:</span>{" "}
-                  {currentCompetition.deadline}
-                </p>
-                <p>
-                  <span className="text-[#6E0216]">Dates / Rounds:</span>{" "}
-                  {currentCompetition.date}
-                </p>
+              {/* Info Grid - 2 Columns */}
+              <div className="w-full grid grid-cols-2 gap-x-8 gap-y-4 mb-6">
+                <div>
+                  <p className="text-[0.9vw] text-white/50 uppercase tracking-wider mb-1">Contact / POC</p>
+                  <p className="text-[1.1vw] text-white font-light">{currentCompetition.contact}</p>
+                </div>
+                <div>
+                  <p className="text-[0.9vw] text-white/50 uppercase tracking-wider mb-1">Prize Pool</p>
+                  <p className="text-[1.3vw] text-[#AE0021] font-semibold">{currentCompetition.prize}</p>
+                </div>
+                <div>
+                  <p className="text-[0.9vw] text-white/50 uppercase tracking-wider mb-1">Registration Deadline</p>
+                  <p className="text-[1.1vw] text-white font-light">{currentCompetition.deadline}</p>
+                </div>
+                <div>
+                  <p className="text-[0.9vw] text-white/50 uppercase tracking-wider mb-1">Dates / Rounds</p>
+                  <p className="text-[1.1vw] text-white font-light">{currentCompetition.date}</p>
+                </div>
               </div>
 
-              <div className="w-full pt-[1vh]">
-                <h3 className="text-[1.6vw] uppercase text-[#6E0216] tracking-wide">
+              {/* Description */}
+              <div className="w-full mb-6">
+                <h3 className="text-[1vw] uppercase text-white/50 tracking-wider mb-2">
                   Description
                 </h3>
-                <p className="w-full text-[1.2vw] leading-relaxed tracking-wide uppercase">
+                <p className="w-full text-[1.05vw] leading-relaxed text-white/80 font-light">
                   {currentCompetition.description}
                 </p>
               </div>
 
+              {/* Register Button */}
               <a
                 href={currentCompetition.registerLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-[#6E0216] hover:bg-[#8E0216] transition-colors px-[2.5vw] py-[1.5vh] text-[1.2vw] uppercase rounded mt-[1.5vh] tracking-wide"
+                className="inline-flex items-center gap-2 bg-transparent hover:bg-[#AE0021] border-2 border-white hover:border-[#AE0021] text-white px-6 py-3 text-[1.1vw] uppercase tracking-wider transition-all duration-300 rounded-sm group"
               >
                 Register Here
+                <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
               </a>
             </div>
           </div>
