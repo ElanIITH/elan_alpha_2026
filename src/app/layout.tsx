@@ -15,6 +15,12 @@ const noxaGothic = localFont({
   display: "swap",
 });
 
+const japaneseFont = localFont({
+  src: "./fonts/TsukuhouShogoMin-OFL.ttf",
+  variable: "--font-japanese",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Elan&nVision",
   description:
@@ -30,7 +36,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${bemore.variable} ${noxaGothic.variable}`}>
+    <html
+      lang="en"
+      className={`${bemore.variable} ${noxaGothic.variable} ${japaneseFont.variable}`}
+    >
       <body className="antialiased">
         <Navbar variant="red" />
         {children}

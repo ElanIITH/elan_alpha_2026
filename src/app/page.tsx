@@ -185,7 +185,11 @@ export default function Home() {
               mounted ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
             }`}
           >
-            <Link href={"#"}>
+            <a
+              href="https://forms.gle/qecyZsgf6CuF5ZTR8"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className="flex items-center gap-[2vw] text-[9vw] md:text-center md:text-[3.5vw] hover:text-[#AE0021] transition-colors">
                 REGISTER NOW
                 <svg
@@ -194,11 +198,14 @@ export default function Home() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
+                  <path d="M7 17L17 7" />
+                  <path d="M7 7h10v10" />
                 </svg>
               </div>
-            </Link>
+            </a>
             <div className="leading-tight text-[5vw] text-left md:text-[1.4vw] uppercase md:text-justify tracking-wide">
               <span className="hidden md:inline">
                 Elan&nVision, IIT Hyderabad's annual techno-cultural fest,
@@ -228,8 +235,11 @@ export default function Home() {
               </div>
             </div>
             <div
-              className="w-[4vh] h-[32vw] md:w-[4vw] md:h-[15vw] relative mb-[1vh] md:mb-[1vh] text-[2.8vh] md:text-[2.7vw]"
-              style={{ writingMode: "vertical-rl" }}
+              className="w-[4vh] h-[33vw] md:w-[4vw] md:h-[15vw] relative mb-[1vh] md:mb-[1vh] text-[2.8vh] md:text-[2.7vw]"
+              style={{
+                writingMode: "vertical-rl",
+                fontFamily: "'JapaneseFont', sans-serif",
+              }}
             >
               最後の浪人.
             </div>
@@ -290,11 +300,11 @@ export default function Home() {
         className="background-layers-3 md:min-h-screen text-white"
       >
         <div
-          className={`relative w-full min-h-screen flex flex-col items-center pt-[8vh] md:pt-0 md:justify-center md:items-center md:gap-[3vh] transition-all duration-1000 delay-400 ${
+          className={`relative w-full min-h-screen flex flex-col items-center pt-[8vh] md:pt-0 md:justify-center md:items-center transition-all duration-1000 delay-400 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="flex flex-col gap-[2vh] md:gap-[1vh] px-[5vw] md:px-0">
+          <div className="mt-[27vw] md:mt-[22vh] flex flex-col gap-[2vh] md:gap-[1vh] px-[5vw] md:px-0">
             <div
               data-animate-id="contact-title"
               className={`uppercase text-[5vw] md:text-[2.5vw] flex justify-center items-center transition-all duration-700 ${
@@ -380,7 +390,7 @@ export default function Home() {
           </div>
           <div
             data-animate-id="contact-logo"
-            className={`w-[60vw] h-[14vw] bottom-[26vh] md:w-[40vw] md:h-[9vw] absolute md:bottom-[6vh] transition-all duration-700 delay-800 ${
+            className={`w-[60vw] h-[14vw] md:w-[40vw] md:h-[9vw] transition-all duration-700 delay-800 ${
               visibleElements.has("contact-logo")
                 ? "opacity-100 scale-100"
                 : "opacity-0 scale-90"
@@ -401,7 +411,7 @@ export default function Home() {
           </div>
           <div
             data-animate-id="contact-social"
-            className={`flex justify-center items-center gap-[5vw] w-[80vw] h-[8vw] bottom-[20vh] md:gap-[2vw] md:w-[30vw] md:h-[3vw] absolute md:bottom-[2vh] transition-all duration-700 delay-900 ${
+            className={`flex justify-center items-center gap-[5vw] w-[80vw] h-[8vw] md:gap-[2vw] md:w-[30vw] md:h-[3vw] transition-all duration-700 delay-900 ${
               visibleElements.has("contact-social")
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"

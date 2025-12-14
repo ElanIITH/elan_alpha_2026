@@ -28,11 +28,11 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
     { label: "COMPETITIONS", href: "/competitions" },
     { label: "WORKSHOPS", href: "/workshop" },
     { label: "ACCOMMODATION", href: "/accomodation" },
-    { label: "IITH MAP", href: "/map" },
-    { label: "MERCHANDISE", href: "/Merchandise" },
+    { label: "IITH MAP", href: "/accomodation" },
+    { label: "MERCHANDISE", href: "/merchandise" },
     { label: "PARTNERS", href: "/partners" },
     { label: "TEAM", href: "/team" },
-    { label: "CONTACT US", href: "/#contact" },
+    { label: "CONTACT US", href: "/contact" },
   ];
 
   const externalLinks = [

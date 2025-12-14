@@ -192,12 +192,11 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
       </div>
 
       <Link
-        href="/#contact"
-        className={`${navItemClass("/#contact")} hidden md:block`}
-        style={navItemStyle("/#contact")}
+        href="/contact"
+        className={`${navItemClass("/contact")} hidden md:block`}
+        style={navItemStyle("/contact")}
         onMouseEnter={handleHover}
-        onMouseLeave={(e) => handleHoverOut(e, "/#contact")}
-        onClick={handleContactClick}
+        onMouseLeave={(e) => handleHoverOut(e, "/contact")}
       >
         CONTACT US
       </Link>
