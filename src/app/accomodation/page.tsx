@@ -265,30 +265,24 @@ export default function Accommodation() {
                 style={{ objectFit: "contain" }}
               ></Image>
             </div>
-            {/* <div className="absolute bottom-0 right-0 w-[45%] h-[35%] flex flex-col justify-evenly">
-              <div className="w-[45%] h-[50%] self-end relative">
-                <Image
-                  src="/images/accommodation_map_legend.png"
-                  alt="Legend"
-                  fill
-                  style={{ objectFit: "contain" }}
-                />
-              </div>
+            <div className="absolute bottom-0 right-0 w-[45%] h-[20%] flex flex-col justify-evenly">
               <div className="h-[50%] self-end">
-                <p className="text-white text-[2.1vw] uppercase -mt-[1vh]">
-                  VIEW IN GOOGLE MAP
-                </p>
-                <p className="text-white text-[4.2vw] noxa-gothic uppercase -mt-[2.75vh]">
-                  IITH MAP
-                </p>
+                <a href="https://maps.app.goo.gl/vFmu2392eE213swJ8" target="_blank" rel="noopener noreferrer" className="group">
+                  <p className="text-white text-[2.1vw] uppercase -mt-[1vh] group-hover:underline transition-all duration-300">
+                    VIEW IN GOOGLE MAP
+                  </p>
+                  <p className="text-white text-[4.2vw] noxa-gothic uppercase -mt-[2.75vh]">
+                    IITH MAP
+                  </p>
+                </a>
               </div>
-            </div> */}
+          </div>
           </div>
         </div>
 
         {/* Mobile/Tablet View */}
         <div
-          className={`lg:hidden w-full min-h-screen bg-black transition-all duration-1000 ${
+          className={`lg:hidden w-full min-h-screen transition-all duration-1000 ${
             mounted ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -350,24 +344,16 @@ export default function Accommodation() {
                   style={{ objectFit: "contain" }}
                 />
               </div>
-              {/* <div className="absolute bottom-2 right-2 flex flex-col items-end gap-2">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 relative">
-                  <Image
-                    src="/images/accommodation_map_legend.png"
-                    alt="Legend"
-                    fill
-                    style={{ objectFit: "contain" }}
-                  />
-                </div>
-                <div className="text-right">
-                  <p className="text-white text-xs sm:text-sm uppercase">
+              <div className="absolute bottom-2 right-2 flex flex-col items-end gap-2">
+                <a href="https://maps.app.goo.gl/vFmu2392eE213swJ8" target="_blank" rel="noopener noreferrer" className="group text-right">
+                  <p className="text-white text-xs sm:text-sm uppercase group-hover:underline transition-all duration-300">
                     VIEW IN GOOGLE MAP
                   </p>
                   <p className="text-white text-lg sm:text-xl md:text-2xl noxa-gothic uppercase -mt-1">
                     IITH MAP
                   </p>
-                </div>
-              </div> */}
+                </a>
+              </div>
             </div>
 
             {/* Information Sections */}
@@ -488,7 +474,7 @@ export default function Accommodation() {
 
         {/* Mobile/Tablet FAQ */}
         <div
-          className={`lg:hidden w-full min-h-screen bg-black transition-all duration-1000 delay-200 ${
+          className={`lg:hidden w-full min-h-screen transition-all duration-1000 delay-200 ${
             mounted ? "opacity-100" : "opacity-0"
           }`}
         >
