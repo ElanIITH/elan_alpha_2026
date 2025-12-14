@@ -642,9 +642,7 @@ export default function Competitions() {
                   }}
                   onClick={() => scrollToCard(actualIndex)}
                   className={`group relative w-full h-[50vh] mb-6 overflow-hidden cursor-pointer select-none transition-all duration-500 ${
-                    isActive 
-                      ? "scale-[1.02]" 
-                      : "scale-100 hover:scale-[1.01]"
+                    isActive ? "scale-[1.02]" : "scale-100 hover:scale-[1.01]"
                   }`}
                   style={{
                     scrollSnapAlign: "center",
@@ -656,7 +654,8 @@ export default function Competitions() {
                       isActive ? "opacity-100" : "opacity-90"
                     }`}
                     style={{
-                      clipPath: "polygon(0 0, calc(100% - 2rem) 0, 100% 2rem, 100% 100%, 2rem 100%, 0 calc(100% - 2rem))",
+                      clipPath:
+                        "polygon(0 0, calc(100% - 2rem) 0, 100% 2rem, 100% 100%, 2rem 100%, 0 calc(100% - 2rem))",
                     }}
                   >
                     {/* Image */}
@@ -674,30 +673,35 @@ export default function Competitions() {
                       draggable={false}
                       sizes="40vw"
                     />
-                    
+
                     {/* Gradient Overlays */}
                     <div
                       className="absolute inset-0 pointer-events-none transition-opacity duration-500"
                       style={{
-                        background: "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.8) 100%)",
+                        background:
+                          "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.8) 100%)",
                         opacity: isActive ? 0.7 : 0.9,
                       }}
                     />
-                    
+
                     {/* Top Left Corner Accent */}
                     <div
                       className={`absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 transition-all duration-500 ${
-                        isActive ? "border-white opacity-100" : "border-white/30 opacity-0"
+                        isActive
+                          ? "border-white opacity-100"
+                          : "border-white/30 opacity-0"
                       }`}
                     />
-                    
+
                     {/* Bottom Right Corner Accent */}
                     <div
                       className={`absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 transition-all duration-500 ${
-                        isActive ? "border-white opacity-100" : "border-white/30 opacity-0"
+                        isActive
+                          ? "border-white opacity-100"
+                          : "border-white/30 opacity-0"
                       }`}
                     />
-                    
+
                     {/* Competition Title Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
                       <div
@@ -721,19 +725,20 @@ export default function Competitions() {
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Active Indicator Bar */}
                     {isActive && (
-                      <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-white via-white/80 to-transparent" />
+                      <div className="absolute top-0 left-0 w-1 h-full bg-linear-to-b from-white via-white/80 to-transparent" />
                     )}
                   </div>
-                  
+
                   {/* Outer Glow Effect for Active Card */}
                   {isActive && (
                     <div
                       className="absolute inset-0 -z-10 blur-xl opacity-50"
                       style={{
-                        background: "radial-gradient(circle at center, rgba(255,255,255,0.2), transparent 70%)",
+                        background:
+                          "radial-gradient(circle at center, rgba(255,255,255,0.2), transparent 70%)",
                       }}
                     />
                   )}
@@ -746,17 +751,21 @@ export default function Competitions() {
           <div className="flex flex-col items-center justify-center gap-6">
             <button
               onClick={() => handleArrowClick("up")}
-              className="group w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-110 active:scale-95 rounded-full"
+              className="group w-12 h-12 flex items-center justify-center bg-linear-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-110 active:scale-95 rounded-full"
               aria-label="Previous"
             >
-              <span className="transition-transform duration-300 group-hover:-translate-y-0.5">↑</span>
+              <span className="transition-transform duration-300 group-hover:-translate-y-0.5">
+                ↑
+              </span>
             </button>
             <button
               onClick={() => handleArrowClick("down")}
-              className="group w-12 h-12 flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-110 active:scale-95 rounded-full"
+              className="group w-12 h-12 flex items-center justify-center bg-linear-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-110 active:scale-95 rounded-full"
               aria-label="Next"
             >
-              <span className="transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
+              <span className="transition-transform duration-300 group-hover:translate-y-0.5">
+                ↓
+              </span>
             </button>
           </div>
         </div>
@@ -833,7 +842,10 @@ export default function Competitions() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-white text-base font-normal tracking-[0.5px] mt-6 no-underline cursor-pointer transition-all duration-300 hover:text-[#cccccc]"
               >
-                <span className="underline" style={{ textUnderlineOffset: "4px" }}>
+                <span
+                  className="underline"
+                  style={{ textUnderlineOffset: "4px" }}
+                >
                   Register Here
                 </span>
                 <span className="no-underline text-sm transition-transform duration-300 hover:translate-x-0.5 hover:-translate-y-0.5">

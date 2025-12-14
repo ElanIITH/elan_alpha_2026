@@ -55,20 +55,20 @@ body {
   height: 90vh;
   width: 100%;
 
-  background: url("/images/home_bg.png") right center / contain no-repeat,
-    url("/images/front_page.jpg") center / 100vw auto no-repeat;
+  background: url("/optimised/home_bg.png") right center / contain no-repeat,
+    url("/optimised/front_page.jpg") center / 100vw auto no-repeat;
 }
 
 @media (max-width: 768px) {
   .background-layers-1 {
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1)),
-      url("/images/home_bg.png") center bottom / auto 60vh no-repeat,
-      url("/images/front_page.jpg") center top / auto 90vh no-repeat;
+      url("/optimised/home_bg.png") center bottom / auto 60vh no-repeat,
+      url("/optimised/front_page.jpg") center top / auto 90vh no-repeat;
   }
 }
 
 .background-layers-2 {
-  background-image: url("/images/theme_reveal_page.svg");
+  background-image: url("/optimised/theme_reveal_page.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -79,12 +79,12 @@ body {
     height: 90vh;
     width: 100%;
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
-      url("/images/theme_reveal_page.svg") left center / cover no-repeat;
+      url("/optimised/theme_reveal_page.jpg") left center / cover no-repeat;
   }
 }
 
 .background-layers-3 {
-  background-image: url("/images/contact_bg.jpg");
+  background-image: url("/optimised/contact_bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -95,7 +95,7 @@ body {
     height: 100vh;
     width: 100%;
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)),
-      url("/images/contact_bg.jpg") right center / cover no-repeat;
+      url("/optimised/contact_bg.jpg") right center / cover no-repeat;
   }
 }
 
