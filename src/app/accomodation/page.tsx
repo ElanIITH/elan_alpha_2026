@@ -50,51 +50,86 @@ export default function Accommodation() {
 
   const FAQs = [
     {
-      question: "How will I know if my accommodation is confirmed?",
+      question: "What facilities will be provided for accommodation?",
       answer:
-        "Our team will reach out to you to confirm your registration within a couple days of your submission.",
+        "Accommodation is provided on a room-per-person basis in the college hostels. Separate hostels are assigned for boys and girls. Each participant will receive:<br><br>1 mattress<br>1 pillow<br>Space for luggage storage<br><br>(Note: Please bring your own toiletries; only showers are provided.)",
     },
     {
-      question: "Is there any refund policy?",
+      question: "Are there any combo offers for accommodation?",
       answer:
-        "No. Once the payment is done and your registration has been confirmed, there will be strictly no refunds.",
+        "Yes! We have special combo offers for accommodation, as mentioned in the registration form. These offers provide better pricing for those booking multiple nights and also for those booking as a group of minimum of 3 participants availing accommodation. Check the form for details and select the best option for you as mentioned above.",
     },
     {
-      question: "Will rooms be provided on a single basis or a shared basis?",
+      question: "Can I get on-spot accommodation if I fail to book in advance?",
       answer:
-        "Owing to the large footfall of the fest, the rooms will be provided on a shared basis (2 people per room).",
+        "On-spot accommodation is subject to room availability. There is no guarantee that rooms will be available. To avoid any inconvenience, it is strongly recommended to register in advance.",
     },
     {
-      question: "Will there be on-spot registrations for accommodation?",
+      question: "Can I request a room close to my friends?",
       answer:
-        "On-spot registrations are strictly subject to availability of rooms. So we strongly recommend registering ahead of time to avoid any inconvenience.",
+        "We will try our best to accommodate such requests, but we cannot guarantee room proximity. We kindly ask participants not to argue with the organising team regarding room assignments.",
     },
     {
-      question: "Are vehicles allowed inside the campus?",
+      question: "Will I be allowed to leave the campus at night?",
       answer:
-        "Vehicles from outside are strictly prohibited inside campus premises. Buses run to-and-fro from the main gate to all the major student areas, so you need not worry about transport needs inside the campus itself.",
+        "Yes, participants are allowed to leave the campus at night. However, they are responsible for their own safety and must ensure they return on time for scheduled events.",
     },
     {
-      question: "Does the accommodation fee include the food facility as well?",
+      question: "What is the refund policy?",
       answer:
-        "You shall be allowed free coupons to the student dining halls for the duration of your stay at the campus.",
+        "Once the payment is made, there will be no refunds or cancellations.",
     },
     {
-      question: "Will I be allowed to leave the campus during the night?",
+      question: "What are the accommodation options and duration of stay?",
       answer:
-        "No, you are not permitted to exit the campus. In case of an emergency, a permit from one of the team members is required.",
+        "You can book accommodation for any of the following durations:<br><br>Single Night Stay (Any One Night): Choose from 9th, 10th, or 11th January 2026 (Check-in at night, check-out next morning).<br>2 Night Stay (Any Two Nights): Choose any two consecutive nights between 9th to 11th January 2026.<br>3 Night Stay (Full Fest Duration): From 9th January Night to 12th January Morning.<br><br>(Combo offers apply to certain stays—check the registration form for details!)",
     },
     {
-      question: "What are the inclusions in the accommodation charge?",
+      question: "Are there cloakrooms for temporary luggage storage?",
       answer:
-        "1. A mattress, pillow and bed sheet as part of your room.<br>2. Food Coupons for all the meals in the mess for the duration of stay.<br>3. Entry for all the informal games specially arranged for people who opted for accommodation.",
+        "Yes! We will have cloakrooms available for temporary luggage storage. Participants can keep their bags for a limited period while attending events. (Note: The fest team is not responsible for lost items.)",
+    },
+    {
+      question: "Are food stalls available on campus?",
+      answer:
+        "Yes, multiple food stalls will be available across the fest venue, offering a variety of options at reasonable prices.",
+    },
+    {
+      question: "Is there an ATM or UPI payment facility available?",
+      answer:
+        "Most stalls will accept UPI payments, and there are ATMs near the venue for cash withdrawals.",
+    },
+    {
+      question: "Are there lockers or safekeeping facilities for valuables?",
+      answer:
+        "No, participants are responsible for their own belongings. Please keep valuables safe at all times.",
+    },
+    {
+      question: "Can I extend my stay if I initially book for a shorter duration?",
+      answer:
+        "Extension of stay is subject to availability. It is recommended to book in advance to avoid last-minute issues.",
+    },
+    {
+      question: "Are there any special deals for group booking accommodation?",
+      answer:
+        "Yes! Group booking discounts are available with a minimum of 3 participants availing accommodation. Please check the registration form or contact the accommodation team for details.",
+    },
+    {
+      question: "Are meals included with the accommodation?",
+      answer:
+        "Yes, meals are included with the accommodation as follows:<br><br>For 1 Night Stay:<br>Meals provided: Breakfast will be provided on the following day (on the day of check-out).<br><br>For 2 Nights Stay:<br>Meals provided: Breakfast on the day after check-in and on the day of check-out.<br><br>For 3 Nights Stay:<br>Meals provided: Breakfast on Day 2, Day 3 and on the day of check-out.<br><br>Meals will be served in the designated dining areas during the fest.",
+    },
+    {
+      question: "Who can I contact for further queries?",
+      answer:
+        "For any accommodation-related queries, please reach out to our team members:<br><br>Karthika: +91 94949 88439<br>Sharanmegha: +91 8464946054<br>Moniha: +91 9566995223<br>Vasant: +91 8088645370<br>Sai Tejeswar: +91 8179771767<br>Akshay: +91 8177926434",
     },
   ];
 
   return (
-    <div className="w-full min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen">
+    <div className="w-full min-h-screen overflow-y-scroll h-screen">
       {/* Front Page */}
-      <div className="background-layers-6 min-h-screen snap-start snap-always">
+      <div className="background-layers-6 min-h-screen">
         {/* Desktop View */}
         <div
           className={`hidden lg:flex h-screen w-full items-start justify-center pt-[14vh] transition-all duration-1000 ${
@@ -187,7 +222,7 @@ export default function Accommodation() {
                   : "opacity-0 scale-95"
               }`}
             >
-              <button className="group relative inline-block focus:outline-none">
+              <a href="https://rzp.io/rzp/Cozfuh08" target="_blank" rel="noopener noreferrer" className="group relative inline-block focus:outline-none">
                 {/* Background Shape: Skewed Rectangle */}
                 <div
                   className="bg-[#680C16] text-white px-[4vw]
@@ -204,7 +239,7 @@ export default function Accommodation() {
                     Avail Accommodation
                   </span>
                 </div>
-              </button>
+              </a>
             </div>
           </div>
           <div
@@ -405,7 +440,7 @@ export default function Accommodation() {
                   : "opacity-0 scale-90"
               }`}
             >
-              <button className="group relative inline-block focus:outline-none">
+              <a href="https://rzp.io/rzp/Cozfuh08" target="_blank" rel="noopener noreferrer" className="group relative inline-block focus:outline-none">
                 <div
                   className="bg-[#680C16] text-white px-8 sm:px-12 md:px-16 py-3 sm:py-4
                                                 transition-all duration-300 active:scale-95 sm:hover:scale-105
@@ -416,16 +451,16 @@ export default function Accommodation() {
                     Avail Accommodation
                   </span>
                 </div>
-              </button>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       {/* Second Page */}
-      <div className="background-layers-5 min-h-screen snap-start snap-always">
+      <div className="background-layers-5 min-h-screen">
         {/* Desktop FAQ */}
-        <div className="hidden lg:flex h-screen w-full px-[3vw] pt-[14vh] pb-[4vh] flex-col items-start gap-[2vh]">
+        <div className="hidden lg:flex h-screen w-full px-[3vw] pt-[8vh] pb-[4vh] flex-col items-start gap-[2vh]">
           <p
             data-animate-id="faq-title"
             className={`text-white uppercase text-[4vw] noxa-gothic transition-all duration-700 ${
@@ -457,7 +492,7 @@ export default function Accommodation() {
             mounted ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="w-full min-h-screen px-4 sm:px-6 md:px-8 py-8 sm:py-12 pt-20 sm:pt-24 pb-20">
+          <div className="w-full min-h-screen px-4 sm:px-6 md:px-8 py-8 sm:py-12 pt-16 sm:pt-20 pb-20">
             <h1
               data-animate-id="mob-faq-title"
               className={`text-white uppercase text-4xl sm:text-5xl md:text-6xl noxa-gothic mb-6 sm:mb-8 transition-all duration-700 ${
