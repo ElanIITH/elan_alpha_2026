@@ -8,7 +8,6 @@ import { ChevronUp, ChevronDown } from "lucide-react";
 export default function Competitions() {
   const [filter, setFilter] = useState("ALL");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(true);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -400,56 +399,47 @@ export default function Competitions() {
     setCurrentIndex((prev) => prev + 1);
   };
 
-  const handleTransitionEnd = () => {
-    // When we reach the boundaries, instantly reset to middle section
-    if (currentIndex <= -totalItems || currentIndex >= totalItems * 2) {
-      setIsTransitioning(false);
-      setCurrentIndex(normalizedIndex);
-      setTimeout(() => setIsTransitioning(true), 50);
-    }
-  };
-
   const handleFilterChange = (newFilter: string) => {
     setFilter(newFilter);
     setCurrentIndex(0);
   };
 
   return (
-    <div
-      className={`h-screen w-full relative overflow-hidden transition-opacity duration-1000 bg-[#0a0a0a] ${
-        mounted ? "opacity-100" : "opacity-0"
-      }`}
-    >
-      {/* Background with subtle texture */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-[#0a0a0a]" />
-        <div className="absolute inset-0 opacity-30">
-          <Image
-            src="/images/home_bg_texture.jpg"
-            alt="background"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
+    <div className="relative min-h-screen w-full bg-[#0a0a0a] text-white overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/red_bg.png"
+          alt="Background"
+          fill
+          className="object-cover opacity-30"
+          priority
+        />
       </div>
 
-      <div className="relative z-10 text-white h-full flex flex-col px-[5vw]">
-        {/* Header Section */}
-        <div
-          className={`flex justify-between items-center pt-[12vh] pb-[3vh] transition-all duration-1000 delay-300 ${
-            mounted ? "translate-y-0 opacity-100" : "-translate-y-8 opacity-0"
-          }`}
-        >
-          <div className="noxa-gothic text-[5vw] uppercase tracking-[0.05em]">
-            Competitions
+      {/* Content */}
+      <div className="relative z-10 min-h-screen flex flex-col">
+        {/* Header with Title and Filters */}
+        <div className="pt-[10vh] pb-[4vh] px-[4vw]">
+          <div
+            className={`transition-all duration-1000 ${
+              mounted ? "translate-y-0 opacity-100" : "-translate-y-8 opacity-0"
+            }`}
+          >
+            <h1 className="noxa-gothic text-[8vw] uppercase tracking-wider mb-8">
+              Competitions
+            </h1>
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex gap-[1.5vw] text-[1.2vw] uppercase tracking-wider">
+          <div
+            className={`flex gap-12 text-[1.2vw] uppercase tracking-wider transition-all duration-1000 delay-300 ${
+              mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
+          >
             <button
               onClick={() => handleFilterChange("ALL")}
-              className={`relative pb-2 transition-all duration-300 cursor-pointer ${
+              className={`relative pb-2 transition-all duration-300 ${
                 filter === "ALL" ? "text-white" : "text-white/40 hover:text-white/70"
               }`}
             >
@@ -460,7 +450,7 @@ export default function Competitions() {
             </button>
             <button
               onClick={() => handleFilterChange("TECH")}
-              className={`relative pb-2 transition-all duration-300 cursor-pointer ${
+              className={`relative pb-2 transition-all duration-300 ${
                 filter === "TECH" ? "text-white" : "text-white/40 hover:text-white/70"
               }`}
             >
@@ -471,7 +461,7 @@ export default function Competitions() {
             </button>
             <button
               onClick={() => handleFilterChange("CULTURAL")}
-              className={`relative pb-2 transition-all duration-300 cursor-pointer ${
+              className={`relative pb-2 transition-all duration-300 ${
                 filter === "CULTURAL" ? "text-white" : "text-white/40 hover:text-white/70"
               }`}
             >
@@ -483,78 +473,75 @@ export default function Competitions() {
           </div>
         </div>
 
-        <div className="relative flex items-center justify-center gap-[3vw] px-[2vw] flex-1 overflow-hidden">
+        {/* Main Content - Two Column Layout */}
+        <div className="flex-1 flex px-[4vw] pb-[4vh] gap-[4vw]">
+          {/* Left Column - Stacked Cards with Navigation */}
           <div
-            className={`flex items-center gap-[3vw] w-full max-w-[95vw] transition-all duration-1000 delay-500 ${
-              mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            className={`flex items-center gap-[2vw] transition-all duration-1000 delay-500 ${
+              mounted ? "opacity-100" : "opacity-0"
             }`}
           >
-            {/* Left Side - Stacked Card Preview */}
-            <div className="relative w-[35vw] h-[65vh] shrink-0 flex items-center justify-center">
-              {/* Container for stacked cards with proper overflow */}
-              <div className="relative w-full h-[60vh] flex items-center justify-center overflow-visible">
-                {/* Render 3 cards: previous, current, next */}
-                {[-1, 0, 1].map((offset) => {
-                  const index = normalizedIndex + offset;
-                  const wrappedIndex = ((index % totalItems) + totalItems) % totalItems;
-                  const competition = filteredCompetitions[wrappedIndex];
-                  
-                  if (!competition) return null;
+            {/* Stacked Cards */}
+            <div className="relative w-[28vw] h-[60vh]">
+              {[-1, 0, 1].map((offset) => {
+                const index = normalizedIndex + offset;
+                const wrappedIndex = ((index % totalItems) + totalItems) % totalItems;
+                const competition = filteredCompetitions[wrappedIndex];
 
-                  const isActive = offset === 0;
-                  const zIndex = isActive ? 30 : offset === -1 ? 20 : 10;
-                  const translateY = offset * 28; // 28vh spacing between cards
+                if (!competition) return null;
 
-                  return (
-                    <div
-                      key={`card-${offset}-${wrappedIndex}`}
-                      className={`absolute left-1/2 top-1/2 -translate-x-1/2 shrink-0 rounded-xl overflow-hidden transition-all duration-500 ${
-                        isActive 
-                          ? "w-[35vw] h-[55vh] shadow-2xl" 
-                          : "w-[32vw] h-[22vh] opacity-50"
-                      }`}
-                      style={{
-                        transform: `translate(-50%, calc(-50% + ${translateY}vh))`,
-                        zIndex: zIndex,
-                      }}
-                    >
-                      <Image
-                        src={competition.image}
-                        alt={competition.title}
-                        fill
-                        className="object-cover"
-                        sizes="35vw"
-                        priority={isActive}
-                      />
-                      {/* Gradient overlay for non-active cards */}
-                      {!isActive && (
-                        <div className="absolute inset-0 bg-black/60" />
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
+                const isActive = offset === 0;
+                const zIndex = isActive ? 30 : offset === -1 ? 20 : 10;
+                const translateY = offset * 25;
+
+                return (
+                  <div
+                    key={`card-${offset}-${wrappedIndex}`}
+                    className={`absolute left-1/2 top-1/2 -translate-x-1/2 rounded-lg overflow-hidden transition-all duration-500 ${
+                      isActive
+                        ? "w-[28vw] h-[50vh] shadow-2xl"
+                        : "w-[26vw] h-[20vh] opacity-50"
+                    }`}
+                    style={{
+                      transform: `translate(-50%, calc(-50% + ${translateY}vh))`,
+                      zIndex: zIndex,
+                    }}
+                  >
+                    <Image
+                      src={competition.image}
+                      alt={competition.title}
+                      fill
+                      className="object-cover"
+                      sizes="28vw"
+                      priority={isActive}
+                    />
+                    {!isActive && (
+                      <div className="absolute inset-0 bg-black/60" />
+                    )}
+                  </div>
+                );
+              })}
             </div>
 
-            {/* Navigation Controls - Vertical */}
-            <div className="flex flex-col gap-[3vh] items-center justify-center">
+            {/* Navigation Controls */}
+            <div className="flex flex-col items-center gap-[2vh]">
               <button
                 onClick={handlePrevious}
-                className="w-12 h-12 flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-lg transition-all duration-300 cursor-pointer group"
-                aria-label="Previous competition"
+                className="w-12 h-12 flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-lg transition-all duration-300 group"
+                aria-label="Previous"
               >
-                <ChevronUp size={28} strokeWidth={2.5} className="text-white/70 group-hover:text-white" />
+                <ChevronUp size={24} className="text-white/70 group-hover:text-white" />
               </button>
 
-              {/* Dot Indicator */}
+              {/* Dots */}
               <div className="flex flex-col gap-2 py-2">
                 {filteredCompetitions.map((_, idx) => (
                   <div
                     key={idx}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      idx === normalizedIndex 
-                        ? "bg-white w-2.5 h-2.5" 
-                        : "bg-white/30"
+                    className={`rounded-full transition-all duration-300 ${
+                      idx === normalizedIndex
+                        ? "bg-white w-2.5 h-2.5"
+                        : "bg-white/30 w-2 h-2"
                     }`}
                   />
                 ))}
@@ -562,61 +549,81 @@ export default function Competitions() {
 
               <button
                 onClick={handleNext}
-                className="w-12 h-12 flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-lg transition-all duration-300 cursor-pointer group"
-                aria-label="Next competition"
+                className="w-12 h-12 flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-lg transition-all duration-300 group"
+                aria-label="Next"
               >
-                <ChevronDown size={28} strokeWidth={2.5} className="text-white/70 group-hover:text-white" />
+                <ChevronDown size={24} className="text-white/70 group-hover:text-white" />
               </button>
             </div>
+          </div>
 
-            {/* Right Side - Competition Details */}
-            <div className="flex-1 flex flex-col justify-start items-start text-left max-w-[45vw]">
-              {/* Title */}
-              <div className="noxa-gothic w-full text-[4vw] uppercase text-white tracking-[0.05em] mb-6 leading-tight">
-                {currentCompetition.title}
-              </div>
+          {/* Right Column - Competition Details */}
+          <div
+            className={`flex-1 flex flex-col justify-center transition-all duration-1000 delay-700 ${
+              mounted ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            {/* Title */}
+            <h2 className="noxa-gothic text-[4.5vw] uppercase tracking-wider mb-8 leading-none">
+              {currentCompetition.title}
+            </h2>
 
-              {/* Info Grid - 2 Columns */}
-              <div className="w-full grid grid-cols-2 gap-x-8 gap-y-4 mb-6">
-                <div>
-                  <p className="text-[0.9vw] text-white/50 uppercase tracking-wider mb-1">Contact / POC</p>
-                  <p className="text-[1.1vw] text-white font-light">{currentCompetition.contact}</p>
-                </div>
-                <div>
-                  <p className="text-[0.9vw] text-white/50 uppercase tracking-wider mb-1">Prize Pool</p>
-                  <p className="text-[1.3vw] text-[#AE0021] font-semibold">{currentCompetition.prize}</p>
-                </div>
-                <div>
-                  <p className="text-[0.9vw] text-white/50 uppercase tracking-wider mb-1">Registration Deadline</p>
-                  <p className="text-[1.1vw] text-white font-light">{currentCompetition.deadline}</p>
-                </div>
-                <div>
-                  <p className="text-[0.9vw] text-white/50 uppercase tracking-wider mb-1">Dates / Rounds</p>
-                  <p className="text-[1.1vw] text-white font-light">{currentCompetition.date}</p>
-                </div>
-              </div>
-
-              {/* Description */}
-              <div className="w-full mb-6">
-                <h3 className="text-[1vw] uppercase text-white/50 tracking-wider mb-2">
-                  Description
-                </h3>
-                <p className="w-full text-[1.05vw] leading-relaxed text-white/80 font-light">
-                  {currentCompetition.description}
+            {/* Info Grid */}
+            <div className="grid grid-cols-2 gap-x-12 gap-y-6 mb-8">
+              <div>
+                <p className="text-[0.85vw] text-white/50 uppercase tracking-widest mb-2">
+                  CONTACT / POC
+                </p>
+                <p className="text-[1vw] text-white">
+                  {currentCompetition.contact}
                 </p>
               </div>
-
-              {/* Register Button */}
-              <a
-                href={currentCompetition.registerLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-transparent hover:bg-[#AE0021] border-2 border-white hover:border-[#AE0021] text-white px-6 py-3 text-[1.1vw] uppercase tracking-wider transition-all duration-300 rounded-sm group"
-              >
-                Register Here
-                <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </a>
+              <div>
+                <p className="text-[0.85vw] text-white/50 uppercase tracking-widest mb-2">
+                  PRIZE POOL
+                </p>
+                <p className="text-[1.2vw] text-[#AE0021] font-semibold">
+                  {currentCompetition.prize}
+                </p>
+              </div>
+              <div>
+                <p className="text-[0.85vw] text-white/50 uppercase tracking-widest mb-2">
+                  REGISTRATION DEADLINE
+                </p>
+                <p className="text-[1vw] text-white">
+                  {currentCompetition.deadline}
+                </p>
+              </div>
+              <div>
+                <p className="text-[0.85vw] text-white/50 uppercase tracking-widest mb-2">
+                  DATES / ROUNDS
+                </p>
+                <p className="text-[1vw] text-white">
+                  {currentCompetition.date}
+                </p>
+              </div>
             </div>
+
+            {/* Description */}
+            <div className="mb-8">
+              <p className="text-[0.85vw] text-white/50 uppercase tracking-widest mb-3">
+                DESCRIPTION
+              </p>
+              <p className="text-[1vw] text-white/80 leading-relaxed max-w-[90%]">
+                {currentCompetition.description}
+              </p>
+            </div>
+
+            {/* Register Button */}
+            <Link
+              href={currentCompetition.registerLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="px-8 py-3 border-2 border-white text-white text-[0.9vw] uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
+                REGISTER HERE →
+              </button>
+            </Link>
           </div>
         </div>
       </div>
