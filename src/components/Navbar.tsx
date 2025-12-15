@@ -100,7 +100,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
   };
 
   return (
-    <div className="bg-transparent backdrop-blur-sm md:backdrop-blur-none fixed z-100 top-0 left-0 right-0 w-screen h-auto flex justify-between items-center px-[3vw] md:justify-center md:px-0 md:py-0 md:gap-8 md:text-[1.5vw] text-white">
+    <div className="bg-transparent fixed z-100 top-0 left-0 right-0 w-screen h-auto flex justify-between items-center px-[3vw] md:justify-center md:px-0 md:py-0 md:gap-8 md:text-[1.5vw] text-white">
       <Link
         href="/Merchandise"
         className={`${navItemClass("/Merchandise")} hidden md:block`}
