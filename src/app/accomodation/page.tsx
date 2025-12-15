@@ -475,7 +475,7 @@ export default function Accommodation() {
       </div>
 
       {/* Second Page */}
-      <div className="background-layers-6 min-h-screen lg:min-h-0">
+      <div className="background-layers-6 min-h-screen">
         {/* Desktop FAQ */}
         <div className="hidden lg:flex h-screen w-full px-[3vw] pt-[8vh] pb-[4vh] flex-col items-start gap-[2vh]">
           <p
