@@ -505,7 +505,7 @@ export default function Accommodation() {
 
         {/* Mobile/Tablet FAQ */}
         <div
-          className={`background-layers-6 lg:hidden w-full h-screen transition-all duration-1000 relative top-[-40vh] ${
+          className={`background-layers-6 lg:hidden w-full h-screen transition-all duration-1000 relative top-[-30vh] ${
             mounted ? "opacity-100" : "opacity-0"
           }`}
         >

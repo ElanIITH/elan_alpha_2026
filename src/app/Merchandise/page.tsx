@@ -287,7 +287,7 @@ export default function Merchandise() {
             {shirts.map((shirt) => (
               <div
                 key={shirt.id}
-                className="flex-shrink-0 w-[85vw] h-full flex flex-col items-center justify-center snap-center"
+                className="shrink-0 w-[85vw] h-full flex flex-col items-center justify-center snap-center"
                 style={{ marginLeft: "7.5vw", marginRight: "7.5vw" }}
               >
                 {/* Image Section */}
@@ -295,7 +295,7 @@ export default function Merchandise() {
                   href={shirt.buy_link}
                   className="flex-1 flex items-center justify-center w-full mb-6 cursor-pointer hover:scale-105 transition-transform duration-300"
                 >
-                  <div className="relative w-[100vw] h-[45vh] sm:w-[65vw] sm:h-[50vh]">
+                  <div className="relative w-screen h-[45vh] sm:w-[65vw] sm:h-[50vh]">
                     <Image
                       src={shirt.image_org}
                       alt={shirt.name}
@@ -318,13 +318,13 @@ export default function Merchandise() {
                   </div>
 
                   {/* Right - Price and Buy */}
-                  <div className="flex-shrink-0 flex flex-col items-center gap-2 sm:gap-3 ml-4">
+                  <div className="shrink-0 flex flex-col items-center gap-2 sm:gap-3 ml-4">
                     <div className="text-white text-[5vw] translate-y-[-0.3vw] sm:text-base font-semibold">
                       {shirt.price}
                     </div>
                     <a
                       href={shirt.buy_link}
-                      className="w-[20vw] h-[10vw] translate-y-[-0vw] sm:w-[9vw] sm:h-[9vw] relative cursor-pointer hover:scale-110 transition-transform duration-300 active:scale-95"
+                      className="w-[20vw] h-[10vw] translate-y-0 sm:w-[9vw] sm:h-[9vw] relative cursor-pointer hover:scale-110 transition-transform duration-300 active:scale-95"
                     >
                       <Image
                         src="/images/BUY.png"
