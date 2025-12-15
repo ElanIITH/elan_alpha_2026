@@ -94,18 +94,13 @@ export default function Merchandise() {
         >
           <div
             data-animate-id="merch-title"
-            className={`w-[30vw] h-[10vw] absolute top-[10vh] left-[2vw] transition-all duration-700 ${
+            className={`w-[30vw] h-[10vw] absolute top-[10vh] left-[2vw] transition-all duration-700 uppercase text-white md:text-[5vw] noxa-gothic ${
               visibleElements.has("merch-title")
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 -translate-y-8"
             }`}
           >
-            <Image
-              src="/images/MERCHANDISE.svg"
-              alt="MERCHANDISE"
-              fill
-              className="object-contain"
-            />
+            Merchandise
           </div>
 
           <div
@@ -233,15 +228,8 @@ export default function Merchandise() {
         >
           <div className="w-full px-4 py-6 sm:px-6 md:px-8">
             {/* MERCHANDISE Title */}
-            <div className="w-[60vw] sm:w-[50vw] md:w-[40vw] h-[15vw] sm:h-[12vw] md:h-[10vw] mx-auto mb-8">
-              <div className="relative w-full h-full">
-                <Image
-                  src="/images/MERCHANDISE.svg"
-                  alt="MERCHANDISE"
-                  fill
-                  className="object-contain"
-                />
-              </div>
+            <div className="flex justify-center items-center text-4xl md:mt-0 mt-10 text-white w-[60vw] sm:w-[50vw] md:w-[40vw] h-[15vw] sm:h-[12vw] md:h-[10vw] mx-auto mb-8 noxa-gothic">
+              MERCHANDISE
             </div>
 
             {/* Selected Shirt Display */}
