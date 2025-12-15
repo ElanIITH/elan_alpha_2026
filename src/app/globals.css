@@ -190,8 +190,8 @@ body {
     clip-path: polygon(
       1rem 0,
       100% 0,
-      100% calc(100% - 1rem),
-      calc(100% - 1rem) 100%,
+      100% calc(100% - 0.8rem),
+      calc(100% - 1rem) 90%,
       0 100%,
       0 1rem
     );

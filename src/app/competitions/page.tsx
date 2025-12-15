@@ -788,7 +788,7 @@ export default function Competitions() {
                   className="md:hidden inline-block group relative focus:outline-none"
                 >
                   <div className="bg-[#680C16] text-white px-[4vw] text-center md:text-left transition-all duration-300 group-hover:bg-white group-hover:text-[#6E0216] group-hover:font-bold clip-skewed">
-                    <span className="text-[2vw] tracking-wider uppercase drop-shadow-md">
+                    <span className="text-[5vw] tracking-wider uppercase drop-shadow-md">
                       Register here
                     </span>
                   </div>
