@@ -15,6 +15,18 @@ export default function Home() {
     minutes: 0,
     seconds: 0,
   });
+  const [copiedText, setCopiedText] = useState<string | null>(null);
+  const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
+
+  const handleCopyToClipboard = (
+    text: string,
+    e: React.MouseEvent<HTMLSpanElement>
+  ) => {
+    navigator.clipboard.writeText(text);
+    setCopiedText(text);
+    setPopupPosition({ x: e.clientX, y: e.clientY });
+    setTimeout(() => setCopiedText(null), 2000);
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -340,8 +352,22 @@ export default function Home() {
                   >
                     <div>{contact.name}</div>
                     <div>{contact.position}</div>
-                    <div>{contact.email}</div>
-                    <div>{contact.phone}</div>
+                    <div>
+                      <span
+                        onClick={(e) => handleCopyToClipboard(contact.email, e)}
+                        className="cursor-pointer hover:text-[#6E0216] transition-colors duration-200"
+                      >
+                        {contact.email}
+                      </span>
+                    </div>
+                    <div>
+                      <span
+                        onClick={(e) => handleCopyToClipboard(contact.phone, e)}
+                        className="cursor-pointer hover:text-[#6E0216] transition-colors duration-200"
+                      >
+                        {contact.phone}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -371,7 +397,14 @@ export default function Home() {
                 </div>
 
                 <div className="text-[3.7vw] md:text-[2.5vw] uppercase">
-                  elan.nvision@sa.iith.ac.in
+                  <span
+                    onClick={(e) =>
+                      handleCopyToClipboard("elan.nvision@sa.iith.ac.in", e)
+                    }
+                    className="cursor-pointer hover:text-[#6E0216] transition-colors duration-200"
+                  >
+                    elan.nvision@sa.iith.ac.in
+                  </span>
                 </div>
 
                 <div className="flex flex-col">
@@ -496,6 +529,19 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Copied to Clipboard Popup */}
+      {copiedText && (
+        <div
+          className="fixed z-[9999] bg-[#6E0216] text-white px-4 py-2 rounded shadow-lg text-sm pointer-events-none"
+          style={{
+            left: `${popupPosition.x + 10}px`,
+            top: `${popupPosition.y - 30}px`,
+          }}
+        >
+          Copied to clipboard
+        </div>
+      )}
     </div>
   );
 }
