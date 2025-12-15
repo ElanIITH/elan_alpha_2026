@@ -12,6 +12,7 @@ const shirts = [
     price: "RS. 699.00",
     image: "/images/shirt1.png",
     image_org: "/images/shirt1_org.png",
+    jp_text: "/images/shirt1_jp.png",
     buy_link:
       "https://thedopaminestore.in/products/iit-hyderabad-premium-oversize-vetran-samurai-copy-1?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
@@ -22,6 +23,7 @@ const shirts = [
     price: "RS. 349.00",
     image: "/images/shirt2.png",
     image_org: "/images/shirt2_org.png",
+    jp_text: "/images/shirt2_jp.png",
     buy_link:
       "https://thedopaminestore.in/products/iit-hyderabad-premium-t-shirt-the-bliss?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
@@ -32,6 +34,7 @@ const shirts = [
     price: "RS. 499.00",
     image: "/images/shirt3.png",
     image_org: "/images/shirt3_org.png",
+    jp_text: "/images/shirt3_jp.png",
     buy_link:
       "https://thedopaminestore.in/products/iit-hyderabad-premium-oversize-that-the-play?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
@@ -42,6 +45,7 @@ const shirts = [
     price: "RS. 499.00",
     image: "/images/shirt4.png",
     image_org: "/images/shirt4_org.png",
+    jp_text: "/images/shirt4_jp.png",
     buy_link:
       "https://thedopaminestore.in/products/iit-hyderabad-acid-wash-vetran-samurai?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
@@ -52,6 +56,7 @@ const shirts = [
     price: "RS. 199.00",
     image: "/images/shirt5.png",
     image_org: "/images/shirt5_org.png",
+    jp_text: "/images/shirt5_jp.png",
     buy_link:
       "https://thedop-aminestore.myshopify.com/products/iit-hyderabad-tote-bag-cool-it?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
@@ -164,13 +169,13 @@ export default function Merchandise() {
 
           <div
             data-animate-id="merch-vert"
-            className={`w-[55vw] h-[10vw] absolute top-[26vh] left-0 translate-x-[-24vw] transition-all duration-700 delay-100 ${
+            className={`w-[5vw] h-[10vw] absolute top-[26vh] left-[2vw] transition-all duration-700 delay-100 ${
               visibleElements.has("merch-vert") ? "opacity-100" : "opacity-0"
             }`}
           >
             <Image
-              src="/images/merchandisever.svg"
-              alt="separator"
+              src={selectedShirt.jp_text}
+              alt="jp text"
               fill
               className="object-contain"
             />
