@@ -505,11 +505,11 @@ export default function Accommodation() {
 
         {/* Mobile/Tablet FAQ */}
         <div
-          className={`background-layers-6 lg:hidden w-full h-screen transition-all duration-1000 relative top-[-30vh] ${
+          className={`background-layers-6 lg:hidden w-full min-h-[130vh] transition-all duration-1000 relative top-[-30vh] ${
             mounted ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="w-full h-full px-[2vw]">
+          <div className="w-full h-full px-[2vw] flex flex-col pt-4 pb-8">
             <h1
               data-animate-id="mob-faq-title"
               className={`text-white uppercase text-4xl sm:text-5xl md:text-6xl noxa-gothic mb-6 sm:mb-8 transition-all duration-700 ${
@@ -521,17 +521,12 @@ export default function Accommodation() {
               FAQ'S
             </h1>
 
-            <div className="space-y-6 background-layers-6">
+            <SimpleWrapper>
               {FAQs.map((faq, index) => (
                 <div
                   key={index}
                   data-animate-id={`mob-faq-item-${index}`}
-                  className={`flex flex-col space-y-2 transition-all duration-700 ${
-                    visibleElements.has(`mob-faq-item-${index}`)
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-8"
-                  }`}
-                  style={{ transitionDelay: `${index * 80}ms` }}
+                  className="flex flex-col space-y-2"
                 >
                   <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-white uppercase leading-tight">
                     {faq.question}
@@ -542,7 +537,7 @@ export default function Accommodation() {
                   ></p>
                 </div>
               ))}
-            </div>
+            </SimpleWrapper>
           </div>
         </div>
       </div>
