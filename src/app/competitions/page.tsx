@@ -695,7 +695,10 @@ export default function Competitions() {
                     }`}
                   >
                     {/* Main Card Container with Clipped Corners */}
-                    <div
+                    <a
+                      href={competition.registerLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={`absolute inset-0 bg-[#0a0a0a] transition-all duration-500 clip-card ${
                         isActive ? "opacity-100" : "opacity-90"
                       }`}
@@ -705,11 +708,7 @@ export default function Competitions() {
                         src={competition.image}
                         alt={competition.title}
                         fill
-                        className={`object-cover select-none transition-all duration-700 ${
-                          isActive
-                            ? "brightness-110 contrast-125 saturate-125"
-                            : "brightness-75 contrast-110 saturate-90"
-                        }`}
+                        className="object-cover select-none transition-all duration-700 group-hover:brightness-110 group-hover:contrast-125 group-hover:saturate-125"
                         draggable={false}
                         sizes="(max-width: 768px) 85vw, 40vw"
                       />
@@ -737,7 +736,7 @@ export default function Competitions() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </a>
 
                     {/* Outer Glow Effect for Active Card */}
                     {isActive && (
@@ -752,7 +751,7 @@ export default function Competitions() {
             <div className="flex md:flex-col items-center justify-center gap-6">
               <button
                 onClick={() => handleArrowClick("up")}
-                className="group w-12 h-12 flex items-center justify-center bg-linear-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-110 active:scale-95 rounded-full"
+                className="group w-12 h-12 flex items-center justify-center bg-linear-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-red-600 hover:shadow-lg hover:shadow-red-600/20 hover:scale-110 active:scale-95"
                 aria-label="Previous"
               >
                 <span className="transition-transform duration-300 group-hover:-translate-y-0.5 md:rotate-0 rotate-270">
@@ -761,7 +760,7 @@ export default function Competitions() {
               </button>
               <button
                 onClick={() => handleArrowClick("down")}
-                className="group w-12 h-12 flex items-center justify-center bg-linear-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-110 active:scale-95 rounded-full"
+                className="group w-12 h-12 flex items-center justify-center bg-linear-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-red-600 hover:shadow-lg hover:shadow-red-600/20 hover:scale-110 active:scale-95"
                 aria-label="Next"
               >
                 <span className="transition-transform duration-300 group-hover:translate-y-0.5 md:rotate-0 rotate-270">
