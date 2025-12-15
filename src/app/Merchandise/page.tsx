@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const shirts = [
   {
@@ -63,6 +63,7 @@ export default function Merchandise() {
   const [visibleElements, setVisibleElements] = useState<Set<string>>(
     new Set()
   );
+  const mobileCarouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -90,6 +91,41 @@ export default function Merchandise() {
     return () => {
       clearTimeout(timeoutId);
       observer.disconnect();
+    };
+  }, [mounted]);
+
+  // Auto-scroll carousel on mobile on mount
+  useEffect(() => {
+    if (!mounted || !mobileCarouselRef.current) return;
+
+    const carousel = mobileCarouselRef.current;
+    const totalWidth = carousel.scrollWidth;
+    const duration = totalWidth / 150; // Faster scroll speed (pixels per second)
+
+    let startTime: number;
+    let animationFrameId: number;
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const elapsed = (currentTime - startTime) / 1000; // Convert to seconds
+      const progress = elapsed / duration;
+
+      if (progress < 1) {
+        carousel.scrollLeft = totalWidth * progress;
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        carousel.scrollLeft = 0; // Reset to start
+      }
+    };
+
+    const timeoutId = setTimeout(() => {
+      startTime = undefined as any;
+      animationFrameId = requestAnimationFrame(animate);
+    }, 1); // Start after 500ms
+
+    return () => {
+      clearTimeout(timeoutId);
+      cancelAnimationFrame(animationFrameId);
     };
   }, [mounted]);
 
@@ -232,86 +268,82 @@ export default function Merchandise() {
           </div>
         </div>
 
-        {/* Mobile/Tablet Layout - Scrollable content */}
+        {/* Mobile/Tablet Layout - Horizontally Scrollable Carousel Strip */}
         <div
-          className={`lg:hidden w-full min-h-screen overflow-y-auto pb-20 transition-all duration-1000 ${
+          className={`lg:hidden w-full min-h-screen flex flex-col overflow-hidden transition-all duration-1000 ${
             mounted ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="w-full px-4 py-6 sm:px-6 md:px-8">
-            {/* MERCHANDISE Title */}
-            <div className="flex justify-center items-center text-4xl md:mt-0 mt-10 text-white w-[60vw] sm:w-[50vw] md:w-[40vw] h-[15vw] sm:h-[12vw] md:h-[10vw] mx-auto mb-8 noxa-gothic">
-              MERCHANDISE
-            </div>
+          {/* MERCHANDISE Title */}
+          <div className="flex justify-center items-center text-3xl sm:text-4xl text-white w-full pt-8 pb-4 noxa-gothic px-4">
+            MERCHANDISE
+          </div>
 
-            {/* Selected Shirt Display */}
-            <div className="flex flex-col items-center w-full mb-8">
+          {/* Carousel Container - Single Row Horizontal Scroll */}
+          <div
+            ref={mobileCarouselRef}
+            className="flex-1 flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide relative scroll-smooth p-0"
+          >
+            {shirts.map((shirt) => (
               <div
-                className={`relative ${
-                  selectedShirt.id === 5
-                    ? "w-[70vw] h-[70vw] sm:w-[60vw] sm:h-[60vw] md:w-[50vw] md:h-[50vw]"
-                    : "w-[80vw] h-[80vw] sm:w-[70vw] sm:h-[70vw] md:w-[60vw] md:h-[60vw]"
-                } mx-auto mb-6`}
+                key={shirt.id}
+                className="flex-shrink-0 w-[85vw] h-full flex flex-col items-center justify-center snap-center"
+                style={{ marginLeft: "7.5vw", marginRight: "7.5vw" }}
               >
-                <Image
-                  src={selectedShirt.image_org}
-                  alt={selectedShirt.name}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-
-              {/* Shirt Details */}
-              <div className="text-center w-full px-4">
-                <div className="text-white text-base sm:text-lg md:text-xl uppercase font-semibold opacity-80">
-                  {selectedShirt.subname}
-                </div>
-
-                <div className="text-white text-xl sm:text-2xl md:text-3xl uppercase font-bold mt-2">
-                  {selectedShirt.name}
-                </div>
-
-                <div className="text-white text-lg sm:text-xl md:text-2xl mt-3 font-semibold">
-                  {selectedShirt.price}
-                </div>
-
-                {/* Buy Button */}
-                <Link href="#" className="inline-block mt-6">
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 relative cursor-pointer transition-transform duration-200 hover:scale-90 active:scale-95">
+                {/* Image Section */}
+                <a
+                  href={shirt.buy_link}
+                  className="flex-1 flex items-center justify-center w-full mb-6 cursor-pointer hover:scale-105 transition-transform duration-300"
+                >
+                  <div className="relative w-[100vw] h-[45vh] sm:w-[65vw] sm:h-[50vh]">
                     <Image
-                      src="/images/BUY.png"
-                      alt="Buy"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </Link>
-              </div>
-            </div>
-
-            {/* Shirts Grid */}
-            <div className="w-full mt-12">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6 max-w-2xl mx-auto">
-                {shirts.map((shirt) => (
-                  <button
-                    key={shirt.id}
-                    onClick={() => setSelectedShirt(shirt)}
-                    className={`relative w-full aspect-square cursor-pointer transition-all duration-200 overflow-hidden border border-white ${
-                      selectedShirt.id === shirt.id
-                        ? "border-[#6E0216]"
-                        : "hover:border-white"
-                    }`}
-                  >
-                    <Image
-                      src={shirt.image}
+                      src={shirt.image_org}
                       alt={shirt.name}
                       fill
                       className="object-contain"
                     />
-                  </button>
-                ))}
+                  </div>
+                </a>
+
+                {/* Text and Buy Section */}
+                <div className="w-full px-4 pb-6 flex items-end justify-between">
+                  {/* Left - Name and Type */}
+                  <div className="flex-1 text-left">
+                    <div className="text-white text-[6vw] sm:text-sm uppercase opacity-70 mb-2 leading-tight">
+                      {shirt.subname}
+                    </div>
+                    <div className="text-white text-[8vw] sm:text-lg font-semibold uppercase leading-tight">
+                      {shirt.name}
+                    </div>
+                  </div>
+
+                  {/* Right - Price and Buy */}
+                  <div className="flex-shrink-0 flex flex-col items-center gap-2 sm:gap-3 ml-4">
+                    <div className="text-white text-[5vw] translate-y-[-0.3vw] sm:text-base font-semibold">
+                      {shirt.price}
+                    </div>
+                    <a
+                      href={shirt.buy_link}
+                      className="w-[20vw] h-[10vw] translate-y-[-0vw] sm:w-[9vw] sm:h-[9vw] relative cursor-pointer hover:scale-110 transition-transform duration-300 active:scale-95"
+                    >
+                      <Image
+                        src="/images/BUY.png"
+                        alt="Buy"
+                        fill
+                        className="object-contain"
+                      />
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
+          </div>
+
+          {/* Scroll Indicator */}
+          <div className="translate-y-[-50vw] flex justify-center items-center h-10 text-white text-[8vw] opacity-60 animate-bounce gap-2">
+            <span>←</span>
+            <span>SCROLL</span>
+            <span>→</span>
           </div>
         </div>
       </div>

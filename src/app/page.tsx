@@ -192,7 +192,7 @@ export default function Home() {
             </div>
           </div>
           <div
-            className={`pl-[1vw] pr-[5vw] w-[90vw] top-[23vh] left-[3vw] items-start md:pl-[2vw] md:w-[42vw] h-auto absolute md:top-[45vh] md:left-[2vw] text-white flex flex-col md:items-end transition-all duration-1000 delay-500 ${
+            className={`pl-[1vw] pr-[5vw] w-[90vw] top-[23vh] left-[3vw] items-start md:pl-[2vw] md:w-[42vw] h-auto absolute md:top-[51vh] md:left-[2vw] text-white flex flex-col md:items-end transition-all duration-1000 delay-500 ${
               mounted ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
             }`}
           >
@@ -217,7 +217,7 @@ export default function Home() {
                 </svg>
               </div>
             </a>
-            <div className="leading-tight text-[5vw] text-left md:text-[1.4vw] uppercase md:text-justify tracking-wide">
+            <div className="leading-tight text-[5vw] text-left md:text-[1.4vw] uppercase md:text-justify tracking-normal md:leading-[1.1]">
               <span className="hidden md:inline">
                 Elan&nVision, IIT Hyderabad's annual techno-cultural fest,
                 celebrates the stories, music, memories, and innovation that
@@ -288,7 +288,7 @@ export default function Home() {
           </div>
           <div
             data-animate-id="theme-text"
-            className={`leading-tight text-[5vw] w-[85vw] px-[5vw] md:text-[1.4vw] md:w-[40vw] md:px-0 h-auto uppercase text-justify transition-all duration-700 delay-200 ${
+            className={`leading-tight text-[5vw] w-[85vw] px-[5vw] md:text-[1.4vw] md:w-[40vw] md:px-0 h-auto uppercase text-justify tracking-normal md:leading-[1.1] transition-all duration-700 delay-200 ${
               visibleElements.has("theme-text")
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"

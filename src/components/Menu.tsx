@@ -52,7 +52,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
 
       {/* Menu Panel */}
       <div
-        className={`fixed top-0 right-0 h-screen w-full md:w-[35vw] z-999 transition-transform duration-700 ease-in-out ${
+        className={`fixed top-0 right-0 h-screen w-full md:w-[27vw] z-999 transition-transform duration-700 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
