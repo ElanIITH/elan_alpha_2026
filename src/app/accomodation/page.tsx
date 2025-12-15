@@ -300,11 +300,9 @@ export default function Accommodation() {
 
         {/* Mobile/Tablet View */}
         <div
-          className={`background-layers-6 md:hidden w-full min-h-screen transition-all duration-1000 ${
-            mounted ? "opacity-100" : "opacity-0"
-          }`}
+          className={`background-layers-6 md:hidden w-full min-h-screen transition-all duration-1000`}
         >
-          <div className=" w-full min-h-screen px-4 sm:px-6 md:px-8 py-8 sm:py-12 pt-20 sm:pt-24 pb-20">
+          <div className="w-full min-h-screen px-4 sm:px-6 md:px-8 py-8 sm:py-12 pt-20 sm:pt-24 pb-20">
             {/* Title */}
             <h1
               data-animate-id="mob-title"
@@ -378,106 +376,106 @@ export default function Accommodation() {
                 </a>
               </div>
             </div>
-
-            {/* Information Sections */}
-            <div className="space-y-6 sm:space-y-8">
-              {/* Getting to IITH */}
-              <div
-                data-animate-id="mob-getting"
-                className={`flex flex-col transition-all duration-700 delay-200 ${
-                  visibleElements.has("mob-getting")
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 -translate-x-8"
-                }`}
-              >
-                <h2 className="text-white text-2xl sm:text-3xl md:text-4xl uppercase font-semibold mb-2 sm:mb-3">
-                  GETTING TO IITH
-                </h2>
-                <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed">
-                  The main gate lies on the road from Patancheru to Kandi.
-                  There's a bunch of large signs and boards, so you can't miss
-                  it. Refer to Google maps for the exact address. One can reach
-                  Patancheru by either bus or train. From Patancheru, one can
-                  reach the IIT main gate by either bus or auto.
-                </p>
-              </div>
-
-              {/* Guidelines */}
-              <div
-                data-animate-id="mob-guidelines"
-                className={`flex flex-col transition-all duration-700 delay-300 ${
-                  visibleElements.has("mob-guidelines")
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 -translate-x-8"
-                }`}
-              >
-                <h2 className="text-white text-2xl sm:text-3xl md:text-4xl uppercase font-semibold mb-2 sm:mb-3">
-                  GUIDELINES
-                </h2>
-                <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed mb-3">
-                  Check out our in-depth Accomodation and Transportation guide
-                  by clicking the respective links below:
-                </p>
-                <div className="flex flex-col gap-3">
-                  <a
-                    href="https://docs.google.com/document/d/1J7M43LG2v8EXs4FNRG4KhaVuMHmC1DwHDOf5b74jMDY/edit?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 text-white text-sm sm:text-base md:text-lg leading-relaxed hover:underline transition-all duration-300"
-                  >
-                    <span>Elan & nVision 2026 Accommodation Guide</span>
-                    <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
-                      ↗
-                    </span>
-                  </a>
-                  <a
-                    href="https://docs.google.com/document/d/1zq0RIVnx6413KMZ2HaP6mKqcrmB_XI8WqnKsC0F8ZRM/edit?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 text-white text-sm sm:text-base md:text-lg leading-relaxed hover:underline transition-all duration-300"
-                  >
-                    <span>Elan & nVision 2026 Transportation Guide</span>
-                    <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
-                      ↗
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Button */}
-            <div
-              data-animate-id="mob-button"
-              className={`w-full flex justify-center mt-8 sm:mt-10 md:mt-12 transition-all duration-700 delay-300 ${
-                visibleElements.has("mob-button")
-                  ? "opacity-100 scale-100"
-                  : "opacity-0 scale-90"
-              }`}
-            >
-              <a
-                href="https://rzp.io/rzp/Cozfuh08"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative inline-block focus:outline-none"
-              >
-                <div
-                  className="bg-[#680C16] text-white px-8 sm:px-12 md:px-16 py-3 sm:py-4
-                                                transition-all duration-300 active:scale-95 sm:hover:scale-105
-                                                sm:hover:bg-white sm:hover:text-[#6E0216] sm:hover:font-bold
-                                                rounded-tr-lg rounded-bl-lg"
-                >
-                  <span className="text-lg sm:text-xl md:text-2xl tracking-wider uppercase drop-shadow-md">
-                    Avail Accommodation
-                  </span>
-                </div>
-              </a>
-            </div>
           </div>
         </div>
       </div>
 
+      <div className="background-layers-6">
+        {/* Information Sections - mobile */}
+        <div className="space-y-6 md:hidden p-[2vh]">
+          {/* Getting to IITH */}
+          <div
+            data-animate-id="mob-getting"
+            className={`flex flex-col transition-all duration-700 delay-200 ${
+              visibleElements.has("mob-getting")
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-8"
+            }`}
+          >
+            <h2 className="text-white text-2xl sm:text-3xl md:text-4xl uppercase font-semibold mb-2 sm:mb-3">
+              GETTING TO IITH
+            </h2>
+            <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed">
+              The main gate lies on the road from Patancheru to Kandi. There's a
+              bunch of large signs and boards, so you can't miss it. Refer to
+              Google maps for the exact address. One can reach Patancheru by
+              either bus or train. From Patancheru, one can reach the IIT main
+              gate by either bus or auto.
+            </p>
+          </div>
+          {/* Guidelines */}
+          <div
+            data-animate-id="mob-guidelines"
+            className={`flex flex-col transition-all duration-700 delay-300 ${
+              visibleElements.has("mob-guidelines")
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-8"
+            }`}
+          >
+            <h2 className="text-white text-2xl sm:text-3xl md:text-4xl uppercase font-semibold mb-2 sm:mb-3">
+              GUIDELINES
+            </h2>
+            <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed mb-3">
+              Check out our in-depth Accomodation and Transportation guide by
+              clicking the respective links below:
+            </p>
+            <div className="flex flex-col gap-3">
+              <a
+                href="https://docs.google.com/document/d/1J7M43LG2v8EXs4FNRG4KhaVuMHmC1DwHDOf5b74jMDY/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 text-white text-sm sm:text-base md:text-lg leading-relaxed hover:underline transition-all duration-300"
+              >
+                <span>Elan & nVision 2026 Accommodation Guide</span>
+                <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                  ↗
+                </span>
+              </a>
+              <a
+                href="https://docs.google.com/document/d/1zq0RIVnx6413KMZ2HaP6mKqcrmB_XI8WqnKsC0F8ZRM/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 text-white text-sm sm:text-base md:text-lg leading-relaxed hover:underline transition-all duration-300"
+              >
+                <span>Elan & nVision 2026 Transportation Guide</span>
+                <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                  ↗
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+        {/* Button */}
+        <div
+          data-animate-id="mob-button"
+          className={`w-full flex justify-center mt-8 md:hidden background-layers-6 transition-all duration-700 delay-300 ${
+            visibleElements.has("mob-button")
+              ? "opacity-100 scale-100"
+              : "opacity-0 scale-90"
+          }`}
+        >
+          <a
+            href="https://rzp.io/rzp/Cozfuh08"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-block focus:outline-none"
+          >
+            <div
+              className="bg-[#680C16] text-white px-8 sm:px-12 md:px-16 py-3 sm:py-4
+                                                  transition-all duration-300 active:scale-95 sm:hover:scale-105
+                                                  sm:hover:bg-white sm:hover:text-[#6E0216] sm:hover:font-bold
+                                                  rounded-tr-lg rounded-bl-lg"
+            >
+              <span className="text-lg sm:text-xl md:text-2xl tracking-wider uppercase drop-shadow-md">
+                Avail Accommodation
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+
       {/* Second Page */}
-      <div className="background-layers-5 min-h-screen">
+      <div className="background-layers-6 min-h-screen">
         {/* Desktop FAQ */}
         <div className="hidden lg:flex h-screen w-full px-[3vw] pt-[8vh] pb-[4vh] flex-col items-start gap-[2vh]">
           <p
@@ -507,11 +505,11 @@ export default function Accommodation() {
 
         {/* Mobile/Tablet FAQ */}
         <div
-          className={`background-layers-6 lg:hidden w-full min-h-screen transition-all duration-1000 delay-200 ${
+          className={`background-layers-6 lg:hidden w-full h-screen transition-all duration-1000 relative top-[-40vh] ${
             mounted ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="w-full min-h-screen px-4 sm:px-6 md:px-8 py-8 sm:py-12 pt-16 sm:pt-20 pb-20">
+          <div className="w-full h-full px-[2vw]">
             <h1
               data-animate-id="mob-faq-title"
               className={`text-white uppercase text-4xl sm:text-5xl md:text-6xl noxa-gothic mb-6 sm:mb-8 transition-all duration-700 ${
@@ -523,7 +521,7 @@ export default function Accommodation() {
               FAQ'S
             </h1>
 
-            <div className="space-y-6 sm:space-y-8">
+            <div className="space-y-6 background-layers-6">
               {FAQs.map((faq, index) => (
                 <div
                   key={index}
