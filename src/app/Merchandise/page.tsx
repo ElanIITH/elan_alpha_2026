@@ -340,7 +340,7 @@ export default function Merchandise() {
           </div>
 
           {/* Scroll Indicator */}
-          <div className="flex justify-center items-center h-10 text-white text-xs opacity-60 animate-bounce gap-2">
+          <div className="translate-y-[-50vw] flex justify-center items-center h-10 text-white text-[8vw] opacity-60 animate-bounce gap-2">
             <span>←</span>
             <span>SCROLL</span>
             <span>→</span>
