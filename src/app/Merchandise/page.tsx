@@ -129,6 +129,19 @@ export default function Merchandise() {
     };
   }, [mounted]);
 
+  useEffect(() => {
+    const event = new CustomEvent("navbarVariantChange", { detail: "grey" });
+    window.dispatchEvent(event);
+
+    // Reset to red when leaving the page
+    return () => {
+      const resetEvent = new CustomEvent("navbarVariantChange", {
+        detail: "red",
+      });
+      window.dispatchEvent(resetEvent);
+    };
+  }, []);
+
   return (
     <div className="w-full min-h-screen snap-y snap-mandatory overflow-y-hidden">
       <div className="background-layers-4 min-h-screen snap-start snap-always">
@@ -173,7 +186,7 @@ export default function Merchandise() {
                 src="/images/fish.png"
                 alt="fish"
                 fill
-                className="object-contain"
+                className="object-contain drop-shadow-2xl"
               />
             </div>
             <Image
@@ -246,10 +259,10 @@ export default function Merchandise() {
               <button
                 key={shirt.id}
                 onClick={() => setSelectedShirt(shirt)}
-                className={`relative w-[15vw] h-[22vh] cursor-pointer transition-all duration-200 border-[0.2vw] rounded-tl-[1.7vw] rounded-br-[1.7vw] rounded-tr-[1vw] rounded-bl-[1vw]  ${
+                className={`relative w-[15vw] h-[22vh] cursor-pointer transition-all duration-200 rounded-tl-[1.9vw] rounded-br-[1.7vw] rounded-tr-[1vw] rounded-bl-[1vw]  ${
                   selectedShirt.id === shirt.id
-                    ? "border-white"
-                    : "hover:border-white"
+                    ? "border-[0.2vw] border-white"
+                    : "border-[0.2vw] hover:border-white"
                 }`}
               >
                 <Image
