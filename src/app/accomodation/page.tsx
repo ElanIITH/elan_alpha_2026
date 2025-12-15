@@ -105,7 +105,8 @@ export default function Accommodation() {
         "No, participants are responsible for their own belongings. Please keep valuables safe at all times.",
     },
     {
-      question: "Can I extend my stay if I initially book for a shorter duration?",
+      question:
+        "Can I extend my stay if I initially book for a shorter duration?",
       answer:
         "Extension of stay is subject to availability. It is recommended to book in advance to avoid last-minute issues.",
     },
@@ -182,7 +183,8 @@ export default function Accommodation() {
                 main gate by either bus or auto.
               </p>
             </div>
-            <div              id="accomodation-top-left-para5"
+            <div
+              id="accomodation-top-left-para5"
               data-animate-id="acc-para5"
               className={`flex flex-col transition-all duration-700 delay-300 ${
                 visibleElements.has("acc-para5")
@@ -192,7 +194,8 @@ export default function Accommodation() {
             >
               <p className="text-[2.25vw] tracking-[0.05em]">GUIDELINES</p>
               <p className="text-[1.1vw]/5.5 mb-[1vh]">
-                Check out our in-depth Accomodation and Transportation guide by clicking the respective links below:
+                Check out our in-depth Accomodation and Transportation guide by
+                clicking the respective links below:
               </p>
               <div className="flex flex-col gap-[0.75vh] text-[1.1vw]/5.5">
                 <a
@@ -202,7 +205,9 @@ export default function Accommodation() {
                   className="group inline-flex items-center gap-2 hover:underline transition-all duration-300"
                 >
                   <span>Elan & nVision 2026 Accommodation Guide</span>
-                  <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+                  <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                    ↗
+                  </span>
                 </a>
                 <a
                   href="https://docs.google.com/document/d/1zq0RIVnx6413KMZ2HaP6mKqcrmB_XI8WqnKsC0F8ZRM/edit?usp=sharing"
@@ -211,18 +216,26 @@ export default function Accommodation() {
                   className="group inline-flex items-center gap-2 hover:underline transition-all duration-300"
                 >
                   <span>Elan & nVision 2026 Transportation Guide</span>
-                  <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+                  <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                    ↗
+                  </span>
                 </a>
               </div>
             </div>
-            <div              data-animate-id="acc-button"
+            <div
+              data-animate-id="acc-button"
               className={`w-full flex justify-center mt-[5vh] transition-all duration-700 delay-400 ${
                 visibleElements.has("acc-button")
                   ? "opacity-100 scale-100"
                   : "opacity-0 scale-95"
               }`}
             >
-              <a href="https://rzp.io/rzp/Cozfuh08" target="_blank" rel="noopener noreferrer" className="group relative inline-block focus:outline-none">
+              <a
+                href="https://rzp.io/rzp/Cozfuh08"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-block focus:outline-none"
+              >
                 {/* Background Shape: Skewed Rectangle */}
                 <div
                   className="bg-[#680C16] text-white px-[4vw]
@@ -267,7 +280,12 @@ export default function Accommodation() {
             </div>
             <div className="absolute bottom-0 right-0 w-[45%] h-[20%] flex flex-col justify-evenly">
               <div className="h-[50%] self-end">
-                <a href="https://maps.app.goo.gl/vFmu2392eE213swJ8" target="_blank" rel="noopener noreferrer" className="group">
+                <a
+                  href="https://maps.app.goo.gl/vFmu2392eE213swJ8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                >
                   <p className="text-white text-[2.1vw] uppercase -mt-[1vh] group-hover:underline transition-all duration-300">
                     VIEW IN GOOGLE MAP
                   </p>
@@ -276,7 +294,7 @@ export default function Accommodation() {
                   </p>
                 </a>
               </div>
-          </div>
+            </div>
           </div>
         </div>
 
@@ -345,7 +363,12 @@ export default function Accommodation() {
                 />
               </div>
               <div className="absolute bottom-2 right-2 flex flex-col items-end gap-2">
-                <a href="https://maps.app.goo.gl/vFmu2392eE213swJ8" target="_blank" rel="noopener noreferrer" className="group text-right">
+                <a
+                  href="https://maps.app.goo.gl/vFmu2392eE213swJ8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group text-right"
+                >
                   <p className="text-white text-xs sm:text-sm uppercase group-hover:underline transition-all duration-300">
                     VIEW IN GOOGLE MAP
                   </p>
@@ -392,7 +415,8 @@ export default function Accommodation() {
                   GUIDELINES
                 </h2>
                 <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed mb-3">
-                  Check out our in-depth Accomodation and Transportation guide by clicking the respective links below:
+                  Check out our in-depth Accomodation and Transportation guide
+                  by clicking the respective links below:
                 </p>
                 <div className="flex flex-col gap-3">
                   <a
@@ -402,7 +426,9 @@ export default function Accommodation() {
                     className="group inline-flex items-center gap-2 text-white text-sm sm:text-base md:text-lg leading-relaxed hover:underline transition-all duration-300"
                   >
                     <span>Elan & nVision 2026 Accommodation Guide</span>
-                    <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+                    <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                      ↗
+                    </span>
                   </a>
                   <a
                     href="https://docs.google.com/document/d/1zq0RIVnx6413KMZ2HaP6mKqcrmB_XI8WqnKsC0F8ZRM/edit?usp=sharing"
@@ -411,7 +437,9 @@ export default function Accommodation() {
                     className="group inline-flex items-center gap-2 text-white text-sm sm:text-base md:text-lg leading-relaxed hover:underline transition-all duration-300"
                   >
                     <span>Elan & nVision 2026 Transportation Guide</span>
-                    <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+                    <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                      ↗
+                    </span>
                   </a>
                 </div>
               </div>
@@ -426,7 +454,12 @@ export default function Accommodation() {
                   : "opacity-0 scale-90"
               }`}
             >
-              <a href="https://rzp.io/rzp/Cozfuh08" target="_blank" rel="noopener noreferrer" className="group relative inline-block focus:outline-none">
+              <a
+                href="https://rzp.io/rzp/Cozfuh08"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-block focus:outline-none"
+              >
                 <div
                   className="bg-[#680C16] text-white px-8 sm:px-12 md:px-16 py-3 sm:py-4
                                                 transition-all duration-300 active:scale-95 sm:hover:scale-105

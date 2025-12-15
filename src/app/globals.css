@@ -176,6 +176,17 @@ body {
   );
 }
 
+.clip-skewed {
+  clip-path: polygon(
+    2rem 0,
+    38% 0,
+    38% calc(100% - 1.75rem),
+    calc(38% - 1.7rem) 100%,
+    0 100%,
+    0 1.75rem
+  );
+}
+
 .radial-glow {
   background: radial-gradient(
     circle at center,

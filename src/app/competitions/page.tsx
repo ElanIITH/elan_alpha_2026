@@ -379,6 +379,19 @@ export default function Competitions() {
     },
   ];
 
+  useEffect(() => {
+    const event = new CustomEvent("navbarVariantChange", { detail: "grey" });
+    window.dispatchEvent(event);
+
+    // Reset to red when leaving the page
+    return () => {
+      const resetEvent = new CustomEvent("navbarVariantChange", {
+        detail: "red",
+      });
+      window.dispatchEvent(resetEvent);
+    };
+  }, []);
+
   const categories: { [key: string]: typeof competitions } = {
     ALL: competitions,
     TECH: competitions.filter((comp) => comp.category === "TECH"),
@@ -810,26 +823,25 @@ export default function Competitions() {
                 <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
                   DESCRIPTION
                 </div>
-                <p className="md:text-[1.3vw] text-justify text-[3.5vw] md:leading-[1.8] leading-[1.6] tracking-wide uppercase text-[#8a8a8a] pr-0 md:pr-9">
+                <p className="md:text-[1.3vw] text-justify text-[3.5vw] md:leading-[1.8] leading-[1.6] tracking-wide uppercase text-white pr-0 md:pr-9">
                   {activeCompetition?.description ||
                     "Choose a competition from the list to view details."}
                 </p>
               </div>
 
               {activeCompetition?.registerLink && (
-                <Link
+                <a
                   href={activeCompetition.registerLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-white font-normal tracking-[0.5px] md:mt-6 mt-4 no-underline cursor-pointer transition-all duration-300 hover:text-[#cccccc] md:text-[1.3vw] text-[4vw]"
+                  className="group relative inline-block focus:outline-none"
                 >
-                  <span className="underline underline-offset-4">
-                    Register Here
-                  </span>
-                  <span className="no-underline text-sm transition-transform duration-300 hover:translate-x-0.5 hover:-translate-y-0.5">
-                    ↗
-                  </span>
-                </Link>
+                  <div className="bg-[#680C16] w-auto text-white px-[4vw] transition-all duration-300 group-hover:bg-white group-hover:text-[#6E0216] group-hover:font-bold rounded-tr-[0.5vw] rounded-bl-[0.5vw] clip-skewed">
+                    <span className="text-[2vw] tracking-wider uppercase drop-shadow-md">
+                      Register here ↗
+                    </span>
+                  </div>
+                </a>
               )}
             </div>
           </div>
