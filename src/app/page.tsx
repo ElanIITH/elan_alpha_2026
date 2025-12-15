@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -533,7 +532,7 @@ export default function Home() {
       {/* Copied to Clipboard Popup */}
       {copiedText && (
         <div
-          className="fixed z-[9999] bg-[#6E0216] text-white px-4 py-2 rounded shadow-lg text-sm pointer-events-none"
+          className="fixed z-9999 bg-[#6E0216] text-white px-4 py-2 rounded shadow-lg text-sm pointer-events-none"
           style={{
             left: `${popupPosition.x + 10}px`,
             top: `${popupPosition.y - 30}px`,

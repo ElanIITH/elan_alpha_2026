@@ -12,6 +12,8 @@ const shirts = [
     price: "RS. 699.00",
     image: "/images/shirt1.png",
     image_org: "/images/shirt1_org.png",
+    buy_link:
+      "https://thedopaminestore.in/products/iit-hyderabad-premium-oversize-vetran-samurai-copy-1?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
   {
     id: 2,
@@ -20,6 +22,8 @@ const shirts = [
     price: "RS. 349.00",
     image: "/images/shirt2.png",
     image_org: "/images/shirt2_org.png",
+    buy_link:
+      "https://thedopaminestore.in/products/iit-hyderabad-premium-t-shirt-the-bliss?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
   {
     id: 3,
@@ -28,6 +32,8 @@ const shirts = [
     price: "RS. 499.00",
     image: "/images/shirt3.png",
     image_org: "/images/shirt3_org.png",
+    buy_link:
+      "https://thedopaminestore.in/products/iit-hyderabad-premium-oversize-that-the-play?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
   {
     id: 4,
@@ -36,6 +42,8 @@ const shirts = [
     price: "RS. 499.00",
     image: "/images/shirt4.png",
     image_org: "/images/shirt4_org.png",
+    buy_link:
+      "https://thedopaminestore.in/products/iit-hyderabad-acid-wash-vetran-samurai?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
   {
     id: 5,
@@ -44,6 +52,8 @@ const shirts = [
     price: "RS. 199.00",
     image: "/images/shirt5.png",
     image_org: "/images/shirt5_org.png",
+    buy_link:
+      "https://thedop-aminestore.myshopify.com/products/iit-hyderabad-tote-bag-cool-it?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
 ];
 
@@ -84,7 +94,7 @@ export default function Merchandise() {
   }, [mounted]);
 
   return (
-    <div className="w-full min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen">
+    <div className="w-full min-h-screen snap-y snap-mandatory overflow-y-hidden">
       <div className="background-layers-4 min-h-screen snap-start snap-always">
         {/* Desktop Layout - Original absolute positioning */}
         <div
@@ -120,16 +130,16 @@ export default function Merchandise() {
           {/* Selected Shirt Display */}
           <div
             data-animate-id="merch-shirt"
-            className={`absolute left-[15vw] transition-all duration-700 delay-200 ${
-              selectedShirt.id === 5
-                ? "top-[30vh] w-[30vw] h-[30vw]"
-                : "top-[20vh] w-[30vw] h-[40vw]"
-            } ${
-              visibleElements.has("merch-shirt")
-                ? "opacity-100 scale-100"
-                : "opacity-0 scale-90"
-            }`}
+            className={`absolute left-[14vw] transition-all duration-700 delay-200 top-[25vh] w-[30vw] h-[30vw]`}
           >
+            <div className="w-[53vw] h-[53vw] absolute left-[-22vh] top-[-22vh] z-100">
+              <Image
+                src="/images/fish.png"
+                alt="fish"
+                fill
+                className="object-contain"
+              />
+            </div>
             <Image
               src={selectedShirt.image_org}
               alt={selectedShirt.name}
@@ -153,7 +163,7 @@ export default function Merchandise() {
           {/* Shirt Subname Display */}
           <div
             data-animate-id="merch-subname"
-            className={`absolute top-[82vh] left-[2.5vw] text-white text-[2.5vw] uppercase transition-all duration-700 delay-350 ${
+            className={`absolute z-200 top-[82vh] left-[2.5vw] text-white text-[2.5vw] uppercase transition-all duration-700 delay-350 ${
               visibleElements.has("merch-subname")
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-8"
@@ -165,7 +175,7 @@ export default function Merchandise() {
           {/* Shirt Name Display */}
           <div
             data-animate-id="merch-name"
-            className={`absolute top-[86vh] left-[2.5vw] text-white text-[4vw] uppercase transition-all duration-700 delay-400 ${
+            className={`absolute z-200 top-[86vh] left-[2.5vw] text-white text-[4vw] uppercase transition-all duration-700 delay-400 ${
               visibleElements.has("merch-name")
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-8"
@@ -175,10 +185,10 @@ export default function Merchandise() {
           </div>
 
           {/* Buy Button */}
-          <Link
-            href="#"
+          <a
+            href={selectedShirt.buy_link}
             data-animate-id="merch-buy"
-            className={`w-[10vw] h-[10vw] absolute top-[82vh] left-[44vw] cursor-pointer transition-all duration-700 delay-450 hover:scale-90 ${
+            className={`z-400 w-[10vw] h-[10vw] absolute top-[82vh] left-[44vw] cursor-pointer transition-all duration-300 hover:scale-107 ${
               visibleElements.has("merch-buy")
                 ? "opacity-100 scale-100"
                 : "opacity-0 scale-75"
@@ -192,18 +202,18 @@ export default function Merchandise() {
                 className="object-contain"
               />
             </div>
-          </Link>
+          </a>
 
           {/* Shirts Grid on Right Side */}
-          <div className="w-[40vw] absolute top-[14vh] right-[5vw] grid grid-cols-2 gap-x-0 gap-y-[2vw]">
+          <div className="w-auto absolute top-[14vh] right-[3vw] grid grid-cols-2 gap-x-[1vw] gap-y-[1vw]">
             {shirts.map((shirt) => (
               <button
                 key={shirt.id}
                 onClick={() => setSelectedShirt(shirt)}
-                className={`relative w-full h-[22vh] cursor-pointer transition-all duration-200 ${
+                className={`relative w-[15vw] h-[22vh] cursor-pointer transition-all duration-200 border-[0.2vw] rounded-tl-[1.7vw] rounded-br-[1.7vw] rounded-tr-[1vw] rounded-bl-[1vw]  ${
                   selectedShirt.id === shirt.id
-                    ? "ring-2 ring-red-600 scale-105"
-                    : "hover:scale-105"
+                    ? "border-white"
+                    : "hover:border-white"
                 }`}
               >
                 <Image
@@ -212,9 +222,11 @@ export default function Merchandise() {
                   fill
                   className="object-contain"
                 />
-                <div className="absolute bottom-[8.5vw] right-[3vw] text-white text-[1.5vw] uppercase">
-                  BUY
-                </div>
+                <a href={shirt.buy_link}>
+                  <div className="absolute bottom-[15vh] right-[1vh] text-white text-[1.5vw] uppercase hover:scale-110 transition-all duration-300">
+                    BUY
+                  </div>
+                </a>
               </button>
             ))}
           </div>
@@ -284,20 +296,18 @@ export default function Merchandise() {
                   <button
                     key={shirt.id}
                     onClick={() => setSelectedShirt(shirt)}
-                    className={`relative w-full aspect-square cursor-pointer transition-all duration-200 
-                                   rounded-lg overflow-hidden ${
-                                     selectedShirt.id === shirt.id
-                                       ? "ring-2 ring-red-600 scale-105 shadow-lg shadow-red-600/50"
-                                       : "hover:scale-105 ring-1 ring-white/20"
-                                   }`}
+                    className={`relative w-full aspect-square cursor-pointer transition-all duration-200 overflow-hidden border border-white ${
+                      selectedShirt.id === shirt.id
+                        ? "border-[#6E0216]"
+                        : "hover:border-white"
+                    }`}
                   >
                     <Image
                       src={shirt.image}
                       alt={shirt.name}
                       fill
-                      className="object-contain p-2"
+                      className="object-contain"
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity" />
                   </button>
                 ))}
               </div>
