@@ -265,7 +265,7 @@ export default function Accommodation() {
             }`}
           >
             <Image
-              src="/images/MAP.svg"
+              src="/optimised/iith_map_2.png"
               alt="Campus Map"
               fill
               style={{ objectFit: "contain" }}
