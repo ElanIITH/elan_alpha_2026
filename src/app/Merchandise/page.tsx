@@ -309,22 +309,22 @@ export default function Merchandise() {
                 <div className="w-full px-4 pb-6 flex items-end justify-between">
                   {/* Left - Name and Type */}
                   <div className="flex-1 text-left">
-                    <div className="text-white text-xs sm:text-sm uppercase opacity-70 mb-2 leading-tight">
+                    <div className="text-white text-[6vw] sm:text-sm uppercase opacity-70 mb-2 leading-tight">
                       {shirt.subname}
                     </div>
-                    <div className="text-white text-base sm:text-lg font-semibold uppercase leading-tight">
+                    <div className="text-white text-[8vw] sm:text-lg font-semibold uppercase leading-tight">
                       {shirt.name}
                     </div>
                   </div>
 
                   {/* Right - Price and Buy */}
                   <div className="flex-shrink-0 flex flex-col items-center gap-2 sm:gap-3 ml-4">
-                    <div className="text-white text-sm translate-y-[5vw] sm:text-base font-semibold">
+                    <div className="text-white text-[5vw] translate-y-[-0.3vw] sm:text-base font-semibold">
                       {shirt.price}
                     </div>
                     <a
                       href={shirt.buy_link}
-                      className="w-[14vw] h-[10vw] translate-y-[2.5vw] sm:w-[9vw] sm:h-[9vw] relative cursor-pointer hover:scale-110 transition-transform duration-300 active:scale-95"
+                      className="w-[20vw] h-[10vw] translate-y-[-0vw] sm:w-[9vw] sm:h-[9vw] relative cursor-pointer hover:scale-110 transition-transform duration-300 active:scale-95"
                     >
                       <Image
                         src="/images/BUY.png"
