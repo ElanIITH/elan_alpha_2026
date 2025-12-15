@@ -126,33 +126,25 @@ body {
   background-size: 120%;
   background-position: 50% 30%;
   background-repeat: no-repeat;
-  background-color: #000;
 }
 
 /* Responsive adjustments for accommodation background */
 @media (max-width: 1024px) {
   .background-layers-6 {
-    background-image: url("/images/home_bg_texture.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: scroll;
+    background: url("/optimised/compete_bg.jpg") center center / cover no-repeat;
   }
 }
 
+/* accommodation background */
 .background-layers-6 {
-  background-image: url("/images/home_bg_texture.jpg");
+  background: url("/optimised/compete_bg.jpg") center center / cover no-repeat;
   background-size: 120%;
-  background-position: 50% 30%;
-  background-repeat: no-repeat;
-  background-color: #000;
 }
 
 /* Responsive adjustments for FAQ background */
 @media (max-width: 1024px) {
   .background-layers-5 {
-    background-image: url("/images/home_bg_texture.jpg");
-    background-size: cover;
-    background-position: center;
+    background: url("/optimised/compete_bg.jpg") center center / cover no-repeat;
     background-attachment: scroll;
   }
 }
@@ -171,4 +163,41 @@ body {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+.clip-card {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 2rem) 0,
+    100% 2rem,
+    100% 100%,
+    2rem 100%,
+    0 calc(100% - 2rem)
+  );
+}
+
+.radial-glow {
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.2),
+    transparent 70%
+  );
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes contentFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

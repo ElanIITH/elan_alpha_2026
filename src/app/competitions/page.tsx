@@ -595,9 +595,8 @@ export default function Competitions() {
   const handleArrowClick = (direction: "up" | "down") => {
     const newIndex =
       direction === "up"
-        ? (activeCompetitionIndex - 1 + currentCompetitions.length) %
-          currentCompetitions.length
-        : (activeCompetitionIndex + 1) % currentCompetitions.length;
+        ? activeCompetitionIndex - 1
+        : activeCompetitionIndex + 1;
 
     scrollToCard(newIndex);
   };
@@ -608,7 +607,7 @@ export default function Competitions() {
       <div className="relative z-10">
         {/* Header Section */}
         <div className="flex justify-between items-end border-b border-[#1a1a1a] pb-[3vh] mb-[1vh] mt-[4vh]">
-          <h1 className="text-[3.8vw] tracking-[0.06em] noxa-gothic uppercase">
+          <h1 className="md:text-[3.8vw] text-[2.5vh] tracking-[0.06em] noxa-gothic uppercase">
             Competitions
           </h1>
 
@@ -616,12 +615,11 @@ export default function Competitions() {
           <div className="flex gap-0">
             <button
               onClick={() => handleCategoryChange("ALL")}
-              className={`cursor-pointer px-6 py-2.5 text-[1.2rem] font-medium tracking-[1.5px] border-l border-[#1a1a1a] transition-all duration-250 relative uppercase ${
+              className={`cursor-pointer px-6 py-2.5 md:text-[2vh] text-[1.4vh] font-medium tracking-[1.5px] border-l border-[#1a1a1a] rounded-0 transition-all duration-250 relative uppercase ${
                 activeCategory === "ALL"
                   ? "bg-[#0f0f0f] text-white"
                   : "bg-transparent text-[#4a4a4a] hover:bg-[#0f0f0f] hover:text-[#8a8a8a]"
               }`}
-              style={{ borderRadius: 0 }}
             >
               ALL
               {activeCategory === "ALL" && (
@@ -630,12 +628,11 @@ export default function Competitions() {
             </button>
             <button
               onClick={() => handleCategoryChange("TECH")}
-              className={`cursor-pointer px-6 py-2.5 text-[1.2rem] font-medium tracking-[1.5px] border-l border-[#1a1a1a] transition-all duration-250 relative uppercase ${
+              className={`cursor-pointer px-6 py-2.5 md:text-[2vh] text-[1.4vh] font-medium tracking-[1.5px] border-l border-[#1a1a1a] rounded-0 transition-all duration-250 relative uppercase ${
                 activeCategory === "TECH"
                   ? "bg-[#0f0f0f] text-white"
                   : "bg-transparent text-[#4a4a4a] hover:bg-[#0f0f0f] hover:text-[#8a8a8a]"
               }`}
-              style={{ borderRadius: 0 }}
             >
               TECH
               {activeCategory === "TECH" && (
@@ -644,12 +641,11 @@ export default function Competitions() {
             </button>
             <button
               onClick={() => handleCategoryChange("CULTURAL")}
-              className={`cursor-pointer px-6 py-2.5 text-[1.2rem] font-medium tracking-[1.5px] border-l border-[#1a1a1a] transition-all duration-250 relative uppercase ${
+              className={`cursor-pointer px-6 py-2.5 md:text-[2vh] text-[1.4vh] font-medium tracking-[1.5px] border-l border-[#1a1a1a] rounded-0 transition-all duration-250 relative uppercase ${
                 activeCategory === "CULTURAL"
                   ? "bg-[#0f0f0f] text-white"
                   : "bg-transparent text-[#4a4a4a] hover:bg-[#0f0f0f] hover:text-[#8a8a8a]"
               }`}
-              style={{ borderRadius: 0 }}
             >
               CULTURAL
               {activeCategory === "CULTURAL" && (
@@ -661,17 +657,11 @@ export default function Competitions() {
 
         {/* Main Layout */}
         <div className="flex md:flex-row flex-col gap-[3.2vw] md:h-[62vh] h-auto">
-          {/* Left Side - Scrollable Card Carousel */}
           <div className="flex md:flex-row flex-col gap-6 md:flex-[0_0_40%] w-full">
+            {/* Left Side - Scrollable Card Carousel */}
             <div
               ref={carouselRef}
-              className="flex-1 md:h-full h-[50vh] md:overflow-y-scroll md:overflow-x-hidden overflow-x-scroll overflow-y-hidden p-0 relative scrollbar-none flex md:flex-col flex-row"
-              style={{
-                scrollBehavior: "smooth",
-                scrollSnapType:
-                  window.innerWidth < 768 ? "x mandatory" : "y mandatory",
-                WebkitOverflowScrolling: "touch",
-              }}
+              className="md:w-auto w-full md:flex-1 md:h-full h-[43vh] md:overflow-x-hidden overflow-x-scroll overflow-y-hidden p-0 relative scrollbar-none flex md:flex-col scroll-smooth snap-x snap-mandatory md:snap-y md:overflow-y-hidden"
             >
               {infiniteCompetitions.map((competition, index) => {
                 const actualIndex = index % currentCompetitions.length;
@@ -687,35 +677,26 @@ export default function Competitions() {
                       cardRefs.current[index] = el;
                     }}
                     onClick={() => scrollToCard(actualIndex)}
-                    className={`group relative md:w-full w-[85vw] md:h-[43vh] h-full flex-shrink-0 md:mb-6 md:mr-0 mr-6 overflow-hidden cursor-pointer select-none transition-all duration-500 ${
+                    className={`group relative md:w-full w-[75vw] md:h-[43vh] h-full shrink-0 md:mb-6 md:mr-0 mr-6 overflow-hidden select-none transition-all duration-500 snap-center ${
                       isActive ? "scale-[1.02]" : "scale-100 hover:scale-[1.01]"
                     }`}
-                    style={{
-                      scrollSnapAlign: "center",
-                    }}
                   >
                     {/* Main Card Container with Clipped Corners */}
                     <div
-                      className={`absolute inset-0 bg-[#0a0a0a] transition-all duration-500 ${
+                      className={`absolute inset-0 bg-[#0a0a0a] transition-all duration-500 clip-card ${
                         isActive ? "opacity-100" : "opacity-90"
                       }`}
-                      style={{
-                        clipPath:
-                          "polygon(0 0, calc(100% - 2rem) 0, 100% 2rem, 100% 100%, 2rem 100%, 0 calc(100% - 2rem))",
-                      }}
                     >
                       {/* Image */}
                       <Image
                         src={competition.image}
                         alt={competition.title}
                         fill
-                        className="object-cover select-none transition-all duration-700"
-                        style={{
-                          filter: isActive
-                            ? "brightness(1.1) contrast(1.25) saturate(1.2)"
-                            : "brightness(0.7) contrast(1.1) saturate(0.8)",
-                          userSelect: "none",
-                        }}
+                        className={`object-cover select-none transition-all duration-700 ${
+                          isActive
+                            ? "brightness-110 contrast-125 saturate-125"
+                            : "brightness-75 contrast-110 saturate-90"
+                        }`}
                         draggable={false}
                         sizes="(max-width: 768px) 85vw, 40vw"
                       />
@@ -747,27 +728,21 @@ export default function Competitions() {
 
                     {/* Outer Glow Effect for Active Card */}
                     {isActive && (
-                      <div
-                        className="absolute inset-0 -z-10 blur-xl opacity-50"
-                        style={{
-                          background:
-                            "radial-gradient(circle at center, rgba(255,255,255,0.2), transparent 70%)",
-                        }}
-                      />
+                      <div className="absolute inset-0 -z-10 blur-xl opacity-50 radial-glow" />
                     )}
                   </div>
                 );
               })}
             </div>
 
-            {/* Scroll Arrows - Hidden on mobile */}
-            <div className="md:flex hidden flex-col items-center justify-center gap-6">
+            {/* Scroll Arrows */}
+            <div className="flex md:flex-col items-center justify-center gap-6">
               <button
                 onClick={() => handleArrowClick("up")}
                 className="group w-12 h-12 flex items-center justify-center bg-linear-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-110 active:scale-95 rounded-full"
                 aria-label="Previous"
               >
-                <span className="transition-transform duration-300 group-hover:-translate-y-0.5">
+                <span className="transition-transform duration-300 group-hover:-translate-y-0.5 md:rotate-0 rotate-270">
                   ↑
                 </span>
               </button>
@@ -776,7 +751,7 @@ export default function Competitions() {
                 className="group w-12 h-12 flex items-center justify-center bg-linear-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-white hover:shadow-lg hover:shadow-white/20 hover:scale-110 active:scale-95 rounded-full"
                 aria-label="Next"
               >
-                <span className="transition-transform duration-300 group-hover:translate-y-0.5">
+                <span className="transition-transform duration-300 group-hover:translate-y-0.5 md:rotate-0 rotate-270">
                   ↓
                 </span>
               </button>
@@ -784,19 +759,12 @@ export default function Competitions() {
           </div>
 
           {/* Right Side - Competition Details */}
-          <div
-            className="flex-1 flex flex-col overflow-y-auto md:py-8 py-4 w-full"
-            style={{
-              scrollbarWidth: "thin",
-              scrollbarColor: "#2a2a2a transparent",
-            }}
-          >
+          <div className="flex-1 flex flex-col overflow-y-auto md:py-8 py-4 md:px-0 px-10 w-full scrollbar-thin scrollbar-thumb-[#2a2a2a] scrollbar-track-transparent">
             <div
               key={activeCompetition?.title}
-              className="flex flex-col md:gap-8 gap-4"
-              style={{ animation: "contentFadeIn 0.3s ease-in-out" }}
+              className="flex flex-col md:gap-8 gap-4 animate-fadeIn"
             >
-              <h2 className="md:text-[5.5vw] text-[8vw] tracking-[0.05em] uppercase md:mb-4 mb-2">
+              <h2 className="md:text-[4.5vw] text-[6.5vw] tracking-[0.05em] uppercase md:mb-4 mb-2">
                 {activeCompetition?.title || "Select Competition"}
               </h2>
 
@@ -842,7 +810,7 @@ export default function Competitions() {
                 <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
                   DESCRIPTION
                 </div>
-                <p className="md:text-[1.3vw] text-[3.5vw] md:leading-[1.8] leading-[1.6] tracking-wide uppercase text-[#8a8a8a]">
+                <p className="md:text-[1.3vw] text-justify text-[3.5vw] md:leading-[1.8] leading-[1.6] tracking-wide uppercase text-[#8a8a8a] pr-0 md:pr-9">
                   {activeCompetition?.description ||
                     "Choose a competition from the list to view details."}
                 </p>
@@ -855,10 +823,7 @@ export default function Competitions() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-white font-normal tracking-[0.5px] md:mt-6 mt-4 no-underline cursor-pointer transition-all duration-300 hover:text-[#cccccc] md:text-[1.3vw] text-[4vw]"
                 >
-                  <span
-                    className="underline"
-                    style={{ textUnderlineOffset: "4px" }}
-                  >
+                  <span className="underline underline-offset-4">
                     Register Here
                   </span>
                   <span className="no-underline text-sm transition-transform duration-300 hover:translate-x-0.5 hover:-translate-y-0.5">
@@ -869,24 +834,6 @@ export default function Competitions() {
             </div>
           </div>
         </div>
-
-        <style jsx>{`
-          .scrollbar-none::-webkit-scrollbar {
-            display: none;
-          }
-          .scrollbar-none {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-          @keyframes contentFadeIn {
-            0% {
-              opacity: 0;
-            }
-            100% {
-              opacity: 1;
-            }
-          }
-        `}</style>
       </div>
     </div>
   );
