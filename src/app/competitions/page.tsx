@@ -616,11 +616,15 @@ export default function Competitions() {
 
   return (
     <div className="background-layers-competitions min-h-screen w-full text-white py-[9vh] px-[3vw] bg-cover bg-center relative">
+      <h1 className="md:text-[3.8vw] text-4xl tracking-[0.06em] noxa-gothic uppercase block md:hidden text-center">
+        Competitions
+      </h1>
+
       <div className="absolute inset-0 pointer-events-none z-0" />
       <div className="relative z-10">
         {/* Header Section */}
-        <div className="flex justify-between items-end border-b border-[#1a1a1a] pb-[3vh] mb-[1vh] mt-[4vh]">
-          <h1 className="md:text-[3.8vw] text-[2.5vh] tracking-[0.06em] noxa-gothic uppercase">
+        <div className="flex justify-center md:justify-between items-end border-b border-[#1a1a1a] pb-[3vh] mb-[1vh] mt-[4vh]">
+          <h1 className="md:text-[3.8vw] text-[2.5vh] tracking-[0.06em] noxa-gothic uppercase md:text-left md:block hidden">
             Competitions
           </h1>
 
@@ -748,7 +752,7 @@ export default function Competitions() {
             </div>
 
             {/* Scroll Arrows */}
-            <div className="flex md:flex-col items-center justify-center gap-6">
+            <div className="md:flex hidden md:flex-col items-center justify-center gap-6">
               <button
                 onClick={() => handleArrowClick("up")}
                 className="group w-12 h-12 flex items-center justify-center bg-linear-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#3a3a3a] text-white text-xl cursor-pointer transition-all duration-300 hover:border-red-600 hover:shadow-lg hover:shadow-red-600/20 hover:scale-110 active:scale-95"
@@ -776,6 +780,21 @@ export default function Competitions() {
               key={activeCompetition?.title}
               className="flex flex-col md:gap-8 gap-4 animate-fadeIn"
             >
+              {activeCompetition?.registerLink && (
+                <a
+                  href={activeCompetition.registerLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="md:hidden inline-block group relative focus:outline-none"
+                >
+                  <div className="bg-[#680C16] text-white px-[4vw] text-center md:text-left transition-all duration-300 group-hover:bg-white group-hover:text-[#6E0216] group-hover:font-bold clip-skewed">
+                    <span className="text-[2vw] tracking-wider uppercase drop-shadow-md">
+                      Register here
+                    </span>
+                  </div>
+                </a>
+              )}
+
               <h2 className="md:text-[4.5vw] text-[6.5vw] tracking-[0.05em] uppercase md:mb-4 mb-2">
                 {activeCompetition?.title || "Select Competition"}
               </h2>
@@ -833,7 +852,7 @@ export default function Competitions() {
                   href={activeCompetition.registerLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-block focus:outline-none"
+                  className="md:block hidden group relative focus:outline-none"
                 >
                   <div className="bg-[#680C16] text-white px-[4vw] text-center md:text-left transition-all duration-300 group-hover:bg-white group-hover:text-[#6E0216] group-hover:font-bold clip-skewed">
                     <span className="text-[2vw] tracking-wider uppercase drop-shadow-md">

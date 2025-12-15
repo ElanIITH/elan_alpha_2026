@@ -293,7 +293,7 @@ export default function Merchandise() {
           }`}
         >
           {/* MERCHANDISE Title */}
-          <div className="flex justify-center items-center text-3xl sm:text-4xl text-white w-full pt-8 pb-4 noxa-gothic px-4">
+          <div className="flex justify-center items-center text-4xl text-white w-full pt-8 pb-4 mt-[5vh] noxa-gothic px-4">
             MERCHANDISE
           </div>
 
@@ -358,11 +358,11 @@ export default function Merchandise() {
           </div>
 
           {/* Scroll Indicator */}
-          <div className="translate-y-[-50vw] flex justify-center items-center h-10 text-white text-[8vw] opacity-60 animate-bounce gap-2">
+          {/* <div className="translate-y-[-50vw] flex justify-center items-center h-10 text-white text-[8vw] opacity-60 animate-bounce gap-2">
             <span>←</span>
             <span>SCROLL</span>
             <span>→</span>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
