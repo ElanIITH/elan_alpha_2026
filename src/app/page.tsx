@@ -228,7 +228,7 @@ export default function Home() {
               </div>
               <div className="flex justify-center items-center md:gap-[0.3vw] uppercase text-[4.5vw] md:text-[1.4vw] tracking-wide">
                 <div className="">Countdown: </div>
-                <div className="w-[28vw] md:w-[8vw] text-right">
+                <div className="w-[28vw] md:w-[9vw] text-right">
                   {countdown.days}d {countdown.hours}h {countdown.minutes}m{" "}
                   {countdown.seconds}s
                 </div>
