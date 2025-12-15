@@ -130,6 +130,12 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .background-layers-6 {
+    background-size: contain;
+  }
+}
+
 /* accommodation background */
 .background-layers-6 {
   background: url("/optimised/compete_bg.jpg") center center / cover no-repeat;
@@ -174,12 +180,25 @@ body {
 .clip-skewed {
   clip-path: polygon(
     2rem 0,
-    38% 0,
-    38% calc(100% - 1.75rem),
-    calc(38% - 1.7rem) 100%,
+    34% 0,
+    34% calc(100% - 1.75rem),
+    calc(34% - 1.7rem) 100%,
     0 100%,
     0 1.75rem
   );
+}
+
+@media (max-width: 768px) {
+  .clip-skewed {
+    clip-path: polygon(
+      1rem 0,
+      100% 0,
+      100% calc(100% - 1rem),
+      calc(100% - 1rem) 100%,
+      0 100%,
+      0 1rem
+    );
+  }
 }
 
 .radial-glow {

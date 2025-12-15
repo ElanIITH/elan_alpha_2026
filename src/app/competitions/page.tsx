@@ -835,9 +835,9 @@ export default function Competitions() {
                   rel="noopener noreferrer"
                   className="group relative inline-block focus:outline-none"
                 >
-                  <div className="bg-[#680C16] text-white px-[4vw] transition-all duration-300 group-hover:bg-white group-hover:text-[#6E0216] group-hover:font-bold clip-skewed">
+                  <div className="bg-[#680C16] text-white px-[4vw] text-center md:text-left transition-all duration-300 group-hover:bg-white group-hover:text-[#6E0216] group-hover:font-bold clip-skewed">
                     <span className="text-[2vw] tracking-wider uppercase drop-shadow-md">
-                      Register here ↗
+                      Register here
                     </span>
                   </div>
                 </a>

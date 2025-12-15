@@ -300,11 +300,11 @@ export default function Accommodation() {
 
         {/* Mobile/Tablet View */}
         <div
-          className={`lg:hidden w-full min-h-screen transition-all duration-1000 ${
+          className={`background-layers-6 md:hidden w-full min-h-screen transition-all duration-1000 ${
             mounted ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="w-full min-h-screen px-4 sm:px-6 md:px-8 py-8 sm:py-12 pt-20 sm:pt-24 pb-20">
+          <div className=" w-full min-h-screen px-4 sm:px-6 md:px-8 py-8 sm:py-12 pt-20 sm:pt-24 pb-20">
             {/* Title */}
             <h1
               data-animate-id="mob-title"
@@ -507,7 +507,7 @@ export default function Accommodation() {
 
         {/* Mobile/Tablet FAQ */}
         <div
-          className={`lg:hidden w-full min-h-screen transition-all duration-1000 delay-200 ${
+          className={`background-layers-6 lg:hidden w-full min-h-screen transition-all duration-1000 delay-200 ${
             mounted ? "opacity-100" : "opacity-0"
           }`}
         >
