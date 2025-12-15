@@ -781,48 +781,48 @@ export default function Competitions() {
               </h2>
 
               <div className="grid md:grid-cols-2 grid-cols-1 md:gap-6 gap-4">
-                <div className="flex flex-col gap-2">
-                  <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
+                <div className="flex flex-col">
+                  <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a] leading-none mb-1">
                     CONTACT / POC
                   </div>
-                  <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white">
+                  <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white leading-tight">
                     {activeCompetition?.contact || "TBA"}
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
+                <div className="flex flex-col">
+                  <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a] leading-none mb-1">
                     PRIZE POOL
                   </div>
-                  <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white">
+                  <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white leading-tight">
                     {activeCompetition?.prize || "TBA"}
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
+                <div className="flex flex-col">
+                  <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a] leading-none mb-1">
                     REGISTRATION DEADLINE
                   </div>
-                  <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white">
+                  <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white leading-tight">
                     {activeCompetition?.deadline || "TBA"}
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
+                <div className="flex flex-col">
+                  <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a] leading-none mb-1">
                     DATES / ROUNDS
                   </div>
-                  <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white">
+                  <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white leading-tight">
                     {activeCompetition?.date || "TBA"}
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3">
-                <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a]">
+              <div className="flex flex-col">
+                <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a] leading-none mb-1">
                   DESCRIPTION
                 </div>
-                <p className="md:text-[1.3vw] text-justify text-[3.5vw] md:leading-[1.8] leading-[1.6] tracking-wide uppercase text-white pr-0 md:pr-9">
+                <p className="md:text-[1.3vw] text-justify text-[3.5vw] md:leading-[1.4] leading-[1.3] tracking-normal uppercase text-white pr-0 md:pr-9">
                   {activeCompetition?.description ||
                     "Choose a competition from the list to view details."}
                 </p>
