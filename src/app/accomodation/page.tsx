@@ -380,7 +380,7 @@ export default function Accommodation() {
         </div>
       </div>
 
-      <div className="background-layers-6">
+      <div className="background-layers-6 lg:hidden">
         {/* Information Sections - mobile */}
         <div className="space-y-6 md:hidden p-[2vh]">
           {/* Getting to IITH */}
@@ -475,7 +475,7 @@ export default function Accommodation() {
       </div>
 
       {/* Second Page */}
-      <div className="background-layers-6 min-h-screen">
+      <div className="background-layers-6 min-h-screen lg:min-h-0">
         {/* Desktop FAQ */}
         <div className="hidden lg:flex h-screen w-full px-[3vw] pt-[8vh] pb-[4vh] flex-col items-start gap-[2vh]">
           <p
