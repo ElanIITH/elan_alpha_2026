@@ -104,32 +104,23 @@ export default function Merchandise() {
     if (!mounted || !mobileCarouselRef.current) return;
 
     const carousel = mobileCarouselRef.current;
-    const totalWidth = carousel.scrollWidth;
-    const duration = totalWidth / 150; // Faster scroll speed (pixels per second)
+    const speed = 150; // px per second
 
-    let startTime: number;
+    let startTime: number | undefined;
     let animationFrameId: number;
 
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const elapsed = (currentTime - startTime) / 1000; // Convert to seconds
-      const progress = elapsed / duration;
+    const animate = (time: number) => {
+      if (startTime === undefined) startTime = time;
 
-      if (progress < 1) {
-        carousel.scrollLeft = totalWidth * progress;
-        animationFrameId = requestAnimationFrame(animate);
-      } else {
-        carousel.scrollLeft = 0; // Reset to start
-      }
+      const elapsed = (time - startTime) / 1000;
+      carousel.scrollLeft = (elapsed * speed) % carousel.scrollWidth;
+
+      animationFrameId = requestAnimationFrame(animate);
     };
 
-    const timeoutId = setTimeout(() => {
-      startTime = undefined as any;
-      animationFrameId = requestAnimationFrame(animate);
-    }, 1); // Start after 500ms
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => {
-      clearTimeout(timeoutId);
       cancelAnimationFrame(animationFrameId);
     };
   }, [mounted]);
