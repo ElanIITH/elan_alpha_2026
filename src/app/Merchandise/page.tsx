@@ -127,7 +127,7 @@ export default function Merchandise() {
   const indexRef = useRef(0);
   const loopRef = useRef<(() => void) | null>(null);
 
-  const HOLD_TIME = 5000; // 👈 move OUTSIDE useEffect
+  const HOLD_TIME = 3000; // 👈 move OUTSIDE useEffect
 
   useEffect(() => {
     if (!mounted || !mobileCarouselRef.current) return;

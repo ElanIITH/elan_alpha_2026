@@ -335,7 +335,7 @@ export default function Home() {
                     : "opacity-0 scale-90"
                 }`}
               >
-                Reach us
+                {/* Reach us */}
               </div>
               <div className="leading-tight grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-[2vh] md:gap-0 place-items-center">
                 {contactData.map((contact, index) => (

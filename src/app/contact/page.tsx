@@ -117,7 +117,7 @@ export default function Contact() {
                   : "opacity-0 scale-90"
               }`}
             >
-              Reach us
+              {/* Reach us */}
             </div>
             <div className="leading-tight grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-[2vh] md:gap-0 place-items-center">
               {contactData.map((contact, index) => (
@@ -225,11 +225,7 @@ export default function Contact() {
         </div>
         <div
           data-animate-id="contact-social"
-          className={`flex justify-center items-center gap-[5vw] w-[80vw] h-[8vw] md:gap-[2vw] md:w-[30vw] md:h-[3vw] transition-all duration-700 delay-900 ${
-            visibleElements.has("contact-social")
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
-          }`}
+          className={`flex justify-center items-center gap-[5vw] w-[80vw] h-[8vw] md:gap-[2vw] md:w-[30vw] md:h-[3vw] transition-all duration-700 delay-900 `}
         >
           <a
             href="https://www.facebook.com/elannvision.iithyderabad/"
@@ -320,7 +316,7 @@ export default function Contact() {
       {/* Copied to Clipboard Popup */}
       {copiedText && (
         <div
-          className="fixed z-[9999] bg-[#6E0216] text-white px-4 py-2 rounded shadow-lg text-sm pointer-events-none"
+          className="fixed z-9999 bg-[#6E0216] text-white px-4 py-2 rounded shadow-lg text-sm pointer-events-none"
           style={{
             left: `${popupPosition.x + 10}px`,
             top: `${popupPosition.y - 30}px`,
