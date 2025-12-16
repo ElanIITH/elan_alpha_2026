@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import { Play, Pause } from "lucide-react";
 
 const shirts = [
   {
@@ -99,29 +100,69 @@ export default function Merchandise() {
     };
   }, [mounted]);
 
+  const pause = () => {
+    isPausedRef.current = true;
+    setIsPausedUI(true);
+
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+  };
+
+  const resume = () => {
+    isPausedRef.current = false;
+    setIsPausedUI(false);
+
+    if (!timeoutRef.current && loopRef.current) {
+      timeoutRef.current = setTimeout(loopRef.current, HOLD_TIME);
+    }
+  };
+
+  const [isPausedUI, setIsPausedUI] = useState(false);
+
   // Auto-scroll carousel on mobile on mount
+  const isPausedRef = useRef(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const indexRef = useRef(0);
+  const loopRef = useRef<(() => void) | null>(null);
+
+  const HOLD_TIME = 5000; // 👈 move OUTSIDE useEffect
+
   useEffect(() => {
     if (!mounted || !mobileCarouselRef.current) return;
 
     const carousel = mobileCarouselRef.current;
-    const speed = 150; // px per second
+    const cards = Array.from(carousel.children) as HTMLElement[];
+    const totalCards = cards.length;
+    if (totalCards === 0) return;
 
-    let startTime: number | undefined;
-    let animationFrameId: number;
-
-    const animate = (time: number) => {
-      if (startTime === undefined) startTime = time;
-
-      const elapsed = (time - startTime) / 1000;
-      carousel.scrollLeft = (elapsed * speed) % carousel.scrollWidth;
-
-      animationFrameId = requestAnimationFrame(animate);
+    const scrollToIndex = (i: number) => {
+      cards[i].scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
     };
 
-    animationFrameId = requestAnimationFrame(animate);
+    const loop = () => {
+      if (isPausedRef.current) return;
+
+      indexRef.current = (indexRef.current + 1) % totalCards;
+      scrollToIndex(indexRef.current);
+
+      timeoutRef.current = setTimeout(loop, HOLD_TIME);
+    };
+
+    // expose loop to outside world
+    loopRef.current = loop;
+
+    // start once
+    scrollToIndex(indexRef.current);
+    timeoutRef.current = setTimeout(loop, HOLD_TIME);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [mounted]);
 
@@ -279,7 +320,7 @@ export default function Merchandise() {
 
         {/* Mobile/Tablet Layout - Horizontally Scrollable Carousel Strip */}
         <div
-          className={`lg:hidden w-full min-h-screen flex flex-col overflow-hidden transition-all duration-1000 ${
+          className={`lg:hidden w-full min-h-screen flex flex-col overflow-hidden transition-all duration-1000 relative ${
             mounted ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -291,12 +332,12 @@ export default function Merchandise() {
           {/* Carousel Container - Single Row Horizontal Scroll */}
           <div
             ref={mobileCarouselRef}
-            className="flex-1 flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide relative scroll-smooth p-0"
+            className="flex-1 flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth scrollbar-hide relative p-0"
           >
             {shirts.map((shirt) => (
               <div
                 key={shirt.id}
-                className="shrink-0 w-[85vw] h-full flex flex-col items-center justify-center snap-center"
+                className="shrink-0 w-[85vw] h-[72vh] flex flex-col items-center justify-center snap-center"
                 style={{ marginLeft: "7.5vw", marginRight: "7.5vw" }}
               >
                 {/* Image Section */}
@@ -348,12 +389,23 @@ export default function Merchandise() {
             ))}
           </div>
 
-          {/* Scroll Indicator */}
-          {/* <div className="translate-y-[-50vw] flex justify-center items-center h-10 text-white text-[8vw] opacity-60 animate-bounce gap-2">
-            <span>←</span>
-            <span>SCROLL</span>
-            <span>→</span>
-          </div> */}
+          {/* pause button */}
+          <button
+            onClick={() => {
+              if (isPausedRef.current) {
+                resume();
+              } else {
+                pause();
+              }
+            }}
+            className="absolute w-[30vw] bottom-[13vw] left-[50%] translate-x-[-50%] z-50 px-[3vw] py-[3vw] transition-all duration-400 text-white bg-[#6E0216] flex justify-center items-center clip-skewed rounded-bl-[1vh] rounded-tr-[1vh]"
+          >
+            {isPausedUI ? (
+              <Play className="w-[5vw] h-[5vw]" />
+            ) : (
+              <Pause className="w-[5vw] h-[5vw]" />
+            )}
+          </button>
         </div>
       </div>
     </div>

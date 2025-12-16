@@ -789,7 +789,7 @@ export default function Competitions() {
                 >
                   <div className="bg-[#680C16] text-white px-[4vw] text-center md:text-left transition-all duration-300 group-hover:bg-white group-hover:text-[#6E0216] group-hover:font-bold clip-skewed">
                     <span className="text-[5vw] tracking-wider uppercase drop-shadow-md">
-                      Register here
+                      Register Here
                     </span>
                   </div>
                 </a>
