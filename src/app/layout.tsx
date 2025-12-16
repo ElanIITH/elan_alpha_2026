@@ -16,7 +16,7 @@ const noxaGothic = localFont({
 });
 
 const japaneseFont = localFont({
-  src: "./fonts/TsukuhouShogoMin-OFL.ttf",
+  src: "./fonts/TsukuhouShogoMin-OFL.woff2",
   variable: "--font-japanese",
   display: "swap",
 });
