@@ -192,7 +192,7 @@ export default function Home() {
             </div>
           </div>
           <div
-            className={`pl-[1vw] pr-[5vw] w-[90vw] top-[23vh] left-[3vw] items-start md:pl-[2vw] md:w-[42vw] h-auto absolute md:top-[51vh] md:left-[2vw] text-white flex flex-col md:items-end transition-all duration-1000 delay-500 ${
+            className={`pl-[1vw] pr-[5vw] w-[90vw] top-[21.3vh] left-[3vw] items-start md:pl-[2vw] md:w-[42vw] h-auto absolute md:top-[51vh] md:left-[2vw] text-white flex flex-col md:items-end transition-all duration-1000 delay-500 ${
               mounted ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
             }`}
           >
