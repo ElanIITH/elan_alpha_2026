@@ -339,7 +339,7 @@ export default function Competitions() {
       id: 24,
       title: "GLITZ & GLAMOUR",
       category: "CULTURAL",
-      image: "/culti_comp/Fashion Show.jpeg",
+      image: "/culti_comp/Fashion Show.jpg",
       prize: "₹50,000",
       contact: "Gouresh Dusa - +919833646382",
       deadline: "December 25, 2025",
@@ -775,7 +775,7 @@ export default function Competitions() {
           </div>
 
           {/* Right Side - Competition Details */}
-          <div className="flex-1 flex flex-col overflow-y-auto md:py-8 py-4 md:px-0 px-10 w-full scrollbar-thin scrollbar-thumb-[#2a2a2a] scrollbar-track-transparent">
+          <div className="flex-1 flex flex-col overflow-y-auto md:py-0 py-4 md:px-0 px-10 w-full scrollbar-thin scrollbar-thumb-[#2a2a2a] scrollbar-track-transparent">
             <div
               key={activeCompetition?.title}
               className="flex flex-col md:gap-8 gap-4 animate-fadeIn"
@@ -795,7 +795,7 @@ export default function Competitions() {
                 </a>
               )}
 
-              <h2 className="md:text-[4.5vw] text-[6.5vw] tracking-[0.05em] uppercase md:mb-4 mb-2">
+              <h2 className="md:text-[4.2vw] text-[6.5vw] tracking-[0.05em] uppercase md:mb-0 mb-2">
                 {activeCompetition?.title || "Select Competition"}
               </h2>
 
