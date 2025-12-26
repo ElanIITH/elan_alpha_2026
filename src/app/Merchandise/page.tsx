@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { Play, Pause } from "lucide-react";
 
-const shirts = [
+const items = [
   {
     id: 1,
     subname: "PREMIUM SWEATSHIRT",
@@ -61,10 +60,121 @@ const shirts = [
     buy_link:
       "https://thedop-aminestore.myshopify.com/products/iit-hyderabad-tote-bag-cool-it?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
+  {
+    id: 6,
+    subname: "PREMIUM HOODIE",
+    name: "THE RONIN",
+    price: "RS. 799.00",
+    image: "/images/shirt6.png",
+    image_org: "/images/shirt6_org.png",
+    jp_text: "/images/shirt6_jp.png",
+    buy_link: "https://thedopaminestore.in/products/the-ronin-hoodie",
+  },
+  {
+    id: 7,
+    subname: "PREMIUM HOODIE",
+    name: "DEMONIC GOSHA",
+    price: "RS. 799.00",
+    image: "/images/shirt7.png",
+    image_org: "/images/shirt7_org.png",
+    jp_text: "/images/shirt7_jp.png",
+    buy_link: "https://thedopaminestore.in/products/demonic-gosha-hoodie",
+  },
+  {
+    id: 8,
+    subname: "PREMIUM HOODIE",
+    name: "BATTLEFLARE",
+    price: "RS. 799.00",
+    image: "/images/shirt8.png",
+    image_org: "/images/shirt8_org.png",
+    jp_text: "/images/shirt8_jp.png",
+    buy_link: "https://thedopaminestore.in/products/battleflare-hoodie",
+  },
+  {
+    id: 9,
+    subname: "TOTE BAG",
+    name: "THE TWIN DEMONS",
+    price: "RS. 199.00",
+    image: "/images/shirt9.png",
+    image_org: "/images/shirt9_org.png",
+    jp_text: "/images/shirt9_jp.png",
+    buy_link: "https://thedopaminestore.in/products/the-twin-demons-tote",
+  },
+  {
+    id: 10,
+    subname: "TOTE BAG",
+    name: "RONIN OF THE RED (BLACK)",
+    price: "RS. 199.00",
+    image: "/images/shirt10.png",
+    image_org: "/images/shirt10_org.png",
+    jp_text: "/images/shirt10_jp.png",
+    buy_link:
+      "https://thedopaminestore.in/products/ronin-of-the-red-tote-black",
+  },
+  {
+    id: 11,
+    subname: "OVERSIZED TEE",
+    name: "SOLAR CRANE (IVORY)",
+    price: "RS. 499.00",
+    image: "/images/shirt11.png",
+    image_org: "/images/shirt11_org.png",
+    jp_text: "/images/shirt11_jp.png",
+    buy_link: "https://thedopaminestore.in/products/solar-crane-oversized-tee",
+  },
+  {
+    id: 12,
+    subname: "PREMIUM SHIRT",
+    name: "THE RONIN",
+    price: "RS. 349.00",
+    image: "/images/shirt12.png",
+    image_org: "/images/shirt12_org.png",
+    jp_text: "/images/shirt12_jp.png",
+    buy_link: "https://thedopaminestore.in/products/the-ronin-shirt",
+  },
+  {
+    id: 13,
+    subname: "PREMIUM SHIRT",
+    name: "DEMONIC GOSHA",
+    price: "RS. 349.00",
+    image: "/images/shirt13.png",
+    image_org: "/images/shirt13_org.png",
+    jp_text: "/images/shirt13_jp.png",
+    buy_link: "https://thedopaminestore.in/products/demonic-gosha-shirt",
+  },
+  {
+    id: 14,
+    subname: "PREMIUM SHIRT",
+    name: "BATTLEFLARE",
+    price: "RS. 349.00",
+    image: "/images/shirt14.png",
+    image_org: "/images/shirt14_org.png",
+    jp_text: "/images/shirt14_jp.png",
+    buy_link: "https://thedopaminestore.in/products/battleflare-shirt",
+  },
+  {
+    id: 15,
+    subname: "WHITE TOTE BAG",
+    name: "LADY OF THE BREATH",
+    price: "RS. 199.00",
+    image: "/images/shirt15.png",
+    image_org: "/images/shirt15_org.png",
+    jp_text: "/images/shirt15_jp.png",
+    buy_link: "https://thedopaminestore.in/products/lady-of-the-breath-tote",
+  },
+  {
+    id: 16,
+    subname: "MOUSEPAD",
+    name: "ENV",
+    price: "RS. 199.00",
+    image: "/images/shirt16.png",
+    image_org: "/images/shirt16_org.png",
+    jp_text: "/images/shirt16_jp.png",
+    buy_link: "https://thedopaminestore.in/products/env-mousepad",
+  },
 ];
 
 export default function Merchandise() {
-  const [selectedShirt, setSelectedShirt] = useState(shirts[0]);
+  const [selectedShirt, setSelectedShirt] = useState(items[0]);
   const [mounted, setMounted] = useState(false);
   const [visibleElements, setVisibleElements] = useState<Set<string>>(
     new Set()
@@ -290,9 +400,11 @@ export default function Merchandise() {
             </div>
           </a>
 
-          {/* Shirts Grid on Right Side */}
-          <div className="w-auto absolute top-[14vh] right-[3vw] grid grid-cols-2 gap-x-[1vw] gap-y-[1vw]">
-            {shirts.map((shirt) => (
+          {/* items Grid on Right Side */}
+          <div
+            className={`overflow-y-auto w-auto absolute top-[14vh] h-[80vh] right-[3vw] grid grid-cols-2 gap-x-[1vw] gap-y-[1vw]`}
+          >
+            {items.map((shirt) => (
               <button
                 key={shirt.id}
                 onClick={() => setSelectedShirt(shirt)}
@@ -334,7 +446,7 @@ export default function Merchandise() {
             ref={mobileCarouselRef}
             className="flex-1 flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth scrollbar-hide relative p-0"
           >
-            {shirts.map((shirt) => (
+            {items.map((shirt) => (
               <div
                 key={shirt.id}
                 className="shrink-0 w-[85vw] h-[72vh] flex flex-col items-center justify-center snap-center"
