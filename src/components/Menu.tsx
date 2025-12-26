@@ -29,7 +29,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
     // { label: "WORKSHOPS", href: "/workshop" },
     { label: "ACCOMMODATION", href: "/accomodation" },
     { label: "IITH MAP", href: "/accomodation" },
-    { label: "MERCHANDISE", href: "/Merchandise" },
+    { label: "MERCHANDISE", href: "/merchandise" },
     // { label: "PARTNERS", href: "/partners" },
     // { label: "TEAM", href: "/team" },
     { label: "CONTACT US", href: "/contact" },
