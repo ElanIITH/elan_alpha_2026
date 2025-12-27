@@ -26,7 +26,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
     { label: "HOME", href: "/" },
     // { label: "EVENTS", href: "/events" },
     { label: "COMPETITIONS", href: "/competitions" },
-    // { label: "WORKSHOPS", href: "/workshop" },
+    { label: "WORKSHOPS", href: "/workshops" },
     { label: "ACCOMMODATION", href: "/accomodation" },
     { label: "IITH MAP", href: "/accomodation" },
     { label: "MERCHANDISE", href: "/merchandise" },
@@ -77,7 +77,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
             </button>
 
             {/* Menu Items */}
-            <div className="noxa-gothic flex-1 flex flex-col justify-center px-[10vw] gap-[4vh] md:px-[4vw] md:gap-[4.5vh] pb-[3vh] md:pb-0">
+            <div className="noxa-gothic flex-1 flex flex-col justify-center px-[10vw] gap-[3.5vh] md:px-[4vw] md:gap-[3.6vh] pb-[3vh] md:pb-0">
               {menuItems.map((item) => (
                 <Link
                   key={item.label}

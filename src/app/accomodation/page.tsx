@@ -149,7 +149,7 @@ export default function Accommodation() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              <p className="text-[4vw] tracking-[0.06em] noxa-gothic">
+              <p className="text-[4vw] md:text-[5vw] tracking-[0.06em] noxa-gothic">
                 ACCOMMODATION
               </p>
               <p className="text-[1.1vw]/5.5">

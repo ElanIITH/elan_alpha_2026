@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Workshops() {
   const [mounted, setMounted] = useState(false);
@@ -13,20 +14,23 @@ export default function Workshops() {
     {
       id: 1,
       title: "Full Stack Web Development Workshop",
-      image: "/workshops/Full_Stack_Dev .png",
-      unstopLink: "https://unstop.com/o/Kyz8nXI?lb=58he6PlW&utm_medium=Share&utm_source=srisri4756&utm_campaign=Workshops",
+      image: "/workshops/Full_Stack_Dev.png",
+      unstopLink:
+        "https://unstop.com/o/Kyz8nXI?lb=58he6PlW&utm_medium=Share&utm_source=srisri4756&utm_campaign=Workshops",
     },
     {
       id: 2,
       title: "Cybersecurity Workshop",
       image: "/workshops/Cyber_Sec.png",
-      unstopLink: "https://unstop.com/o/93nF1vJ?lb=58he6PlW&utm_medium=Share&utm_source=srisri4756&utm_campaign=Workshops",
+      unstopLink:
+        "https://unstop.com/o/93nF1vJ?lb=58he6PlW&utm_medium=Share&utm_source=srisri4756&utm_campaign=Workshops",
     },
     {
       id: 3,
       title: "Artificial Intelligence Workshop",
       image: "/workshops/AI.png",
-      unstopLink: "https://unstop.com/o/t7Z5T1i?lb=58he6PlW&utm_medium=Share&utm_source=srisri4756&utm_campaign=Workshops",
+      unstopLink:
+        "https://unstop.com/o/t7Z5T1i?lb=58he6PlW&utm_medium=Share&utm_source=srisri4756&utm_campaign=Workshops",
     },
   ];
 
@@ -69,7 +73,7 @@ export default function Workshops() {
   }, []);
 
   return (
-    <div className="background-layers-competitions min-h-screen w-full text-white py-[9vh] px-[3vw] bg-cover bg-center relative">
+    <div className="background-layers-competitions min-h-screen w-full text-white py-[9vh] md:pt-[12vh] px-[4vw] md:px-[2vw] bg-cover bg-center relative">
       <div className="absolute inset-0 pointer-events-none z-0" />
       <div className="relative z-10">
         {/* Main Content */}
@@ -89,10 +93,10 @@ export default function Workshops() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              <p className="text-3xl md:text-4xl lg:text-[4vw] tracking-[0.06em] noxa-gothic mb-2">
+              <p className="text-3xl md:text-[5vw] tracking-[0.06em] noxa-gothic mb-2">
                 WORKSHOPS
               </p>
-              <p className="text-sm md:text-base lg:text-[1.1vw] leading-relaxed lg:leading-[1.375] max-w-3xl">
+              <p className="text-sm md:text-[1.3vw] text-left leading-relaxed lg:leading-snug max-w-3xl">
                 Enhance your skills with our curated workshops led by industry
                 experts. From cutting-edge technologies to practical hands-on
                 sessions, discover opportunities to learn, grow, and innovate
@@ -110,7 +114,7 @@ export default function Workshops() {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <h2 className="text-xl md:text-2xl lg:text-[2.25vw] tracking-[0.05em] mb-4 md:mb-6 uppercase">
+            <h2 className="text-xl md:text-[3vw] tracking-[0.05em] mb-4 md:mb-6 uppercase">
               Upcoming Workshops
             </h2>
 
@@ -132,14 +136,14 @@ export default function Workshops() {
                         src={workshop.image}
                         alt={workshop.title}
                         fill
-                        className="object-cover w-full h-full transition-all duration-500 group-hover:brightness-110 group-hover:scale-110"
+                        className="object-cover w-full h-full transition-all duration-500 group-hover:brightness-106 group-hover:scale-102"
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
 
                       {/* Overlay on Hover */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                        <p className="text-[#a0a0a0] text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                          Click to register →
+                      <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p className="text-white text-[2vw] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex justify-center items-center">
+                          Click to register <ArrowUpRight size={30} />
                         </p>
                       </div>
 
@@ -149,9 +153,9 @@ export default function Workshops() {
                   </a>
 
                   {/* Workshop Title */}
-                  <h3 className="text-sm md:text-base lg:text-[1.3vw] tracking-[0.05em] uppercase leading-tight">
+                  {/* <h3 className="text-sm md:text-base lg:text-[1.3vw] tracking-[0.05em] uppercase leading-tight">
                     {workshop.title}
-                  </h3>
+                  </h3> */}
                 </div>
               ))}
             </div>
@@ -159,7 +163,7 @@ export default function Workshops() {
 
           {/* Additional Info Section */}
           <div className="mt-8 md:mt-12 pt-4 md:pt-6 border-t border-[#2a2a2a]">
-            <p className="text-[#a0a0a0] text-center text-xs md:text-sm lg:text-[1.1vw] tracking-wide">
+            <p className="text-[#a0a0a0] text-center text-xs md:text-sm lg:text-[1.1vw] tracking-widest uppercase">
               More workshops coming soon! Stay tuned for exciting announcements.
             </p>
           </div>
