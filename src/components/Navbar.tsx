@@ -147,9 +147,9 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
       {/* logo */}
       <Link href="/">
-        <div className="w-[13vw] h-[13vw] md:w-[6vw] md:h-[6vw] relative">
+        <div className="w-[13vw] h-[13vw] md:w-[12vw] md:h-[7vw] relative">
           <Image
-            src="/images/elan_logo_white.svg"
+            src="/images/elan_unified_logo.png"
             alt="logo"
             fill
             className="object-contain"
