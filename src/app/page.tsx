@@ -197,7 +197,8 @@ export default function Home() {
             }`}
           >
             <a
-              href="https://www.oppskills.com/events/elan-nvision-2026-the-last-ronin"
+              // href="https://www.oppskills.com/events/elan-nvision-2026-the-last-ronin"
+              href="https://forms.gle/4L46eqAxyR1hnKkk7"
               target="_blank"
               rel="noopener noreferrer"
             >
