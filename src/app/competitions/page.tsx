@@ -818,10 +818,6 @@ export default function Competitions() {
                             <span className="text-white/80 uppercase tracking-wide">
                               {competition.category}
                             </span>
-                            <span className="text-white/60">•</span>
-                            <span className="text-white/80 font-semibold">
-                              {competition.prize}
-                            </span>
                           </div>
                         </div>
                       </div>
@@ -891,15 +887,6 @@ export default function Competitions() {
                   </div>
                   <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white leading-tight">
                     {activeCompetition?.contact || "TBA"}
-                  </div>
-                </div>
-
-                <div className="flex flex-col">
-                  <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a] leading-none mb-1">
-                    PRIZE POOL
-                  </div>
-                  <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white leading-tight">
-                    {activeCompetition?.prize || "TBA"}
                   </div>
                 </div>
 
