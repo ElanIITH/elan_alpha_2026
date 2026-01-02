@@ -90,7 +90,7 @@ export default function Contact() {
   return (
     <div
       id="contact"
-      className="background-layers-3 md:min-h-screen overflow-x-hidden text-white"
+      className="background-layers-contact md:min-h-screen overflow-x-hidden text-white"
     >
       <div
         className={`relative w-full min-h-screen flex flex-col items-center pt-[8vh] md:pt-0 md:justify-center md:items-center transition-all duration-1000 delay-400 ${
@@ -100,7 +100,7 @@ export default function Contact() {
         <div className="mt-[27vw] md:mt-[22vh] flex flex-col gap-[2vh] md:gap-[1vh] px-[5vw] md:px-0">
           <div
             data-animate-id="contact-title"
-            className={`uppercase text-[5vw] md:text-[2.5vw] flex justify-center items-center transition-all duration-700 ${
+            className={`uppercase text-[5vw] md:text-[3.5vw] flex justify-center items-center transition-all duration-700 noxa-gothic ${
               visibleElements.has("contact-title")
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 -translate-y-8"
