@@ -15,6 +15,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
   const [isContactVisible, setIsContactVisible] = useState(false);
   const [currentVariant, setCurrentVariant] = useState<"red" | "grey">(variant);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
 
   useEffect(() => {
     const handleVariantChange = (e: CustomEvent<"red" | "grey">) => {
@@ -101,6 +102,24 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
   return (
     <div className="bg-transparent fixed z-1000 top-0 left-0 right-0 w-screen h-auto flex justify-between items-center px-[3vw] md:justify-center md:px-0 md:py-0 md:gap-8 md:text-[1.5vw] text-white">
+      {/* IITH Logo - Left (Desktop only) */}
+      <a
+        href="https://www.iith.ac.in/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="IIT Hyderabad website (opens in a new tab)"
+        className="hidden md:block md:absolute md:left-[3vw]"
+      >
+        <div className="md:w-[4vw] md:h-[4vw] relative">
+          <Image
+            src="/navbar/iith_logo.png"
+            alt="IIT Hyderabad logo"
+            fill
+            className="object-contain"
+          />
+        </div>
+      </a>
+
       <Link
         href="/merchandise"
         className={`${navItemClass("/merchandise")} hidden md:block`}
@@ -145,14 +164,22 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         </div>
       </div>
 
-      {/* logo */}
-      <Link href="/">
-        <div className="w-[13vw] h-[13vw] md:w-[12vw] md:h-[7vw] relative">
+      {/* Elan Logo - Center */}
+      <Link
+        href="/"
+        onMouseEnter={() => setIsLogoHovered(true)}
+        onMouseLeave={() => setIsLogoHovered(false)}
+      >
+        <div className="w-[20vw] h-[20vw] md:w-[12vw] md:h-[7vw] relative">
           <Image
-            src="/images/elan_unified_logo.png"
-            alt="logo"
+            src={
+              isLogoHovered
+                ? "/navbar/elan_logo_hover.png"
+                : "/navbar/elan_logo.png"
+            }
+            alt="Elan logo"
             fill
-            className="object-contain"
+            className="object-contain transition-opacity duration-700"
           />
         </div>
       </Link>
@@ -170,11 +197,11 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
       </div>
 
       <Link
-        href="/accomodation"
-        className={`${navItemClass("/accomodation")} hidden md:block`}
-        style={navItemStyle("/accomodation")}
+        href="/accommodation"
+        className={`${navItemClass("/accommodation")} hidden md:block`}
+        style={navItemStyle("/accommodation")}
         onMouseEnter={handleHover}
-        onMouseLeave={(e) => handleHoverOut(e, "/accomodation")}
+        onMouseLeave={(e) => handleHoverOut(e, "/accommodation")}
       >
         ACCOMMODATION
       </Link>
