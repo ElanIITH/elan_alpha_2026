@@ -377,6 +377,77 @@ export default function Competitions() {
       registerLink:
         "https://unstop.com/p/tales-in-a-frame-elan-nvision-2026-elan-nvision-1599622",
     },
+    {
+      id: 27,
+      title: "OPEN MIC",
+      category: "LIT",
+      image: "/images/OpenMic2.png",
+      prize: "No Prize Pool",
+      contact: "Abhinav - +91 97410 07207",
+      deadline: "3rd January, 2026",
+      date: "January 11, 2026",
+      description:
+        "Grab the mic, own the stage. Open mic gives everyone the opportunity to express themselves to the fullest, be it music, poetry, comedy, or storytelling. Step up, take the mic, and let your voice be heard.",
+      registerLink:
+        "https://unstop.com/events/open-mic-elan-nvision-2026-iit-hyderabad-1610261",
+    },
+    {
+      id: 28,
+      title: "GENERAL QUIZ",
+      category: "LIT",
+      image: "/images/MCN3.JPG",
+      prize: "₹15,000",
+      contact: "Johan - +91 90371 32850",
+      deadline: "5th January, 2026",
+      date: "January 11, 2026",
+      description:
+        "Join us for an electrifying quiz experience hosted by the legendary Major Chandrakanth Nair (MCN), one of India's most celebrated quizmasters! This is your chance to test your knowledge against the best, guided by MCN's signature wit and expertise.",
+      registerLink:
+        "https://unstop.com/quiz/general-quiz-elan-nvision-2026-elan-nvision-iit-hyderabad-1610257",
+    },
+    {
+      id: 29,
+      title: "POLLUTION QUIZ",
+      category: "LIT",
+      image: "/images/Pollution1.jpg",
+      prize: "₹10,000",
+      contact: "Johan - +91 90371 32850",
+      deadline: "9th January, 2026",
+      date: "January 10, 2026",
+      description:
+        "Pollution Quiz in collaboration with TGPCB challenges participants on environmental pollution, its causes, impacts, regulations, and sustainable solutions, testing awareness of one of today's most pressing global issues.",
+      registerLink:
+        "https://unstop.com/events/pollution-quiz-elan-nvision-2026-iit-hyderabad-1610260",
+    },
+    {
+      id: 30,
+      title: "ANIME QUIZ",
+      category: "LIT",
+      image: "/images/AnimeQ3.jpg",
+      prize: "₹10,000",
+      contact: "Abhinav - +91 97410 07207",
+      deadline: "5th January, 2026",
+      date: "January 11, 2026",
+      description:
+        "Anime Quiz is a fast-paced competition for true otakus, covering everything from iconic characters and epic battles to storylines, studios, and soundtracks across the anime universe.",
+      registerLink:
+        "https://unstop.com/quiz/anime-quiz-elan-nvision-2026-iit-hyderabad-1610258",
+    },
+    {
+      id: 31,
+      title: "WEAVE A TALE",
+      category: "LIT",
+      image: "/images/WeaveT1.jpg",
+      prize: "₹10,000",
+      contact: "Abhinav - +91 97410 07207",
+      deadline: "5th January, 2026",
+      date: "January 11, 2026",
+      description:
+        "Weave a Tale is an english creative writing competition, where you can showcase your creativity and finesse. Participants will be provided a theme on the spot upon which they have to make a story and submit within the stipulated time.",
+      registerLink:
+        "https://unstop.com/events/weave-a-tale-elan-nvision-2026-iit-hyderabad-1610255",
+    },
+    
   ];
 
   useEffect(() => {
@@ -396,6 +467,7 @@ export default function Competitions() {
     ALL: competitions,
     TECH: competitions.filter((comp) => comp.category === "TECH"),
     CULTURAL: competitions.filter((comp) => comp.category === "CULTURAL"),
+    LIT: competitions.filter((comp) => comp.category === "LIT"),
   };
 
   const currentCompetitions = categories[activeCategory] || competitions;
@@ -666,6 +738,19 @@ export default function Competitions() {
             >
               CULTURAL
               {activeCategory === "CULTURAL" && (
+                <span className="absolute bottom-[-3vh] left-0 w-full h-px bg-white" />
+              )}
+            </button>
+            <button
+              onClick={() => handleCategoryChange("LIT")}
+              className={`cursor-pointer px-6 py-2.5 md:text-[2vh] text-[1.4vh] font-medium tracking-[1.5px] border-l border-[#1a1a1a] rounded-0 transition-all duration-250 relative uppercase ${
+                activeCategory === "LIT"
+                  ? "bg-[#0f0f0f] text-white"
+                  : "bg-transparent text-[#4a4a4a] hover:bg-[#0f0f0f] hover:text-[#8a8a8a]"
+              }`}
+            >
+              LIT
+              {activeCategory === "LIT" && (
                 <span className="absolute bottom-[-3vh] left-0 w-full h-px bg-white" />
               )}
             </button>
