@@ -138,7 +138,7 @@ export default function Accommodation() {
         >
           <div
             id="accommodation-top-left"
-            className="w-[55vw] tracking-wide flex flex-col pl-[0.75vh] justify-evenly text-white uppercase gap-[0.75vh]"
+            className="w-[55vw] tracking-wide flex flex-col pl-[0.75vh] justify-evenly text-white gap-[0.75vh]"
           >
             <div
               id="accomodation-top-left-para1"
@@ -175,8 +175,8 @@ export default function Accommodation() {
             >
               <p className="text-[2.25vw] tracking-[0.05em]">Getting to IITH</p>
               <p className="text-[1.1vw]/5.5">
-                The main gate lies on the road from Patancheru to Kandi. There’s
-                a bunch of large signs and boards, so you can’t miss it. Refer
+                The main gate lies on the road from Patancheru to Kandi. There's
+                a bunch of large signs and boards, so you can't miss it. Refer
                 to Google maps for the exact address. One can reach Patancheru
                 by either bus or train. From Patancheru, one can reach the IIT
                 main gate by either bus or auto.

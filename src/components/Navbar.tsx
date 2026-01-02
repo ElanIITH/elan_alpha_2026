@@ -88,18 +88,6 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
     }
   };
 
-  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    if (pathname === "/") {
-      const contactSection = document.getElementById("contact");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      window.location.href = "/#contact";
-    }
-  };
-
   return (
     <div className="bg-transparent fixed z-1000 top-0 left-0 right-0 w-screen h-auto flex justify-between items-center px-[3vw] md:justify-center md:px-0 md:py-0 md:gap-8 md:text-[1.5vw] text-white">
       {/* IITH Logo - Left (Desktop only) */}
@@ -108,7 +96,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="IIT Hyderabad website (opens in a new tab)"
-        className="hidden md:block md:absolute md:left-[3vw]"
+        className="hidden md:block md:absolute md:left-[2vw]"
       >
         <div className="md:w-[4vw] md:h-[4vw] relative">
           <Image
@@ -228,7 +216,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         CONTACT US
       </Link>
 
-      <div className="w-[5vw] h-[5vw] md:w-[2vw] md:h-[2vw] relative md:absolute md:right-[5vw]">
+      <div className="w-[5vw] h-[5vw] md:w-[2vw] md:h-[2vw] relative md:absolute md:right-[4vw]">
         <button
           className="cursor-pointer w-full h-full"
           onClick={() => setIsMenuOpen(true)}

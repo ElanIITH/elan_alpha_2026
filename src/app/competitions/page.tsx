@@ -65,7 +65,7 @@ export default function Competitions() {
       deadline: "December 20, 2025",
       date: "January 11, 2026",
       description:
-        "Maze Explorer is an autonomous robotics challenge where teams build bots to navigate an 8×8 maze without manual control. The event focuses on intelligent path planning, sensing, obstacle avoidance, and efficient decision-making. Bots must independently analyze the maze and reach the target cell with accuracy, speed, and optimized navigation logic.",
+        "Maze Explorer is an autonomous robotics challenge where teams build bots to navigate an 8x8 maze without manual control. The event focuses on intelligent path planning, sensing, obstacle avoidance, and efficient decision-making. Bots must independently analyze the maze and reach the target cell with accuracy, speed, and optimized navigation logic.",
       registerLink:
         "https://unstop.com/p/maze-explorer-elan-nvision-2026-elan-nvision-iit-hyderabad-1603640",
     },
@@ -447,7 +447,6 @@ export default function Competitions() {
       registerLink:
         "https://unstop.com/events/weave-a-tale-elan-nvision-2026-iit-hyderabad-1610255",
     },
-    
   ];
 
   useEffect(() => {
@@ -913,7 +912,7 @@ export default function Competitions() {
                 <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a] leading-none mb-1">
                   DESCRIPTION
                 </div>
-                <p className="md:text-[1.3vw] text-justify text-[3.5vw] md:leading-[1.4] leading-[1.3] tracking-normal uppercase text-white pr-0 md:pr-9">
+                <p className="md:text-[1.3vw] text-justify text-[3.5vw] md:leading-[1.4] leading-[1.3] tracking-normal text-white pr-0 md:pr-9">
                   {activeCompetition?.description ||
                     "Choose a competition from the list to view details."}
                 </p>
