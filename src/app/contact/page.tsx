@@ -211,16 +211,10 @@ export default function Contact() {
           }`}
         >
           <Image
-            src="/images/mobile_title.png"
+            src="/home/elan_chrome.png"
             alt="elan title"
             fill
-            className="object-contain md:hidden"
-          />
-          <Image
-            src="/images/mobile_title.png"
-            alt="elan title"
-            fill
-            className="object-contain hidden md:block"
+            className="object-contain"
           />
         </div>
         <div

@@ -448,16 +448,10 @@ export default function Home() {
           }`}
         >
           <Image
-            src="/images/mobile_title.png"
+            src="/home/elan_chrome.png"
             alt="elan title"
             fill
-            className="object-contain md:hidden"
-          />
-          <Image
-            src="/images/mobile_title.png"
-            alt="elan title"
-            fill
-            className="object-contain hidden md:block"
+            className="object-contain"
           />
         </div>
         <div className="flex justify-center items-center gap-[5vw] w-[80vw] h-[8vw] md:gap-[2vw] md:w-[30vw] md:h-[3vw]">
