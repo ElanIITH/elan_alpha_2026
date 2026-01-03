@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Competitions() {
   const [activeCategory, setActiveCategory] = useState("ALL");
@@ -199,7 +198,7 @@ export default function Competitions() {
       id: 14,
       title: "NRITYANJALI",
       category: "CULTURAL",
-      image: "/culti_comp/Nrityanjali.jpg",
+      image: "/images/Nrityanjali.jpg",
       prize: "₹30,000",
       contact: "Sai Akhila - +919346210594",
       deadline: "December 25, 2025",
@@ -283,7 +282,7 @@ export default function Competitions() {
       id: 20,
       title: "CAMPUS IDOL",
       category: "CULTURAL",
-      image: "/culti_comp/SoloSinging.jpg",
+      image: "/images/SoloSinging.jpg",
       prize: "₹40,000",
       contact: "Himangshu Sarma - +918638887938",
       deadline: "December 25, 2025",
