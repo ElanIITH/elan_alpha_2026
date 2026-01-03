@@ -382,7 +382,7 @@ export default function Competitions() {
       title: "OPEN MIC",
       category: "LIT",
       image: "/images/OpenMic2.png",
-      prize: "No Prize Pool",
+      // prize: "No Prize Pool",
       contact: "Abhinav - +91 97410 07207",
       deadline: "3rd January, 2026",
       date: "January 11, 2026",
@@ -893,14 +893,16 @@ export default function Competitions() {
                   </div>
                 </div>
 
-                <div className="flex flex-col">
-                  <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a] leading-none mb-1">
-                    PRIZE POOL
+                {activeCompetition?.prize && (
+                  <div className="flex flex-col">
+                    <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a] leading-none mb-1">
+                      PRIZE POOL
+                    </div>
+                    <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white leading-tight">
+                      {activeCompetition.prize}
+                    </div>
                   </div>
-                  <div className="md:text-[1.3vw] text-[3.5vw] tracking-wide uppercase text-white leading-tight">
-                    {activeCompetition?.prize || "TBA"}
-                  </div>
-                </div>
+                )}
 
                 <div className="flex flex-col">
                   <div className="md:text-[1.5vw] text-[4vw] tracking-[0.05em] uppercase text-[#6a6a6a] leading-none mb-1">
