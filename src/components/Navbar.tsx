@@ -184,7 +184,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         </div>
       </div>
 
-      {/* <Link
+      <Link
         href="/accommodation"
         className={`${navItemClass("/accommodation")} hidden md:block`}
         style={navItemStyle("/accommodation")}
@@ -192,8 +192,8 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         onMouseLeave={(e) => handleHoverOut(e, "/accommodation")}
       >
         ACCOMMODATION
-      </Link> */}
-      <a
+      </Link>
+      {/* <a
         href="https://www.oppskills.com/events/elan-nvision-2026-the-last-ronin"
         target="_blank"
         rel="noopener noreferrer"
@@ -202,7 +202,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         onMouseLeave={(e) => handleHoverOut(e, "/accommodation")}
       >
         REGISTER
-      </a>
+      </a> */}
 
       <div className="md:flex md:flex-col hidden">
         <div className="md:w-[2vw] md:h-[0.3vw]"></div>
