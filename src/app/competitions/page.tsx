@@ -143,7 +143,7 @@ export default function Competitions() {
       id: 10,
       title: "BGMI",
       category: "TECH",
-      image: "/techy_comp/BGMI.jpeg",
+      image: "/techy_comp/BGMI.jpg",
       prize: "₹30,000",
       contact: "Pavankumar Dalve - +918180974182",
       deadline: "December 25, 2025",
