@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import NavbarWrapper from "@/components/NavbarWrapper";
 
 const bemore = localFont({
   src: "./fonts/bemore_serif.otf",
@@ -41,7 +41,7 @@ export default function RootLayout({
       className={`${bemore.variable} ${noxaGothic.variable} ${japaneseFont.variable}`}
     >
       <body className="antialiased">
-        <Navbar variant="red" />
+        <NavbarWrapper variant="red" />
         {children}
       </body>
     </html>
