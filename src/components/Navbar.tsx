@@ -167,7 +167,13 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
             }
             alt="Elan logo"
             fill
-            className="object-contain transition-opacity duration-700"
+            className="object-contain transition-opacity duration-700 hidden md:block"
+          />
+          <Image
+            src={"/navbar/elan_logo.png"}
+            alt="Elan logo"
+            fill
+            className="object-contain transition-opacity duration-700 md:hidden"
           />
         </div>
       </Link>
