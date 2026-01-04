@@ -110,11 +110,21 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
       <Link
         href="/merchandise"
-        className={`${navItemClass("/merchandise")} hidden md:block`}
+        className={`${navItemClass(
+          "/merchandise"
+        )} hidden md:block relative z-10`}
         style={navItemStyle("/merchandise")}
         onMouseEnter={handleHover}
         onMouseLeave={(e) => handleHoverOut(e, "/merchandise")}
       >
+        <div className="md:w-[10vw] md:h-[10vw] absolute hidden md:block border z-100">
+          <Image
+            src="/animation_assets/init_anim.png"
+            alt="separator"
+            fill
+            className="object-contain"
+          />
+        </div>
         MERCHANDISE
       </Link>
 
