@@ -6,6 +6,34 @@ export default function Hello() {
   const [isDev, setIsDev] = useState(true);
   const [count, setCount] = useState(0);
 
+  useEffect(() => {
+    console.clear();
+
+    console.log(
+      `%c███████╗██╗      █████╗ ███╗   ██╗
+%c██╔════╝██║     ██╔══██╗████╗  ██║
+%c█████╗  ██║     ███████║██╔██╗ ██║
+%c██╔══╝  ██║     ██╔══██║██║╚██╗██║
+%c███████╗███████╗██║  ██║██║ ╚████║
+
+%c███╗   ██╗██╗   ██╗██╗███████╗██╗ ██████╗ ███╗   ██╗
+%c████╗  ██║██║   ██║██║██╔════╝██║██╔═══██╗████╗  ██║
+%c██╔██╗ ██║██║   ██║██║███████╗██║██║   ██║██╔██╗ ██║
+%c██║╚██╗██║╚██╗ ██╔╝██║╚════██║██║██║   ██║██║╚██╗██║
+%c██║ ╚████║ ╚████╔╝ ██║███████║██║╚██████╔╝██║ ╚████║`,
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+    );
+  }, []);
+
   // Convert count to 4 digits array [ones, tens, hundreds, thousands]
   const digits = String(count).padStart(4, "0").split("").reverse().map(Number);
 

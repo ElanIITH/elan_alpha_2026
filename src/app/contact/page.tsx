@@ -11,6 +11,34 @@ export default function Contact() {
   const [copiedText, setCopiedText] = useState<string | null>(null);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
 
+  useEffect(() => {
+    console.clear();
+
+    console.log(
+      `%c███████╗██╗      █████╗ ███╗   ██╗
+%c██╔════╝██║     ██╔══██╗████╗  ██║
+%c█████╗  ██║     ███████║██╔██╗ ██║
+%c██╔══╝  ██║     ██╔══██║██║╚██╗██║
+%c███████╗███████╗██║  ██║██║ ╚████║
+
+%c███╗   ██╗██╗   ██╗██╗███████╗██╗ ██████╗ ███╗   ██╗
+%c████╗  ██║██║   ██║██║██╔════╝██║██╔═══██╗████╗  ██║
+%c██╔██╗ ██║██║   ██║██║███████╗██║██║   ██║██╔██╗ ██║
+%c██║╚██╗██║╚██╗ ██╔╝██║╚════██║██║██║   ██║██║╚██╗██║
+%c██║ ╚████║ ╚████╔╝ ██║███████║██║╚██████╔╝██║ ╚████║`,
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+    );
+  }, []);
+
   const handleCopyToClipboard = (
     text: string,
     e: React.MouseEvent<HTMLSpanElement>

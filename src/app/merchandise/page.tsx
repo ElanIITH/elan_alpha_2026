@@ -72,6 +72,34 @@ export default function Merchandise() {
   const mobileCarouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    console.clear();
+
+    console.log(
+      `%c███████╗██╗      █████╗ ███╗   ██╗
+%c██╔════╝██║     ██╔══██╗████╗  ██║
+%c█████╗  ██║     ███████║██╔██╗ ██║
+%c██╔══╝  ██║     ██╔══██║██║╚██╗██║
+%c███████╗███████╗██║  ██║██║ ╚████║
+
+%c███╗   ██╗██╗   ██╗██╗███████╗██╗ ██████╗ ███╗   ██╗
+%c████╗  ██║██║   ██║██║██╔════╝██║██╔═══██╗████╗  ██║
+%c██╔██╗ ██║██║   ██║██║███████╗██║██║   ██║██╔██╗ ██║
+%c██║╚██╗██║╚██╗ ██╔╝██║╚════██║██║██║   ██║██║╚██╗██║
+%c██║ ╚████║ ╚████╔╝ ██║███████║██║╚██████╔╝██║ ╚████║`,
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+    );
+  }, []);
+
+  useEffect(() => {
     setMounted(true);
 
     // Intersection Observer for scroll animations
