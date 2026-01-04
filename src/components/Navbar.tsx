@@ -98,11 +98,12 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         aria-label="IIT Hyderabad website (opens in a new tab)"
         className="hidden md:block md:absolute md:left-[2vw]"
       >
-        <div className="md:w-[4vw] md:h-[4vw] relative">
+        <div className="relative md:w-[4vw] md:h-[4vw]">
           <Image
             src="/navbar/iith_logo.png"
             alt="IIT Hyderabad logo"
             fill
+            sizes="4vw"
             className="object-contain"
           />
         </div>
@@ -120,11 +121,12 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
       <div className="md:flex md:flex-col hidden">
         <div className="md:w-[2vw] md:h-[0.3vw]"></div>
-        <div className="md:w-[2vw] md:h-[2vw] relative">
+        <div className="relative md:w-[2vw] md:h-[2vw]">
           <Image
             src={smallSpark}
             alt="separator"
             fill
+            sizes="2vw"
             className="object-contain"
           />
         </div>
@@ -142,11 +144,12 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
       <div className="md:flex md:flex-col hidden">
         <div className="md:w-[3.5vw] md:h-[1.2vw]"></div>
-        <div className="md:w-[3.5vw] md:h-[3.5vw] relative">
+        <div className="relative md:w-[3.5vw] md:h-[3.5vw]">
           <Image
             src={bigSpark}
             alt="separator"
             fill
+            sizes="3.5vw"
             className="object-contain"
           />
         </div>
@@ -158,7 +161,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         onMouseEnter={() => setIsLogoHovered(true)}
         onMouseLeave={() => setIsLogoHovered(false)}
       >
-        <div className="w-[20vw] h-[20vw] md:w-[12vw] md:h-[7vw] relative">
+        <div className="relative w-[20vw] h-[20vw] md:w-[12vw] md:h-[7vw]">
           <Image
             src={
               isLogoHovered
@@ -167,24 +170,20 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
             }
             alt="Elan logo"
             fill
-            className="object-contain transition-opacity duration-700 hidden md:block"
-          />
-          <Image
-            src={"/navbar/elan_logo.png"}
-            alt="Elan logo"
-            fill
-            className="object-contain transition-opacity duration-700 md:hidden"
+            sizes="(max-width: 768px) 20vw, 12vw"
+            className="object-contain transition-opacity duration-700"
           />
         </div>
       </Link>
 
       <div className="md:flex md:flex-col hidden">
         <div className="md:w-[3.5vw] md:h-[1.2vw]"></div>
-        <div className="md:w-[3.5vw] md:h-[3.5vw] relative">
+        <div className="relative md:w-[3.5vw] md:h-[3.5vw]">
           <Image
             src={bigSpark}
             alt="separator"
             fill
+            sizes="3.5vw"
             className="object-contain flip-horizontal"
           />
         </div>
@@ -212,11 +211,12 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
       <div className="md:flex md:flex-col hidden">
         <div className="md:w-[2vw] md:h-[0.3vw]"></div>
-        <div className="md:w-[2vw] md:h-[2vw] relative">
+        <div className="relative md:w-[2vw] md:h-[2vw]">
           <Image
             src={smallSpark}
             alt="separator"
             fill
+            sizes="2vw"
             className="object-contain flip-horizontal"
           />
         </div>
@@ -232,15 +232,16 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         CONTACT US
       </Link>
 
-      <div className="w-[5vw] h-[5vw] md:w-[2vw] md:h-[2vw] relative md:absolute md:right-[4vw]">
+      <div className="relative w-[5vw] h-[5vw] md:w-[2vw] md:h-[2vw] md:absolute md:right-[4vw]">
         <button
-          className="cursor-pointer w-full h-full"
+          className="w-full h-full cursor-pointer relative"
           onClick={() => setIsMenuOpen(true)}
         >
           <Image
             src="/images/menu_white.svg"
-            alt="menu"
+            alt="Menu"
             fill
+            sizes="(max-width: 768px) 5vw, 2vw"
             className="object-contain"
           />
         </button>
