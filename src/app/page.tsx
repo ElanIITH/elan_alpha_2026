@@ -237,7 +237,7 @@ export default function Home() {
                   <motion.div
                     variants={{
                       rest: { opacity: 0, x: 0 },
-                      hover: { opacity: 1, x: 120 },
+                      hover: { opacity: 1, x: "6.5vw" },
                     }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     className="w-[20vw] h-[3vw] absolute bottom-[-1.6vw] left-[-3vw] z-100"
@@ -252,7 +252,7 @@ export default function Home() {
                   <motion.div
                     variants={{
                       rest: { opacity: 0, x: 0 },
-                      hover: { opacity: 1, x: -180 },
+                      hover: { opacity: 1, x: "-9.7vw" },
                     }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     className="w-[20vw] h-[3vw] absolute bottom-[2.8vw] left-[2.3vw] z-100"
@@ -400,7 +400,7 @@ export default function Home() {
                 <motion.div
                   variants={{
                     rest: { opacity: 0, x: 0 },
-                    hover: { opacity: 1, x: 100 },
+                    hover: { opacity: 1, x: "5.5vw" },
                   }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
                   className="w-[20vw] h-[3vw] absolute bottom-[-1.6vw] left-[-3vw] z-100"
@@ -415,7 +415,7 @@ export default function Home() {
                 <motion.div
                   variants={{
                     rest: { opacity: 0, x: 0 },
-                    hover: { opacity: 1, x: -180 },
+                    hover: { opacity: 1, x: "-9.5vw" },
                   }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
                   className="w-[20vw] h-[3vw] absolute bottom-[2.4vw] left-[2.3vw] z-100"
