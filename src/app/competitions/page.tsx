@@ -11,6 +11,34 @@ export default function Competitions() {
   const isScrollingRef = useRef(false);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  useEffect(() => {
+    console.clear();
+
+    console.log(
+      `%c███████╗██╗      █████╗ ███╗   ██╗
+%c██╔════╝██║     ██╔══██╗████╗  ██║
+%c█████╗  ██║     ███████║██╔██╗ ██║
+%c██╔══╝  ██║     ██╔══██║██║╚██╗██║
+%c███████╗███████╗██║  ██║██║ ╚████║
+
+%c███╗   ██╗██╗   ██╗██╗███████╗██╗ ██████╗ ███╗   ██╗
+%c████╗  ██║██║   ██║██║██╔════╝██║██╔═══██╗████╗  ██║
+%c██╔██╗ ██║██║   ██║██║███████╗██║██║   ██║██╔██╗ ██║
+%c██║╚██╗██║╚██╗ ██╔╝██║╚════██║██║██║   ██║██║╚██╗██║
+%c██║ ╚████║ ╚████╔╝ ██║███████║██║╚██████╔╝██║ ╚████║`,
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+    );
+  }, []);
+
   const competitions = [
     {
       id: 1,

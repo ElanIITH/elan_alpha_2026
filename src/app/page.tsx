@@ -29,6 +29,34 @@ export default function Home() {
   };
 
   useEffect(() => {
+    console.clear();
+
+    console.log(
+      `%c███████╗██╗      █████╗ ███╗   ██╗
+%c██╔════╝██║     ██╔══██╗████╗  ██║
+%c█████╗  ██║     ███████║██╔██╗ ██║
+%c██╔══╝  ██║     ██╔══██║██║╚██╗██║
+%c███████╗███████╗██║  ██║██║ ╚████║
+
+%c███╗   ██╗██╗   ██╗██╗███████╗██╗ ██████╗ ███╗   ██╗
+%c████╗  ██║██║   ██║██║██╔════╝██║██╔═══██╗████╗  ██║
+%c██╔██╗ ██║██║   ██║██║███████╗██║██║   ██║██╔██╗ ██║
+%c██║╚██╗██║╚██╗ ██╔╝██║╚════██║██║██║   ██║██║╚██╗██║
+%c██║ ╚████║ ╚████╔╝ ██║███████║██║╚██████╔╝██║ ╚████║`,
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+    );
+  }, []);
+
+  useEffect(() => {
     setMounted(true);
 
     // Intersection Observer for scroll animations
@@ -165,17 +193,19 @@ export default function Home() {
           }`}
         >
           <div
-            className={`w-[80vw] h-[16vw] top-[8vh] left-[3vw] md:w-[55vw] md:h-[10vw] absolute md:top-[76vh] md:left-[2vw] md:translate-x-0 transition-all duration-1000 delay-300 ${
+            className={`absolute w-[80vw] h-[16vw] top-[8vh] left-[3vw] md:w-[55vw] md:h-[10vw] md:top-[76vh] md:left-[2vw] md:translate-x-0 transition-all duration-1000 delay-300 ${
               mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
           >
             <Image
               src="/home/elan_chrome.png"
-              alt="elan title"
+              alt="Elan title"
               fill
+              sizes="(max-width: 768px) 80vw, 55vw"
               className="object-contain"
             />
           </div>
+
           <div
             className={`relative w-[80vw] top-[17vh] left-[3vw] px-[1vw] text-justify md:hidden text-white transition-all duration-1000 delay-400 ${
               mounted ? "opacity-100" : "opacity-0"
@@ -192,8 +222,8 @@ export default function Home() {
             }`}
           >
             <a
-              href="https://www.oppskills.com/events/elan-nvision-2026-the-last-ronin"
-              // href="https://forms.gle/4L46eqAxyR1hnKkk7"
+              // href="https://www.oppskills.com/events/elan-nvision-2026-the-last-ronin"
+              href="https://forms.gle/4L46eqAxyR1hnKkk7"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -263,7 +293,7 @@ export default function Home() {
         >
           <div
             data-animate-id="theme-image"
-            className={`w-[83vw] h-[45vw] md:w-[45vw] md:h-[25vw] relative transition-all duration-700 ${
+            className={`relative w-[83vw] h-[45vw] md:w-[45vw] md:h-[25vw] transition-all duration-700 ${
               visibleElements.has("theme-image")
                 ? "opacity-100 scale-100"
                 : "opacity-0 scale-90"
@@ -271,8 +301,9 @@ export default function Home() {
           >
             <Image
               src="/home/last_ronin_chrome.png"
-              alt="last ronin"
+              alt="Last Ronin"
               fill
+              sizes="(max-width: 768px) 83vw, 45vw"
               className="object-contain"
             />
           </div>
@@ -280,17 +311,19 @@ export default function Home() {
             href="https://www.youtube.com/watch?v=F1hgKyYYTn8"
             target="_blank"
             rel="noopener noreferrer"
-            className={`md:absolute md:bottom-[21vw] hidden md:block md:w-[15vw] md:h-[2vw] transition-all duration-1000 delay-300 hover:opacity-70 ${
+            className={`relative hidden md:absolute md:block md:bottom-[21vw] md:w-[15vw] md:h-[2vw] transition-all duration-1000 delay-300 hover:opacity-70 ${
               mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
           >
             <Image
               src="/home/last_ronin_yt.png"
-              alt="elan title"
+              alt="Elan title"
               fill
+              sizes="15vw"
               className="object-contain"
             />
           </a>
+
           <div
             data-animate-id="theme-text"
             className={`leading-tight text-[5vw] w-[85vw] px-[5vw] md:text-[1.4vw] md:w-[40vw] md:px-[2vw] h-auto text-justify tracking-normal md:leading-[1.1] transition-all duration-700 delay-200 ${
@@ -404,11 +437,12 @@ export default function Home() {
             <div className="flex justify-center items-center gap-[2vw] md:gap-[0.8vw]">
               <div className="flex flex-col">
                 <div className="w-[5vw] h-[1.5vw] md:w-[3.5vw] md:h-[0.9vw]"></div>
-                <div className="w-[5vw] h-[5vw] md:w-[3.5vw] md:h-[3.5vw] relative">
+                <div className="relative w-[5vw] h-[5vw] md:w-[3.5vw] md:h-[3.5vw]">
                   <Image
                     src="/images/left_spark_big_red.svg"
                     alt="separator"
                     fill
+                    sizes="(max-width: 768px) 5vw, 3.5vw"
                     className="object-contain"
                   />
                 </div>
@@ -427,11 +461,12 @@ export default function Home() {
 
               <div className="flex flex-col">
                 <div className="w-[5vw] h-[1.5vw] md:w-[3.5vw] md:h-[0.9vw]"></div>
-                <div className="w-[5vw] h-[5vw] md:w-[3.5vw] md:h-[3.5vw] relative">
+                <div className="relative w-[5vw] h-[5vw] md:w-[3.5vw] md:h-[3.5vw]">
                   <Image
                     src="/images/left_spark_big_red.svg"
                     alt="separator"
                     fill
+                    sizes="(max-width: 768px) 5vw, 3.5vw"
                     className="object-contain flip-horizontal"
                   />
                 </div>

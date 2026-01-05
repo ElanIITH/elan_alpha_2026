@@ -10,6 +10,34 @@ export default function Accommodation() {
   );
 
   useEffect(() => {
+    console.clear();
+
+    console.log(
+      `%c███████╗██╗      █████╗ ███╗   ██╗
+  %c██╔════╝██║     ██╔══██╗████╗  ██║
+  %c█████╗  ██║     ███████║██╔██╗ ██║
+  %c██╔══╝  ██║     ██╔══██║██║╚██╗██║
+  %c███████╗███████╗██║  ██║██║ ╚████║
+  
+  %c███╗   ██╗██╗   ██╗██╗███████╗██╗ ██████╗ ███╗   ██╗
+  %c████╗  ██║██║   ██║██║██╔════╝██║██╔═══██╗████╗  ██║
+  %c██╔██╗ ██║██║   ██║██║███████╗██║██║   ██║██╔██╗ ██║
+  %c██║╚██╗██║╚██╗ ██╔╝██║╚════██║██║██║   ██║██║╚██╗██║
+  %c██║ ╚████║ ╚████╔╝ ██║███████║██║╚██████╔╝██║ ╚████║`,
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+    );
+  }, []);
+
+  useEffect(() => {
     setMounted(true);
 
     // Intersection Observer for scroll animations
@@ -257,7 +285,7 @@ export default function Accommodation() {
           <div
             id="accommodation-top-right"
             data-animate-id="acc-map"
-            className={`w-[40vw] relative h-[85vh] transition-all duration-1000 delay-200 ${
+            className={`relative w-[40vw] h-[85vh] transition-all duration-1000 delay-200 ${
               visibleElements.has("acc-map")
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 translate-x-8"
@@ -267,16 +295,20 @@ export default function Accommodation() {
               src="/optimised/iith_map_2.png"
               alt="Campus Map"
               fill
-              style={{ objectFit: "contain" }}
+              sizes="40vw"
+              className="object-contain"
+              priority={false}
             />
             <div className="absolute top-0 right-0 w-[18%] h-[17%]">
               <Image
                 src="/images/accommodation_map_japanese.png"
-                alt="Chizu(Map)"
+                alt="Chizu (Map)"
                 fill
-                style={{ objectFit: "contain" }}
-              ></Image>
+                sizes="18vw"
+                className="object-contain"
+              />
             </div>
+
             <div className="absolute bottom-0 right-0 w-[45%] h-[20%] flex flex-col justify-evenly">
               <div className="h-[50%] self-end">
                 <a
@@ -339,7 +371,7 @@ export default function Accommodation() {
             {/* Campus Map - Mobile */}
             <div
               data-animate-id="mob-map"
-              className={`w-full relative h-[60vh] sm:h-[50vh] md:h-[55vh] mb-6 sm:mb-8 md:mb-10 transition-all duration-700 delay-200 ${
+              className={`relative w-full h-[60vh] sm:h-[50vh] md:h-[55vh] mb-6 sm:mb-8 md:mb-10 transition-all duration-700 delay-200 ${
                 visibleElements.has("mob-map")
                   ? "opacity-100 scale-100"
                   : "opacity-0 scale-95"
@@ -349,16 +381,19 @@ export default function Accommodation() {
                 src="/optimised/iith_map_2.png"
                 alt="Campus Map"
                 fill
-                style={{ objectFit: "contain" }}
+                sizes="100vw"
+                className="object-contain"
               />
-              <div className="absolute top-2 right-2 w-[15%] h-[12%] sm:w-[12%] sm:h-[10%]">
+              <div className="absolute top-2 right-2 w-[15%] h-[12%] sm:w-[12%] sm:h-[10%] ">
                 <Image
                   src="/images/accommodation_map_japanese.png"
-                  alt="Chizu(Map)"
+                  alt="Chizu (Map)"
                   fill
-                  style={{ objectFit: "contain" }}
+                  sizes="(max-width: 640px) 15vw, 12vw"
+                  className="object-contain"
                 />
               </div>
+
               <div className="absolute bottom-2 right-2 flex flex-col items-end gap-2">
                 <a
                   href="https://maps.app.goo.gl/vFmu2392eE213swJ8"

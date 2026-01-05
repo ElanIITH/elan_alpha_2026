@@ -11,6 +11,34 @@ export default function Contact() {
   const [copiedText, setCopiedText] = useState<string | null>(null);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
 
+  useEffect(() => {
+    console.clear();
+
+    console.log(
+      `%c███████╗██╗      █████╗ ███╗   ██╗
+%c██╔════╝██║     ██╔══██╗████╗  ██║
+%c█████╗  ██║     ███████║██╔██╗ ██║
+%c██╔══╝  ██║     ██╔══██║██║╚██╗██║
+%c███████╗███████╗██║  ██║██║ ╚████║
+
+%c███╗   ██╗██╗   ██╗██╗███████╗██╗ ██████╗ ███╗   ██╗
+%c████╗  ██║██║   ██║██║██╔════╝██║██╔═══██╗████╗  ██║
+%c██╔██╗ ██║██║   ██║██║███████╗██║██║   ██║██╔██╗ ██║
+%c██║╚██╗██║╚██╗ ██╔╝██║╚════██║██║██║   ██║██║╚██╗██║
+%c██║ ╚████║ ╚████╔╝ ██║███████║██║╚██████╔╝██║ ╚████║`,
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+    );
+  }, []);
+
   const handleCopyToClipboard = (
     text: string,
     e: React.MouseEvent<HTMLSpanElement>
@@ -167,11 +195,12 @@ export default function Contact() {
             <div className="flex justify-center items-center gap-[2vw] md:gap-[0.8vw]">
               <div className="flex flex-col">
                 <div className="w-[5vw] h-[1.5vw] md:w-[3.5vw] md:h-[0.9vw]"></div>
-                <div className="w-[5vw] h-[5vw] md:w-[3.5vw] md:h-[3.5vw] relative">
+                <div className="relative w-[5vw] h-[5vw] md:w-[3.5vw] md:h-[3.5vw]">
                   <Image
                     src="/images/left_spark_big_red.svg"
                     alt="separator"
                     fill
+                    sizes="(max-width: 768px) 5vw, 3.5vw"
                     className="object-contain"
                   />
                 </div>
@@ -190,11 +219,12 @@ export default function Contact() {
 
               <div className="flex flex-col">
                 <div className="w-[5vw] h-[1.5vw] md:w-[3.5vw] md:h-[0.9vw]"></div>
-                <div className="w-[5vw] h-[5vw] md:w-[3.5vw] md:h-[3.5vw] relative">
+                <div className="relative w-[5vw] h-[5vw] md:w-[3.5vw] md:h-[3.5vw]">
                   <Image
                     src="/images/left_spark_big_red.svg"
                     alt="separator"
                     fill
+                    sizes="(max-width: 768px) 5vw, 3.5vw"
                     className="object-contain flip-horizontal"
                   />
                 </div>
@@ -204,7 +234,7 @@ export default function Contact() {
         </div>
         <div
           data-animate-id="contact-logo"
-          className={`w-[60vw] h-[14vw] md:w-[40vw] md:h-[9vw] transition-all duration-700 delay-800 ${
+          className={`relative w-[60vw] h-[14vw] md:w-[40vw] md:h-[9vw] transition-all duration-700 delay-800 ${
             visibleElements.has("contact-logo")
               ? "opacity-100 scale-100"
               : "opacity-0 scale-90"
@@ -212,11 +242,13 @@ export default function Contact() {
         >
           <Image
             src="/home/elan_chrome.png"
-            alt="elan title"
+            alt="Elan title"
             fill
+            sizes="(max-width: 768px) 60vw, 40vw"
             className="object-contain"
           />
         </div>
+
         <div
           data-animate-id="contact-social"
           className={`flex justify-center items-center gap-[5vw] w-[80vw] h-[8vw] md:gap-[2vw] md:w-[30vw] md:h-[3vw] transition-all duration-700 delay-900 `}

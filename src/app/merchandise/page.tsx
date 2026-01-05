@@ -72,6 +72,34 @@ export default function Merchandise() {
   const mobileCarouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    console.clear();
+
+    console.log(
+      `%c███████╗██╗      █████╗ ███╗   ██╗
+%c██╔════╝██║     ██╔══██╗████╗  ██║
+%c█████╗  ██║     ███████║██╔██╗ ██║
+%c██╔══╝  ██║     ██╔══██║██║╚██╗██║
+%c███████╗███████╗██║  ██║██║ ╚████║
+
+%c███╗   ██╗██╗   ██╗██╗███████╗██╗ ██████╗ ███╗   ██╗
+%c████╗  ██║██║   ██║██║██╔════╝██║██╔═══██╗████╗  ██║
+%c██╔██╗ ██║██║   ██║██║███████╗██║██║   ██║██╔██╗ ██║
+%c██║╚██╗██║╚██╗ ██╔╝██║╚════██║██║██║   ██║██║╚██╗██║
+%c██║ ╚████║ ╚████╔╝ ██║███████║██║╚██████╔╝██║ ╚████║`,
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 14px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
+      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+    );
+  }, []);
+
+  useEffect(() => {
     setMounted(true);
 
     // Intersection Observer for scroll animations
@@ -201,14 +229,15 @@ export default function Merchandise() {
 
           <div
             data-animate-id="merch-vert"
-            className={`w-[5vw] h-[10vw] absolute top-[26vh] left-[2vw] transition-all duration-700 delay-100 ${
+            className={`absolute top-[26vh] left-[2vw] w-[5vw] h-[10vw] transition-all duration-700 delay-100 ${
               visibleElements.has("merch-vert") ? "opacity-100" : "opacity-0"
             }`}
           >
             <Image
               src={selectedShirt.jp_text}
-              alt="jp text"
+              alt="JP text"
               fill
+              sizes="5vw"
               className="object-contain"
             />
           </div>
@@ -216,20 +245,25 @@ export default function Merchandise() {
           {/* Selected Shirt Display */}
           <div
             data-animate-id="merch-shirt"
-            className={`absolute left-[14vw] transition-all duration-700 delay-200 top-[25vh] w-[30vw] h-[30vw]`}
+            className="absolute left-[14vw] top-[25vh] w-[30vw] h-[30vw] transition-all duration-700 delay-200"
           >
-            <div className="w-[53vw] h-[53vw] absolute left-[-22vh] top-[-22vh] z-100">
+            {/* Background fish */}
+            <div className="absolute left-[-22vh] top-[-22vh] z-100 w-[53vw] h-[53vw]">
               <Image
                 src="/images/fish.png"
-                alt="fish"
+                alt="Fish"
                 fill
+                sizes="53vw"
                 className="object-contain drop-shadow-2xl"
               />
             </div>
+
+            {/* Shirt */}
             <Image
               src={selectedShirt.image_org}
               alt={selectedShirt.name}
               fill
+              sizes="30vw"
               className="object-contain"
             />
           </div>
@@ -280,23 +314,24 @@ export default function Merchandise() {
                 : "opacity-0 scale-75"
             }`}
           >
-            <div className="w-full h-full relative">
+            <div className="relative w-full h-full">
               <Image
                 src="/images/BUY.png"
                 alt="Buy"
                 fill
+                sizes="100%"
                 className="object-contain"
               />
             </div>
           </a>
 
           {/* Shirts Grid on Right Side */}
-          <div className="w-auto absolute top-[14vh] right-[3vw] grid grid-cols-2 gap-x-[1vw] gap-y-[1vw]">
+          <div className="absolute top-[14vh] right-[3vw] grid grid-cols-2 w-auto gap-x-[1vw] gap-y-[1vw]">
             {shirts.map((shirt) => (
               <button
                 key={shirt.id}
                 onClick={() => setSelectedShirt(shirt)}
-                className={`relative w-[15vw] h-[22vh] cursor-pointer transition-all duration-200 rounded-tl-[1.9vw] rounded-br-[1.7vw] rounded-tr-[1vw] rounded-bl-[1vw]  ${
+                className={`relative w-[15vw] h-[22vh] cursor-pointer transition-all duration-200 rounded-tl-[1.9vw] rounded-br-[1.7vw] rounded-tr-[1vw] rounded-bl-[1vw] ${
                   selectedShirt.id === shirt.id
                     ? "border-[0.2vw] border-white"
                     : "border-[0.2vw] hover:border-white"
@@ -306,6 +341,7 @@ export default function Merchandise() {
                   src={shirt.image}
                   alt={shirt.name}
                   fill
+                  sizes="15vw"
                   className="object-contain"
                 />
                 <a href={shirt.buy_link}>
@@ -350,6 +386,7 @@ export default function Merchandise() {
                       src={shirt.image_org}
                       alt={shirt.name}
                       fill
+                      sizes="(max-width: 640px) 100vw, 65vw"
                       className="object-contain"
                     />
                   </div>
@@ -372,14 +409,16 @@ export default function Merchandise() {
                     <div className="text-white text-[5vw] translate-y-[-0.3vw] sm:text-base font-semibold">
                       {shirt.price}
                     </div>
+
                     <a
                       href={shirt.buy_link}
-                      className="w-[20vw] h-[10vw] translate-y-0 sm:w-[9vw] sm:h-[9vw] relative cursor-pointer hover:scale-110 transition-transform duration-300 active:scale-95"
+                      className="relative w-[20vw] h-[10vw] sm:w-[9vw] sm:h-[9vw] cursor-pointer transition-transform duration-300 hover:scale-110 active:scale-95"
                     >
                       <Image
                         src="/images/BUY.png"
                         alt="Buy"
                         fill
+                        sizes="(max-width: 640px) 20vw, 9vw"
                         className="object-contain"
                       />
                     </a>

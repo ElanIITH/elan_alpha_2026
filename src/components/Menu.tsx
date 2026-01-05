@@ -60,8 +60,9 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
           {/* Background Image */}
           <Image
             src="/images/menu_bg.jpg"
-            alt="menu background"
+            alt="Menu background"
             fill
+            sizes="100vw"
             className="object-cover"
           />
 
@@ -97,25 +98,28 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
                   href="https://nvisionx.elan.org.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative w-[22vw] h-[8vw] md:w-[8vw] md:h-[3vw] hover:opacity-70 transition-opacity"
+                  className="relative w-[22vw] h-[8vw] md:w-[8vw] md:h-[3vw] transition-opacity hover:opacity-70"
                 >
                   <Image
                     src="/images/nvisionx_logo.svg"
                     alt="nVisionX"
                     fill
+                    sizes="(max-width: 768px) 22vw, 8vw"
                     className="object-contain"
                   />
                 </a>
+
                 <a
                   href="https://quest.elan.org.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative w-[22vw] h-[8vw] md:w-[8vw] md:h-[3vw] hover:opacity-70 transition-opacity"
+                  className="relative w-[22vw] h-[8vw] md:w-[8vw] md:h-[3vw] transition-opacity hover:opacity-70"
                 >
                   <Image
                     src="/images/quest_logo.svg"
                     alt="Quest Olympiad"
                     fill
+                    sizes="(max-width: 768px) 22vw, 8vw"
                     className="object-contain"
                   />
                 </a>
