@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -216,33 +217,69 @@ export default function Home() {
               innovation, performances, and competitions.
             </div>
           </div>
+
           <div
             className={`pl-[1vw] pr-[5vw] w-[90vw] top-[21.3vh] left-[3vw] items-start md:pl-[0.5vw] md:w-[42vw] h-auto absolute md:top-[51vh] md:left-[2vw] text-white flex flex-col md:items-end transition-all duration-1000 delay-500 ${
               mounted ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
             }`}
           >
-            <a
-              // href="https://www.oppskills.com/events/elan-nvision-2026-the-last-ronin"
-              href="https://forms.gle/4L46eqAxyR1hnKkk7"
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.div
+              initial="rest"
+              whileHover="hover"
+              className="hidden md:block relative z-10"
             >
-              <div className="flex items-center gap-[2vw] text-[9vw] md:text-center md:text-[3.5vw] hover:text-[#AE0021] transition-colors">
-                REGISTER HERE
-                <svg
-                  className="w-[6vw] h-[6vw] md:hidden"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M7 17L17 7" />
-                  <path d="M7 7h10v10" />
-                </svg>
-              </div>
-            </a>
+              <a
+                href="https://forms.gle/4L46eqAxyR1hnKkk7"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex items-center gap-[2vw] text-[9vw] md:text-center md:text-[3.5vw] hover:text-[#AE0021] transition-colors">
+                  <motion.div
+                    variants={{
+                      rest: { opacity: 0, x: 0 },
+                      hover: { opacity: 1, x: 120 },
+                    }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="w-[20vw] h-[3vw] absolute bottom-[-1.6vw] left-[-3vw] z-100"
+                  >
+                    <Image
+                      src="/animation_assets/final_anim.png"
+                      alt="separator"
+                      fill
+                      className="object-contain"
+                    />
+                  </motion.div>
+                  <motion.div
+                    variants={{
+                      rest: { opacity: 0, x: 0 },
+                      hover: { opacity: 1, x: -180 },
+                    }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="w-[20vw] h-[3vw] absolute bottom-[2.8vw] left-[2.3vw] z-100"
+                  >
+                    <Image
+                      src="/animation_assets/final_anim_flip.png"
+                      alt="separator"
+                      fill
+                      className="object-contain"
+                    />
+                  </motion.div>
+                  REGISTER HERE
+                  <svg
+                    className="w-[6vw] h-[6vw] md:hidden"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M7 17L17 7" />
+                    <path d="M7 7h10v10" />
+                  </svg>
+                </div>
+              </a>
+            </motion.div>
             <div className="leading-tight text-[5vw] text-left md:text-[1.4vw] md:text-justify tracking-normal md:leading-[1.1]">
               <span className="hidden md:inline">
                 Elan&nVision, IIT Hyderabad's annual techno-cultural fest,
@@ -353,11 +390,48 @@ export default function Home() {
           <div className="absolute top-[8vw] uppercase text-[5vw] md:text-[3.5vw] text-white noxa-gothic">
             Merchandise
           </div>
-          <Link href="/merchandise">
-            <div className="absolute bottom-[7.2vw] left-1/2 -translate-x-1/2 uppercase text-[5vw] md:text-[3.2vw] text-white hover:text-[#AE0021] transition-colors cursor-pointer">
-              See all merch
-            </div>
-          </Link>
+          <motion.div
+            initial="rest"
+            whileHover="hover"
+            className="hidden md:block relative z-10"
+          >
+            <Link href="/merchandise">
+              <div className="relative bottom-[-20vw] left-1/2 -translate-x-1/2 uppercase text-[5vw] md:text-[3.2vw] text-white hover:text-[#AE0021] transition-colors cursor-pointer">
+                <motion.div
+                  variants={{
+                    rest: { opacity: 0, x: 0 },
+                    hover: { opacity: 1, x: 100 },
+                  }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="w-[20vw] h-[3vw] absolute bottom-[-1.6vw] left-[-3vw] z-100"
+                >
+                  <Image
+                    src="/animation_assets/final_anim.png"
+                    alt="separator"
+                    fill
+                    className="object-contain"
+                  />
+                </motion.div>
+                <motion.div
+                  variants={{
+                    rest: { opacity: 0, x: 0 },
+                    hover: { opacity: 1, x: -180 },
+                  }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="w-[20vw] h-[3vw] absolute bottom-[2.4vw] left-[2.3vw] z-100"
+                >
+                  <Image
+                    src="/animation_assets/final_anim_flip.png"
+                    alt="separator"
+                    fill
+                    className="object-contain"
+                  />
+                </motion.div>
+                See all merch
+              </div>
+            </Link>
+          </motion.div>
+          1
         </div>
       </div>
 

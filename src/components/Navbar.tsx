@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -109,25 +110,51 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         </div>
       </a>
 
-      <Link
-        href="/merchandise"
-        className={`${navItemClass(
-          "/merchandise"
-        )} hidden md:block relative z-10`}
-        style={navItemStyle("/merchandise")}
-        onMouseEnter={handleHover}
-        onMouseLeave={(e) => handleHoverOut(e, "/merchandise")}
+      <motion.div
+        initial="rest"
+        whileHover="hover"
+        className="hidden md:block relative z-10"
       >
-        <div className="md:w-[10vw] md:h-[10vw] absolute hidden md:block border z-100">
-          <Image
-            src="/animation_assets/init_anim.png"
-            alt="separator"
-            fill
-            className="object-contain"
-          />
-        </div>
-        MERCHANDISE
-      </Link>
+        <Link
+          href="/merchandise"
+          className={`${navItemClass("/merchandise")} relative`}
+          style={navItemStyle("/merchandise")}
+          onMouseEnter={handleHover}
+          onMouseLeave={(e) => handleHoverOut(e, "/merchandise")}
+        >
+          <motion.div
+            variants={{
+              rest: { opacity: 0, x: 0 },
+              hover: { opacity: 1, x: 70 },
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="w-[7vw] h-[3vw] absolute bottom-[-2.3vw] left-[-3vw] z-100"
+          >
+            <Image
+              src="/animation_assets/final_anim.png"
+              alt="separator"
+              fill
+              className="object-contain"
+            />
+          </motion.div>
+          <motion.div
+            variants={{
+              rest: { opacity: 0, x: 0 },
+              hover: { opacity: 1, x: -70 },
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="w-[7vw] h-[3vw] absolute bottom-[0.1vw] left-[2.3vw] z-100"
+          >
+            <Image
+              src="/animation_assets/final_anim_flip.png"
+              alt="separator"
+              fill
+              className="object-contain"
+            />
+          </motion.div>
+          MERCHANDISE
+        </Link>
+      </motion.div>
 
       <div className="md:flex md:flex-col hidden">
         <div className="md:w-[2vw] md:h-[0.3vw]"></div>
@@ -142,15 +169,51 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         </div>
       </div>
 
-      <Link
-        href="/competitions"
-        className={`${navItemClass("/competitions")} hidden md:block`}
-        style={navItemStyle("/competitions")}
-        onMouseEnter={handleHover}
-        onMouseLeave={(e) => handleHoverOut(e, "/competitions")}
+      <motion.div
+        initial="rest"
+        whileHover="hover"
+        className="hidden md:block relative z-10"
       >
-        COMPETITIONS
-      </Link>
+        <Link
+          href="/competitions"
+          className={`${navItemClass("/competitions")} hidden md:block`}
+          style={navItemStyle("/competitions")}
+          onMouseEnter={handleHover}
+          onMouseLeave={(e) => handleHoverOut(e, "/competitions")}
+        >
+          <motion.div
+            variants={{
+              rest: { opacity: 0, x: 0 },
+              hover: { opacity: 1, x: 70 },
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="w-[7vw] h-[3vw] absolute bottom-[-2vw] left-[-3vw] z-100"
+          >
+            <Image
+              src="/animation_assets/final_anim.png"
+              alt="separator"
+              fill
+              className="object-contain"
+            />
+          </motion.div>
+          <motion.div
+            variants={{
+              rest: { opacity: 0, x: 0 },
+              hover: { opacity: 1, x: -70 },
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="w-[7vw] h-[3vw] absolute bottom-[0.4vw] left-[2.3vw] z-100"
+          >
+            <Image
+              src="/animation_assets/final_anim_flip.png"
+              alt="separator"
+              fill
+              className="object-contain"
+            />
+          </motion.div>
+          COMPETITIONS
+        </Link>
+      </motion.div>
 
       <div className="md:flex md:flex-col hidden">
         <div className="md:w-[3.5vw] md:h-[1.2vw]"></div>
@@ -199,25 +262,51 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         </div>
       </div>
 
-      <Link
-        href="/accommodation"
-        className={`${navItemClass("/accommodation")} hidden md:block`}
-        style={navItemStyle("/accommodation")}
-        onMouseEnter={handleHover}
-        onMouseLeave={(e) => handleHoverOut(e, "/accommodation")}
+      <motion.div
+        initial="rest"
+        whileHover="hover"
+        className="hidden md:block relative z-10"
       >
-        ACCOMMODATION
-      </Link>
-      {/* <a
-        href="https://www.oppskills.com/events/elan-nvision-2026-the-last-ronin"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`hidden md:block`}
-        onMouseEnter={handleHover}
-        onMouseLeave={(e) => handleHoverOut(e, "/accommodation")}
-      >
-        REGISTER
-      </a> */}
+        <Link
+          href="/accommodation"
+          className={`${navItemClass("/accommodation")} hidden md:block`}
+          style={navItemStyle("/accommodation")}
+          onMouseEnter={handleHover}
+          onMouseLeave={(e) => handleHoverOut(e, "/accommodation")}
+        >
+          <motion.div
+            variants={{
+              rest: { opacity: 0, x: 0 },
+              hover: { opacity: 1, x: 90 },
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="w-[7vw] h-[3vw] absolute bottom-[-2vw] left-[-3vw] z-100"
+          >
+            <Image
+              src="/animation_assets/final_anim.png"
+              alt="separator"
+              fill
+              className="object-contain"
+            />
+          </motion.div>
+          <motion.div
+            variants={{
+              rest: { opacity: 0, x: 0 },
+              hover: { opacity: 1, x: -70 },
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="w-[7vw] h-[3vw] absolute bottom-[0.4vw] left-[2.3vw] z-100"
+          >
+            <Image
+              src="/animation_assets/final_anim_flip.png"
+              alt="separator"
+              fill
+              className="object-contain"
+            />
+          </motion.div>
+          ACCOMMODATION
+        </Link>
+      </motion.div>
 
       <div className="md:flex md:flex-col hidden">
         <div className="md:w-[2vw] md:h-[0.3vw]"></div>
@@ -232,15 +321,51 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         </div>
       </div>
 
-      <Link
-        href="/contact"
-        className={`${navItemClass("/contact")} hidden md:block`}
-        style={navItemStyle("/contact")}
-        onMouseEnter={handleHover}
-        onMouseLeave={(e) => handleHoverOut(e, "/contact")}
+      <motion.div
+        initial="rest"
+        whileHover="hover"
+        className="hidden md:block relative z-10"
       >
-        CONTACT US
-      </Link>
+        <Link
+          href="/contact"
+          className={`${navItemClass("/contact")} hidden md:block`}
+          style={navItemStyle("/contact")}
+          onMouseEnter={handleHover}
+          onMouseLeave={(e) => handleHoverOut(e, "/contact")}
+        >
+          <motion.div
+            variants={{
+              rest: { opacity: 0, x: 0 },
+              hover: { opacity: 1, x: 50 },
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="w-[7vw] h-[3vw] absolute bottom-[-2vw] left-[-3vw] z-100"
+          >
+            <Image
+              src="/animation_assets/final_anim.png"
+              alt="separator"
+              fill
+              className="object-contain"
+            />
+          </motion.div>
+          <motion.div
+            variants={{
+              rest: { opacity: 0, x: 0 },
+              hover: { opacity: 1, x: -70 },
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="w-[7vw] h-[3vw] absolute bottom-[0.4vw] left-[2.3vw] z-100"
+          >
+            <Image
+              src="/animation_assets/final_anim_flip.png"
+              alt="separator"
+              fill
+              className="object-contain"
+            />
+          </motion.div>
+          CONTACT US
+        </Link>
+      </motion.div>
 
       <div className="relative w-[5vw] h-[5vw] md:w-[2vw] md:h-[2vw] md:absolute md:right-[4vw]">
         <button
