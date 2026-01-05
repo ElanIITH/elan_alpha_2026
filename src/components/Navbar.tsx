@@ -125,7 +125,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
           <motion.div
             variants={{
               rest: { opacity: 0, x: 0 },
-              hover: { opacity: 1, x: 70 },
+              hover: { opacity: 1, x: "3.5vw" },
             }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="w-[7vw] h-[3vw] absolute bottom-[-2.3vw] left-[-3vw] z-100"
@@ -140,7 +140,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
           <motion.div
             variants={{
               rest: { opacity: 0, x: 0 },
-              hover: { opacity: 1, x: -70 },
+              hover: { opacity: 1, x: "-3.8vw" },
             }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="w-[7vw] h-[3vw] absolute bottom-[0.1vw] left-[2.3vw] z-100"
@@ -184,7 +184,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
           <motion.div
             variants={{
               rest: { opacity: 0, x: 0 },
-              hover: { opacity: 1, x: 70 },
+              hover: { opacity: 1, x: "3.5vw" },
             }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="w-[7vw] h-[3vw] absolute bottom-[-2vw] left-[-3vw] z-100"
@@ -199,7 +199,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
           <motion.div
             variants={{
               rest: { opacity: 0, x: 0 },
-              hover: { opacity: 1, x: -70 },
+              hover: { opacity: 1, x: "-3.5vw" },
             }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="w-[7vw] h-[3vw] absolute bottom-[0.4vw] left-[2.3vw] z-100"
@@ -277,7 +277,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
           <motion.div
             variants={{
               rest: { opacity: 0, x: 0 },
-              hover: { opacity: 1, x: 90 },
+              hover: { opacity: 1, x: "4.6vw" },
             }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="w-[7vw] h-[3vw] absolute bottom-[-2vw] left-[-3vw] z-100"
@@ -292,7 +292,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
           <motion.div
             variants={{
               rest: { opacity: 0, x: 0 },
-              hover: { opacity: 1, x: -70 },
+              hover: { opacity: 1, x: "-3.8vw" },
             }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="w-[7vw] h-[3vw] absolute bottom-[0.4vw] left-[2.3vw] z-100"
@@ -336,7 +336,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
           <motion.div
             variants={{
               rest: { opacity: 0, x: 0 },
-              hover: { opacity: 1, x: 50 },
+              hover: { opacity: 1, x: "2.7vw" },
             }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="w-[7vw] h-[3vw] absolute bottom-[-2vw] left-[-3vw] z-100"
@@ -351,7 +351,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
           <motion.div
             variants={{
               rest: { opacity: 0, x: 0 },
-              hover: { opacity: 1, x: -70 },
+              hover: { opacity: 1, x: "-3.5vw" },
             }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="w-[7vw] h-[3vw] absolute bottom-[0.4vw] left-[2.3vw] z-100"
