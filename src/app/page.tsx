@@ -226,7 +226,7 @@ export default function Home() {
             <motion.div
               initial="rest"
               whileHover="hover"
-              className="hidden md:block relative z-10"
+              className="block relative z-10"
             >
               <a
                 href="https://forms.gle/4L46eqAxyR1hnKkk7"
