@@ -109,20 +109,19 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
                   />
                 </a>
 
-                <a
-                  href="https://quest.elan.org.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/partners/deutsche-borse"
+                  onClick={onClose}
                   className="relative w-[22vw] h-[8vw] md:w-[8vw] md:h-[3vw] transition-opacity hover:opacity-70"
                 >
                   <Image
-                    src="/images/quest_logo.svg"
-                    alt="Quest Olympiad"
+                    src="/images/duetsche.png"
+                    alt="deutsche Börse"
                     fill
                     sizes="(max-width: 768px) 22vw, 8vw"
                     className="object-contain"
                   />
-                </a>
+                </Link>
               </div>
 
               {/* Social Links */}
