@@ -270,7 +270,7 @@ export default function Home() {
                       hover: { opacity: 0 },
                     }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="w-[5vw] h-[3vw] absolute top-[-0.7vw] right-[-1.6vw] z-100"
+                    className="w-[5vw] h-[3vw] absolute top-[-0.7vw] right-[-1.6vw] z-100 md:block hidden"
                   >
                     <Image
                       src="/animation_assets/register_anim.png"
@@ -285,7 +285,7 @@ export default function Home() {
                       hover: { opacity: 0 },
                     }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="w-[5vw] h-[3vw] absolute bottom-[-0.7vw] left-[-1.8vw] z-100 "
+                    className="w-[5vw] h-[3vw] absolute bottom-[-0.7vw] left-[-1.8vw] z-100 md:block hidden"
                   >
                     <Image
                       src="/animation_assets/register_anim.png"
