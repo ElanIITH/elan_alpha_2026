@@ -264,6 +264,36 @@ export default function Home() {
                       className="object-contain"
                     />
                   </motion.div>
+                  <motion.div
+                    variants={{
+                      rest: { opacity: 1 },
+                      hover: { opacity: 0 },
+                    }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="w-[5vw] h-[3vw] absolute top-[-0.7vw] right-[-1.6vw] z-100"
+                  >
+                    <Image
+                      src="/animation_assets/register_anim.png"
+                      alt="separator"
+                      fill
+                      className="object-contain flip-horizontal"
+                    />
+                  </motion.div>
+                  <motion.div
+                    variants={{
+                      rest: { opacity: 1 },
+                      hover: { opacity: 0 },
+                    }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="w-[5vw] h-[3vw] absolute bottom-[-0.7vw] left-[-1.8vw] z-100 "
+                  >
+                    <Image
+                      src="/animation_assets/register_anim.png"
+                      alt="separator"
+                      fill
+                      className="object-contain"
+                    />
+                  </motion.div>
                   REGISTER HERE
                   <svg
                     className="w-[6vw] h-[6vw] md:hidden"
