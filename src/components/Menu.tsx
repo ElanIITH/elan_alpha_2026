@@ -35,11 +35,6 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
     { label: "CONTACT US", href: "/contact" },
   ];
 
-  const externalLinks = [
-    { label: "NVISIONX", href: "https://nvisionx.elan.org.in" },
-    { label: "QUEST OLYMPIAD", href: "https://quest.elan.org.in" },
-  ];
-
   return (
     <>
       {/* Backdrop with blur */}

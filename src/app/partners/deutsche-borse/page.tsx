@@ -6,7 +6,9 @@ import Link from "next/link";
 
 export default function DeutscheBorsePage() {
   const [mounted, setMounted] = useState(false);
-  const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
+  const [visibleElements, setVisibleElements] = useState<Set<string>>(
+    new Set()
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -56,7 +58,7 @@ export default function DeutscheBorsePage() {
                       : "opacity-0 translate-y-8"
                   }`}
                 >
-                  Deutsche Börse × Elan & nVision
+                  Deutsche Börse x Elan & nVision
                 </h1>
                 <p
                   className={`text-[2vw] md:text-[1.8vw] mt-[3vh] leading-relaxed transition-all duration-1000 delay-200 ${
@@ -65,7 +67,8 @@ export default function DeutscheBorsePage() {
                       : "opacity-0 translate-y-8"
                   }`}
                 >
-                  Powering global financial markets through technology, research, and responsible innovation
+                  Powering global financial markets through technology,
+                  research, and responsible innovation
                 </p>
 
                 {/* CTA Buttons */}
@@ -80,24 +83,25 @@ export default function DeutscheBorsePage() {
                     href="https://deutsche-boerse.com/dbg-de/group-careers"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text px-[3vw] py-[1.5vh] bg-[#6E0216] text-white text-[1.8vw] rounded hover:opacity-80 transition-opacity"
+                    className="text px-[3vw] py-[1.5vh] bg-[#6E0216] text-white text-[1.8vw] rounded hover:scale-103 transition duration-200"
                   >
                     Explore Careers
                   </a>
                   <button
                     onClick={() => {
-                      document
-                        .getElementById("research")
-                        .scrollIntoView({ behavior: "smooth" });
+                      const element = document.getElementById("research");
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth" });
+                      }
                     }}
-                    className="text px-[3vw] py-[1.5vh] border-2 border-white text-white text-[1.8vw] rounded hover:bg-white hover:text-black transition-all"
+                    className="text px-[3vw] py-[1.5vh] border-2 border-white text-white text-[1.8vw] rounded hover:bg-white hover:text-black hover:scale-103 transition-all cursor-pointer"
                   >
                     Research & Innovation
                   </button>
                 </div>
               </div>
 
-              <div className="relative w-[25vw] h-[25vw] flex-shrink-0">
+              <div className="relative w-[25vw] h-[25vw] shrink-0">
                 <Image
                   src="/images/duetsche.png"
                   alt="Deutsche Börse"
@@ -127,10 +131,19 @@ export default function DeutscheBorsePage() {
               }`}
             >
               <p>
-                Deutsche Börse is a leading global market infrastructure provider, enabling secure and efficient financial markets worldwide. The Group operates across the entire financial value chain — from trading, clearing, settlement, custody, and data services to advanced analytics and technology-driven solutions.
+                Deutsche Börse is a leading global market infrastructure
+                provider, enabling secure and efficient financial markets
+                worldwide. The Group operates across the entire financial value
+                chain — from trading, clearing, settlement, custody, and data
+                services to advanced analytics and technology-driven solutions.
               </p>
               <p>
-                With the recent launch of its India Global Capability Centre (GCC), Deutsche Börse is strengthening its presence in India by focusing on technology development, quantitative research, data engineering, and operations, offering exciting opportunities for young professionals to work on globally impactful financial systems.
+                With the recent launch of its India Global Capability Centre
+                (GCC), Deutsche Börse is strengthening its presence in India by
+                focusing on technology development, quantitative research, data
+                engineering, and operations, offering exciting opportunities for
+                young professionals to work on globally impactful financial
+                systems.
               </p>
             </div>
           </div>
@@ -153,7 +166,11 @@ export default function DeutscheBorsePage() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              Deutsche Börse actively engages with young talent through campus programs, hackathons, internships, and full-time roles across technology, finance, data, and research domains. Students and graduates joining Deutsche Börse work on mission-critical systems that support global financial stability and innovation.
+              Deutsche Börse actively engages with young talent through campus
+              programs, hackathons, internships, and full-time roles across
+              technology, finance, data, and research domains. Students and
+              graduates joining Deutsche Börse work on mission-critical systems
+              that support global financial stability and innovation.
             </div>
 
             <div
@@ -190,7 +207,11 @@ export default function DeutscheBorsePage() {
         </section>
 
         {/* Research & Innovation */}
-        <section id="research" className="py-[8vh] px-[5vw]" data-animate-id="research">
+        <section
+          id="research"
+          className="py-[8vh] px-[5vw]"
+          data-animate-id="research"
+        >
           <div className="max-w-[90vw] mx-auto">
             <h2
               className={`text text-[4vw] mb-[4vh] transition-all duration-1000 ${
@@ -206,7 +227,12 @@ export default function DeutscheBorsePage() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              Deutsche Börse maintains a strong culture of research and innovation, collaborating with academic institutions and research communities to solve complex challenges in financial markets. Through its India GCC and global innovation hubs, the organisation works on cutting-edge problems in market microstructure, scalable systems, low-latency trading, and data-driven decision-making.
+              Deutsche Börse maintains a strong culture of research and
+              innovation, collaborating with academic institutions and research
+              communities to solve complex challenges in financial markets.
+              Through its India GCC and global innovation hubs, the organisation
+              works on cutting-edge problems in market microstructure, scalable
+              systems, low-latency trading, and data-driven decision-making.
             </div>
 
             <div
@@ -250,7 +276,11 @@ export default function DeutscheBorsePage() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              Deutsche Börse is deeply committed to Environmental, Social, and Governance (ESG) principles and plays a key role in advancing sustainable finance globally. Through its indices, data products, and market platforms, Deutsche Börse enables transparency, responsible investment, and long-term value creation.
+              Deutsche Börse is deeply committed to Environmental, Social, and
+              Governance (ESG) principles and plays a key role in advancing
+              sustainable finance globally. Through its indices, data products,
+              and market platforms, Deutsche Börse enables transparency,
+              responsible investment, and long-term value creation.
             </div>
 
             <div
@@ -294,13 +324,21 @@ export default function DeutscheBorsePage() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              As the Co-Title Sponsor of Elan & nVision, Deutsche Börse actively engaged with the student community through hackathons, a financial bootcamp, and an interactive Career Hub Stall. These initiatives provided students with hands-on exposure to real-world financial and technological challenges, mentorship from industry professionals, and insights into global career pathways.
+              As the Co-Title Sponsor of Elan & nVision, Deutsche Börse actively
+              engaged with the student community through hackathons, a financial
+              bootcamp, and an interactive Career Hub Stall. These initiatives
+              provided students with hands-on exposure to real-world financial
+              and technological challenges, mentorship from industry
+              professionals, and insights into global career pathways.
             </div>
           </div>
         </section>
 
         {/* Footer CTA */}
-        <section className="py-[10vh] px-[5vw] border-t border-white/20" data-animate-id="footer">
+        <section
+          className="py-[10vh] px-[5vw] border-t border-white/20"
+          data-animate-id="footer"
+        >
           <div className="max-w-[90vw] mx-auto text-center">
             <h2
               className={`text text-[4vw] mb-[5vh] transition-all duration-1000 ${
