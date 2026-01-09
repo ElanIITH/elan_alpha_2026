@@ -47,6 +47,23 @@ body {
   scrollbar-color: #404040 #0a0a0a;
 }
 
+/* Hide the broken image icon in different browsers */
+img:before {
+  display: none;
+}
+
+img:after {
+  content: attr(alt);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+}
+
 .flip-horizontal {
   transform: scaleX(-1);
 }
@@ -159,8 +176,7 @@ body {
 /* Responsive adjustments for accommodation background */
 @media (max-width: 768px) {
   .background-layers-6 {
-    background: url("/optimised/compete_bg.jpg") center top / auto 100vh
-      no-repeat;
+    background: url("/optimised/compete_bg.jpg") center top / auto 100vh no-repeat;
   }
 }
 
@@ -189,46 +205,38 @@ body {
 }
 
 .clip-card {
-  clip-path: polygon(
-    0 0,
-    calc(100% - 2rem) 0,
-    100% 2rem,
-    100% 100%,
-    2rem 100%,
-    0 calc(100% - 2rem)
-  );
+  clip-path: polygon(0 0,
+      calc(100% - 2rem) 0,
+      100% 2rem,
+      100% 100%,
+      2rem 100%,
+      0 calc(100% - 2rem));
 }
 
 .clip-skewed {
-  clip-path: polygon(
-    2rem 0,
-    34% 0,
-    34% calc(100% - 1.75rem),
-    calc(34% - 1.7rem) 100%,
-    0 100%,
-    0 1.75rem
-  );
+  clip-path: polygon(2rem 0,
+      34% 0,
+      34% calc(100% - 1.75rem),
+      calc(34% - 1.7rem) 100%,
+      0 100%,
+      0 1.75rem);
 }
 
 @media (max-width: 768px) {
   .clip-skewed {
-    clip-path: polygon(
-      1rem 0,
-      100% 0,
-      100% calc(100% - 0.8rem),
-      calc(100% - 1rem) 100%,
-      0 100%,
-      0 1rem
-    );
+    clip-path: polygon(1rem 0,
+        100% 0,
+        100% calc(100% - 0.8rem),
+        calc(100% - 1rem) 100%,
+        0 100%,
+        0 1rem);
   }
 }
 
 .radial-glow {
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.2),
-    transparent 70%
-  );
+  background: radial-gradient(circle at center,
+      rgba(255, 255, 255, 0.2),
+      transparent 70%);
 }
 
 .scrollbar-none::-webkit-scrollbar {
@@ -244,6 +252,7 @@ body {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
