@@ -151,7 +151,7 @@ export default function Home() {
       name: "SAI CHARAN AJARAPU",
       position: "SPONSORSHIP HEAD",
       email: "ELAN.NVISION.SPONSORSHIP@SA.IITH.AC.IN",
-      phone: "+91 88320 28101",
+      phone: "+91 83320 28101 ",
     },
     {
       name: "TANMAY VISHWASRAO",
