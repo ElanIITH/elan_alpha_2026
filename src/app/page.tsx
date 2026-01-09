@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Alert from "@/components/Alert";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -187,6 +188,7 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen overflow-y-scroll h-screen">
       {/* front page */}
+      <Alert />
       <div className="background-layers-1 h-[80vh] md:min-h-screen">
         <div
           className={`w-full h-full relative transition-all duration-1000 ${
