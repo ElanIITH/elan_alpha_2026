@@ -367,6 +367,65 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         </Link>
       </motion.div>
 
+      <div className="md:flex md:flex-col hidden">
+        <div className="md:w-[2vw] md:h-[0.3vw]"></div>
+        <div className="relative md:w-[2vw] md:h-[2vw]">
+          <Image
+            src={smallSpark}
+            alt="separator"
+            fill
+            sizes="2vw"
+            className="object-contain flip-horizontal"
+          />
+        </div>
+      </div>
+
+      <motion.div
+        initial="rest"
+        whileHover="hover"
+        className="hidden md:block relative z-10"
+      >
+        <Link
+          href="/partners"
+          className={`${navItemClass("/partners")} hidden md:block`}
+          style={navItemStyle("/partners")}
+          onMouseEnter={handleHover}
+          onMouseLeave={(e) => handleHoverOut(e, "/partners")}
+        >
+          <motion.div
+            variants={{
+              rest: { opacity: 0, x: 0 },
+              hover: { opacity: 1, x: "3.3vw" },
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="w-[7vw] h-[3vw] absolute bottom-[-2vw] left-[-3vw] z-100"
+          >
+            <Image
+              src="/animation_assets/final_anim.png"
+              alt="separator"
+              fill
+              className="object-contain"
+            />
+          </motion.div>
+          <motion.div
+            variants={{
+              rest: { opacity: 0, x: 0 },
+              hover: { opacity: 1, x: "-3.5vw" },
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="w-[7vw] h-[3vw] absolute bottom-[0.4vw] left-[2.3vw] z-100"
+          >
+            <Image
+              src="/animation_assets/final_anim_flip.png"
+              alt="separator"
+              fill
+              className="object-contain"
+            />
+          </motion.div>
+          SPONSORS
+        </Link>
+      </motion.div>
+
       <div className="relative w-[5vw] h-[5vw] md:w-[2vw] md:h-[2vw] md:absolute md:right-[4vw]">
         <button
           className="w-full h-full cursor-pointer relative"
