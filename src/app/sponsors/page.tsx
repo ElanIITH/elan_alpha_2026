@@ -340,14 +340,14 @@ export default function Sponsors() {
   return (
     <div
       id="sponsors"
-      className="background-layers-contact md:min-h-screen overflow-x-hidden text-white"
+      className="background-layers-competitions md:min-h-screen overflow-x-hidden text-white"
     >
       <div
-        className={`relative w-full min-h-screen flex flex-col items-center pt-[8vh] md:pt-[8vh] md:justify-center md:items-center transition-all duration-1000 delay-400 ${
+        className={`relative w-full min-h-screen flex flex-col items-center justify-center pt-[15vh] md:pt-[12vh] transition-all duration-1000 delay-400 ${
           mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        <div className="mt-[15vw] md:mt-[8vh] flex flex-col gap-[4vh] md:gap-[4vh] px-[5vw] md:px-[5vw] w-full max-w-full">
+        <div className="flex flex-col gap-[4vh] md:gap-[4vh] px-[5vw] md:px-[5vw] w-full max-w-6xl mx-auto">
           <div
             data-animate-id="sponsors-title"
             className={`uppercase text-[5vw] md:text-[3.5vw] flex justify-center items-center transition-all duration-700 noxa-gothic ${
@@ -369,9 +369,6 @@ export default function Sponsors() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              <div className="text-center uppercase text-[3vw] md:text-[1.5vw] noxa-gothic tracking-wider mb-[1vh]" style={{ color: "#AE0021" }}>
-                Title Sponsors
-              </div>
               <div className="flex flex-wrap justify-center gap-[3vw] md:gap-[5vw]">
                 {sponsorsByRow[1].map((sponsor, index) => (
                   <div
@@ -426,10 +423,15 @@ export default function Sponsors() {
                         />
                       </div>
                     )}
+                    {sponsor.name && (
+                      <div className="text-center uppercase text-[2.2vw] md:text-[1.0vw] font-semibold tracking-wide" style={{ color: "#ffffff", fontFamily: '"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+                        {sponsor.name}
+                      </div>
+                    )}
                     {sponsor.title && (
                       <div
-                        className="text-center uppercase text-[2.5vw] md:text-[0.9vw] tracking-wide noxa-gothic font-light"
-                        style={{ color: "#AE0021" }}
+                        className="text-center uppercase text-[2vw] md:text-[0.85vw] tracking-wide font-light"
+                        style={{ color: "#C30010", fontFamily: '"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
                       >
                         {sponsor.title}
                       </div>
@@ -450,9 +452,6 @@ export default function Sponsors() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              <div className="text-center uppercase text-[3vw] md:text-[1.5vw] noxa-gothic tracking-wider mb-[1vh]" style={{ color: "#AE0021" }}>
-                Co-Title Sponsors
-              </div>
               <div className="flex flex-wrap justify-center gap-[3vw] md:gap-[4vw]">
                 {sponsorsByRow[2].map((sponsor, index) => (
                   <div
@@ -507,10 +506,15 @@ export default function Sponsors() {
                         />
                       </div>
                     )}
+                    {sponsor.name && (
+                      <div className="text-center uppercase text-[2.0vw] md:text-[0.95vw] font-semibold tracking-wide" style={{ color: "#ffffff", fontFamily: '"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+                        {sponsor.name}
+                      </div>
+                    )}
                     {sponsor.title && (
                       <div
-                        className="text-center uppercase text-[2.5vw] md:text-[0.9vw] tracking-wide noxa-gothic font-light"
-                        style={{ color: "#AE0021" }}
+                        className="text-center uppercase text-[2vw] md:text-[0.85vw] tracking-wide font-light"
+                        style={{ color: "#C30010", fontFamily: '"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
                       >
                         {sponsor.title}
                       </div>
@@ -530,8 +534,8 @@ export default function Sponsors() {
               const sponsors = sponsorsByRow[row];
 
               return (
-                <div key={row} className="flex flex-col items-center gap-[2vh]">
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-[2vw] md:gap-[2vw] place-items-center w-full max-w-4xl mx-auto">
+                <div key={row} className="flex flex-col items-center gap-[2vh] w-full">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-[3vw] md:gap-[3vw] place-items-center w-full max-w-5xl mx-auto">
                     {sponsors.map((sponsor, index) => {
                       const animateId = `sponsor-${row}-${index}`;
 
@@ -588,10 +592,15 @@ export default function Sponsors() {
                               />
                             </div>
                           )}
+                          {sponsor.name && (
+                            <div className="text-center uppercase text-[1.9vw] md:text-[0.9vw] font-semibold tracking-wide" style={{ color: "#ffffff", fontFamily: '"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+                              {sponsor.name}
+                            </div>
+                          )}
                           {sponsor.title && (
                             <div
-                              className="text-center uppercase text-[2vw] md:text-[0.75vw] tracking-wide noxa-gothic font-light leading-tight"
-                              style={{ color: "#AE0021" }}
+                              className="text-center uppercase text-[1.6vw] md:text-[0.75vw] tracking-wide font-light leading-tight"
+                              style={{ color: "#C30010", fontFamily: '"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
                             >
                               {sponsor.title}
                             </div>
