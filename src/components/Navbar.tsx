@@ -386,11 +386,11 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         className="hidden md:block relative z-10"
       >
         <Link
-          href="/partners"
-          className={`${navItemClass("/partners")} hidden md:block`}
-          style={navItemStyle("/partners")}
+          href="/sponsors"
+          className={`${navItemClass("/sponsors")} hidden md:block`}
+          style={navItemStyle("/sponsors")}
           onMouseEnter={handleHover}
-          onMouseLeave={(e) => handleHoverOut(e, "/partners")}
+          onMouseLeave={(e) => handleHoverOut(e, "/sponsors")}
         >
           <motion.div
             variants={{
@@ -422,7 +422,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
               className="object-contain"
             />
           </motion.div>
-          SPONSORS
+         
         </Link>
       </motion.div>
 
