@@ -447,7 +447,7 @@ export default function Sponsors() {
         {/* Footer Message */}
         <div className="max-w-4xl mx-auto text-center mt-20 pt-12">
           <div className="h-px w-full bg-[#404040] mb-12"></div>
-          <p className="md:text-[2vw] text-xl tracking-[0.05em] uppercase text-white">
+          <p className="md:text-[2vw] text-xl tracking-[0.05em] text-white">
             Thank You to All Our Sponsors
           </p>
         </div>
