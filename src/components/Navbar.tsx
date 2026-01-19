@@ -367,7 +367,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         </Link>
       </motion.div>
 
-      <div className="md:flex md:flex-col hidden">
+      {/* <div className="md:flex md:flex-col hidden">
         <div className="md:w-[2vw] md:h-[0.3vw]"></div>
         <div className="relative md:w-[2vw] md:h-[2vw]">
           <Image
@@ -378,7 +378,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
             className="object-contain flip-horizontal"
           />
         </div>
-      </div>
+      </div> */}
 
       {/* <motion.div
         initial="rest"

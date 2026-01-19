@@ -338,7 +338,16 @@ export default function Sponsors() {
   ];
 
   return (
-    <div className="background-layers-competitions min-h-screen w-full text-white py-[9vh] px-[3vw] bg-cover bg-center relative">
+    <div 
+      className="min-h-screen w-full text-white py-[9vh] px-[3vw] relative"
+      style={{
+        backgroundImage: 'url("/optimised/compete_bg.jpg")',
+        backgroundPosition: 'center center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       <div className="absolute inset-0 pointer-events-none z-0" />
       <div className="relative z-10">
         {/* Hero Section */}
