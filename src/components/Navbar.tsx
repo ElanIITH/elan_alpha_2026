@@ -175,16 +175,16 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         className="hidden md:block relative z-10"
       >
         <Link
-          href="/competitions"
-          className={`${navItemClass("/competitions")} hidden md:block`}
-          style={navItemStyle("/competitions")}
+          href="/sponsors"
+          className={`${navItemClass("/sponsors")} hidden md:block`}
+          style={navItemStyle("/sponsors")}
           onMouseEnter={handleHover}
-          onMouseLeave={(e) => handleHoverOut(e, "/competitions")}
+          onMouseLeave={(e) => handleHoverOut(e, "/sponsors")}
         >
           <motion.div
             variants={{
               rest: { opacity: 0, x: 0 },
-              hover: { opacity: 1, x: "3.5vw" },
+              hover: { opacity: 1, x: "3.3vw" },
             }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="w-[7vw] h-[3vw] absolute bottom-[-2vw] left-[-3vw] z-100"
@@ -211,7 +211,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
               className="object-contain"
             />
           </motion.div>
-          COMPETITIONS
+          SPONSORS
         </Link>
       </motion.div>
 

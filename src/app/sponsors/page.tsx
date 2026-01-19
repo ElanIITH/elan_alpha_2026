@@ -1,9 +1,22 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 
 export default function Sponsors() {
+  useEffect(() => {
+    const event = new CustomEvent("navbarVariantChange", { detail: "grey" });
+    window.dispatchEvent(event);
+
+    // Reset to red when leaving the page
+    return () => {
+      const resetEvent = new CustomEvent("navbarVariantChange", {
+        detail: "red",
+      });
+      window.dispatchEvent(resetEvent);
+    };
+  }, []);
+
   const sponsors = [
     {
       tier: 1,
@@ -432,13 +445,10 @@ export default function Sponsors() {
         </div>
 
         {/* Footer Message */}
-        <div className="max-w-4xl mx-auto text-center mt-20 pt-12 border-t border-[#1a1a1a]">
-          <p className="md:text-[2vw] text-xl tracking-[0.05em] uppercase text-white mb-4">
+        <div className="max-w-4xl mx-auto text-center mt-20 pt-12">
+          <div className="h-px w-full bg-[#404040] mb-12"></div>
+          <p className="md:text-[2vw] text-xl tracking-[0.05em] uppercase text-white">
             Thank You to All Our Sponsors
-          </p>
-          <p className="md:text-[1.3vw] text-base tracking-wide uppercase text-[#6a6a6a]">
-            Your support makes this event possible and helps us create an
-            extraordinary experience for everyone
           </p>
         </div>
       </div>
