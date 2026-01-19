@@ -208,12 +208,12 @@ export default function Sponsors() {
           link: "https://www.bisleri.com/bottles-for-change",
           image: "/sponsors/bisleri_bottles_of_change.png",
         },
-        {
-          name: "Adani Cement",
-          title: "Building Strength and Sustainability Partner",
-          link: "https://www.adani.com/businesses/materials/cement",
-          image: "/sponsors/adani_cement.png",
-        },
+        // {
+        //   name: "Adani Cement",
+        //   title: "Building Strength and Sustainability Partner",
+        //   link: "https://www.adani.com/businesses/materials/cement",
+        //   image: "/sponsors/adani_cement.png",
+        // },
       ],
     },
     {
