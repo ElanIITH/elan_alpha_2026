@@ -380,7 +380,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         </div>
       </div>
 
-      <motion.div
+      {/* <motion.div
         initial="rest"
         whileHover="hover"
         className="hidden md:block relative z-10"
@@ -424,7 +424,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
           </motion.div>
          
         </Link>
-      </motion.div>
+      </motion.div> */}
 
       <div className="relative w-[5vw] h-[5vw] md:w-[2vw] md:h-[2vw] md:absolute md:right-[4vw]">
         <button
