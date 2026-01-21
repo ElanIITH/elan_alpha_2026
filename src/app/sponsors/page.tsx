@@ -346,6 +346,12 @@ export default function Sponsors() {
           link: "https://hilaryrhoda.in/?srsltid=AfmBOorUB0AX_JMdzwjINDNm89nQ5I4cy-WhutATsD6LIsqwWudFfL_Z",
           image: "/sponsors/hilary_rhoda.png",
         },
+        {
+          name: "Zebronics",
+          title: "Audio Partner",
+          link: "https://zebronics.com/",
+          image: "/sponsors/Zebronics.jpg.jpeg",
+        },
       ],
     },
   ];
