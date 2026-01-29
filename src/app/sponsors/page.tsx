@@ -352,6 +352,12 @@ export default function Sponsors() {
           link: "https://zebronics.com/",
           image: "/sponsors/Zebronics.jpg.jpeg",
         },
+        {
+          name: "Evernorth Health Services",
+          title: "Official Health-Tech & Care Innovation Partner",
+          link: "https://www.evernorth.com",
+          image: "/sponsors/Evernorth.jpeg",
+        },
       ],
     },
   ];
