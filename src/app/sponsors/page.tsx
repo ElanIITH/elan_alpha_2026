@@ -358,6 +358,12 @@ export default function Sponsors() {
           link: "https://www.evernorth.com",
           image: "/sponsors/Evernorth.jpeg",
         },
+        {
+          name: "BXI World",
+          title: "Official Barter partner",
+          link: "https://bxiworld.com/",
+          image: "/sponsors/BXI LOGO-03.png",
+        },
       ],
     },
   ];
