@@ -362,7 +362,7 @@ export default function Sponsors() {
           name: "BXI World",
           title: "Official Barter partner",
           link: "https://bxiworld.com/",
-          image: "/sponsors/BXI LOGO-03.png",
+          image: "/sponsors/bxi-logo-03.png",
         },
       ],
     },
