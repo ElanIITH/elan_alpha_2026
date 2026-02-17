@@ -25,12 +25,12 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
     window.addEventListener(
       "navbarVariantChange",
-      handleVariantChange as EventListener
+      handleVariantChange as EventListener,
     );
     return () =>
       window.removeEventListener(
         "navbarVariantChange",
-        handleVariantChange as EventListener
+        handleVariantChange as EventListener,
       );
   }, []);
 
@@ -44,7 +44,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
       },
       {
         threshold: 0.3,
-      }
+      },
     );
 
     observer.observe(contactSection);
@@ -79,7 +79,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
 
   const handleHoverOut = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    path: string
+    path: string,
   ) => {
     const isActive =
       (path === "/#contact" && isContactVisible) ||
@@ -116,11 +116,11 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         className="hidden md:block relative z-10"
       >
         <Link
-          href="/merchandise"
-          className={`${navItemClass("/merchandise")} relative`}
-          style={navItemStyle("/merchandise")}
+          href="/workshops"
+          className={`${navItemClass("/workshops")} relative`}
+          style={navItemStyle("/workshops")}
           onMouseEnter={handleHover}
-          onMouseLeave={(e) => handleHoverOut(e, "/merchandise")}
+          onMouseLeave={(e) => handleHoverOut(e, "/workshops")}
         >
           <motion.div
             variants={{
@@ -152,7 +152,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
               className="object-contain"
             />
           </motion.div>
-          MERCHANDISE
+          WORKSHOPS
         </Link>
       </motion.div>
 

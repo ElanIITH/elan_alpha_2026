@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Contact() {
   const [mounted, setMounted] = useState(false);
   const [visibleElements, setVisibleElements] = useState<Set<string>>(
-    new Set()
+    new Set(),
   );
   const [copiedText, setCopiedText] = useState<string | null>(null);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
@@ -35,13 +35,14 @@ export default function Contact() {
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
-      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
     );
+    console.log("Design by EnV Creatives Team. Made by EnV Web Team.");
   }, []);
 
   const handleCopyToClipboard = (
     text: string,
-    e: React.MouseEvent<HTMLSpanElement>
+    e: React.MouseEvent<HTMLSpanElement>,
   ) => {
     navigator.clipboard.writeText(text);
     setCopiedText(text);
@@ -63,7 +64,7 @@ export default function Contact() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" },
     );
     // Observe all elements with data-animate-id
     const timeoutId = setTimeout(() => {

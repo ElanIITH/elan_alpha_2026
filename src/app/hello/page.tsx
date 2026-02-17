@@ -30,8 +30,9 @@ export default function Hello() {
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
-      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
     );
+    console.log("Design by EnV Creatives Team. Made by EnV Web Team.");
   }, []);
 
   // Convert count to 4 digits array [ones, tens, hundreds, thousands]

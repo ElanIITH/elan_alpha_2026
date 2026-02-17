@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 export default function Accommodation() {
   const [mounted, setMounted] = useState(false);
   const [visibleElements, setVisibleElements] = useState<Set<string>>(
-    new Set()
+    new Set(),
   );
 
   useEffect(() => {
@@ -33,8 +33,9 @@ export default function Accommodation() {
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
-      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
     );
+    console.log("Design by EnV Creatives Team. Made by EnV Web Team.");
   }, []);
 
   useEffect(() => {
@@ -52,7 +53,7 @@ export default function Accommodation() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" },
     );
 
     // Observe all elements with data-animate-id

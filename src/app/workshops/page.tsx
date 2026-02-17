@@ -7,7 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 export default function Workshops() {
   const [mounted, setMounted] = useState(false);
   const [visibleElements, setVisibleElements] = useState<Set<string>>(
-    new Set()
+    new Set(),
   );
 
   useEffect(() => {
@@ -34,8 +34,9 @@ export default function Workshops() {
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
-      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
     );
+    console.log("Design by EnV Creatives Team. Made by EnV Web Team.");
   }, []);
 
   // No workshops array needed, replaced by PDF poster
@@ -55,7 +56,7 @@ export default function Workshops() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" },
     );
 
     // Observe all elements with data-animate-id

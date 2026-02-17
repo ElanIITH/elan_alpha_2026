@@ -69,7 +69,8 @@ const items = [
     image: "/images/shirt6.png",
     image_org: "/images/shirt6_org.png",
     jp_text: "/images/shirt6_jp.png",
-    buy_link: "https://thedopaminestore.in/products/the-ronin-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
+    buy_link:
+      "https://thedopaminestore.in/products/the-ronin-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
   {
     id: 7,
@@ -79,7 +80,8 @@ const items = [
     image: "/images/shirt7.png",
     image_org: "/images/shirt7_org.png",
     jp_text: "/images/shirt7_jp.png",
-    buy_link: "https://thedopaminestore.in/products/demonic-geisha-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
+    buy_link:
+      "https://thedopaminestore.in/products/demonic-geisha-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
   {
     id: 8,
@@ -89,7 +91,8 @@ const items = [
     image: "/images/shirt8.png",
     image_org: "/images/shirt8_org.png",
     jp_text: "/images/shirt8_jp.png",
-    buy_link: "https://thedopaminestore.in/products/battleflare-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
+    buy_link:
+      "https://thedopaminestore.in/products/battleflare-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
   {
     id: 9,
@@ -99,7 +102,8 @@ const items = [
     image: "/images/shirt9.png",
     image_org: "/images/shirt9_org.png",
     jp_text: "/images/shirt9_jp.png",
-    buy_link: "https://thedop-aminestore.myshopify.com/products/the-twin-demons-tote-bag-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
+    buy_link:
+      "https://thedop-aminestore.myshopify.com/products/the-twin-demons-tote-bag-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
   {
     id: 10,
@@ -120,7 +124,8 @@ const items = [
     image: "/images/shirt11.png",
     image_org: "/images/shirt11_org.png",
     jp_text: "/images/shirt11_jp.png",
-    buy_link: "https://thedop-aminestore.myshopify.com/products/solar-crane-oversized-t-shirt-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
+    buy_link:
+      "https://thedop-aminestore.myshopify.com/products/solar-crane-oversized-t-shirt-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
   {
     id: 12,
@@ -130,7 +135,8 @@ const items = [
     image: "/images/shirt12.png",
     image_org: "/images/shirt12_org.png",
     jp_text: "/images/shirt12_jp.png",
-    buy_link: "https://thedop-aminestore.myshopify.com/products/the-ronin-t-shirt-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
+    buy_link:
+      "https://thedop-aminestore.myshopify.com/products/the-ronin-t-shirt-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
   {
     id: 13,
@@ -140,7 +146,8 @@ const items = [
     image: "/images/shirt13.png",
     image_org: "/images/shirt13_org.png",
     jp_text: "/images/shirt13_jp.png",
-    buy_link: "https://thedopaminestore.in/products/demonic-geisa-t-shirt-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
+    buy_link:
+      "https://thedopaminestore.in/products/demonic-geisa-t-shirt-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
   {
     id: 14,
@@ -150,7 +157,8 @@ const items = [
     image: "/images/shirt14.png",
     image_org: "/images/shirt14_org.png",
     jp_text: "/images/shirt14_jp.png",
-    buy_link: "https://thedop-aminestore.myshopify.com/products/battleflare-tshirt-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
+    buy_link:
+      "https://thedop-aminestore.myshopify.com/products/battleflare-tshirt-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
   {
     id: 15,
@@ -160,7 +168,8 @@ const items = [
     image: "/images/shirt15.png",
     image_org: "/images/shirt15_org.png",
     jp_text: "/images/shirt15_jp.png",
-    buy_link: "https://thedop-aminestore.myshopify.com/products/lady-of-the-breath-tote-bag-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
+    buy_link:
+      "https://thedop-aminestore.myshopify.com/products/lady-of-the-breath-tote-bag-iit-hyd?sca_ref=10010623.NVQXYZ0k2hwYBZG",
   },
   {
     id: 16,
@@ -170,7 +179,8 @@ const items = [
     image: "/images/shirt16.png",
     image_org: "/images/shirt16_org.png",
     jp_text: "/images/shirt16_jp.png",
-    buy_link: "https://thedopaminestore.in/collections/iit-hyderabad?sca_ref=10010623.NVQXYZ0k2hwYBZG&sca_source=Main%20website",
+    buy_link:
+      "https://thedopaminestore.in/collections/iit-hyderabad?sca_ref=10010623.NVQXYZ0k2hwYBZG&sca_source=Main%20website",
   },
 ];
 
@@ -178,7 +188,7 @@ export default function Merchandise() {
   const [selectedShirt, setSelectedShirt] = useState(items[0]);
   const [mounted, setMounted] = useState(false);
   const [visibleElements, setVisibleElements] = useState<Set<string>>(
-    new Set()
+    new Set(),
   );
   const mobileCarouselRef = useRef<HTMLDivElement>(null);
 
@@ -206,8 +216,9 @@ export default function Merchandise() {
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
-      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
     );
+    console.log("Design by EnV Creatives Team. Made by EnV Web Team.");
   }, []);
 
   useEffect(() => {
@@ -225,7 +236,7 @@ export default function Merchandise() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" },
     );
 
     const timeoutId = setTimeout(() => {
