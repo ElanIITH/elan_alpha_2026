@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [visibleElements, setVisibleElements] = useState<Set<string>>(
-    new Set()
+    new Set(),
   );
   const [countdown, setCountdown] = useState({
     days: 0,
@@ -21,7 +21,7 @@ export default function Home() {
 
   const handleCopyToClipboard = (
     text: string,
-    e: React.MouseEvent<HTMLSpanElement>
+    e: React.MouseEvent<HTMLSpanElement>,
   ) => {
     navigator.clipboard.writeText(text);
     setCopiedText(text);
@@ -53,8 +53,9 @@ export default function Home() {
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
-      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
     );
+    console.log("Design by EnV Creatives Team. Made by EnV Web Team.");
   }, []);
 
   useEffect(() => {
@@ -72,7 +73,7 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" },
     );
 
     // Observe all elements with data-animate-id
@@ -91,7 +92,7 @@ export default function Home() {
         setCountdown({
           days: Math.floor(distance / (1000 * 60 * 60 * 24)),
           hours: Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
           ),
           minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((distance % (1000 * 60)) / 1000),
@@ -127,13 +128,13 @@ export default function Home() {
         ([entry]) => {
           if (entry.isIntersecting) {
             window.dispatchEvent(
-              new CustomEvent("navbarVariantChange", { detail: variant })
+              new CustomEvent("navbarVariantChange", { detail: variant }),
             );
           }
         },
         {
           threshold: 0.5,
-        }
+        },
       );
 
       observer.observe(section);
@@ -411,8 +412,8 @@ export default function Home() {
       </div>
 
       {/* merchandise page */}
-      <div className="background-layers-merch md:min-h-screen text-white hidden md:block">
-        <div
+      {/* <div className="background-layers-merch md:min-h-screen text-white hidden md:block">
+         <div
           className={`relative w-full min-h-screen flex flex-col justify-start items-center pt-[13vh] md:pt-0 md:justify-center md:items-center gap-[2vh] md:gap-[3vh] transition-all duration-1000 delay-200 ${
             mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
@@ -461,9 +462,8 @@ export default function Home() {
               </div>
             </Link>
           </motion.div>
-          1
         </div>
-      </div>
+      </div> */}
 
       {/* contact us page */}
       <div

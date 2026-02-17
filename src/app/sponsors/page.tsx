@@ -13,7 +13,7 @@ interface Sponsor {
 export default function Sponsors() {
   const [mounted, setMounted] = useState(false);
   const [visibleElements, setVisibleElements] = useState<Set<string>>(
-    new Set()
+    new Set(),
   );
 
   useEffect(() => {
@@ -40,8 +40,9 @@ export default function Sponsors() {
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
       "color: #ffffff; font-size: 13px; line-height: 1.2;",
-      "color: #ffffff; font-size: 13px; line-height: 1.2;"
+      "color: #ffffff; font-size: 13px; line-height: 1.2;",
     );
+    console.log("Design by EnV Creatives Team. Made by EnV Web Team.");
   }, []);
 
   useEffect(() => {
@@ -58,7 +59,7 @@ export default function Sponsors() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" },
     );
     // Observe all elements with data-animate-id
     const timeoutId = setTimeout(() => {
@@ -321,7 +322,8 @@ export default function Sponsors() {
     {
       name: "Hilary Rhoda",
       title: "Official Beauty Partner",
-      hyperlink: "https://hilaryrhoda.in/?srsltid=AfmBOorUB0AX_JMdzwjINDNm89nQ5I4cy-WhutATsD6LIsqwWudFfL_Z",
+      hyperlink:
+        "https://hilaryrhoda.in/?srsltid=AfmBOorUB0AX_JMdzwjINDNm89nQ5I4cy-WhutATsD6LIsqwWudFfL_Z",
       row: 14,
     },
   ];
@@ -334,7 +336,7 @@ export default function Sponsors() {
       acc[sponsor.row].push(sponsor);
       return acc;
     },
-    {} as Record<number, Sponsor[]>
+    {} as Record<number, Sponsor[]>,
   );
 
   return (
@@ -369,7 +371,10 @@ export default function Sponsors() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              <div className="text-center uppercase text-[3vw] md:text-[1.5vw] noxa-gothic tracking-wider mb-[1vh]" style={{ color: "#AE0021" }}>
+              <div
+                className="text-center uppercase text-[3vw] md:text-[1.5vw] noxa-gothic tracking-wider mb-[1vh]"
+                style={{ color: "#AE0021" }}
+              >
                 Title Sponsors
               </div>
               <div className="flex flex-wrap justify-center gap-[3vw] md:gap-[5vw]">
@@ -450,7 +455,10 @@ export default function Sponsors() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              <div className="text-center uppercase text-[3vw] md:text-[1.5vw] noxa-gothic tracking-wider mb-[1vh]" style={{ color: "#AE0021" }}>
+              <div
+                className="text-center uppercase text-[3vw] md:text-[1.5vw] noxa-gothic tracking-wider mb-[1vh]"
+                style={{ color: "#AE0021" }}
+              >
                 Co-Title Sponsors
               </div>
               <div className="flex flex-wrap justify-center gap-[3vw] md:gap-[4vw]">

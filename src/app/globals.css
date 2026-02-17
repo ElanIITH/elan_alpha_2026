@@ -76,7 +76,8 @@ img:after {
 
 @media (max-width: 768px) {
   .background-layers-1 {
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1)),
+    background:
+      linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1)),
       url("/home/front_page_bg.png") center center / cover no-repeat;
   }
 }
@@ -91,7 +92,8 @@ img:after {
   .background-layers-2 {
     height: 90vh;
     width: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
+    background:
+      linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
       url("/optimised/theme_reveal_page.jpg") left center / cover no-repeat;
   }
 }
@@ -106,7 +108,8 @@ img:after {
   .background-layers-merch {
     height: 90vh;
     width: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
+    background:
+      linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
       url("/home/merch_bg.png") center top / cover no-repeat;
   }
 }
@@ -114,14 +117,16 @@ img:after {
 .background-layers-3 {
   height: 80vh;
   width: 100%;
-  background: url("/home/contact_bg.png") center top / cover no-repeat;
+  /* background: url("/home/contact_bg.png") center top / cover no-repeat; */
+  background: url("/optimised/contact_bg.jpg") center top / cover no-repeat;
 }
 
 @media (max-width: 768px) {
   .background-layers-3 {
     height: 100vh;
     width: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)),
+    background:
+      linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)),
       url("/optimised/contact_bg.jpg") right center / cover no-repeat;
   }
 }
@@ -136,7 +141,8 @@ img:after {
   .background-layers-contact {
     height: 100vh;
     width: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)),
+    background:
+      linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)),
       url("/optimised/contact_bg.jpg") right center / cover no-repeat;
   }
 }
@@ -176,7 +182,8 @@ img:after {
 /* Responsive adjustments for accommodation background */
 @media (max-width: 768px) {
   .background-layers-6 {
-    background: url("/optimised/compete_bg.jpg") center top / auto 100vh no-repeat;
+    background: url("/optimised/compete_bg.jpg") center top / auto 100vh
+      no-repeat;
   }
 }
 
@@ -205,38 +212,46 @@ img:after {
 }
 
 .clip-card {
-  clip-path: polygon(0 0,
-      calc(100% - 2rem) 0,
-      100% 2rem,
-      100% 100%,
-      2rem 100%,
-      0 calc(100% - 2rem));
+  clip-path: polygon(
+    0 0,
+    calc(100% - 2rem) 0,
+    100% 2rem,
+    100% 100%,
+    2rem 100%,
+    0 calc(100% - 2rem)
+  );
 }
 
 .clip-skewed {
-  clip-path: polygon(2rem 0,
-      34% 0,
-      34% calc(100% - 1.75rem),
-      calc(34% - 1.7rem) 100%,
-      0 100%,
-      0 1.75rem);
+  clip-path: polygon(
+    2rem 0,
+    34% 0,
+    34% calc(100% - 1.75rem),
+    calc(34% - 1.7rem) 100%,
+    0 100%,
+    0 1.75rem
+  );
 }
 
 @media (max-width: 768px) {
   .clip-skewed {
-    clip-path: polygon(1rem 0,
-        100% 0,
-        100% calc(100% - 0.8rem),
-        calc(100% - 1rem) 100%,
-        0 100%,
-        0 1rem);
+    clip-path: polygon(
+      1rem 0,
+      100% 0,
+      100% calc(100% - 0.8rem),
+      calc(100% - 1rem) 100%,
+      0 100%,
+      0 1rem
+    );
   }
 }
 
 .radial-glow {
-  background: radial-gradient(circle at center,
-      rgba(255, 255, 255, 0.2),
-      transparent 70%);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.2),
+    transparent 70%
+  );
 }
 
 .scrollbar-none::-webkit-scrollbar {
