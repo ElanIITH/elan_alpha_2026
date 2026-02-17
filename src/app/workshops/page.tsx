@@ -39,29 +39,7 @@ export default function Workshops() {
     console.log("Design by EnV Creatives Team. Made by EnV Web Team.");
   }, []);
 
-  const workshops = [
-    {
-      id: 1,
-      title: "Full Stack Web Development Workshop",
-      image: "/workshops/Full_Stack_Dev.png",
-      unstopLink:
-        "https://unstop.com/o/Kyz8nXI?lb=58he6PlW&utm_medium=Share&utm_source=srisri4756&utm_campaign=Workshops",
-    },
-    {
-      id: 2,
-      title: "Cybersecurity Workshop",
-      image: "/workshops/Cyber_Sec.png",
-      unstopLink:
-        "https://unstop.com/o/93nF1vJ?lb=58he6PlW&utm_medium=Share&utm_source=srisri4756&utm_campaign=Workshops",
-    },
-    {
-      id: 3,
-      title: "Artificial Intelligence Workshop",
-      image: "/workshops/AI.png",
-      unstopLink:
-        "https://unstop.com/o/t7Z5T1i?lb=58he6PlW&utm_medium=Share&utm_source=srisri4756&utm_campaign=Workshops",
-    },
-  ];
+  // No workshops array needed, replaced by PDF poster
 
   useEffect(() => {
     setMounted(true);
@@ -134,7 +112,8 @@ export default function Workshops() {
             </div>
           </div>
 
-          {/* Upcoming Workshops Section */}
+
+          {/* Poster Card Section (styled like previous workshops) */}
           <div
             data-animate-id="workshops-section"
             className={`transition-all duration-700 delay-200 ${
@@ -149,44 +128,33 @@ export default function Workshops() {
 
             {/* Grid Layout */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {workshops.map((workshop) => (
-                <div key={workshop.id} className="flex flex-col gap-2">
-                  {/* Poster Card */}
-                  <a
-                    href={workshop.unstopLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative block overflow-hidden transition-all duration-300 hover:scale-105"
-                  >
-                    {/* Card Container */}
-                    <div className="relative w-full aspect-square bg-[#0a0a0a] overflow-hidden">
-                      {/* Workshop Poster Image */}
-                      <Image
-                        src={workshop.image}
-                        alt={workshop.title}
-                        fill
-                        className="object-cover w-full h-full transition-all duration-500 group-hover:brightness-106 group-hover:scale-102"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-
-                      {/* Overlay on Hover */}
-                      <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                        <p className="text-white text-[2vw] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex justify-center items-center">
-                          Click to register <ArrowUpRight size={30} />
-                        </p>
-                      </div>
-
-                      {/* Dark overlay for better text visibility on hover */}
-                      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
+              <div className="flex flex-col gap-2">
+                <a
+                  href="https://unstop.com/o/AhdCtYO?utm_medium=Share&utm_source=srisri4756&utm_campaign=Workshops"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block overflow-hidden transition-all duration-300 hover:scale-105"
+                >
+                  <div className="relative w-[60vw] md:w-full max-w-[280px] md:max-w-[300px] aspect-[670/950] bg-[#0a0a0a] overflow-hidden">
+                    <Image
+                      src="/workshops/Feb_Workshop.png"
+                      alt="February Workshops Poster"
+                      fill
+                      className="object-cover w-full h-full transition-all duration-500 group-hover:brightness-[1.06] group-hover:scale-[1.02]"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      priority
+                    />
+                    {/* Overlay on Hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                      <p className="text-white text-[4vw] md:text-[2vw] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex justify-center items-center">
+                        Click to register <ArrowUpRight size={30} />
+                      </p>
                     </div>
-                  </a>
-
-                  {/* Workshop Title */}
-                  {/* <h3 className="text-sm md:text-base lg:text-[1.3vw] tracking-[0.05em] uppercase leading-tight">
-                    {workshop.title}
-                  </h3> */}
-                </div>
-              ))}
+                    {/* Dark overlay for better text visibility on hover */}
+                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
 

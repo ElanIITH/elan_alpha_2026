@@ -175,16 +175,16 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         className="hidden md:block relative z-10"
       >
         <Link
-          href="/competitions"
-          className={`${navItemClass("/competitions")} hidden md:block`}
-          style={navItemStyle("/competitions")}
+          href="/sponsors"
+          className={`${navItemClass("/sponsors")} hidden md:block`}
+          style={navItemStyle("/sponsors")}
           onMouseEnter={handleHover}
-          onMouseLeave={(e) => handleHoverOut(e, "/competitions")}
+          onMouseLeave={(e) => handleHoverOut(e, "/sponsors")}
         >
           <motion.div
             variants={{
               rest: { opacity: 0, x: 0 },
-              hover: { opacity: 1, x: "3.5vw" },
+              hover: { opacity: 1, x: "3.3vw" },
             }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="w-[7vw] h-[3vw] absolute bottom-[-2vw] left-[-3vw] z-100"
@@ -211,7 +211,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
               className="object-contain"
             />
           </motion.div>
-          COMPETITIONS
+          SPONSORS
         </Link>
       </motion.div>
 
@@ -367,7 +367,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         </Link>
       </motion.div>
 
-      <div className="md:flex md:flex-col hidden">
+      {/* <div className="md:flex md:flex-col hidden">
         <div className="md:w-[2vw] md:h-[0.3vw]"></div>
         <div className="relative md:w-[2vw] md:h-[2vw]">
           <Image
@@ -378,19 +378,19 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
             className="object-contain flip-horizontal"
           />
         </div>
-      </div>
+      </div> */}
 
-      <motion.div
+      {/* <motion.div
         initial="rest"
         whileHover="hover"
         className="hidden md:block relative z-10"
       >
         <Link
-          href="/partners"
-          className={`${navItemClass("/partners")} hidden md:block`}
-          style={navItemStyle("/partners")}
+          href="/sponsors"
+          className={`${navItemClass("/sponsors")} hidden md:block`}
+          style={navItemStyle("/sponsors")}
           onMouseEnter={handleHover}
-          onMouseLeave={(e) => handleHoverOut(e, "/partners")}
+          onMouseLeave={(e) => handleHoverOut(e, "/sponsors")}
         >
           <motion.div
             variants={{
@@ -422,9 +422,9 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
               className="object-contain"
             />
           </motion.div>
-          SPONSORS
+         
         </Link>
-      </motion.div>
+      </motion.div> */}
 
       <div className="relative w-[5vw] h-[5vw] md:w-[2vw] md:h-[2vw] md:absolute md:right-[4vw]">
         <button
