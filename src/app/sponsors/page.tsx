@@ -304,6 +304,12 @@ export default function Sponsors() {
           link: "https://www.aiinterviewagents.com/",
           image: "/sponsors/ai_interview_agents.png",
         },
+        {
+          name: "IITH Alumni Association",
+          title: "",
+          link: "https://iithaa.org/",
+          image: "/sponsors/iith_alumni_association.png",
+        },
       ],
     },
     {
