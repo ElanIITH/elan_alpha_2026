@@ -137,7 +137,7 @@ export default function Workshops() {
                 >
                   <div className="relative w-[60vw] md:w-full max-w-[280px] md:max-w-[300px] aspect-[670/950] bg-[#0a0a0a] overflow-hidden">
                     <Image
-                      src="/workshops/AI June Workshop.png"
+                      src="/workshops/ai_june_workshop.png"
                       alt="Generative AI Workshop Poster"
                       fill
                       className="object-cover w-full h-full transition-all duration-500 group-hover:brightness-[1.06] group-hover:scale-[1.02]"
