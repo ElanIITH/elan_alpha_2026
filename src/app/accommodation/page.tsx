@@ -250,38 +250,7 @@ export default function Accommodation() {
                 </a>
               </div>
             </div>
-            <div
-              data-animate-id="acc-button"
-              className={`w-full flex justify-center mt-[5vh] transition-all duration-700 delay-400 ${
-                visibleElements.has("acc-button")
-                  ? "opacity-100 scale-100"
-                  : "opacity-0 scale-95"
-              }`}
-            >
-              <a
-                href="https://rzp.io/rzp/Cozfuh08"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative inline-block focus:outline-none"
-              >
-                {/* Background Shape: Skewed Rectangle */}
-                <div
-                  className="bg-[#680C16] text-white px-[4vw]
-                                                transition-all duration-300 group-hover:scale-105
-                                                group-hover:bg-white group-hover:text-[#6E0216] group-hover:font-bold
-                                                rounded-tr-[0.5vw] rounded-bl-[0.5vw]"
-                  style={{
-                    clipPath:
-                      "polygon(2rem 0, 100% 0, 100% calc(100% - 2.75rem), calc(100% - 2rem) 100%, 0 100%, 0 2.75rem)",
-                  }}
-                >
-                  {/* Text */}
-                  <span className="text-[2.5vw] tracking-wider uppercase drop-shadow-md">
-                    Avail Accommodation
-                  </span>
-                </div>
-              </a>
-            </div>
+
           </div>
           <div
             id="accommodation-top-right"
@@ -480,33 +449,7 @@ export default function Accommodation() {
             </div>
           </div>
         </div>
-        {/* Button */}
-        <div
-          data-animate-id="mob-button"
-          className={`w-full flex justify-center mt-8 md:hidden background-layers-6 transition-all duration-700 delay-300 ${
-            visibleElements.has("mob-button")
-              ? "opacity-100 scale-100"
-              : "opacity-0 scale-90"
-          }`}
-        >
-          <a
-            href="https://rzp.io/rzp/Cozfuh08"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-block focus:outline-none"
-          >
-            <div
-              className="bg-[#680C16] text-white px-8 sm:px-12 md:px-16 py-3 sm:py-4
-                                                  transition-all duration-300 active:scale-95 sm:hover:scale-105
-                                                  sm:hover:bg-white sm:hover:text-[#6E0216] sm:hover:font-bold
-                                                  rounded-tr-lg rounded-bl-lg"
-            >
-              <span className="text-lg sm:text-xl md:text-2xl tracking-wider uppercase drop-shadow-md">
-                Avail Accommodation
-              </span>
-            </div>
-          </a>
-        </div>
+
       </div>
 
       {/* Second Page */}
