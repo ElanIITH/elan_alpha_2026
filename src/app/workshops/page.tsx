@@ -130,15 +130,15 @@ export default function Workshops() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               <div className="flex flex-col gap-2">
                 <a
-                  href="https://unstop.com/p/generative-ai-foundations-and-emerging-applications-iit-hyderabad-1695092?section=contact"
+                  href="https://unstop.com/p/ai-and-cybersecurity-foundations-tools-and-emerging-applications-iit-hyderabad-1708168"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative block overflow-hidden transition-all duration-300 hover:scale-105"
                 >
                   <div className="relative w-[60vw] md:w-full max-w-[280px] md:max-w-[300px] aspect-[670/950] bg-[#0a0a0a] overflow-hidden">
                     <Image
-                      src="/workshops/ai_june_workshop.png"
-                      alt="Generative AI Workshop Poster"
+                      src="/workshops/july_workshop.jpeg"
+                      alt="AI and Cybersecurity Workshop Poster"
                       fill
                       className="object-cover w-full h-full transition-all duration-500 group-hover:brightness-[1.06] group-hover:scale-[1.02]"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
