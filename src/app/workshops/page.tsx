@@ -128,33 +128,7 @@ export default function Workshops() {
 
             {/* Grid Layout */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              <div className="flex flex-col gap-2">
-                <a
-                  href="https://unstop.com/p/ai-and-cybersecurity-foundations-tools-and-emerging-applications-iit-hyderabad-1708168"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block overflow-hidden transition-all duration-300 hover:scale-105"
-                >
-                  <div className="relative w-[60vw] md:w-full max-w-[280px] md:max-w-[300px] aspect-[670/950] bg-[#0a0a0a] overflow-hidden">
-                    <Image
-                      src="/workshops/july_workshop.jpeg"
-                      alt="AI and Cybersecurity Workshop Poster"
-                      fill
-                      className="object-cover w-full h-full transition-all duration-500 group-hover:brightness-[1.06] group-hover:scale-[1.02]"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      priority
-                    />
-                    {/* Overlay on Hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                      <p className="text-white text-[4vw] md:text-[2vw] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex justify-center items-center">
-                        Click to register <ArrowUpRight size={30} />
-                      </p>
-                    </div>
-                    {/* Dark overlay for better text visibility on hover */}
-                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
-                  </div>
-                </a>
-              </div>
+              {/* Workshop cards will go here */}
             </div>
           </div>
 
