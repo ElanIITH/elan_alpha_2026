@@ -128,7 +128,32 @@ export default function Workshops() {
 
             {/* Grid Layout */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {/* Workshop cards will go here */}
+              <a
+                href="https://unstop.com/p/generative-ai-foundations-and-emerging-applications-iit-hyderabad-1719619"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-lg border border-white/10 bg-black/40 backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:scale-[1.02]"
+              >
+                <div className="relative w-full aspect-[4/5]">
+                  <Image
+                    src="/workshops/ai-cybersecurity-poster.png"
+                    alt="AI and Cybersecurity: Foundations, Tools, and Emerging Applications"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-4 flex items-center justify-between">
+                  <div>
+                    <h3 className="text-sm md:text-base tracking-wide uppercase leading-snug">
+                      AI &amp; Cybersecurity: Foundations, Tools, and Emerging Applications
+                    </h3>
+                    <p className="text-xs text-[#a0a0a0] mt-1 uppercase tracking-wide">
+                      Aug 22–23, 2026 · IIT Hyderabad
+                    </p>
+                  </div>
+                  <ArrowUpRight className="w-5 h-5 text-white/70 group-hover:text-white transition-colors flex-shrink-0" />
+                </div>
+              </a>
             </div>
           </div>
 
