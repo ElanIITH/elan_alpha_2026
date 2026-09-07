@@ -25,7 +25,7 @@ export default function Menu({ isOpen, onClose }: MenuProps) {
   const menuItems = [
     { label: "HOME", href: "/" },
     // { label: "EVENTS", href: "/events" },
-    { label: "SPONSORS", href: "/sponsors" },
+    // { label: "SPONSORS", href: "/sponsors" },
     { label: "COMPETITIONS", href: "/competitions" },
     { label: "WORKSHOPS", href: "/workshops" },
     { label: "ACCOMMODATION", href: "/accommodation" },

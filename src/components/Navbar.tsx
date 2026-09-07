@@ -156,6 +156,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
         </Link>
       </motion.div>
 
+      {/* SPONSORS - Temporarily commented out
       <div className="md:flex md:flex-col hidden">
         <div className="md:w-[2vw] md:h-[0.3vw]"></div>
         <div className="relative md:w-[2vw] md:h-[2vw]">
@@ -214,6 +215,7 @@ export default function Navbar({ variant = "red" }: NavbarProps) {
           SPONSORS
         </Link>
       </motion.div>
+      */}
 
       <div className="md:flex md:flex-col hidden">
         <div className="md:w-[3.5vw] md:h-[1.2vw]"></div>

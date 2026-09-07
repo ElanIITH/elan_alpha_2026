@@ -2,8 +2,11 @@
 
 import React, { useEffect } from "react";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default function Sponsors() {
+  redirect("/");
+
   useEffect(() => {
     const event = new CustomEvent("navbarVariantChange", { detail: "grey" });
     window.dispatchEvent(event);
