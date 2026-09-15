@@ -6,14 +6,14 @@ import { ArrowUpRight } from "lucide-react";
 const WORKSHOPS = [
   {
     title: "Agentic AI: Foundations, Frameworks, and Autonomous Applications",
-    date: "Elan & nVision 2026 · IIT Hyderabad",
+    date: "Sept 26-27, 2026 · IIT Hyderabad",
     description:
       "A hands-on introduction to agentic AI — how autonomous agents reason, plan, and act using modern frameworks. Explore the building blocks behind self-directed AI systems and see how they're applied to real-world, multi-step tasks.",
     link: "https://unstop.com/p/agentic-ai-foundations-frameworks-and-autonomous-applications-elan-nvision-1750717",
   },
   {
     title: "VLSI Design: From Circuits to Tools",
-    date: "Elan & nVision 2026 · IIT Hyderabad",
+    date: "Sept 26-27, 2026 · IIT Hyderabad",
     description:
       "A practical walkthrough of the VLSI design flow — from circuit fundamentals to the industry-standard tools used to design and verify chips. Ideal for students looking to get a grounding in how modern hardware is actually built.",
     link: "https://unstop.com/p/vlsi-design-from-circuits-to-tools-elan-nvision-1750706",
