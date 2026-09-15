@@ -1,8 +1,31 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+
+const WORKSHOPS = [
+  {
+    title: "Agentic AI: Foundations, Frameworks, and Autonomous Applications",
+    date: "Elan & nVision 2026 · IIT Hyderabad",
+    description:
+      "A hands-on introduction to agentic AI — how autonomous agents reason, plan, and act using modern frameworks. Explore the building blocks behind self-directed AI systems and see how they're applied to real-world, multi-step tasks.",
+    link: "https://unstop.com/p/agentic-ai-foundations-frameworks-and-autonomous-applications-elan-nvision-1750717",
+  },
+  {
+    title: "VLSI Design: From Circuits to Tools",
+    date: "Elan & nVision 2026 · IIT Hyderabad",
+    description:
+      "A practical walkthrough of the VLSI design flow — from circuit fundamentals to the industry-standard tools used to design and verify chips. Ideal for students looking to get a grounding in how modern hardware is actually built.",
+    link: "https://unstop.com/p/vlsi-design-from-circuits-to-tools-elan-nvision-1750706",
+  },
+  {
+    title: "Quantum Computing: Principles, Technologies, and Emerging Frontiers",
+    date: "Sept 26–27, 2026 · IIT Hyderabad",
+    description:
+      "A hands-on, two-day introduction to Quantum Computing — qubits, superposition, entanglement, and quantum gates on Day 1, followed by circuits, algorithms, and Python-based quantum tools on Day 2. Explore applications across cryptography, optimization, simulation, and quantum machine learning, and understand both the capabilities and current challenges of the field.",
+    link: "https://unstop.com/p/ai-and-cybersecurity-foundations-tools-and-emerging-applications-iit-hyderabad-1745552",
+  },
+];
 
 export default function Workshops() {
   const [mounted, setMounted] = useState(false);
@@ -39,8 +62,6 @@ export default function Workshops() {
     console.log("Design by EnV Creatives Team. Made by EnV Web Team.");
   }, []);
 
-  // No workshops array needed, replaced by PDF poster
-
   useEffect(() => {
     setMounted(true);
 
@@ -59,7 +80,6 @@ export default function Workshops() {
       { threshold: 0.1, rootMargin: "0px 0px -100px 0px" },
     );
 
-    // Observe all elements with data-animate-id
     const elements = document.querySelectorAll("[data-animate-id]");
     elements.forEach((el) => observer.observe(el));
 
@@ -112,8 +132,7 @@ export default function Workshops() {
             </div>
           </div>
 
-
-          {/* Poster Card Section (styled like previous workshops) */}
+          {/* Upcoming Workshops Section — text-only cards, no posters */}
           <div
             data-animate-id="workshops-section"
             className={`transition-all duration-700 delay-200 ${
@@ -126,34 +145,35 @@ export default function Workshops() {
               Upcoming Workshops
             </h2>
 
-            {/* Grid Layout */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              <a
-                href="https://unstop.com/p/generative-ai-foundations-and-emerging-applications-iit-hyderabad-1719619"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative overflow-hidden rounded-lg border border-white/10 bg-black/40 backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:scale-[1.02]"
-              >
-                <div className="relative w-full aspect-[4/5]">
-                  <Image
-                    src="/workshops/ai-cybersecurity-poster.png"
-                    alt="AI and Cybersecurity: Foundations, Tools, and Emerging Applications"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-4 flex items-center justify-between">
+              {WORKSHOPS.map((workshop) => (
+                <a
+                  key={workshop.link}
+                  href={workshop.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col justify-between rounded-lg border border-white/10 bg-black/40 backdrop-blur-sm p-5 md:p-6 transition-all duration-300 hover:border-white/30 hover:scale-[1.02]"
+                >
                   <div>
-                    <h3 className="text-sm md:text-base tracking-wide uppercase leading-snug">
-                      AI &amp; Cybersecurity: Foundations, Tools, and Emerging Applications
+                    <h3 className="text-lg md:text-xl tracking-wide uppercase leading-snug mb-3">
+                      {workshop.title}
                     </h3>
-                    <p className="text-xs text-[#a0a0a0] mt-1 uppercase tracking-wide">
-                      Aug 22–23, 2026 · IIT Hyderabad
+                    <p className="text-sm text-[#a0a0a0] uppercase tracking-wide mb-4">
+                      {workshop.date}
+                    </p>
+                    <p className="text-base text-[#c9c9c9] leading-relaxed normal-case tracking-normal">
+                      {workshop.description}
                     </p>
                   </div>
-                  <ArrowUpRight className="w-5 h-5 text-white/70 group-hover:text-white transition-colors flex-shrink-0" />
-                </div>
-              </a>
+
+                  <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/10">
+                    <span className="text-sm md:text-base tracking-wide uppercase text-white/80 group-hover:text-white transition-colors">
+                      Register on Unstop
+                    </span>
+                    <ArrowUpRight className="w-6 h-6 text-white/70 group-hover:text-white transition-colors flex-shrink-0" />
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
 
