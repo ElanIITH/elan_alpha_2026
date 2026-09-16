@@ -1,29 +1,33 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 const WORKSHOPS = [
   {
     title: "Agentic AI: Foundations, Frameworks, and Autonomous Applications",
-    date: "Sept 26-27, 2026 · IIT Hyderabad",
+    date: "September 26th & 27th, 2026 · IIT Hyderabad",
     description:
       "A hands-on introduction to agentic AI — how autonomous agents reason, plan, and act using modern frameworks. Explore the building blocks behind self-directed AI systems and see how they're applied to real-world, multi-step tasks.",
     link: "https://unstop.com/p/agentic-ai-foundations-frameworks-and-autonomous-applications-elan-nvision-1750717",
+    image: "/workshops/agentic-ai-poster.png",
   },
   {
     title: "VLSI Design: From Circuits to Tools",
-    date: "Sept 26-27, 2026 · IIT Hyderabad",
+    date: "September 26th & 27th, 2026 · IIT Hyderabad",
     description:
       "A practical walkthrough of the VLSI design flow — from circuit fundamentals to the industry-standard tools used to design and verify chips. Ideal for students looking to get a grounding in how modern hardware is actually built.",
     link: "https://unstop.com/p/vlsi-design-from-circuits-to-tools-elan-nvision-1750706",
+    image: "/workshops/vlsi-design-poster.png",
   },
   {
     title: "Quantum Computing: Principles, Technologies, and Emerging Frontiers",
-    date: "Sept 26–27, 2026 · IIT Hyderabad",
+    date: "September 26th & 27th, 2026 · IIT Hyderabad",
     description:
       "A hands-on, two-day introduction to Quantum Computing — qubits, superposition, entanglement, and quantum gates on Day 1, followed by circuits, algorithms, and Python-based quantum tools on Day 2. Explore applications across cryptography, optimization, simulation, and quantum machine learning, and understand both the capabilities and current challenges of the field.",
     link: "https://unstop.com/p/ai-and-cybersecurity-foundations-tools-and-emerging-applications-iit-hyderabad-1745552",
+    image: "/workshops/quantum-computing-poster.png",
   },
 ];
 
@@ -132,7 +136,7 @@ export default function Workshops() {
             </div>
           </div>
 
-          {/* Upcoming Workshops Section — text-only cards, no posters */}
+          {/* Upcoming Workshops Section */}
           <div
             data-animate-id="workshops-section"
             className={`transition-all duration-700 delay-200 ${
@@ -152,9 +156,18 @@ export default function Workshops() {
                   href={workshop.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col justify-between rounded-lg border border-white/10 bg-black/40 backdrop-blur-sm p-5 md:p-6 transition-all duration-300 hover:border-white/30 hover:scale-[1.02]"
+                  className="group flex flex-col justify-between overflow-hidden rounded-lg border border-white/10 bg-black/40 backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:scale-[1.02]"
                 >
-                  <div>
+                  <div className="relative w-full aspect-[4/5]">
+                    <Image
+                      src={workshop.image}
+                      alt={workshop.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  <div className="p-5 md:p-6">
                     <h3 className="text-lg md:text-xl tracking-wide uppercase leading-snug mb-3">
                       {workshop.title}
                     </h3>
@@ -166,7 +179,7 @@ export default function Workshops() {
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/10">
+                  <div className="flex items-center justify-between mt-2 mx-5 md:mx-6 mb-5 md:mb-6 pt-4 border-t border-white/10">
                     <span className="text-sm md:text-base tracking-wide uppercase text-white/80 group-hover:text-white transition-colors">
                       Register on Unstop
                     </span>
